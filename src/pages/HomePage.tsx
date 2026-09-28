@@ -137,7 +137,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </button>
 
           <button onClick={() => onNavigate('about-us')} className="inline-flex items-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] transition-colors hover:bg-black hover:text-white cursor-pointer shadow-xs">
-            See how we operate
+            Who we are
           </button>
 
           {/* Email Copy Button */}
