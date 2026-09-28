@@ -102,7 +102,7 @@ const TEAM_MEMBERS = [
   { 
     id: 9, 
     name: "Bahaa Alsaeed", 
-    role: "Software Technical Leader", 
+    role: "Software Technical Leader | Treasure", 
     major: "Mechatronics Engineering ∙ 3rd Year", 
     description: "The software backbone of our team, specializing in C++ and Python, with a strong foundation in electronics and experience with MATLAB and Simulink. Currently expanding his expertise in STM32 embedded systems, bridging the gap between software, hardware, and intelligent robotics. As the Software Technical Leader, he leads the development and integration of our team’s software systems.", 
     linkedin: "https://www.linkedin.com/in/bahaa-alsaeed-abb301369/", 
