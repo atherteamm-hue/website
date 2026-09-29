@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { curriculumData } from '../data/curriculumData';
 import { CourseModal } from '../components/CourseModal';
 
-export default function AcademicLibraryPage() {
+export function AcademicLibraryPage() {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
   const [lang, setLang] = useState<'EN' | 'AR'>('EN');
 
