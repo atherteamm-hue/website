@@ -49,7 +49,7 @@ const TEAM_MEMBERS = [
     name: "Anas Majdi", 
     role: "Head of Media", 
     major: "Mechatronics Engineering ∙ 3rd Year", 
-    description: "The creative visionary leading ATHAR's media presence and a dedicated educator known for simplifying complex subjects like Digital Logic Design and Physics. Proficient in C++ and Python, he engineers intelligent algorithms—from custom PID controllers to computer vision models—integrating them seamlessly into robotics and industrial automation. Serving as the dynamic face and lead presenter of ATHAR's technical workshops.", 
+    description: "The creative mastermind behind ATHAR's media presence and a highly sought-after educator, renowned for simplifying complex subjects like Digital Logic Design and Physics. A true multidisciplinary engineer, he seamlessly bridges the gap between hardware and software. Proficient in C++ and Python, he architects intelligent algorithms—from custom PID controllers to advanced computer vision models—powering autonomous robotics. Expanding his tech stack, he is the co-architect and developer of ATHAR's modern digital platform, merging strict engineering logic with elegant web technologies. Charismatic and deeply knowledgeable, he serves as the dynamic face and lead technical presenter of the team’s workshops.", 
     linkedin: "https://www.linkedin.com/in/anas-majdi-80863a384/", 
     github: "https://github.com/AnasMajdi",
     instagram: "",
