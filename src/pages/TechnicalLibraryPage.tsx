@@ -18,7 +18,7 @@ export const TechnicalLibraryPage: React.FC = () => {
           Technical Library
         </h1>
         <p className="text-lg sm:text-xl text-neutral-700 max-w-3xl font-light leading-relaxed">
-          The ultimate repository for ATHAR's engineering projects, source codes, and technical documentation. Explore our open-source algorithms, hardware schematics, and embedded systems architectures.
+          The ultimate repository for ATHAR&apos;s engineering projects, source codes, and technical documentation. Explore our open-source algorithms, hardware schematics, and embedded systems architectures.
         </p>
       </div>
 
