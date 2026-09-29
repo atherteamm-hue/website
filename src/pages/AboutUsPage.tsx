@@ -138,7 +138,7 @@ export const AboutUsPage: React.FC = () => {
           We engineer the future of smart mechatronic systems.
         </h1>
         <p className="text-lg sm:text-xl text-neutral-700 max-w-3xl font-light leading-relaxed">
-          Founded at <strong className="font-medium text-black">Al-Balqa Applied University (Faculty of Engineering Technology)</strong>, ATHAR is a specialized engineering team dedicated entirely to the technical advancement of Mechatronics. We bridge the gap between heavy industrial hardware and intelligent software to build robust, autonomous, and highly efficient physical systems.
+          Founded at <strong className="font-medium text-black">ATHAR is a specialized engineering team dedicated entirely to the technical advancement of Mechatronics. We bridge the gap between heavy industrial hardware and intelligent software to build robust, autonomous, and highly efficient physical systems.
         </p>
       </div>
 
