@@ -1,29 +1,55 @@
 import React, { useState } from 'react';
-import { CurriculumFlowchart } from '../components/CurriculumFlowchart';
+import { curriculumData } from '../data/curriculumData';
 import { CourseModal } from '../components/CourseModal';
 
-export const AcademicLibraryPage = () => {
+export default function AcademicLibraryPage() {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
+  const [lang, setLang] = useState<'EN' | 'AR'>('EN');
+
+  // CLICK TOOL: This helps you find coordinates for all 50+ boxes
+  const logHitbox = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    console.log(`Clicked at -> x: ${x.toFixed(2)}, y: ${y.toFixed(2)}`);
+  };
 
   return (
-    <main className="min-h-screen pt-32 pb-24 px-5 sm:px-10 max-w-7xl mx-auto">
-      <div className="mb-20">
-        <h1 className="text-6xl font-bold tracking-tighter mb-4">ACADEMIC<br/>LIBRARY</h1>
-        <p className="text-xl text-neutral-500 max-w-xl">
-          An interactive graph of the Mechatronics curriculum. Click nodes to access lecture notes, past papers, and textbook archives.
-        </p>
+    <div className="min-h-screen bg-white pt-24 pb-20 px-4">
+      <div className="max-w-7xl mx-auto mb-10 flex justify-between items-center">
+        <h1 className="text-4xl font-bold tracking-tighter">ACADEMIC LIBRARY</h1>
+        <button onClick={() => setLang(l => l === 'EN' ? 'AR' : 'EN')} className="px-6 py-2 bg-black text-white rounded-full font-mono text-xs">
+          {lang === 'EN' ? 'VIEW ARABIC' : 'VIEW ENGLISH'}
+        </button>
       </div>
 
-      <CurriculumFlowchart onCourseClick={(key) => setSelectedCourse(key)} />
+      <div className="relative max-w-7xl mx-auto border border-black/5 shadow-2xl rounded-[40px] overflow-hidden" onClick={logHitbox}>
+        <img src={lang === 'EN' ? '/flowchart-en.svg' : '/flowchart-ar.svg'} className="w-full h-auto block" />
+
+        {/* Dynamic Buttons Layer */}
+        <div className="absolute inset-0">
+          {Object.entries(curriculumData).map(([key, course]) => (
+            <button
+              key={key}
+              onClick={() => setSelectedCourse(key)}
+              className="absolute hover:bg-black/10 border-2 border-transparent hover:border-black/20 rounded-lg transition-all"
+              style={{
+                left: `${course.coords.x}%`,
+                top: `${course.coords.y}%`,
+                width: `${course.coords.w}%`,
+                height: `${course.coords.h}%`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
 
       {selectedCourse && (
         <CourseModal 
-          courseKey={selectedCourse} 
+          content={curriculumData[selectedCourse].content} 
           onClose={() => setSelectedCourse(null)} 
         />
       )}
-    </main>
+    </div>
   );
-};
-
-
+}
