@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, Folder, FileText, ChevronDown, Video } from 'lucide-react';
-import { PDFCover } from './PDFCover';
+import { PDFCover } from './PDFCover.tsx';
 import { CourseContent } from '../data/curriculumData';
 
 const CollapsibleFolder = ({ label, items }: { label: string; items: any[] }) => {
