@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import awsImg from '../../members photos/Aws gharaibeh.jpeg';
 import yaraImg from '../../members photos/Yara Alabadi.jpeg';
 import ahmadImg from '../../members photos/Ahamd Radhwan.jpeg';
+import ansamImg from '../../members photos/ansam tayeh.jpeg';
 import anasImg from '../../members photos/Anas majdi.jpeg';
 import mohammadImg from '../../members photos/Mohammad abuelyan.jpeg';
 import abdalrhmanImg from '../../members photos/Abdalrhman Abdorabbeh.jpeg';
@@ -46,6 +47,17 @@ const TEAM_MEMBERS = [
   },
   { 
     id: 4, 
+    name: "Ansam Tayeh", 
+    role: "Vice-Chairwoman", 
+    major: "Mechatronics Engineering ∙ 4th Year", 
+    description: "A strong academic background in electronics, circuit analysis, and control systems. Skilled in C++ programming and passionate about developing efficient, hardware-software integrated solutions.", 
+    linkedin: "https://www.linkedin.com/in/ansam-tayeh-bb60903b0?utm_source=share_via&utm_content=profile&utm_medium=member_ios", 
+    github: "",
+    instagram: "",
+    image: ansamImg 
+  },
+  { 
+    id: 5, 
     name: "Anas Majdi", 
     role: "Head of Media", 
     major: "Mechatronics Engineering ∙ 3rd Year", 
@@ -56,7 +68,7 @@ const TEAM_MEMBERS = [
     image: anasImg 
   },
   { 
-    id: 5, 
+    id: 6, 
     name: "Mohammad AbuElyan", 
     role: "Academic Leader", 
     major: "Mechatronics Engineering ∙ 4th Year", 
@@ -67,7 +79,7 @@ const TEAM_MEMBERS = [
     image: mohammadImg 
   },
   { 
-    id: 6, 
+    id: 7, 
     name: "Abdalrhman Abdorabeh", 
     role: "Technical Leader", 
     major: "Mechatronics Engineering ∙ 4th Year", 
@@ -78,7 +90,7 @@ const TEAM_MEMBERS = [
     image: abdalrhmanImg 
   },
   { 
-    id: 7, 
+    id: 8, 
     name: "Abdullah Bsaiso", 
     role: "Mechanical Technical Leader", 
     major: "Mechatronics Engineering ∙ 3rd Year", 
@@ -89,7 +101,7 @@ const TEAM_MEMBERS = [
     image: abdullahImg 
   },
   { 
-    id: 8, 
+    id: 9, 
     name: "Adnan Jehad Abu Samaha", 
     role: "Electrical & Electronics Technical Lead | PR Team Leader", 
     major: "Mechatronics Engineering ∙ 3rd Year", 
@@ -100,7 +112,7 @@ const TEAM_MEMBERS = [
     image: adnanImg 
   },
   { 
-    id: 9, 
+    id: 10, 
     name: "Bahaa Alsaeed", 
     role: "Software Technical Leader | Treasure", 
     major: "Mechatronics Engineering ∙ 3rd Year", 
