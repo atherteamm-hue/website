@@ -10,6 +10,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // شلنا 'join-us' من المصفوفة لأنها بطلت صفحة داخلية
   const navLinks: { label: string; page: PageId }[] = [
     { label: 'Academic library', page: 'academic-library' },
     { label: 'Technical library', page: 'technical-library' },
@@ -26,7 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
     <>
       {/* NAVBAR (fixed, z-index: 10) */}
       <header className="fixed top-0 left-0 right-0 z-10 flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5 bg-transparent">
-        {/* Logo (left): Replaced with uploaded logo photo */}
+        {/* Logo (left) */}
         <div
           onClick={() => handleNavClick('home')}
           className="flex items-center cursor-pointer group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black rounded-xs"
@@ -44,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           />
         </div>
 
-        {/* Desktop nav links (center, hidden below md): separated with " ∙ " */}
+        {/* Desktop nav links (center, hidden below md) */}
         <nav
           className="hidden md:flex items-center text-[23px] text-black"
           aria-label="Primary Navigation"
@@ -69,17 +70,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           ))}
         </nav>
 
-        {/* Desktop CTA (right, hidden below md): Join us */}
+        {/* Desktop CTA (right, hidden below md): Join us (الآن رابط خارجي) */}
         <div className="hidden md:block">
-          <button
-            type="button"
-            onClick={() => handleNavClick('join-us')}
-            className={`text-[23px] text-black underline underline-offset-2 hover:opacity-60 transition-opacity cursor-pointer bg-transparent border-0 p-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black rounded-xs ${
-              currentPage === 'join-us' ? 'font-medium' : ''
-            }`}
+          <a
+            href="https://tally.so/r/dWB1GN"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[23px] text-black underline underline-offset-2 hover:opacity-60 transition-opacity cursor-pointer bg-transparent border-0 p-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black rounded-xs"
           >
             Join us
-          </button>
+          </a>
         </div>
 
         {/* Mobile hamburger (visible below md) */}
@@ -133,13 +133,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             {item.label}
           </button>
         ))}
-        <button
-          type="button"
-          onClick={() => handleNavClick('join-us')}
+        
+        {/* رابط الموبايل الخارجي */}
+        <a
+          href="https://tally.so/r/dWB1GN"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-left text-[32px] font-medium text-black underline underline-offset-4 hover:opacity-60 transition-opacity cursor-pointer bg-transparent border-0 p-0"
+          onClick={() => setIsMenuOpen(false)}
         >
           Join us
-        </button>
+        </a>
       </div>
     </>
   );
