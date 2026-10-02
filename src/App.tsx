@@ -6,13 +6,12 @@ import { HomePage } from './pages/HomePage.tsx';
 import { AcademicLibraryPage } from './pages/AcademicLibraryPage.tsx';
 import { TechnicalLibraryPage } from './pages/TechnicalLibraryPage.tsx';
 import { AboutUsPage } from './pages/AboutUsPage.tsx';
-import { JoinUsPage } from './pages/JoinUsPage.tsx';
 
 export default function App() {
   // Sync state with URL hash for browser history and bookmarking
   const getInitialPage = (): PageId => {
     const hash = window.location.hash.replace('#', '');
-    if (hash === 'academic-library' || hash === 'technical-library' || hash === 'about-us' || hash === 'join-us') {
+    if (hash === 'academic-library' || hash === 'technical-library' || hash === 'about-us') {
       return hash as PageId;
     }
     return 'home';
@@ -24,7 +23,7 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
-      if (hash === 'academic-library' || hash === 'technical-library' || hash === 'about-us' || hash === 'join-us') {
+      if (hash === 'academic-library' || hash === 'technical-library' || hash === 'about-us') {
         setCurrentPage(hash as PageId);
       } else {
         setCurrentPage('home');
@@ -57,7 +56,6 @@ export default function App() {
       {currentPage === 'academic-library' && <AcademicLibraryPage />}
       {currentPage === 'technical-library' && <TechnicalLibraryPage />}
       {currentPage === 'about-us' && <AboutUsPage />}
-      {currentPage === 'join-us' && <JoinUsPage />}
     </div>
   );
 }
