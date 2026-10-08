@@ -21,6 +21,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/aws-gharaibeh-ba1755332?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
     github: "",
     instagram: "",
+    website: "",
     image: awsImg
   },
   {
@@ -32,6 +33,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/yara-alabadi-7b0895354/",
     github: "",
     instagram: "",
+    website: "",
     image: yaraImg
   },
   { 
@@ -43,6 +45,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/ahmad-radwan-a581b1328/", 
     github: "https://github.com/Ahmad06-Radwan",
     instagram: "",
+    website: "",
     image: ahmadImg 
   },
   { 
@@ -54,6 +57,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/ansam-tayeh-bb60903b0?utm_source=share_via&utm_content=profile&utm_medium=member_ios", 
     github: "",
     instagram: "",
+    website: "",
     image: ansamImg 
   },
   { 
@@ -65,6 +69,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/anas-majdi-80863a384/", 
     github: "https://github.com/AnasMajdi",
     instagram: "",
+    website: "",
     image: anasImg 
   },
   { 
@@ -72,10 +77,11 @@ const TEAM_MEMBERS = [
     name: "Mohammad AbuElyan", 
     role: "Academic Leader", 
     major: "Mechatronics Engineering ∙ 4th Year", 
-    description: "Ranked first in his academic cohort, he is the architect and visionary behind MAE Academy's interactive engineering ecosystem. Specializing in control systems, dynamic modeling, and industrial automation, he seamlessly bridges the gap between rigorous mathematical theory and intuitive web simulations. Driven by educational impact, he actively empowers thousands of engineering students through open-access digital platforms, authored laboratory manuals, and visual computing.", 
+    description: "Ranked first in his academic cohort, he is the architect and visionary behind his own academic website, MAE Academy. Specializing in control systems, dynamic modeling, and industrial automation, he seamlessly bridges the gap between rigorous mathematical theory and intuitive web simulations. Driven by educational impact, he actively empowers thousands of engineering students through his custom-built digital platform, authored laboratory manuals, and visual computing.", 
     linkedin: "https://www.linkedin.com/in/mohammad-abuelyan-368ab8384/", 
     github: "",
     instagram: "https://www.instagram.com/mae.academy/",
+    website: "https://maeacademy.org/about",
     image: mohammadImg 
   },
   { 
@@ -87,6 +93,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/abdalrhman-abdorabbeh-b3b170368/", 
     github: "https://github.com/abdoman-A4",
     instagram: "",
+    website: "",
     image: abdalrhmanImg 
   },
   { 
@@ -98,6 +105,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/abdullah-bsaiso-a56023321/", 
     github: "https://github.com/Abooubaker",
     instagram: "",
+    website: "",
     image: abdullahImg 
   },
   { 
@@ -109,6 +117,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/eng-adnan-abu-samaha25/", 
     github: "", 
     instagram: "", 
+    website: "",
     image: adnanImg 
   },
   { 
@@ -120,6 +129,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/bahaa-alsaeed-abb301369/", 
     github: "https://github.com/bahaa0alsaeed", 
     instagram: "", 
+    website: "",
     image: bahaaImg 
   }
 ];
@@ -253,6 +263,16 @@ export const AboutUsPage: React.FC = () => {
                             className="inline-flex items-center gap-2 text-xs font-mono font-bold text-black border border-neutral-300 hover:border-black rounded-full px-5 py-2.5 transition-colors uppercase tracking-widest"
                           >
                             Instagram ↗
+                          </a>
+                        )}
+                        {member.website && (
+                          <a 
+                            href={member.website} 
+                            target="_blank" 
+                            rel="noreferrer" 
+                            className="inline-flex items-center gap-2 text-xs font-mono font-bold text-black border border-neutral-300 hover:border-black rounded-full px-5 py-2.5 transition-colors uppercase tracking-widest bg-neutral-50"
+                          >
+                            Website ↗
                           </a>
                         )}
                       </div>
