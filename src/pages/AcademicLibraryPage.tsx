@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { curriculumData } from '../data/curriculumData.ts';
 import { CourseModal } from '../components/CourseModal.tsx';
-// 1. استدعينا أداة دمج الـ PDF الجديدة هون
 import { PdfMerger } from '../components/PdfMerger.tsx';
+import { PdfSplitter } from '../components/PdfSplitter.tsx';
 
 export function AcademicLibraryPage() {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
@@ -57,7 +57,7 @@ export function AcademicLibraryPage() {
           </div>
         </div>
 
-        {/* 2. قسم أدوات فريق أثر (تم إضافته تحت الخريطة) */}
+        {/* قسم أدوات فريق أثر */}
         <div className="mt-24 border-t border-black/10 pt-16">
           <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-neutral-500 mb-2 text-center">
             Athar Tools
@@ -66,16 +66,10 @@ export function AcademicLibraryPage() {
             Student Utilities
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             
-            {/* أداة دمج الملفات اللي برمجناها */}
             <PdfMerger />
-
-            {/* بطاقة محجوزة لأداة قص الملفات (قريباً) */}
-            <div className="bg-neutral-50 border border-neutral-200 rounded-[30px] p-8 flex flex-col items-center justify-center border-dashed min-h-[250px]">
-              <p className="text-sm font-bold text-neutral-400">PDF Splitter</p>
-              <p className="text-xs text-neutral-400 mt-2">(Coming soon...)</p>
-            </div>
+            <PdfSplitter />
 
             {/* بطاقة محجوزة لأداة تعديل الملفات (قريباً) */}
             <div className="bg-neutral-50 border border-neutral-200 rounded-[30px] p-8 flex flex-col items-center justify-center border-dashed min-h-[250px]">
@@ -85,7 +79,6 @@ export function AcademicLibraryPage() {
 
           </div>
         </div>
-
       </div>
 
       {selectedCourse && curriculumData[selectedCourse] && (
