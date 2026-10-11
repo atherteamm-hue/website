@@ -74,13 +74,13 @@ export function AcademicLibraryPage() {
             {/* بطاقة محجوزة لأداة قص الملفات (قريباً) */}
             <div className="bg-neutral-50 border border-neutral-200 rounded-[30px] p-8 flex flex-col items-center justify-center border-dashed min-h-[250px]">
               <p className="text-sm font-bold text-neutral-400">PDF Splitter</p>
-              <p className="text-xs text-neutral-400 mt-2">(قريباً...)</p>
+              <p className="text-xs text-neutral-400 mt-2">(Coming soon...)</p>
             </div>
 
             {/* بطاقة محجوزة لأداة تعديل الملفات (قريباً) */}
             <div className="bg-neutral-50 border border-neutral-200 rounded-[30px] p-8 flex flex-col items-center justify-center border-dashed min-h-[250px]">
               <p className="text-sm font-bold text-neutral-400">PDF Editor</p>
-              <p className="text-xs text-neutral-400 mt-2">(قريباً...)</p>
+              <p className="text-xs text-neutral-400 mt-2">(Coming soon...)</p>
             </div>
 
           </div>
