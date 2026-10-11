@@ -8,8 +8,8 @@ export function AcademicLibraryPage() {
 
   return (
     // ضفنا antialiased عشان يخلي الخطوطคม وواضحة جداً
-    <div className="min-h-screen bg-[#fafafa] pt-32 pb-20 px-5 sm:px-10 antialiased">
-      <div className="max-w-7xl mx-auto">
+<div className="relative z-[5] min-h-screen bg-[#fafafa] pt-32 pb-20 px-5 sm:px-10 antialiased">
+  <div className="max-w-7xl mx-auto">
         
         {/* الجزء العلوي: العنوان والزر (صاروا واضحين وبدون تغبيش) */}
         <div className="mb-12 border-b border-black/10 pb-8">
