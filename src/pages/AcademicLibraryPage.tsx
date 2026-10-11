@@ -7,22 +7,35 @@ export function AcademicLibraryPage() {
   const [lang, setLang] = useState<'EN' | 'AR'>('EN');
 
   return (
-    <div className="min-h-screen bg-[#fafafa] pt-32 pb-20 px-5 sm:px-10">
+    // ضفنا antialiased عشان يخلي الخطوطคม وواضحة جداً
+    <div className="min-h-screen bg-[#fafafa] pt-32 pb-20 px-5 sm:px-10 antialiased">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12 border-b pb-8">
-          <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 mb-4">Curriculum Journey</h2>
+        
+        {/* الجزء العلوي: العنوان والزر (صاروا واضحين وبدون تغبيش) */}
+        <div className="mb-12 border-b border-black/10 pb-8">
+          {/* غيرنا اللون لـ text-neutral-600 عشان يكون أوضح */}
+          <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-neutral-600 mb-4">
+            Curriculum Journey
+          </h2>
+          
           <div className="flex justify-between items-center">
-            <h1 className="text-5xl font-bold tracking-tighter uppercase text-black">Academic Library</h1>
+            {/* ضفنا text-black عشان الكلمة تكون حادة */}
+            <h1 className="text-5xl font-black tracking-tighter uppercase text-black">
+              Academic Library
+            </h1>
+            
             <button 
               onClick={() => setLang(l => l === 'EN' ? 'AR' : 'EN')}
-              className="px-8 py-3 bg-black text-white rounded-full font-mono text-[10px] uppercase tracking-widest hover:scale-105 transition-all"
+              // كبرنا الخط لـ text-xs وعملناه font-bold عشان ما يغبش
+              className="px-8 py-3 bg-black text-white rounded-full font-bold text-xs uppercase tracking-widest hover:scale-105 hover:bg-neutral-800 transition-all shadow-md"
             >
               {lang === 'EN' ? 'VIEW ARABIC' : 'VIEW ENGLISH'}
             </button>
           </div>
         </div>
 
-        <div className="relative w-full border border-black/5 shadow-2xl rounded-[40px] overflow-hidden bg-white">
+        {/* الخريطة والأزرار الشفافة */}
+        <div className="relative w-full border border-black/10 shadow-2xl rounded-[40px] overflow-hidden bg-white">
           <img 
             src={lang === 'EN' ? '/flowchart-en.svg' : '/flowchart-ar.svg'} 
             className="w-full h-auto block pointer-events-none select-none" 
@@ -33,7 +46,6 @@ export function AcademicLibraryPage() {
               <button
                 key={key}
                 onClick={(e) => { e.stopPropagation(); setSelectedCourse(key); }}
-                // الزر شفاف تماماً، وبيظهر له إطار خفيف ولون سكني عند تمرير الماوس
                 className="absolute hover:bg-black/5 hover:border-2 hover:border-black/20 rounded-lg transition-all cursor-pointer"
                 style={{
                   left: `${course.coords.x}%`,
@@ -41,7 +53,6 @@ export function AcademicLibraryPage() {
                   width: `${course.coords.w}%`,
                   height: `${course.coords.h}%`,
                 }}
-                // إضافة الـ Tooltip ليظهر اسم المادة عند تمرير الماوس
                 title={lang === 'EN' ? course.content.titleEn : course.content.titleAr}
               />
             ))}
