@@ -70,6 +70,7 @@ export const curriculumData: Record<string, Course> = {
   sensors: { coords: { x: 26.36, y: 50.76, w: 5.24, h: 5.46 }, content: empty("Sensors and Actuators", "مجسات ومحولات طاقة") },
   sensors_lab: { coords: { x: 16.66, y: 48.94, w: 6.84, h: 9.1 }, content: empty("Sensors Lab", "مختبر مجسات") },
   industrial_processes: { coords: { x: 44.95, y: 43.94, w: 6.62, h: 5.46 }, content: empty("Industrial Processes", "عمليات صناعية") },
+  industrial_processes_Lab: { coords: { x: 33.41, y: 37.33, w: 8.05, h: 6.55 }, content: empty("Industrial Processes Lab", "مختبر العمليات صناعية") },
   eng_materials: { coords: { x: 45.07, y: 54.76, w: 6.27, h: 6.82 }, content: empty("Applied Engineering Materials", "مواد هندسية تطبيقية") },
   hydraulic_drive: { coords: { x: 41.53, y: 66.92, w: 6.5, h: 5.46 }, content: empty("Hydraulic Drive", "قيادة هيدروليكية") },
   hydraulic_lab: { coords: { x: 52.14, y: 66.23, w: 8.45, h: 6.37 }, content: empty("Hydraulic Lab", "مختبر هيدروليك") },
