@@ -6,7 +6,6 @@ export function PdfMerger() {
   const [files, setFiles] = useState<File[]>([]);
   const [isMerging, setIsMerging] = useState(false);
 
-  // دالة لاختيار الملفات
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const newFiles = Array.from(e.target.files).filter(f => f.type === 'application/pdf');
@@ -14,12 +13,10 @@ export function PdfMerger() {
     }
   };
 
-  // دالة لإزالة ملف من القائمة
   const removeFile = (index: number) => {
     setFiles(files.filter((_, i) => i !== index));
   };
 
-  // الدالة الأساسية لدمج الملفات
   const mergePdfs = async () => {
     if (files.length < 2) return;
     setIsMerging(true);
@@ -36,7 +33,6 @@ export function PdfMerger() {
 
       const mergedPdfFile = await mergedPdf.save();
       
-      // تحميل الملف المدموج للمستخدم
       const blob = new Blob([mergedPdfFile], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -47,7 +43,7 @@ export function PdfMerger() {
       
     } catch (error) {
       console.error("Error merging PDFs:", error);
-      alert("حدث خطأ أثناء دمج الملفات. تأكد من أن الملفات غير محمية بكلمة مرور.");
+      alert("Error merging files. Please make sure the PDFs are not password-protected.");
     } finally {
       setIsMerging(false);
     }
@@ -61,19 +57,17 @@ export function PdfMerger() {
         </div>
         <div>
           <h3 className="text-xl font-bold uppercase tracking-tighter text-black">PDF Merger</h3>
-          <p className="text-xs text-neutral-400 font-medium">أداة دمج ملفات الـ PDF (تقارير، دوسيات، أغلفة)</p>
+          <p className="text-xs text-neutral-400 font-medium">Merge multiple PDF files into one document</p>
         </div>
       </div>
 
       <div className="space-y-4">
-        {/* زر رفع الملفات */}
         <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-neutral-300 rounded-2xl hover:bg-neutral-50 hover:border-black transition-all cursor-pointer group">
           <FileUp size={28} className="text-neutral-400 group-hover:text-black mb-2 transition-colors" />
-          <span className="text-sm font-bold text-neutral-600 group-hover:text-black">اضغط هنا لرفع ملفات PDF</span>
+          <span className="text-sm font-bold text-neutral-600 group-hover:text-black">Click here to upload PDF files</span>
           <input type="file" multiple accept=".pdf" className="hidden" onChange={handleFileChange} />
         </label>
 
-        {/* قائمة الملفات المرفوعة */}
         {files.length > 0 && (
           <div className="bg-neutral-50 rounded-2xl p-4 max-h-48 overflow-y-auto space-y-2">
             {files.map((file, index) => (
@@ -90,7 +84,6 @@ export function PdfMerger() {
           </div>
         )}
 
-        {/* زر الدمج */}
         <button
           onClick={mergePdfs}
           disabled={files.length < 2 || isMerging}
@@ -98,7 +91,7 @@ export function PdfMerger() {
             files.length < 2 ? 'bg-neutral-100 text-neutral-400 cursor-not-allowed' : 'bg-black text-white hover:scale-[1.02] shadow-lg'
           }`}
         >
-          {isMerging ? 'جاري الدمج...' : (files.length < 2 ? 'ارفع ملفين على الأقل للدمج' : 'دمج وتحميل الملف (Merge)')}
+          {isMerging ? 'Merging...' : (files.length < 2 ? 'Upload at least 2 files' : 'Merge & Download')}
         </button>
       </div>
     </div>
