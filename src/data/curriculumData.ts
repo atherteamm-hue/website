@@ -42,7 +42,7 @@ export const curriculumData: Record<string, Course> = {
   physics_lab: { coords: { x: 62.55, y: 14.01, w: 6.73, h: 6.21 }, content: empty("Physics Lab", "مختبر فيزياء") },
   gen_chemistry: { coords: { x: 91.77, y: 3.6, w: 5.42, h: 5.01 }, content: empty("General Chemistry", "كيمياء عامة") },
   chem_lab: { coords: { x: 91.27, y: 15.02, w: 6.72, h: 4.8 }, content: empty("Chemistry Lab", "مختبر كيمياء") },
-  cpp: { coords: { x: 28.64, y: 25.28, w: 5.25, h: 5.23 }, content: empty("C++", "برمجة كينونية (C++)") },
+  cpp: { coords: { x: 28.64, y: 25.28, w: 5.25, h: 5.23 }, content: empty("C++", "البرمجة للمهندسين (C++)") },
   digital_logic: { coords: { x: 37.88, y: 25.28, w: 5.25, h: 5.46 }, content: empty("Digital Logic", "منطق رقمي") },
   linear_algebra: { coords: { x: 47.58, y: 24.14, w: 5.59, h: 5.24 }, content: empty("Linear Algebra", "جبر خطي") },
   machine_components: { coords: { x: 54.99, y: 14.59, w: 5.48, h: 5.23 }, content: empty("Machine Components", "أجزاء آلات") },
