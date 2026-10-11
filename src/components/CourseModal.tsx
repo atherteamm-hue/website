@@ -30,9 +30,14 @@ export function CourseModal({ content, onClose }: { content: CourseContent; onCl
   return (
     <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md" onClick={onClose}>
       <div className="bg-white w-full max-w-5xl max-h-[85vh] rounded-[40px] shadow-2xl flex flex-col overflow-hidden" onClick={e => e.stopPropagation()}>
-        <div className="p-8 sm:p-10 border-b flex justify-between items-center">
-          <h2 className="text-2xl font-bold uppercase tracking-tighter">{content.title}</h2>
-          <button onClick={onClose} className="p-2 hover:bg-neutral-100 rounded-full transition-all"><X size={20}/></button>
+        
+        {/* تم تعديل الترويسة هنا لعرض الاسمين */}
+        <div className="p-8 sm:p-10 border-b flex justify-between items-start">
+          <div className="flex flex-col gap-1">
+            <h2 className="text-2xl font-bold uppercase tracking-tighter text-black">{content.titleEn}</h2>
+            <h3 className="text-lg font-medium text-neutral-500" dir="rtl">{content.titleAr}</h3>
+          </div>
+          <button onClick={onClose} className="p-2 hover:bg-neutral-100 rounded-full transition-all mt-1"><X size={20}/></button>
         </div>
 
         <div className="flex-1 overflow-y-auto p-8 sm:p-12 grid grid-cols-1 md:grid-cols-3 gap-10">
