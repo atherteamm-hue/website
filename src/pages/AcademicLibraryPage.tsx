@@ -3,7 +3,7 @@ import { curriculumData } from '../data/curriculumData.ts';
 import { CourseModal } from '../components/CourseModal.tsx';
 import { PdfMerger } from '../components/PdfMerger.tsx';
 import { PdfSplitter } from '../components/PdfSplitter.tsx';
-
+import { MaeSimulations } from '../components/MaeSimulations.tsx';
 export function AcademicLibraryPage() {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
   const [lang, setLang] = useState<'EN' | 'AR'>('EN');
@@ -79,8 +79,9 @@ export function AcademicLibraryPage() {
 
           </div>
         </div>
-      </div>
+        <MaeSimulations/>
 
+      </div>
       {selectedCourse && curriculumData[selectedCourse] && (
         <CourseModal content={curriculumData[selectedCourse].content} onClose={() => setSelectedCourse(null)} />
       )}
