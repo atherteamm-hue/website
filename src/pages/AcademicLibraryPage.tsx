@@ -3,7 +3,10 @@ import { curriculumData } from '../data/curriculumData.ts';
 import { CourseModal } from '../components/CourseModal.tsx';
 import { PdfMerger } from '../components/PdfMerger.tsx';
 import { PdfSplitter } from '../components/PdfSplitter.tsx';
-import { ImgToPdf } from '../components/ImgToPdf.tsx'; // <--- استدعينا الأداة الجديدة
+import { ImgToPdf } from '../components/ImgToPdf.tsx';
+import { PdfWatermark } from '../components/PdfWatermark.tsx';
+import { PdfRotate } from '../components/PdfRotate.tsx';
+import { PdfPageNumbers } from '../components/PdfPageNumbers.tsx';
 import { MaeSimulations } from '../components/MaeSimulations.tsx';
 
 export function AcademicLibraryPage() {
@@ -69,19 +72,22 @@ export function AcademicLibraryPage() {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-            
-            {/* الأدوات الثلاثة صاروا جنب بعض بدون أي Coming soon */}
+            {/* الأدوات الستة مسطرة وجاهزة */}
             <PdfMerger />
             <PdfSplitter />
             <ImgToPdf />
-
+            <PdfWatermark />
+            <PdfRotate />
+            <PdfPageNumbers />
           </div>
         </div>
 
+        {/* قسم المحاكيات جوا الحاوية عشان الترتيب يكون مثالي */}
         <MaeSimulations />
 
       </div>
 
+      {/* النافذة المنبثقة للمواد */}
       {selectedCourse && curriculumData[selectedCourse] && (
         <CourseModal content={curriculumData[selectedCourse].content} onClose={() => setSelectedCourse(null)} />
       )}
