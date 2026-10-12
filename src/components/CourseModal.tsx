@@ -1,120 +1,86 @@
-import React from 'react';
-import { 
-  X, 
-  BookOpen, 
-  FileText, 
-  PlaySquare, 
-  History, 
-  FolderOpen 
-} from 'lucide-react';
+import React, { useState } from 'react';
+import { X, Folder, FileText, ChevronDown, Video } from 'lucide-react';
+import { CourseContent } from '../data/curriculumData.ts';
 
-interface CourseModalProps {
-  content: {
-    titleEn: string;
-    titleAr: string;
-  };
-  onClose: () => void;
-}
-
-const EmptyState = ({ label }: { label: string }) => (
-  <div className="flex flex-col items-center justify-center py-10 px-4 border-2 border-dashed border-neutral-200 rounded-2xl bg-neutral-50/50 hover:bg-neutral-50 transition-colors">
-    <FolderOpen size={28} className="text-neutral-300 mb-3" strokeWidth={1.5} />
-    <p className="text-sm font-bold text-neutral-400">No {label} available yet</p>
-  </div>
-);
-
-export function CourseModal({ content, onClose }: CourseModalProps) {
+const CollapsibleFolder = ({ label, items }: { label: string; items: any[] }) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/40 backdrop-blur-sm transition-opacity"
-      onClick={onClose}
-    >
-      <div 
-        className="relative w-full max-w-4xl max-h-[90vh] bg-[#fafafa] rounded-[30px] flex flex-col overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200"
-        onClick={(e) => e.stopPropagation()} 
-      >
-        
-        {/* Header: ضفنا هون الاسم بالعربي تحت الإنجليزي */}
-        <div className="flex items-start justify-between p-8 bg-white border-b border-neutral-100 shrink-0">
-          <div>
-            <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 mb-2">
-              Course Details
-            </h2>
-            <h3 className="text-3xl font-black tracking-tighter uppercase text-black">
-              {content.titleEn}
-            </h3>
-            {/* هذا السطر اللي كان ناقص */}
-            <h4 className="text-xl font-bold text-neutral-500 mt-2" dir="rtl">
-              {content.titleAr}
-            </h4>
-          </div>
-          <button 
-            onClick={onClose}
-            className="p-2 bg-neutral-100 hover:bg-red-50 hover:text-red-500 text-neutral-500 rounded-full transition-colors"
-          >
-            <X size={24} />
-          </button>
+    <div className="border border-neutral-100 rounded-xl overflow-hidden mb-2 bg-neutral-50/30">
+      <button onClick={() => setIsOpen(!isOpen)} className="w-full flex items-center justify-between p-4 hover:bg-neutral-100 transition-colors">
+        <div className="flex items-center gap-3">
+          <Folder size={18} className="text-neutral-400" />
+          <span className="text-sm font-bold uppercase tracking-tight">{label}</span>
         </div>
-
-        <div className="p-6 sm:p-8 overflow-y-auto space-y-8">
-          
-          <section className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-black text-white rounded-xl">
-                <BookOpen size={20} />
-              </div>
-              <h4 className="text-xl font-bold uppercase tracking-tight text-black">Textbooks</h4>
-            </div>
-            <EmptyState label="textbooks" />
-          </section>
-
-          <section className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-black text-white rounded-xl">
-                <FileText size={20} />
-              </div>
-              <h4 className="text-xl font-bold uppercase tracking-tight text-black">Summaries & Notes</h4>
-            </div>
-            <EmptyState label="summaries" />
-          </section>
-
-          <section className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-black text-white rounded-xl">
-                <PlaySquare size={20} />
-              </div>
-              <h4 className="text-xl font-bold uppercase tracking-tight text-black">Video Lectures</h4>
-            </div>
-            <EmptyState label="video lectures" />
-          </section>
-
-          <section className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 bg-black text-white rounded-xl">
-                <History size={20} />
-              </div>
-              <h4 className="text-xl font-bold uppercase tracking-tight text-black">Past Exams</h4>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <div className="flex items-center justify-between border-b border-neutral-200 pb-3 mb-4">
-                  <h5 className="text-sm font-bold uppercase tracking-widest text-neutral-600">Midterm</h5>
-                </div>
-                <EmptyState label="midterm exams" />
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between border-b border-neutral-200 pb-3 mb-4">
-                  <h5 className="text-sm font-bold uppercase tracking-widest text-neutral-600">Final</h5>
-                </div>
-                <EmptyState label="final exams" />
-              </div>
-            </div>
-          </section>
-
+        <ChevronDown size={16} className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      <div className={`transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-[1000px]' : 'max-h-0'}`}>
+        <div className="p-2 bg-white space-y-1 border-t border-neutral-100">
+          {items.map((item, i) => (
+            <a key={i} href={item.url} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-3 text-sm hover:bg-neutral-50 rounded">
+              <FileText size={14} className="opacity-30" /> {item.label}
+            </a>
+          ))}
         </div>
       </div>
     </div>
   );
+};
+
+export function CourseModal({ content, onClose }: { content: CourseContent; onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md" onClick={onClose}>
+      <div className="bg-white w-full max-w-5xl max-h-[85vh] rounded-[40px] shadow-2xl flex flex-col overflow-hidden" onClick={e => e.stopPropagation()}>
+        
+        {/* تم تعديل الترويسة هنا لعرض الاسمين */}
+        <div className="p-8 sm:p-10 border-b flex justify-between items-start">
+          <div className="flex flex-col gap-1">
+            <h2 className="text-2xl font-bold uppercase tracking-tighter text-black">{content.titleEn}</h2>
+            <h3 className="text-lg font-medium text-neutral-500" dir="rtl">{content.titleAr}</h3>
+          </div>
+          <button onClick={onClose} className="p-2 hover:bg-neutral-100 rounded-full transition-all mt-1"><X size={20}/></button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto p-8 sm:p-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+          <section>
+            <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-400 mb-6">Textbooks</h4>
+            <div className="space-y-4">
+              {content.books.map((book, i) => (
+                <a key={i} href={book.url} target="_blank" rel="noreferrer" className="flex items-center gap-4 group p-4 border rounded-2xl hover:border-black transition-all">
+                  <BookOpen size={20} className="text-neutral-300" />
+                  <span className="text-xs font-bold leading-tight">{book.label}</span>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-400 mb-6">Materials</h4>
+            {content.summaries.map((item, i) => (
+              'type' in item && item.type === 'folder' ? (
+                <CollapsibleFolder key={i} label={item.label} items={item.items} />
+              ) : (
+                <a key={i} href={(item as any).url} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 border border-neutral-100 rounded-xl mb-2 hover:border-black transition-all text-sm font-medium">
+                  <FileText size={16} /> {(item as any).label}
+                </a>
+              )
+            ))}
+          </section>
+
+          <section className="space-y-8">
+            <div>
+              <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-400 mb-4">Exam Archive</h4>
+              <div className="grid grid-cols-2 gap-2">
+                {content.mid.map((exam, i) => <a key={i} href={exam.url} className="py-3 px-4 border border-neutral-100 rounded-xl text-center text-[10px] font-bold hover:bg-black hover:text-white transition-all uppercase tracking-tighter">Mid {exam.label}</a>)}
+                {content.final.map((exam, i) => <a key={i} href={exam.url} className="py-3 px-4 border border-neutral-100 rounded-xl text-center text-[10px] font-bold hover:bg-black hover:text-white transition-all uppercase tracking-tighter">Final {exam.label}</a>)}
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BookOpen({ size, className }: { size: number, className: string }) {
+    return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>;
 }
