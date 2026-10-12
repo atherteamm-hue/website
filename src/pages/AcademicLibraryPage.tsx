@@ -3,7 +3,9 @@ import { curriculumData } from '../data/curriculumData.ts';
 import { CourseModal } from '../components/CourseModal.tsx';
 import { PdfMerger } from '../components/PdfMerger.tsx';
 import { PdfSplitter } from '../components/PdfSplitter.tsx';
+import { ImgToPdf } from '../components/ImgToPdf.tsx'; // <--- استدعينا الأداة الجديدة
 import { MaeSimulations } from '../components/MaeSimulations.tsx';
+
 export function AcademicLibraryPage() {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
   const [lang, setLang] = useState<'EN' | 'AR'>('EN');
@@ -68,20 +70,18 @@ export function AcademicLibraryPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             
+            {/* الأدوات الثلاثة صاروا جنب بعض بدون أي Coming soon */}
             <PdfMerger />
             <PdfSplitter />
-
-            {/* بطاقة محجوزة لأداة تعديل الملفات (قريباً) */}
-            <div className="bg-neutral-50 border border-neutral-200 rounded-[30px] p-8 flex flex-col items-center justify-center border-dashed min-h-[250px]">
-              <p className="text-sm font-bold text-neutral-400">PDF Editor</p>
-              <p className="text-xs text-neutral-400 mt-2">(Coming soon...)</p>
-            </div>
+            <ImgToPdf />
 
           </div>
         </div>
-        <MaeSimulations/>
+
+        <MaeSimulations />
 
       </div>
+
       {selectedCourse && curriculumData[selectedCourse] && (
         <CourseModal content={curriculumData[selectedCourse].content} onClose={() => setSelectedCourse(null)} />
       )}
