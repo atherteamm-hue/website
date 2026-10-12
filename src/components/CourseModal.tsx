@@ -8,17 +8,14 @@ import {
   FolderOpen 
 } from 'lucide-react';
 
-// تعريف الـ Props (عدلها حسب الداتا الفعلية الموجودة عندك في curriculumData)
 interface CourseModalProps {
   content: {
     titleEn: string;
     titleAr: string;
-    // تقدر تضيف أي معلومات ثانية هون مستقبلاً
   };
   onClose: () => void;
 }
 
-// مكوّن صغير جوا الملف عشان ما نكرر كود الـ Empty State
 const EmptyState = ({ label }: { label: string }) => (
   <div className="flex flex-col items-center justify-center py-10 px-4 border-2 border-dashed border-neutral-200 rounded-2xl bg-neutral-50/50 hover:bg-neutral-50 transition-colors">
     <FolderOpen size={28} className="text-neutral-300 mb-3" strokeWidth={1.5} />
@@ -28,18 +25,16 @@ const EmptyState = ({ label }: { label: string }) => (
 
 export function CourseModal({ content, onClose }: CourseModalProps) {
   return (
-    // الخلفية المغبشة (Overlay)
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/40 backdrop-blur-sm transition-opacity"
       onClick={onClose}
     >
-      {/* النافذة المنبثقة (Modal Card) */}
       <div 
         className="relative w-full max-w-4xl max-h-[90vh] bg-[#fafafa] rounded-[30px] flex flex-col overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200"
-        onClick={(e) => e.stopPropagation()} // عشان لما نكبس جوا النافذة ما تسكر
+        onClick={(e) => e.stopPropagation()} 
       >
         
-        {/* Header: عنوان المادة وزر الإغلاق */}
+        {/* Header: ضفنا هون الاسم بالعربي تحت الإنجليزي */}
         <div className="flex items-start justify-between p-8 bg-white border-b border-neutral-100 shrink-0">
           <div>
             <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-neutral-400 mb-2">
@@ -48,6 +43,10 @@ export function CourseModal({ content, onClose }: CourseModalProps) {
             <h3 className="text-3xl font-black tracking-tighter uppercase text-black">
               {content.titleEn}
             </h3>
+            {/* هذا السطر اللي كان ناقص */}
+            <h4 className="text-xl font-bold text-neutral-500 mt-2" dir="rtl">
+              {content.titleAr}
+            </h4>
           </div>
           <button 
             onClick={onClose}
@@ -57,10 +56,8 @@ export function CourseModal({ content, onClose }: CourseModalProps) {
           </button>
         </div>
 
-        {/* Body: محتوى المادة (Scrollable) */}
         <div className="p-6 sm:p-8 overflow-y-auto space-y-8">
           
-          {/* 1. Textbooks Section */}
           <section className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-black text-white rounded-xl">
@@ -71,7 +68,6 @@ export function CourseModal({ content, onClose }: CourseModalProps) {
             <EmptyState label="textbooks" />
           </section>
 
-          {/* 2. Summaries Section */}
           <section className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-black text-white rounded-xl">
@@ -82,7 +78,6 @@ export function CourseModal({ content, onClose }: CourseModalProps) {
             <EmptyState label="summaries" />
           </section>
 
-          {/* 3. Lectures Section */}
           <section className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-black text-white rounded-xl">
@@ -93,7 +88,6 @@ export function CourseModal({ content, onClose }: CourseModalProps) {
             <EmptyState label="video lectures" />
           </section>
 
-          {/* 4. Past Exams Section (Midterm & Final) */}
           <section className="bg-white p-6 rounded-3xl border border-neutral-100 shadow-sm">
             <div className="flex items-center gap-3 mb-8">
               <div className="p-3 bg-black text-white rounded-xl">
@@ -102,27 +96,20 @@ export function CourseModal({ content, onClose }: CourseModalProps) {
               <h4 className="text-xl font-bold uppercase tracking-tight text-black">Past Exams</h4>
             </div>
             
-            {/* تقسيم أسئلة السنوات لعمودين (ميد وفاينل) زي الصورة */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              
-              {/* Midterm Column */}
               <div>
                 <div className="flex items-center justify-between border-b border-neutral-200 pb-3 mb-4">
                   <h5 className="text-sm font-bold uppercase tracking-widest text-neutral-600">Midterm</h5>
                 </div>
-                {/* مكان الداتا مستقبلاً - حالياً Empty State */}
                 <EmptyState label="midterm exams" />
               </div>
 
-              {/* Final Column */}
               <div>
                 <div className="flex items-center justify-between border-b border-neutral-200 pb-3 mb-4">
                   <h5 className="text-sm font-bold uppercase tracking-widest text-neutral-600">Final</h5>
                 </div>
-                {/* مكان الداتا مستقبلاً - حالياً Empty State */}
                 <EmptyState label="final exams" />
               </div>
-
             </div>
           </section>
 
