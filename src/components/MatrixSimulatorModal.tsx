@@ -1,5 +1,6 @@
 // src/components/MatrixSimulatorModal.tsx
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Calculator, Play, RefreshCw, Trash2 } from 'lucide-react';
 import { 
   solveGaussJordanSteps, solveGaussianSteps, solveCramerSteps, solveInverseMethodSteps,
@@ -115,15 +116,13 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
     }
   };
 
-  return (
-    // هنا السر: zIndex: 2147483647 رح يخلي المحاكي فوق كل شيء حرفياً
+  // السر هون: استخدام createPortal لرمي المحاكي في آخر الـ body
+  return createPortal(
     <div className="fixed inset-0 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md transition-all" style={{ zIndex: 2147483647 }} onClick={onClose}>
       
       <div className="bg-gradient-to-br from-neutral-50 to-neutral-200 w-full max-w-5xl max-h-[90vh] rounded-[30px] shadow-2xl flex flex-col overflow-y-auto relative custom-scrollbar" onClick={e => e.stopPropagation()}>
         
-        {/* =========================================
-            الهيدر الثابت (Title & Close) - رح يضل ملزق فوق
-            ========================================= */}
+        {/* الهيدر الثابت */}
         <div className="sticky top-0 z-50 flex justify-between items-center p-5 md:p-6 bg-white/70 backdrop-blur-xl border-b border-white/50 shadow-sm">
           <div className="flex items-center gap-4">
             <div className="p-3 bg-black text-white rounded-xl shadow-md"><Calculator size={24} /></div>
@@ -135,15 +134,10 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
           <button onClick={onClose} className="p-2 bg-white/60 hover:bg-red-50 hover:text-red-500 rounded-full transition-colors shadow-sm backdrop-blur-md"><X size={20}/></button>
         </div>
 
-        {/* =========================================
-            المحتوى المتحرك (بيختفي مع السكرول تحت الغباش)
-            ========================================= */}
         <div className="p-6 md:p-8 flex flex-col gap-8">
           
           {/* لوحة التحكم */}
           <div className="flex flex-col lg:flex-row flex-wrap justify-between items-center gap-6 bg-white/50 backdrop-blur-md p-6 rounded-3xl border border-white shadow-sm">
-            
-            {/* العدادات */}
             <div className="flex items-center gap-6 bg-white/80 px-4 py-2 rounded-2xl border border-white shadow-sm">
               {mode === 'vectors' ? (
                 <div className="flex items-center gap-2">
@@ -168,7 +162,6 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
               )}
             </div>
 
-            {/* أدوات الخيارات */}
             <div className="flex flex-wrap gap-4 items-center justify-center">
               <select className="px-4 py-2 rounded-xl font-bold bg-white/80 border border-white shadow-sm outline-none backdrop-blur-md focus:ring-2 focus:ring-black" 
                       onChange={(e) => { setMode(e.target.selectedOptions[0].dataset.mode as any); setOperation(e.target.value); }}>
@@ -283,7 +276,7 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
             )}
           </div>
 
-          {/* منطقة النتائج والخطوات */}
+          {/* منطقة النتائج */}
           {error && <div className="p-4 bg-red-50/90 text-red-600 font-bold rounded-xl border border-red-200 text-center animate-in slide-in-from-top-2 shadow-sm backdrop-blur-sm">{error}</div>}
           
           {resultText && (
@@ -347,6 +340,7 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
           
         </div>
       </div>
-    </div>
+    </div>,
+    document.body // يتم إرسال المحاكي إلى الـ body مباشرة
   );
 }
