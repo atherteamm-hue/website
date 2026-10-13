@@ -1,6 +1,6 @@
 // src/components/MatrixSimulatorModal.tsx
 import React, { useState, useEffect } from 'react';
-import { X, Calculator, Play, RefreshCw, Trash2, ArrowRight } from 'lucide-react';
+import { X, Calculator, Play, RefreshCw, Trash2 } from 'lucide-react';
 import { 
   solveGaussJordanSteps, solveGaussianSteps, solveCramerSteps, solveInverseMethodSteps,
   getDeterminant, getTranspose, getTrace, getInverse, isSymmetric, operateMatrices, 
@@ -125,7 +125,7 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
             <div className="p-3 bg-black text-white rounded-xl"><Calculator size={24} /></div>
             <div>
               <h2 className="text-2xl font-black uppercase tracking-tighter">Athar Matrix Studio</h2>
-              <h3 className="text-xs font-bold text-neutral-400 tracking-widest uppercase">Zalami Edition 🔥</h3>
+              <h3 className="text-xs font-bold text-neutral-400 tracking-widest uppercase">Academic Edition</h3>
             </div>
           </div>
           
@@ -165,12 +165,12 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
               <option data-mode="system" value="cramer">Cramer's Rule</option>
               <option data-mode="system" value="inverse_method">Inverse Method (A⁻¹B)</option>
             </optgroup>
-            <optgroup label="Advanced & Subspaces 🔥">
+            <optgroup label="Advanced & Subspaces">
               <option data-mode="advanced" value="rref">RREF (Row Echelon Form)</option>
               <option data-mode="advanced" value="rank">Matrix Rank</option>
               <option data-mode="advanced" value="gram">Gram-Schmidt Process</option>
             </optgroup>
-            <optgroup label="Vector Calculus ↗️">
+            <optgroup label="Vector Calculus">
               <option data-mode="vectors" value="dot">Dot Product (U • V)</option>
               <option data-mode="vectors" value="cross">Cross Product (U × V) 3D</option>
               <option data-mode="vectors" value="angle">Angle Between (θ)</option>
