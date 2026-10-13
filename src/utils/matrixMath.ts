@@ -8,7 +8,6 @@ export interface MathStep {
   resultText?: string;
 }
 
-// دالة لجلب اسم المتغير (X, Y, Z, W, V, U...)
 export function getVarName(index: number): string {
   const vars = ['X', 'Y', 'Z', 'W', 'V', 'U'];
   return vars[index] || `X${index + 1}`;
@@ -43,7 +42,7 @@ export function isSymmetric(A: number[][]): boolean {
   if (A.length !== A[0].length) return false;
   for (let i = 0; i < A.length; i++) {
     for (let j = 0; j < A[0].length; j++) {
-      if (A[i][j] !== A[j][i]) return false;
+      if (Math.abs(A[i][j] - A[j][i]) > 1e-9) return false;
     }
   }
   return true;
@@ -75,120 +74,206 @@ export function operateMatrices(A: number[][], B: number[][], operation: 'add' |
 }
 
 // ==========================================
-// 2. Solving Linear Systems
+// 2. Advanced & Subspaces (RREF, Rank, Gram-Schmidt)
 // ==========================================
 
-export function solveGaussJordanSteps(A: number[][], B: number[]): MathStep[] {
+export function getRREFSteps(A: number[][]): MathStep[] {
   const steps: MathStep[] = [];
-  const n = A.length;
   let mat = A.map(row => [...row]);
-  let vec = [...B];
+  const rows = mat.length;
+  const cols = mat[0].length;
+  
+  steps.push({ title: "Initial Matrix", description: "Starting matrix before reduction.", matrix: mat.map(row => [...row]) });
 
-  steps.push({ title: "Initial Augmented Matrix", description: "[A | B]", matrix: mat.map(row => [...row]), vector: [...vec] });
-
-  for (let i = 0; i < n; i++) {
-    let maxRow = i;
-    for (let k = i + 1; k < n; k++) {
-      if (Math.abs(mat[k][i]) > Math.abs(mat[maxRow][i])) maxRow = k;
+  let lead = 0;
+  for (let r = 0; r < rows; r++) {
+    if (cols <= lead) break;
+    let i = r;
+    while (Math.abs(mat[i][lead]) < 1e-10) {
+      i++;
+      if (rows === i) { i = r; lead++; if (cols === lead) return steps; }
     }
-    if (maxRow !== i) {
-      [mat[i], mat[maxRow]] = [mat[maxRow], mat[i]];
-      [vec[i], vec[maxRow]] = [vec[maxRow], vec[i]];
-      steps.push({ title: `Swap Rows`, description: `R${i + 1} ↔ R${maxRow + 1}`, matrix: mat.map(row => [...row]), vector: [...vec] });
+    
+    if (i !== r) {
+      [mat[i], mat[r]] = [mat[r], mat[i]];
+      steps.push({ title: `Swap Rows`, description: `R${r + 1} ↔ R${i + 1}`, matrix: mat.map(row => [...row]) });
     }
 
-    let pivot = mat[i][i];
-    if (Math.abs(pivot) < 1e-10) throw new Error("System has no unique solution.");
+    let val = mat[r][lead];
+    for (let j = 0; j < cols; j++) mat[r][j] /= val;
+    steps.push({ title: `Normalize R${r + 1}`, description: `Divide row by ${val.toFixed(2)} to create leading 1.`, matrix: mat.map(row => [...row]) });
 
-    for (let j = i; j < n; j++) mat[i][j] /= pivot;
-    vec[i] /= pivot;
-    steps.push({ title: `Normalize R${i + 1}`, description: `R${i + 1} ÷ ${pivot.toFixed(2)}`, matrix: mat.map(row => [...row]), vector: [...vec] });
+    for (let i = 0; i < rows; i++) {
+      if (i !== r) {
+        val = mat[i][lead];
+        for (let j = 0; j < cols; j++) mat[i][j] -= val * mat[r][j];
+      }
+    }
+    steps.push({ title: `Clear Column ${lead + 1}`, description: `Make all other elements in column ${lead + 1} zero.`, matrix: mat.map(row => [...row]) });
+    lead++;
+  }
+  return steps;
+}
 
-    for (let k = 0; k < n; k++) {
-      if (k !== i) {
-        let factor = mat[k][i];
+export function getRank(A: number[][]): number {
+  const rref = getRREFSteps(A).pop()?.matrix || A;
+  let rank = 0;
+  rref.forEach(row => { if (row.some(val => Math.abs(val) > 1e-10)) rank++; });
+  return rank;
+}
+
+export function gramSchmidtSteps(vectors: number[][]): MathStep[] {
+  const steps: MathStep[] = [];
+  const u: number[][] = [];
+  
+  steps.push({ title: "Initial Vectors", description: "Treating rows of Matrix A as input vectors v1, v2...", matrix: vectors.map(v => [...v]) });
+
+  for (let i = 0; i < vectors.length; i++) {
+    let vi = [...vectors[i]];
+    let ui = [...vi];
+    let projDesc = `u${i + 1} = v${i + 1}`;
+
+    for (let j = 0; j < i; j++) {
+      const dotUV = dotProduct(vi, u[j]);
+      const dotUU = dotProduct(u[j], u[j]);
+      if (dotUU === 0) continue;
+      const projFactor = dotUV / dotUU;
+      ui = ui.map((val, idx) => val - projFactor * u[j][idx]);
+      projDesc += ` - proj_u${j + 1}(v${i + 1})`;
+    }
+    u.push(ui);
+    steps.push({ title: `Calculate Orthogonal Vector u${i + 1}`, description: projDesc, vector: [...ui] });
+  }
+  
+  steps.push({ title: "Final Orthogonal Basis", description: "The set of orthogonal vectors (u1, u2...). Note: Normalize them to get Orthonormal basis.", matrix: u });
+  return steps;
+}
+
+// ==========================================
+// 3. Vectors Math (Dot, Cross, Proj, Angle)
+// ==========================================
+
+export function dotProduct(u: number[], v: number[]): number {
+  return u.reduce((sum, val, i) => sum + val * (v[i] || 0), 0);
+}
+
+export function vectorMagnitude(v: number[]): number {
+  return Math.sqrt(dotProduct(v, v));
+}
+
+export function crossProductSteps(u: number[], v: number[]): MathStep[] {
+  if (u.length !== 3 || v.length !== 3) throw new Error("Cross product is only defined for 3D vectors.");
+  const result = [
+    u[1] * v[2] - u[2] * v[1],
+    u[2] * v[0] - u[0] * v[2],
+    u[0] * v[1] - u[1] * v[0]
+  ];
+  return [
+    { title: "Cross Product (U × V)", description: "Determinant of i, j, k matrix.", vector: result }
+  ];
+}
+
+export function vectorAngle(u: number[], v: number[]): number {
+  const dot = dotProduct(u, v);
+  const mags = vectorMagnitude(u) * vectorMagnitude(v);
+  if (mags === 0) throw new Error("Cannot find angle with a zero vector.");
+  return (Math.acos(dot / mags) * 180) / Math.PI; // In Degrees
+}
+
+// ==========================================
+// 4. Solving Systems
+// ==========================================
+// (أبقِ الدوال القديمة للحل هون: solveGaussJordanSteps, solveGaussianSteps, solveCramerSteps, solveInverseMethodSteps)
+export function solveGaussJordanSteps(A: number[][], B: number[]): MathStep[] {
+    const steps: MathStep[] = [];
+    const n = A.length;
+    let mat = A.map(row => [...row]);
+    let vec = [...B];
+    steps.push({ title: "Initial Augmented Matrix", description: "[A | B]", matrix: mat.map(row => [...row]), vector: [...vec] });
+    for (let i = 0; i < n; i++) {
+      let maxRow = i;
+      for (let k = i + 1; k < n; k++) if (Math.abs(mat[k][i]) > Math.abs(mat[maxRow][i])) maxRow = k;
+      if (maxRow !== i) {
+        [mat[i], mat[maxRow]] = [mat[maxRow], mat[i]];
+        [vec[i], vec[maxRow]] = [vec[maxRow], vec[i]];
+        steps.push({ title: `Swap Rows`, description: `R${i + 1} ↔ R${maxRow + 1}`, matrix: mat.map(row => [...row]), vector: [...vec] });
+      }
+      let pivot = mat[i][i];
+      if (Math.abs(pivot) < 1e-10) throw new Error("System has no unique solution.");
+      for (let j = i; j < n; j++) mat[i][j] /= pivot;
+      vec[i] /= pivot;
+      steps.push({ title: `Normalize R${i + 1}`, description: `R${i + 1} ÷ ${pivot.toFixed(2)}`, matrix: mat.map(row => [...row]), vector: [...vec] });
+      for (let k = 0; k < n; k++) {
+        if (k !== i) {
+          let factor = mat[k][i];
+          for (let j = i; j < n; j++) mat[k][j] -= factor * mat[i][j];
+          vec[k] -= factor * vec[i];
+        }
+      }
+      steps.push({ title: `Eliminate Col ${i + 1}`, description: `Make zeros above and below pivot`, matrix: mat.map(row => [...row]), vector: [...vec] });
+    }
+    return steps;
+  }
+  
+  export function solveGaussianSteps(A: number[][], B: number[]): MathStep[] {
+    const steps: MathStep[] = [];
+    const n = A.length;
+    let mat = A.map(row => [...row]);
+    let vec = [...B];
+    steps.push({ title: "Initial Augmented Matrix", description: "[A | B]", matrix: mat.map(row => [...row]), vector: [...vec] });
+    for (let i = 0; i < n; i++) {
+      let maxRow = i;
+      for (let k = i + 1; k < n; k++) if (Math.abs(mat[k][i]) > Math.abs(mat[maxRow][i])) maxRow = k;
+      if (maxRow !== i) {
+        [mat[i], mat[maxRow]] = [mat[maxRow], mat[i]];
+        [vec[i], vec[maxRow]] = [vec[maxRow], vec[i]];
+      }
+      let pivot = mat[i][i];
+      if (Math.abs(pivot) < 1e-10) throw new Error("System has no unique solution.");
+      for (let k = i + 1; k < n; k++) {
+        let factor = mat[k][i] / pivot;
         for (let j = i; j < n; j++) mat[k][j] -= factor * mat[i][j];
         vec[k] -= factor * vec[i];
       }
+      steps.push({ title: `Forward Elimination (Col ${i + 1})`, description: `Make zeros below pivot`, matrix: mat.map(row => [...row]), vector: [...vec] });
     }
-    steps.push({ title: `Eliminate Col ${i + 1}`, description: `Make zeros above and below pivot`, matrix: mat.map(row => [...row]), vector: [...vec] });
-  }
-  return steps;
-}
-
-export function solveGaussianSteps(A: number[][], B: number[]): MathStep[] {
-  const steps: MathStep[] = [];
-  const n = A.length;
-  let mat = A.map(row => [...row]);
-  let vec = [...B];
-
-  steps.push({ title: "Initial Augmented Matrix", description: "[A | B]", matrix: mat.map(row => [...row]), vector: [...vec] });
-
-  // Forward Elimination
-  for (let i = 0; i < n; i++) {
-    let maxRow = i;
-    for (let k = i + 1; k < n; k++) if (Math.abs(mat[k][i]) > Math.abs(mat[maxRow][i])) maxRow = k;
-    
-    if (maxRow !== i) {
-      [mat[i], mat[maxRow]] = [mat[maxRow], mat[i]];
-      [vec[i], vec[maxRow]] = [vec[maxRow], vec[i]];
+    const solution = new Array(n).fill(0);
+    for (let i = n - 1; i >= 0; i--) {
+      let sum = vec[i];
+      for (let j = i + 1; j < n; j++) sum -= mat[i][j] * solution[j];
+      solution[i] = sum / mat[i][i];
     }
-
-    let pivot = mat[i][i];
-    if (Math.abs(pivot) < 1e-10) throw new Error("System has no unique solution.");
-
-    for (let k = i + 1; k < n; k++) {
-      let factor = mat[k][i] / pivot;
-      for (let j = i; j < n; j++) mat[k][j] -= factor * mat[i][j];
-      vec[k] -= factor * vec[i];
+    steps.push({ title: "Back Substitution", description: "Solving from bottom to top", vector: solution });
+    return steps;
+  }
+  
+  export function solveCramerSteps(A: number[][], B: number[]): MathStep[] {
+    const steps: MathStep[] = [];
+    const detA = getDeterminant(A);
+    if (Math.abs(detA) < 1e-10) throw new Error("Determinant is 0. Cramer's rule cannot be used.");
+    steps.push({ title: "Determinant of A", description: `|A| = ${detA.toFixed(4)}` });
+    const solution: number[] = [];
+    for (let i = 0; i < A.length; i++) {
+      const Ai = A.map((row, rowIndex) => row.map((val, colIndex) => colIndex === i ? B[rowIndex] : val));
+      const detAi = getDeterminant(Ai);
+      solution.push(detAi / detA);
+      steps.push({ 
+        title: `Find ${getVarName(i)}`, 
+        description: `Replace Col ${i + 1} with B. |A${i + 1}| = ${detAi.toFixed(4)}. ${getVarName(i)} = ${detAi.toFixed(4)} / ${detA.toFixed(4)} = ${(detAi/detA).toFixed(4)}`,
+        matrix: Ai
+      });
     }
-    steps.push({ title: `Forward Elimination (Col ${i + 1})`, description: `Make zeros below pivot`, matrix: mat.map(row => [...row]), vector: [...vec] });
+    steps.push({ title: "Final Solution", description: "Result vector", vector: solution });
+    return steps;
   }
-
-  // Back Substitution
-  const solution = new Array(n).fill(0);
-  for (let i = n - 1; i >= 0; i--) {
-    let sum = vec[i];
-    for (let j = i + 1; j < n; j++) sum -= mat[i][j] * solution[j];
-    solution[i] = sum / mat[i][i];
+  
+  export function solveInverseMethodSteps(A: number[][], B: number[]): MathStep[] {
+    const steps: MathStep[] = [];
+    const detA = getDeterminant(A);
+    if (Math.abs(detA) < 1e-10) throw new Error("Matrix is singular. Cannot use Inverse Method.");
+    const invA = getInverse(A);
+    steps.push({ title: "1. Find Inverse A⁻¹", description: "Calculate the inverse of coefficient matrix A", matrix: invA });
+    const solution = invA.map(row => row.reduce((sum, val, i) => sum + val * B[i], 0));
+    steps.push({ title: "2. Multiply A⁻¹ × B", description: "X = A⁻¹ · B", vector: solution });
+    return steps;
   }
-  steps.push({ title: "Back Substitution", description: "Solving from bottom to top", vector: solution });
-  
-  return steps;
-}
-
-export function solveCramerSteps(A: number[][], B: number[]): MathStep[] {
-  const steps: MathStep[] = [];
-  const detA = getDeterminant(A);
-  if (Math.abs(detA) < 1e-10) throw new Error("Determinant is 0. Cramer's rule cannot be used.");
-  
-  steps.push({ title: "Determinant of A", description: `|A| = ${detA.toFixed(4)}` });
-  
-  const solution: number[] = [];
-  for (let i = 0; i < A.length; i++) {
-    const Ai = A.map((row, rowIndex) => row.map((val, colIndex) => colIndex === i ? B[rowIndex] : val));
-    const detAi = getDeterminant(Ai);
-    solution.push(detAi / detA);
-    steps.push({ 
-      title: `Find ${getVarName(i)}`, 
-      description: `Replace Col ${i + 1} with B. |A${i + 1}| = ${detAi.toFixed(4)}. ${getVarName(i)} = ${detAi.toFixed(4)} / ${detA.toFixed(4)} = ${(detAi/detA).toFixed(4)}`,
-      matrix: Ai
-    });
-  }
-  steps.push({ title: "Final Solution", description: "Result vector", vector: solution });
-  return steps;
-}
-
-export function solveInverseMethodSteps(A: number[][], B: number[]): MathStep[] {
-  const steps: MathStep[] = [];
-  const detA = getDeterminant(A);
-  if (Math.abs(detA) < 1e-10) throw new Error("Matrix is singular. Cannot use Inverse Method.");
-
-  const invA = getInverse(A);
-  steps.push({ title: "1. Find Inverse A⁻¹", description: "Calculate the inverse of coefficient matrix A", matrix: invA });
-
-  const solution = invA.map(row => row.reduce((sum, val, i) => sum + val * B[i], 0));
-  steps.push({ title: "2. Multiply A⁻¹ × B", description: "X = A⁻¹ · B", vector: solution });
-
-  return steps;
-}
