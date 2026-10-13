@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Folder, FileText, ChevronDown, Video } from 'lucide-react';
+import { X, Folder, FileText, ChevronDown, Video, CheckCircle } from 'lucide-react';
 import { CourseContent } from '../data/curriculumData.ts';
 
 const CollapsibleFolder = ({ label, items }: { label: string; items: any[] }) => {
@@ -26,15 +26,42 @@ const CollapsibleFolder = ({ label, items }: { label: string; items: any[] }) =>
   );
 };
 
-export function CourseModal({ content, onClose }: { content: CourseContent; onClose: () => void }) {
+// ضفنا isCompleted و onToggleComplete كـ Props للنافذة
+export function CourseModal({ 
+  content, 
+  onClose, 
+  isCompleted, 
+  onToggleComplete 
+}: { 
+  content: CourseContent; 
+  onClose: () => void;
+  isCompleted?: boolean;
+  onToggleComplete?: () => void;
+}) {
   return (
     <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md" onClick={onClose}>
       <div className="bg-white w-full max-w-5xl max-h-[85vh] rounded-[40px] shadow-2xl flex flex-col overflow-hidden" onClick={e => e.stopPropagation()}>
         
-        {/* تم تعديل الترويسة هنا لعرض الاسمين */}
+        {/* الترويسة مع زر الإنجاز الجديد */}
         <div className="p-8 sm:p-10 border-b flex justify-between items-start">
           <div className="flex flex-col gap-1">
-            <h2 className="text-2xl font-bold uppercase tracking-tighter text-black">{content.titleEn}</h2>
+            <div className="flex items-center gap-4 flex-wrap">
+              <h2 className="text-2xl font-bold uppercase tracking-tighter text-black">{content.titleEn}</h2>
+              {/* زر الإنجاز (Mark as Done) */}
+              {onToggleComplete && (
+                <button
+                  onClick={onToggleComplete}
+                  className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold transition-all border ${
+                    isCompleted
+                      ? 'bg-green-50 text-green-600 border-green-200 hover:bg-green-100 hover:border-green-300'
+                      : 'bg-neutral-50 text-neutral-400 border-neutral-200 hover:bg-neutral-100 hover:text-neutral-600'
+                  }`}
+                >
+                  <CheckCircle size={14} className={isCompleted ? 'text-green-500' : 'text-neutral-400'} />
+                  {isCompleted ? 'COMPLETED' : 'MARK AS DONE'}
+                </button>
+              )}
+            </div>
             <h3 className="text-lg font-medium text-neutral-500" dir="rtl">{content.titleAr}</h3>
           </div>
           <button onClick={onClose} className="p-2 hover:bg-neutral-100 rounded-full transition-all mt-1"><X size={20}/></button>
