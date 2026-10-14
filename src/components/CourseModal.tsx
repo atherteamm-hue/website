@@ -1,113 +1,123 @@
-import React, { useState } from 'react';
-import { X, Folder, FileText, ChevronDown, Video, CheckCircle } from 'lucide-react';
-import { CourseContent } from '../data/curriculumData.ts';
+// src/components/CourseModal.tsx
+import React from 'react';
+import { createPortal } from 'react-dom';
+import { X, CheckCircle, Book, ExternalLink, FileText } from 'lucide-react';
+import { CourseContent } from '../data/curriculumData';
 
-const CollapsibleFolder = ({ label, items }: { label: string; items: any[] }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className="border border-neutral-100 rounded-xl overflow-hidden mb-2 bg-neutral-50/30">
-      <button onClick={() => setIsOpen(!isOpen)} className="w-full flex items-center justify-between p-4 hover:bg-neutral-100 transition-colors">
-        <div className="flex items-center gap-3">
-          <Folder size={18} className="text-neutral-400" />
-          <span className="text-sm font-bold uppercase tracking-tight">{label}</span>
-        </div>
-        <ChevronDown size={16} className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
-      <div className={`transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-[1000px]' : 'max-h-0'}`}>
-        <div className="p-2 bg-white space-y-1 border-t border-neutral-100">
-          {items.map((item, i) => (
-            <a key={i} href={item.url} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-3 text-sm hover:bg-neutral-50 rounded">
-              <FileText size={14} className="opacity-30" /> {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// ضفنا isCompleted و onToggleComplete كـ Props للنافذة
-export function CourseModal({ 
-  content, 
-  onClose, 
-  isCompleted, 
-  onToggleComplete 
-}: { 
-  content: CourseContent; 
+interface CourseModalProps {
+  content: CourseContent;
   onClose: () => void;
-  isCompleted?: boolean;
-  onToggleComplete?: () => void;
-}) {
-  return (
-    <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md" onClick={onClose}>
-      <div className="bg-white w-full max-w-5xl max-h-[85vh] rounded-[40px] shadow-2xl flex flex-col overflow-hidden" onClick={e => e.stopPropagation()}>
-        
-        {/* الترويسة مع زر الإنجاز الجديد */}
-        <div className="p-8 sm:p-10 border-b flex justify-between items-start">
-          <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-4 flex-wrap">
-              <h2 className="text-2xl font-bold uppercase tracking-tighter text-black">{content.titleEn}</h2>
-              {/* زر الإنجاز (Mark as Done) */}
-              {onToggleComplete && (
-                <button
-                  onClick={onToggleComplete}
-                  className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold transition-all border ${
-                    isCompleted
-                      ? 'bg-green-50 text-green-600 border-green-200 hover:bg-green-100 hover:border-green-300'
-                      : 'bg-neutral-50 text-neutral-400 border-neutral-200 hover:bg-neutral-100 hover:text-neutral-600'
-                  }`}
-                >
-                  <CheckCircle size={14} className={isCompleted ? 'text-green-500' : 'text-neutral-400'} />
-                  {isCompleted ? 'COMPLETED' : 'MARK AS DONE'}
-                </button>
-              )}
-            </div>
-            <h3 className="text-lg font-medium text-neutral-500" dir="rtl">{content.titleAr}</h3>
-          </div>
-          <button onClick={onClose} className="p-2 hover:bg-neutral-100 rounded-full transition-all mt-1"><X size={20}/></button>
-        </div>
-
-        <div className="flex-1 overflow-y-auto p-8 sm:p-12 grid grid-cols-1 md:grid-cols-3 gap-10">
-          <section>
-            <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-400 mb-6">Textbooks</h4>
-            <div className="space-y-4">
-              {content.books.map((book, i) => (
-                <a key={i} href={book.url} target="_blank" rel="noreferrer" className="flex items-center gap-4 group p-4 border rounded-2xl hover:border-black transition-all">
-                  <BookOpen size={20} className="text-neutral-300" />
-                  <span className="text-xs font-bold leading-tight">{book.label}</span>
-                </a>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-400 mb-6">Materials</h4>
-            {content.summaries.map((item, i) => (
-              'type' in item && item.type === 'folder' ? (
-                <CollapsibleFolder key={i} label={item.label} items={item.items} />
-              ) : (
-                <a key={i} href={(item as any).url} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 border border-neutral-100 rounded-xl mb-2 hover:border-black transition-all text-sm font-medium">
-                  <FileText size={16} /> {(item as any).label}
-                </a>
-              )
-            ))}
-          </section>
-
-          <section className="space-y-8">
-            <div>
-              <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-400 mb-4">Exam Archive</h4>
-              <div className="grid grid-cols-2 gap-2">
-                {content.mid.map((exam, i) => <a key={i} href={exam.url} className="py-3 px-4 border border-neutral-100 rounded-xl text-center text-[10px] font-bold hover:bg-black hover:text-white transition-all uppercase tracking-tighter">Mid {exam.label}</a>)}
-                {content.final.map((exam, i) => <a key={i} href={exam.url} className="py-3 px-4 border border-neutral-100 rounded-xl text-center text-[10px] font-bold hover:bg-black hover:text-white transition-all uppercase tracking-tighter">Final {exam.label}</a>)}
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-    </div>
-  );
+  isCompleted: boolean;
+  onToggleComplete: () => void;
 }
 
-function BookOpen({ size, className }: { size: number, className: string }) {
-    return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>;
+export function CourseModal({ content, onClose, isCompleted, onToggleComplete }: CourseModalProps) {
+  return createPortal(
+    <div className="fixed inset-0 z-[2147483647] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm" onClick={onClose} dir="rtl">
+      
+      {/* النافذة - ألوان أبيض ورمادي وأسود */}
+      <div className="w-full max-w-4xl max-h-[90vh] bg-white rounded-[30px] shadow-2xl flex flex-col overflow-hidden border border-neutral-200" onClick={e => e.stopPropagation()}>
+        
+        {/* الهيدر */}
+        <div className="flex justify-between items-center p-5 md:p-6 bg-neutral-50 border-b border-neutral-200 sticky top-0 z-10">
+          <div className="flex items-center gap-4">
+            <div className="bg-black text-white p-3 rounded-xl shadow-md">
+              <Book size={24} />
+            </div>
+            <div>
+              <h2 className="text-xl md:text-2xl font-black text-black tracking-tight" dir="ltr">{content.titleEn}</h2>
+              <h3 className="text-sm font-bold text-neutral-500">{content.titleAr}</h3>
+            </div>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            {/* زر تحديد المادة كمنجزة */}
+            <button 
+              onClick={onToggleComplete}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-sm transition-all border ${
+                isCompleted 
+                  ? 'bg-green-50 text-green-700 border-green-200 hover:bg-green-100' 
+                  : 'bg-white text-neutral-600 border-neutral-300 hover:bg-neutral-100'
+              }`}
+            >
+              <CheckCircle size={18} className={isCompleted ? "text-green-600" : "text-neutral-400"} />
+              {isCompleted ? "تم الإنجاز" : "تحديد كمنجزة"}
+            </button>
+            
+            <button onClick={onClose} className="p-2 bg-neutral-200/50 hover:bg-red-50 hover:text-red-500 text-neutral-500 rounded-full transition-colors">
+              <X size={20} />
+            </button>
+          </div>
+        </div>
+
+        {/* المحتوى */}
+        <div className="flex-1 overflow-y-auto p-6 md:p-10 space-y-12 custom-scrollbar bg-white">
+          
+          {/* قسم الكتب - مع تأثير الـ 3D */}
+          {content.books && content.books.length > 0 && (
+            <div>
+              <h3 className="text-lg font-black uppercase text-neutral-400 tracking-widest border-b-2 border-neutral-100 pb-2 mb-8 flex items-center gap-2">
+                TEXTBOOKS
+              </h3>
+              
+              <div className="flex flex-wrap justify-center sm:justify-start gap-12">
+                {content.books.map((book, idx) => (
+                  <a key={idx} href={book.url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-4 w-40 outline-none">
+                    
+                    {/* الحاوية الـ 3D */}
+                    <div className="relative w-32 h-44 transition-transform duration-300 group-hover:-translate-y-3 group-hover:scale-105 perspective-1000">
+                      {/* الغلاف الأمامي */}
+                      <div className="absolute inset-0 rounded-r-md overflow-hidden shadow-[5px_5px_15px_rgba(0,0,0,0.15)] border border-neutral-300 bg-white transition-all duration-300">
+                        {/* استخدمنا coverUrl وإذا مش موجود بنحط لون رمادي */}
+                        {book.coverUrl ? (
+                          <img src={book.coverUrl} alt={book.label} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full bg-neutral-200 flex items-center justify-center text-neutral-400 font-bold text-xs p-2 text-center">No Cover</div>
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-white/40 pointer-events-none"></div>
+                      </div>
+                      
+                      {/* التجليد (Spine) ليعطي عمق الـ 3D */}
+                      <div className="absolute top-0 left-0 bottom-0 w-4 bg-gradient-to-r from-neutral-200 to-neutral-100 border-y border-l border-neutral-300 rounded-l-sm shadow-inner -translate-x-1.5 skew-y-12 origin-right flex justify-center">
+                        <div className="w-[1px] h-[90%] bg-neutral-300"></div>
+                      </div>
+                      
+                      {/* ظل الكتاب */}
+                      <div className="absolute -bottom-3 left-2 right-0 h-4 bg-black/5 blur-md rounded-[100%] group-hover:bg-black/15 transition-colors duration-300 -z-10"></div>
+                    </div>
+
+                    <span className="text-black text-sm font-bold text-center leading-tight group-hover:text-neutral-500 transition-colors" dir="ltr">
+                      {book.label}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* قسم الملخصات والدوسيات */}
+          {content.summaries && content.summaries.length > 0 && (
+            <div>
+               <h3 className="text-lg font-black uppercase text-neutral-400 tracking-widest border-b-2 border-neutral-100 pb-2 mb-6 flex items-center gap-2">
+                MATERIALS & SUMMARIES
+              </h3>
+              <div className="flex flex-col gap-2">
+                {content.summaries.map((summary, idx) => (
+                  <a key={idx} href={'url' in summary ? summary.url : '#'} target="_blank" rel="noopener noreferrer" className="flex justify-between items-center p-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 rounded-xl transition-colors group">
+                    <div className="flex items-center gap-3">
+                      <FileText size={18} className="text-neutral-400 group-hover:text-black transition-colors" />
+                      <span className="font-bold text-neutral-700 group-hover:text-black">{summary.label}</span>
+                    </div>
+                    <ExternalLink size={16} className="text-neutral-400 group-hover:text-black" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
 }
