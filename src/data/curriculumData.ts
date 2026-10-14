@@ -25,7 +25,9 @@ export const curriculumData: Record<string, Course> = {
   english_1: { coords: { x: 2.21, y: 4, w: 5.32, h: 5.21 }, content: empty("English 1", "لغة إنجليزية 1") },
   english_2: { coords: { x: 2.31, y: 15.42, w: 5.22, h: 5.2 }, content: empty("English 2", "لغة إنجليزية 2") },
   tech_writing: { coords: { x: 2.21, y: 26.43, w: 5.52, h: 5.2 }, content: empty("Technical Writing", "الكتابة التقنية والاخلاقيات المهنية") },
+  //وطنية 
   nat_edu: { coords: { x: 10.14, y: 5.01, w: 5.62, h: 5.4 }, content: empty("National Education", "تربية وطنية") },
+  books: [{label:"مدخل الى الثقافة الوطنية والمدنية", url:"مدخل الى الثقافة الوطنية والمدنية_compressed.pdf"}],
   app_arabic: { coords: { x: 10.64, y: 14.82, w: 5.22, h: 5.4 }, content: empty("Applied Arabic", "لغة عربية تطبيقية") },
   innovation: { coords: { x: 11.55, y: 25.03, w: 3.41, h: 8.4 }, content: empty("Innovation", "الريادة والابتكار") },
   comp_skills: { coords: { x: 17.77, y: 17.82, w: 6.73, h: 6 }, content: empty("Computer Skills", "مهارات حاسوب") },
