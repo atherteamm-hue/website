@@ -1,7 +1,7 @@
 // src/components/CourseModal.tsx
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
-import { X, CheckCircle, ChevronDown, ChevronLeft, FileText, ExternalLink } from 'lucide-react';
+import { X, CheckCircle, ChevronDown, ChevronLeft, FileText, ExternalLink, PlayCircle } from 'lucide-react';
 import { CourseContent } from '../data/curriculumData';
 import { Book3D } from './Book3D';
 
@@ -13,7 +13,6 @@ interface CourseModalProps {
 }
 
 export function CourseModal({ content, onClose, isCompleted, onToggleComplete }: CourseModalProps) {
-  // هذا المتغير عشان يتذكر أي قائمة دروب داون مفتوحة وأيها مسكرة
   const [openFolders, setOpenFolders] = useState<Record<number, boolean>>({});
 
   const toggleFolder = (idx: number) => {
@@ -73,13 +72,32 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
               )}
             </div>
 
-            {/* قسم الملخصات والدوسيات (فيه الدروب داون) */}
+            {/* قسم الفيديوهات والشروحات */}
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Lectures & Videos</h4>
+              {content.videos && content.videos.length > 0 ? (
+                <div className="flex flex-col gap-2">
+                  {content.videos.map((video, idx) => (
+                    <a key={idx} href={video.url} target="_blank" rel="noopener noreferrer" className="flex justify-between items-center p-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 rounded-xl transition-colors group">
+                      <div className="flex items-center gap-3">
+                        <PlayCircle size={18} className="text-neutral-400 group-hover:text-black transition-colors" />
+                        <span className="font-bold text-neutral-700 group-hover:text-black">{video.label}</span>
+                      </div>
+                      <ExternalLink size={16} className="text-neutral-400 group-hover:text-black" />
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-neutral-400 font-bold">No videos available yet.</p>
+              )}
+            </div>
+
+            {/* قسم الملخصات والدوسيات */}
             <div>
               <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Materials & Summaries</h4>
               {content.summaries && content.summaries.length > 0 ? (
                 <div className="flex flex-col gap-3">
                   {content.summaries.map((summary, idx) => {
-                    // إذا كان العنصر عبارة عن قائمة (فولدر)
                     if ('type' in summary && summary.type === 'folder') {
                       return (
                         <div key={idx} className="border border-neutral-200 rounded-xl overflow-hidden bg-neutral-50 transition-all">
@@ -97,7 +115,6 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
                             {openFolders[idx] ? <ChevronDown size={16} className="text-neutral-400"/> : <ChevronLeft size={16} className="text-neutral-400"/>}
                           </button>
                           
-                          {/* العناصر جوا القائمة */}
                           <div className={`transition-all duration-300 ease-in-out ${openFolders[idx] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
                             <div className="border-t border-neutral-200 bg-white p-2 flex flex-col">
                               {summary.items.map((item, i) => (
@@ -111,7 +128,6 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
                         </div>
                       );
                     } 
-                    // إذا كان العنصر رابط مباشر (مش قائمة)
                     else {
                       return (
                         <a key={idx} href={summary.url} target="_blank" rel="noopener noreferrer" className="flex justify-between items-center p-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 rounded-xl transition-colors group">
