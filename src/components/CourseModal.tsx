@@ -64,6 +64,7 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
                       title={book.label} 
                       url={book.url} 
                       coverUrl={book.coverUrl} 
+                      isArabic={book.isArabic}
                     />
                   ))}
                 </div>
