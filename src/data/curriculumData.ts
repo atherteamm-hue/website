@@ -1,7 +1,10 @@
+// src/data/curriculumData.ts
+
 export interface CourseContent {
   titleEn: string;
   titleAr: string;
-  books: { label: string; url: string }[];
+  // تم إضافة coverUrl لصورة الغلاف
+  books: { label: string; url: string; coverUrl?: string }[];
   summaries: (
     | { label: string; url: string }
     | { label: string; type: 'folder'; items: { label: string; url: string }[] }
@@ -16,7 +19,6 @@ export interface Course {
   content: CourseContent;
 }
 
-// تعديل الدالة لتستقبل الاسم بالإنجليزي والعربي
 const empty = (titleEn: string, titleAr: string): CourseContent => ({
   titleEn, titleAr, books: [], summaries: [], videos: [], mid: [], final: []
 });
@@ -25,7 +27,6 @@ export const curriculumData: Record<string, Course> = {
   english_1: { coords: { x: 2.21, y: 4, w: 5.32, h: 5.21 }, content: empty("English 1", "لغة إنجليزية 1") },
   english_2: { coords: { x: 2.31, y: 15.42, w: 5.22, h: 5.2 }, content: empty("English 2", "لغة إنجليزية 2") },
   tech_writing: { coords: { x: 2.21, y: 26.43, w: 5.52, h: 5.2 }, content: empty("Technical Writing", "الكتابة التقنية والاخلاقيات المهنية") },
-  //وطنية 
   nat_edu: { coords: { x: 10.14, y: 5.01, w: 5.62, h: 5.4 }, content: empty("National Education", "تربية وطنية") },
   app_arabic: { coords: { x: 10.64, y: 14.82, w: 5.22, h: 5.4 }, content: empty("Applied Arabic", "لغة عربية تطبيقية") },
   innovation: { coords: { x: 11.55, y: 25.03, w: 3.41, h: 8.4 }, content: empty("Innovation", "الريادة والابتكار") },
@@ -38,7 +39,29 @@ export const curriculumData: Record<string, Course> = {
   numerical: { coords: { x: 34.24, y: 16.02, w: 5.42, h: 5 }, content: empty("Numerical Methods", "طرق عددية") },
   probability: { coords: { x: 41.57, y: 15.22, w: 5.62, h: 5.4 }, content: empty("Probability", "احتمالات وإحصاء") },
   statics: { coords: { x: 55.32, y: 3.6, w: 5.12, h: 5.81 }, content: empty("Statics", "ستاتيكا") },
-  physics_1: { coords: { x: 73.09, y: 3.8, w: 5.83, h: 5.21 }, content: empty("Physics 1", "فيزياء 1") },
+  
+  // ==========================================
+  // تم تعبئة بيانات الفيزياء 1 برابط الكتاب تبعك
+  // ==========================================
+  physics_1: { 
+    coords: { x: 73.09, y: 3.8, w: 5.83, h: 5.21 }, 
+    content: {
+      titleEn: "Physics 1",
+      titleAr: "فيزياء 1",
+      books: [
+        { 
+          label: "Physics for Scientists and Engineers 9ed", 
+          url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
+          coverUrl: "/physics-cover.png" // رح نحط الصورة جوا الـ public
+        }
+      ],
+      summaries: [],
+      videos: [],
+      mid: [],
+      final: []
+    } 
+  },
+  
   physics_2: { coords: { x: 73.39, y: 14.62, w: 5.53, h: 5.4 }, content: empty("Physics 2", "فيزياء 2") },
   physics_lab: { coords: { x: 62.55, y: 14.01, w: 6.73, h: 6.21 }, content: empty("Physics Lab", "مختبر فيزياء") },
   gen_chemistry: { coords: { x: 91.77, y: 3.6, w: 5.42, h: 5.01 }, content: empty("General Chemistry", "الكيمياء العامة") },
