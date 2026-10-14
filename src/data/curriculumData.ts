@@ -39,7 +39,7 @@ export const curriculumData: Record<string, Course> = {
   probability: { coords: { x: 41.57, y: 15.22, w: 5.62, h: 5.4 }, content: empty("Probability", "احتمالات وإحصاء") },
   statics: { coords: { x: 55.32, y: 3.6, w: 5.12, h: 5.81 }, content: empty("Statics", "ستاتيكا") },
   
-  // داتا الفيزياء 1 مع رابط الكتاب وصورة الغلاف
+  // فيزياء 1 مع الكتاب الأساسي وكتاب الحلول
   physics_1: { 
     coords: { x: 73.09, y: 3.8, w: 5.83, h: 5.21 }, 
     content: {
@@ -50,6 +50,11 @@ export const curriculumData: Record<string, Course> = {
           label: "Physics for Scientists and Engineers 9ed", 
           url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
           coverUrl: "/BooksCover/physics-cover.png"
+        },
+        { 
+          label: "Physics Solutions Manual", 
+          url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf",
+          coverUrl: "/BooksCover/PhysicsSolution-cover.png"
         }
       ],
       summaries: [],
@@ -59,7 +64,31 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-  physics_2: { coords: { x: 73.39, y: 14.62, w: 5.53, h: 5.4 }, content: empty("Physics 2", "فيزياء 2") },
+  // فيزياء 2 تم إضافة نفس الكتب لها
+  physics_2: { 
+    coords: { x: 73.39, y: 14.62, w: 5.53, h: 5.4 }, 
+    content: {
+      titleEn: "Physics 2",
+      titleAr: "فيزياء 2",
+      books: [
+        { 
+          label: "Physics for Scientists and Engineers 9ed", 
+          url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
+          coverUrl: "/BooksCover/physics-cover.png"
+        },
+        { 
+          label: "Physics Solutions Manual", 
+          url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf",
+          coverUrl: "/BooksCover/PhysicsSolution-cover.png"
+        }
+      ],
+      summaries: [],
+      videos: [],
+      mid: [],
+      final: []
+    } 
+  },
+
   physics_lab: { coords: { x: 62.55, y: 14.01, w: 6.73, h: 6.21 }, content: empty("Physics Lab", "مختبر فيزياء") },
   gen_chemistry: { coords: { x: 91.77, y: 3.6, w: 5.42, h: 5.01 }, content: empty("General Chemistry", "الكيمياء العامة") },
   chem_lab: { coords: { x: 91.27, y: 15.02, w: 6.72, h: 4.8 }, content: empty("Chemistry Lab", "مختبر الكيمياء العامة") },
