@@ -3,7 +3,6 @@
 export interface CourseContent {
   titleEn: string;
   titleAr: string;
-  // تم إضافة coverUrl لصورة الغلاف
   books: { label: string; url: string; coverUrl?: string }[];
   summaries: (
     | { label: string; url: string }
@@ -40,9 +39,7 @@ export const curriculumData: Record<string, Course> = {
   probability: { coords: { x: 41.57, y: 15.22, w: 5.62, h: 5.4 }, content: empty("Probability", "احتمالات وإحصاء") },
   statics: { coords: { x: 55.32, y: 3.6, w: 5.12, h: 5.81 }, content: empty("Statics", "ستاتيكا") },
   
-  // ==========================================
-  // تم تعبئة بيانات الفيزياء 1 برابط الكتاب تبعك
-  // ==========================================
+  // داتا الفيزياء 1 مع رابط الكتاب وصورة الغلاف
   physics_1: { 
     coords: { x: 73.09, y: 3.8, w: 5.83, h: 5.21 }, 
     content: {
@@ -52,7 +49,7 @@ export const curriculumData: Record<string, Course> = {
         { 
           label: "Physics for Scientists and Engineers 9ed", 
           url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
-          coverUrl: "/physics-cover.png" // رح نحط الصورة جوا الـ public
+          coverUrl: "/bookscovers/physics-cover.png"
         }
       ],
       summaries: [],
