@@ -9,21 +9,22 @@ interface Book3DProps {
 }
 
 export function Book3D({ title, url, coverUrl, isArabic }: Book3DProps) {
-  // تحديد زوايا الدوران حسب لغة الكتاب (عشان يبين الكعب بشكل صحيح)
+  // الكتاب واقف بشكل مستقيم (بدون أي rotateX)
+  // الدوران فقط على محور Y لعرض كعب الكتاب
   const containerClass = isArabic 
-    ? "relative w-full h-full transition-all duration-500 ease-out [transform-style:preserve-3d] [transform:rotateX(10deg)_rotateY(25deg)] group-hover:[transform:rotateX(5deg)_rotateY(15deg)_translateY(-10px)]"
-    : "relative w-full h-full transition-all duration-500 ease-out [transform-style:preserve-3d] [transform:rotateX(10deg)_rotateY(-25deg)] group-hover:[transform:rotateX(5deg)_rotateY(-15deg)_translateY(-10px)]";
+    ? "relative w-full h-full transition-all duration-500 ease-out [transform-style:preserve-3d] [transform:rotateY(30deg)] group-hover:[transform:rotateY(38deg)_translateY(-8px)]"
+    : "relative w-full h-full transition-all duration-500 ease-out [transform-style:preserve-3d] [transform:rotateY(-30deg)] group-hover:[transform:rotateY(-38deg)_translateY(-8px)]";
 
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-6 w-44 outline-none">
+    <a href={url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center gap-6 w-40 outline-none">
       
-      {/* حاوية الكتاب 3D - واقفة ومستقيمة */}
-      <div className="relative w-36 h-52 mt-4 [perspective:1000px]">
+      {/* حاوية المجسم */}
+      <div className="relative w-32 h-44 [perspective:1000px]">
         
         <div className={containerClass}>
           
           {/* 1. الغلاف الأمامي */}
-          <div className="absolute inset-0 [transform:translateZ(16px)] bg-white rounded-sm shadow-md overflow-hidden border border-neutral-300">
+          <div className="absolute inset-0 [transform:translateZ(12px)] bg-white rounded-[2px] shadow-sm border border-neutral-300 overflow-hidden">
             {coverUrl ? (
               <img src={coverUrl} alt={title} className="w-full h-full object-cover" />
             ) : (
@@ -31,60 +32,63 @@ export function Book3D({ title, url, coverUrl, isArabic }: Book3DProps) {
             )}
             
             {/* أخدود التجليد (الخسفة) */}
-            <div className={`absolute top-0 bottom-0 w-[6px] bg-gradient-to-r from-black/20 to-transparent mix-blend-multiply ${isArabic ? 'right-0 rotate-180' : 'left-0'}`}></div>
+            <div className={`absolute top-0 bottom-0 w-[4px] mix-blend-multiply ${
+              isArabic ? 'right-0 bg-gradient-to-l' : 'left-0 bg-gradient-to-r'
+            } from-black/20 to-transparent`}></div>
             
-            {/* لمعة زجاجية عند التمرير */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {/* لمعة التمرير */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
 
           {/* 2. الغلاف الخلفي */}
-          <div className="absolute inset-0 [transform:translateZ(-16px)_rotateY(180deg)] bg-neutral-200 rounded-sm shadow-xl border border-neutral-300"></div>
+          <div className="absolute inset-0 [transform:translateZ(-12px)_rotateY(180deg)] bg-neutral-200 rounded-[2px] border border-neutral-300 shadow-xl"></div>
 
-          {/* 3. الجانب الأيسر (كعب للإنجليزي، أوراق للعربي) */}
-          <div className="absolute inset-y-0 left-0 w-[32px] origin-left [transform:translateZ(16px)_rotateY(-90deg)] flex justify-center overflow-hidden border-y border-neutral-300 bg-[#f8f8f8]">
+          {/* 3. الوجه الأيسر (الكعب للإنجليزي، الورق للعربي) */}
+          <div className="absolute inset-y-0 left-0 w-[24px] [transform:translateX(-12px)_rotateY(-90deg)] flex justify-center overflow-hidden border-y border-neutral-300 bg-[#f8f8f8]">
             {isArabic ? (
-              // رسمة الأوراق للعربي
-              <div className="w-full h-full border-l border-neutral-300 bg-[linear-gradient(to_bottom,transparent_1px,#e5e5e5_1px)] bg-[size:100%_3px]"></div>
+              // الورق (عربي)
+              <div className="w-full h-full border-l border-neutral-200 bg-[linear-gradient(to_bottom,transparent_1px,#eaeaea_1px)] bg-[size:100%_3px]"></div>
             ) : (
-              // رسمة الكعب للإنجليزي
-              <div className="w-full h-full bg-gradient-to-r from-neutral-300 via-neutral-100 to-neutral-300 border-r border-neutral-300 flex flex-col justify-between py-4 shadow-[inset_0_0_8px_rgba(0,0,0,0.05)]">
-                <div className="w-full h-[2px] bg-black/10"></div>
-                <div className="w-full h-[2px] bg-black/10"></div>
+              // الكعب (إنجليزي)
+              <div className="w-full h-full border-r border-neutral-300 bg-gradient-to-r from-neutral-300 via-neutral-100 to-neutral-300 flex flex-col justify-between py-4 shadow-[inset_0_0_5px_rgba(0,0,0,0.1)]">
+                <div className="w-full h-[1px] bg-black/10"></div>
+                <div className="w-full h-[1px] bg-black/10"></div>
               </div>
             )}
           </div>
 
-          {/* 4. الجانب الأيمن (أوراق للإنجليزي، كعب للعربي) */}
-          <div className="absolute inset-y-0 right-0 w-[32px] origin-right [transform:translateZ(16px)_rotateY(90deg)] flex justify-center overflow-hidden border-y border-neutral-300 bg-[#f8f8f8]">
+          {/* 4. الوجه الأيمن (الورق للإنجليزي، الكعب للعربي) */}
+          <div className="absolute inset-y-0 right-0 w-[24px] [transform:translateX(12px)_rotateY(90deg)] flex justify-center overflow-hidden border-y border-neutral-300 bg-[#f8f8f8]">
             {!isArabic ? (
-              // رسمة الأوراق للإنجليزي
-              <div className="w-full h-full border-r border-neutral-300 bg-[linear-gradient(to_bottom,transparent_1px,#e5e5e5_1px)] bg-[size:100%_3px]"></div>
+              // الورق (إنجليزي)
+              <div className="w-full h-full border-r border-neutral-200 bg-[linear-gradient(to_bottom,transparent_1px,#eaeaea_1px)] bg-[size:100%_3px]"></div>
             ) : (
-              // رسمة الكعب للعربي
-              <div className="w-full h-full bg-gradient-to-r from-neutral-300 via-neutral-100 to-neutral-300 border-l border-neutral-300 flex flex-col justify-between py-4 shadow-[inset_0_0_8px_rgba(0,0,0,0.05)]">
-                <div className="w-full h-[2px] bg-black/10"></div>
-                <div className="w-full h-[2px] bg-black/10"></div>
+              // الكعب (عربي)
+              <div className="w-full h-full border-l border-neutral-300 bg-gradient-to-l from-neutral-300 via-neutral-100 to-neutral-300 flex flex-col justify-between py-4 shadow-[inset_0_0_5px_rgba(0,0,0,0.1)]">
+                <div className="w-full h-[1px] bg-black/10"></div>
+                <div className="w-full h-[1px] bg-black/10"></div>
               </div>
             )}
           </div>
 
-          {/* 5. الوجه العلوي (الأوراق من فوق) */}
-          <div className="absolute inset-x-0 top-0 h-[32px] origin-top [transform:translateZ(16px)_rotateX(90deg)] bg-[#f8f8f8] border-x border-t border-neutral-300">
-            <div className="w-full h-full bg-[linear-gradient(to_right,transparent_1px,#e5e5e5_1px)] bg-[size:3px_100%]"></div>
+          {/* 5. الوجه العلوي (الورق من فوق) */}
+          <div className="absolute inset-x-0 top-0 h-[24px] [transform:translateY(-12px)_rotateX(90deg)] bg-[#f8f8f8] border-x border-neutral-300">
+            <div className="w-full h-full bg-[linear-gradient(to_right,transparent_1px,#eaeaea_1px)] bg-[size:3px_100%]"></div>
           </div>
 
-          {/* 6. الوجه السفلي (الأوراق من تحت) */}
-          <div className="absolute inset-x-0 bottom-0 h-[32px] origin-bottom [transform:translateZ(16px)_rotateX(-90deg)] bg-[#f8f8f8] border-x border-b border-neutral-300 shadow-[0_15px_20px_rgba(0,0,0,0.2)]">
-            <div className="w-full h-full bg-[linear-gradient(to_right,transparent_1px,#e5e5e5_1px)] bg-[size:3px_100%]"></div>
+          {/* 6. الوجه السفلي (الورق من تحت) */}
+          <div className="absolute inset-x-0 bottom-0 h-[24px] [transform:translateY(12px)_rotateX(-90deg)] bg-[#f8f8f8] border-x border-neutral-300 shadow-md">
+            <div className="w-full h-full bg-[linear-gradient(to_right,transparent_1px,#eaeaea_1px)] bg-[size:3px_100%]"></div>
           </div>
-
-          {/* ظل على الأرضية (Anchor Shadow) */}
-          <div className="absolute -bottom-4 left-2 right-2 h-[12px] bg-black/20 blur-md rounded-full transition-all duration-500 group-hover:bg-black/10 group-hover:blur-xl group-hover:scale-90 [transform:translateZ(0px)]"></div>
 
         </div>
+
+        {/* الظل الساقط على الأرض */}
+        <div className="absolute -bottom-2 left-2 right-2 h-[8px] bg-black/20 blur-md rounded-[100%] transition-all duration-500 group-hover:bg-black/15 group-hover:blur-lg group-hover:scale-95 [transform:translateZ(-12px)] z-0"></div>
       </div>
 
-      <span className="text-black text-sm font-black text-center leading-tight group-hover:text-neutral-500 transition-colors" dir={isArabic ? "rtl" : "ltr"}>
+      {/* اسم الكتاب */}
+      <span className="text-black text-xs font-bold text-center leading-tight group-hover:text-neutral-500 transition-colors mt-2" dir={isArabic ? "rtl" : "ltr"}>
         {title}
       </span>
     </a>
