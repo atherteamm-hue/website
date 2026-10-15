@@ -3,7 +3,7 @@
 export interface CourseContent {
   titleEn: string;
   titleAr: string;
-  books: { label: string; url: string; coverUrl?: string; isArabic?: boolean }[];
+  books: { label: string; url: string; coverUrl?: string; isArabic?: boolean; isSolution?: boolean }[];
   summaries: (
     | { label: string; url: string }
     | { label: string; type: 'folder'; items: { label: string; url: string }[] }
@@ -150,8 +150,15 @@ export const curriculumData: Record<string, Course> = {
     content: {
       titleEn: "Physics 1", titleAr: "فيزياء 1",
       books: [
-        { label: "Physics for Scientists and Engineers 9ed", url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf", coverUrl: "/BooksCover/physics-cover.png" },
-        { label: "Physics Solutions Manual", url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf", coverUrl: "/BooksCover/PhysicsSolution-cover.png" }
+        { label: "Physics for Scientists and Engineers 9ed", 
+         url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
+         coverUrl: "/BooksCover/physics-cover.png" 
+        }, // <--- هون كانت الفاصلة ناقصة عندك
+        { label: "Physics Solutions Manual",
+         url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf",
+         coverUrl: "/BooksCover/PhysicsSolution-cover.png" ,
+         isSolution: true
+        }
       ],
       summaries: [], videos: [], mid: [], final: []
     } 
@@ -162,8 +169,14 @@ export const curriculumData: Record<string, Course> = {
     content: {
       titleEn: "Physics 2", titleAr: "فيزياء 2",
       books: [
-        { label: "Physics for Scientists and Engineers 9ed", url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf", coverUrl: "/BooksCover/physics-cover.png" },
-        { label: "Physics Solutions Manual", url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf", coverUrl: "/BooksCover/PhysicsSolution-cover.png" }
+        { label: "Physics for Scientists and Engineers 9ed",
+         url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
+         coverUrl: "/BooksCover/physics-cover.png" },
+        { label: "Physics Solutions Manual", 
+         url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf", 
+         coverUrl: "/BooksCover/PhysicsSolution-cover.png",
+         isSolution: true
+        }
       ],
       summaries: [], videos: [], mid: [], final: []
     } 
