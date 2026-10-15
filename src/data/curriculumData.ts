@@ -49,7 +49,7 @@ export const curriculumData: Record<string, Course> = {
     content: {
       titleEn: "National Education", titleAr: "تربية وطنية",
       books: [
-        { label: "كتاب التربية الوطنية", url: "file:///C:/Users/SA/Downloads/%D9%85%D8%AF%D8%AE%D9%84%20%D8%A7%D9%84%D9%89%20%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%81%D8%A9%20%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A%D8%A9%20%D9%88%D8%A7%D9%84%D9%85%D8%AF%D9%86%D9%8A%D8%A9_compressed%20(1).pdf", 
+        { label: "كتاب التربية الوطنية", url: "/مدخل الى الثقافة الوطنية والمدنية_compressed.pdf", 
          coverUrl: "/BooksCover/national-cover.png", 
          isArabic: true }
       ], 
