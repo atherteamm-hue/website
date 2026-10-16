@@ -278,11 +278,114 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-  communication: { 
+ communication: { 
     coords: { x: 47.81, y: 36.2, w: 5.36, h: 5.46 }, 
     content: {
-      titleEn: "Communication", titleAr: " اتصالات وتراسل بيانات",
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Communication", 
+      titleAr: "اتصالات وتراسل بيانات",
+      
+      // 1. Books
+      books: [
+        { 
+          label: "Data Communication and Networking", 
+          url: "/communication/Books/Book_Data_Communication_and_Networking.pdf",
+          coverUrl: "/BooksCover/Data-Communications-And-Networking.png" 
+        },
+        { 
+          label: "Data and Computer Communications", 
+          url: "/communication/Books/Book_Data_and_Computer_Communications.pdf",
+          coverUrl: "/BooksCover/Data-and-Computer-Communications-tenth-edition.png" 
+        },
+        { 
+          label: "Solutions Manual", 
+          url: "/communication/Books/Book_Solutions_Data_Communication_and_Networking.pdf",
+          coverUrl: "/BooksCover/Data-Communications-And-Networking.png",
+          isSolution: true 
+        }
+      ], 
+      
+      // 2. Notes, Slides, and Quizzes (Dropdowns)
+      summaries: [
+        { 
+          label: "Notes & Summaries", 
+          type: 'folder', 
+          items: [
+            { label: "Dr. Amjad Al-Hindi Notebook", url: "/communication/Notes/Notebook_Dr_Amjad_AlHindi.pdf" },
+            { label: "Roaa Bassam Summary (2021)", url: "/communication/Notes/Summary_Network_Roaa_Bassam_2021.pdf" }
+          ] 
+        },
+        { 
+          label: "Dr. Majid Slides", 
+          type: 'folder', 
+          items: [
+            { label: "Chapter 1: Introduction", url: "/communication/Slides/Dr_Majid/Dr_Majid_Ch01_Introduction.pdf" },
+            { label: "Chapter 2: Network Models", url: "/communication/Slides/Dr_Majid/Dr_Majid_Ch02_Network_Models.pdf" },
+            { label: "Chapter 3: Physical Layer", url: "/communication/Slides/Dr_Majid/Dr_Majid_Ch03_Physical_Layer.pdf" },
+            { label: "Chapter 4: Digital Transmission", url: "/communication/Slides/Dr_Majid/Dr_Majid_Ch04_Digital_Transmission.pdf" },
+            { label: "Chapter 5: Analog Transmission", url: "/communication/Slides/Dr_Majid/Dr_Majid_Ch05_Analog_Transmission.pdf" },
+            { label: "Chapter 6: Bandwidth Utilization", url: "/communication/Slides/Dr_Majid/Dr_Majid_Ch06_Bandwidth_Utilization.pdf" },
+            { label: "Chapter 7: Transmission Media", url: "/communication/Slides/Dr_Majid/Dr_Majid_Ch07_Transmission_Media.pdf" },
+            { label: "Chapter 8: Error Detection", url: "/communication/Slides/Dr_Majid/Dr_Majid_Ch08_Error_Detection.pdf" }
+          ] 
+        },
+        { 
+          label: "Highlighted Slides", 
+          type: 'folder', 
+          items: [
+            { label: "Chapter 1 Highlighted", url: "/communication/Slides/Highlighted/Chapter_01_Highlighted.pdf" },
+            { label: "Chapter 2 Highlighted", url: "/communication/Slides/Highlighted/Chapter_02_Highlighted.pdf" },
+            { label: "Chapter 3 Highlighted", url: "/communication/Slides/Highlighted/Chapter_03_Highlighted.pdf" },
+            { label: "Chapter 4 Highlighted", url: "/communication/Slides/Highlighted/Chapter_04_Highlighted.pdf" },
+            { label: "Chapter 5 Highlighted", url: "/communication/Slides/Highlighted/Chapter_05_Highlighted.pdf" },
+            { label: "Chapter 6 Highlighted", url: "/communication/Slides/Highlighted/Chapter_06_Highlighted.pdf" },
+            { label: "Chapter 7 Highlighted", url: "/communication/Slides/Highlighted/Chapter_07_Highlighted.pdf" },
+            { label: "Chapter 8", url: "/communication/Slides/Highlighted/Chapter_08.pdf" },
+            { label: "Chapter 10", url: "/communication/Slides/Highlighted/Chapter_10.pdf" }
+          ] 
+        },
+        // هنا وضعنا الكويزات كقائمة منسدلة لتظهر فوق الميد والفاينل
+        {
+          label: "Quizzes (Past Papers)",
+          type: 'folder',
+          items: [
+            { label: "Quiz 1 (2022)", url: "/communication/pastpapers/Quizzes/Quiz_1_2022.pdf" },
+            { label: "Quiz 1 (2026)", url: "/communication/pastpapers/Quizzes/Quiz_1_2026.pdf" },
+            { label: "Quiz 1 (T3 2023)", url: "/communication/pastpapers/Quizzes/Quiz_1_T3_2023.pdf" },
+            { label: "Quiz 2 (2022)", url: "/communication/pastpapers/Quizzes/Quiz_2_2022.pdf" },
+            { label: "Quiz 2 (T3 2023)", url: "/communication/pastpapers/Quizzes/Quiz_2_T3_2023.pdf" },
+            { label: "Quiz 3 (2022)", url: "/communication/pastpapers/Quizzes/Quiz_3_2022.pdf" },
+            { label: "Quiz 3 (T3 2023)", url: "/communication/pastpapers/Quizzes/Quiz_3_T3_2023.pdf" },
+            { label: "Quiz Ch4 (T2 2023-24)", url: "/communication/pastpapers/Quizzes/Quiz_Ch4_T2_2023-24.pdf" }
+          ]
+        }
+      ], 
+      
+      videos: [], 
+      
+      // 3. Mid Exams (قائمة مباشرة)
+      mid: [
+        { label: "Mid 2022 Additional", url: "/communication/pastpapers/Mids/Mid_2022_Additional.pdf" },
+        { label: "Mid 2023", url: "/communication/pastpapers/Mids/Mid_2023.pdf" },
+        { label: "Mid 2024", url: "/communication/pastpapers/Mids/Mid_2024.pdf" },
+        { label: "Mid Exam 2024", url: "/communication/pastpapers/Mids/Mid_Exam_2024.pdf" },
+        { label: "Mid 2025", url: "/communication/pastpapers/Mids/Mid_2025.pdf" },
+        { label: "Mid 2026", url: "/communication/pastpapers/Mids/Mid_2026.pdf" },
+        { label: "Mid Fall 2022-23", url: "/communication/pastpapers/Mids/Mid_Fall_2022-23.pdf" },
+        { label: "Mid T2 2023", url: "/communication/pastpapers/Mids/Mid_T2_2023.pdf" },
+        { label: "Mid T3 2023", url: "/communication/pastpapers/Mids/Mid_T3_2023.pdf" },
+        { label: "Mid 25-26 (1st Semester MAE)", url: "/communication/pastpapers/Mids/Mid_25-26_1st_Semester_MAE.pdf" }
+      ], 
+      
+      // 4. Final Exams (قائمة مباشرة)
+      final: [
+        { label: "Final Exam 2022", url: "/communication/pastpapers/Finals/Final_Exam_2022.pdf" },
+        { label: "Final Exam 2026", url: "/communication/pastpapers/Finals/Final_Exam_2026.pdf" },
+        { label: "Final Summer 2024-25", url: "/communication/pastpapers/Finals/Final_Summer_2024-25.pdf" },
+        { label: "Final Summer 2026", url: "/communication/pastpapers/Finals/Final_Summer_2026.pdf" },
+        { label: "Final T3 2023 (Version 1)", url: "/communication/pastpapers/Finals/Final_T3_2023_Version1.pdf" },
+        { label: "Final T3 2023 (Version 2)", url: "/communication/pastpapers/Finals/Final_T3_2023_Version2.pdf" },
+        { label: "Final T3 2023 (Version 3)", url: "/communication/pastpapers/Finals/Final_T3_2023_Version3.pdf" }
+      ]
     } 
   },
   
