@@ -342,20 +342,20 @@ circuits_1: {
       
       // 5. Mid Exams (مرتبة تنازلياً)
       mid: [
-        { label: "= 2026", url: "/Circuit_1/PastPapers/Mid_2026_Circuit1.pdf" },
-        { label: " 2026", url: "/Circuit_1/PastPapers/Mid_2025_Sem2_Circuit1.pdf" },
+        { label: "2026", url: "/Circuit_1/PastPapers/Mid_2026_Circuit1.pdf" },
+        { label: "2026", url: "/Circuit_1/PastPapers/Mid_2025_Sem2_Circuit1.pdf" },
         { label: "2025", url: "/Circuit_1/PastPapers/Mid_2025_Circuit1.pdf" },
-        { label: "2025 ", url: "/Circuit_1/PastPapers/Mid_2025_Alt_Circuit1.pdf" },
-        { label: "2025 ", url: "/Circuit_1/PastPapers/Mid_2025_Sem1_Circuit1.pdf" },
+        { label: "2025", url: "/Circuit_1/PastPapers/Mid_2025_Alt_Circuit1.pdf" },
+        { label: "2025", url: "/Circuit_1/PastPapers/Mid_2025_Sem1_Circuit1.pdf" },
         { label: "Makeup 2025", url: "/Circuit_1/PastPapers/Mid_Makeup_2025_Circuit1.pdf" },
         { label: "2024", url: "/Circuit_1/PastPapers/Mid_2024_Circuit1.pdf" },
         { label: "2024", url: "/Circuit_1/PastPapers/Mid_2024_Summer_Circuit1.pdf" },
         { label: "2023", url: "/Circuit_1/PastPapers/Mid_2023_Circuit1.pdf" },
         { label: "Screens (2020-2021)", url: "/Circuit_1/PastPapers/Mid_Screens_2020-2021_Circuit1.pdf" },
         { label: "2015", url: "/Circuit_1/PastPapers/Mid_2015_Circuit1.pdf" },
-        { label: " 2014", url: "/Circuit_1/PastPapers/Mid_2014_Circuit1.pdf" },
-        { label: "Mid Exam ", url: "/Circuit_1/PastPapers/Mid_Exam_Circuit1.pdf" },
-        { label: "Mid Exam  2", url: "/Circuit_1/PastPapers/Mid_Exam_Circuit1_2.pdf" }
+        { label: "2014", url: "/Circuit_1/PastPapers/Mid_2014_Circuit1.pdf" },
+        { label: "Mid Exam", url: "/Circuit_1/PastPapers/Mid_Exam_Circuit1.pdf" },
+        { label: "Mid Exam", url: "/Circuit_1/PastPapers/Mid_Exam_Circuit1_2.pdf" }
       ], 
       
       // 6. Final Exams (مرتبة تنازلياً)
@@ -443,32 +443,46 @@ circuits_2: {
       mid: [
         { label: "2025", url: "/Circuit_2/PastPapers/Mid_2025_Circuit2.pdf" },
         { label: "2024", url: "/Circuit_2/PastPapers/Mid_2024_Circuit2.pdf" },
-        { label: " 2024 ", url: "/Circuit_2/PastPapers/Mid_2024_Alt_Circuit2.pdf" },
-        { label: "  2024", url: "/Circuit_2/PastPapers/Mid_Exam_2024_Circuit2.pdf" },
-        { label: " 2023", url: "/Circuit_2/PastPapers/Mid_Exam_2023_Circuit2.pdf" },
-        { label: " 2023", url: "/Circuit_2/PastPapers/Mid_2023_Circuit2.pdf" },
-        { label: " 2023 ", url: "/Circuit_2/PastPapers/Mid_2023_Alt_Circuit2.pdf" },
-        { label: " 2022", url: "/Circuit_2/PastPapers/Mid_2022_Circuit2.pdf" },
-        { label: " 2019", url: "/Circuit_2/PastPapers/Mid_2019_Circuit2.pdf" },
-        { label: " 2016", url: "/Circuit_2/PastPapers/Mid_2016_Circuit2.pdf" },
+        { label: "2024", url: "/Circuit_2/PastPapers/Mid_2024_Alt_Circuit2.pdf" },
+        { label: "2024", url: "/Circuit_2/PastPapers/Mid_Exam_2024_Circuit2.pdf" },
+        { label: "2023", url: "/Circuit_2/PastPapers/Mid_Exam_2023_Circuit2.pdf" },
+        { label: "2023", url: "/Circuit_2/PastPapers/Mid_2023_Circuit2.pdf" },
+        { label: "2023 ", url: "/Circuit_2/PastPapers/Mid_2023_Alt_Circuit2.pdf" },
+        { label: "2022", url: "/Circuit_2/PastPapers/Mid_2022_Circuit2.pdf" },
+        { label: "2019", url: "/Circuit_2/PastPapers/Mid_2019_Circuit2.pdf" },
+        { label: "2016", url: "/Circuit_2/PastPapers/Mid_2016_Circuit2.pdf" },
 
-        { label: "Mid Exam ", url: "/Circuit_2/PastPapers/Mid_Exam_Circuit2.pdf" }
+        { label: "Mid Exam", url: "/Circuit_2/PastPapers/Mid_Exam_Circuit2.pdf" }
       ], 
       
       // 5. Final Exams (مرتبة تنازلياً)
       final: [
-        { label: " 2023", url: "/Circuit_2/PastPapers/Final_2023_Circuit2.pdf" },
-        { label: " 2022", url: "/Circuit_2/PastPapers/Final_2022_Circuit2.pdf" },
-        { label: "Final Exam ", url: "/Circuit_2/PastPapers/Final_Circuit2.pdf" }
+        { label: "2023", url: "/Circuit_2/PastPapers/Final_2023_Circuit2.pdf" },
+        { label: "2022", url: "/Circuit_2/PastPapers/Final_2022_Circuit2.pdf" },
+        { label: "Final Exam", url: "/Circuit_2/PastPapers/Final_Circuit2.pdf" }
       ]
     } 
   },
   
-  circuits_lab: { 
+circuits_lab: { 
     coords: { x: 77.81, y: 31.65, w: 6.85, h: 5.92 }, 
     content: {
-      titleEn: "Circuits Lab", titleAr: "مختبر دوائر كهربائية",
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Circuits Lab", 
+      titleAr: "Circuits Lab", // No Arabic in UI
+      
+      books: [], // فارغ، سيختفي القسم
+      
+      summaries: [
+        { label: "Lab Manual", url: "/Lab_Circuit/Lab_Manual.pdf" }
+      ], 
+      
+      videos: [], // فارغ، سيختفي القسم
+      
+      mid: [], // فارغ
+      
+      final: [
+        { label: "Final Screens", url: "/Lab_Circuit/Lab_Screens_Final.pdf" }
+      ]
     } 
   },
   
@@ -604,39 +618,40 @@ communication: {
           label: "Quizzes",
           type: 'folder',
           items: [
-            { label: "Quiz 1 (2022)", url: "/communication/pastpapers/Quizzes/Quiz_1_2022.pdf" },
-            { label: "Quiz 1 (2026)", url: "/communication/pastpapers/Quizzes/Quiz_1_2026.pdf" },
-            { label: "Quiz 1 (T3 2023)", url: "/communication/pastpapers/Quizzes/Quiz_1_T3_2023.pdf" },
-            { label: "Quiz 2 (2022)", url: "/communication/pastpapers/Quizzes/Quiz_2_2022.pdf" },
-            { label: "Quiz 2 (T3 2023)", url: "/communication/pastpapers/Quizzes/Quiz_2_T3_2023.pdf" },
-            { label: "Quiz 3 (2022)", url: "/communication/pastpapers/Quizzes/Quiz_3_2022.pdf" },
-            { label: "Quiz 3 (T3 2023)", url: "/communication/pastpapers/Quizzes/Quiz_3_T3_2023.pdf" },
-            { label: "Quiz Ch4 (T2 2023-24)", url: "/communication/pastpapers/Quizzes/Quiz_Ch4_T2_2023-24.pdf" }
+            { label: "2026", url: "/communication/pastpapers/Quizzes/Quiz_1_2026.pdf" },
+            { label: "Ch4 (2023-24)", url: "/communication/pastpapers/Quizzes/Quiz_Ch4_T2_2023-24.pdf" }
+            { label: "2023", url: "/communication/pastpapers/Quizzes/Quiz_1_T3_2023.pdf" },
+            { label: "2023", url: "/communication/pastpapers/Quizzes/Quiz_2_T3_2023.pdf" },
+            { label: "2023", url: "/communication/pastpapers/Quizzes/Quiz_3_T3_2023.pdf" },
+            { label: "2022", url: "/communication/pastpapers/Quizzes/Quiz_1_2022.pdf" },
+            { label: "2022", url: "/communication/pastpapers/Quizzes/Quiz_2_2022.pdf" },
+            { label: "2022", url: "/communication/pastpapers/Quizzes/Quiz_3_2022.pdf" },
           ]
         }
       ],
 
       mid: [
-        { label: "Mid 2022 Additional", url: "/communication/pastpapers/Mids/Mid_2022_Additional.pdf" },
-        { label: "Mid 2023", url: "/communication/pastpapers/Mids/Mid_2023.pdf" },
-        { label: "Mid 2024", url: "/communication/pastpapers/Mids/Mid_2024.pdf" },
-        { label: "Mid Exam 2024", url: "/communication/pastpapers/Mids/Mid_Exam_2024.pdf" },
-        { label: "Mid 2025", url: "/communication/pastpapers/Mids/Mid_2025.pdf" },
-        { label: "Mid 2026", url: "/communication/pastpapers/Mids/Mid_2026.pdf" },
-        { label: "Mid Fall 2022-23", url: "/communication/pastpapers/Mids/Mid_Fall_2022-23.pdf" },
-        { label: "Mid T2 2023", url: "/communication/pastpapers/Mids/Mid_T2_2023.pdf" },
-        { label: "Mid T3 2023", url: "/communication/pastpapers/Mids/Mid_T3_2023.pdf" },
-        { label: "Mid 25-26 (1st Semester MAE)", url: "/communication/pastpapers/Mids/Mid_25-26_1st_Semester_MAE.pdf" }
+        { label: "2026", url: "/communication/pastpapers/Mids/Mid_2026.pdf" },
+        { label: "25-26", url: "/communication/pastpapers/Mids/Mid_25-26_1st_Semester_MAE.pdf" }
+        { label: "2025", url: "/communication/pastpapers/Mids/Mid_2025.pdf" },
+        { label: "2024", url: "/communication/pastpapers/Mids/Mid_2024.pdf" },
+        { label: "2024", url: "/communication/pastpapers/Mids/Mid_Exam_2024.pdf" },
+        { label: "2023", url: "/communication/pastpapers/Mids/Mid_T2_2023.pdf" },
+        { label: "2023", url: "/communication/pastpapers/Mids/Mid_T3_2023.pdf" },
+        { label: "2023", url: "/communication/pastpapers/Mids/Mid_2023.pdf" },
+        { label: "22-23", url: "/communication/pastpapers/Mids/Mid_Fall_2022-23.pdf" },
+        { label: "2022 ", url: "/communication/pastpapers/Mids/Mid_2022_Additional.pdf" },
+
       ], 
       
       final: [
-        { label: "Final Exam 2022", url: "/communication/pastpapers/Finals/Final_Exam_2022.pdf" },
-        { label: "Final Exam 2026", url: "/communication/pastpapers/Finals/Final_Exam_2026.pdf" },
-        { label: "Final Summer 2024-25", url: "/communication/pastpapers/Finals/Final_Summer_2024-25.pdf" },
-        { label: "Final Summer 2026", url: "/communication/pastpapers/Finals/Final_Summer_2026.pdf" },
-        { label: "Final T3 2023 (Version 1)", url: "/communication/pastpapers/Finals/Final_T3_2023_Version1.pdf" },
-        { label: "Final T3 2023 (Version 2)", url: "/communication/pastpapers/Finals/Final_T3_2023_Version2.pdf" },
-        { label: "Final T3 2023 (Version 3)", url: "/communication/pastpapers/Finals/Final_T3_2023_Version3.pdf" }
+        { label: "2026", url: "/communication/pastpapers/Finals/Final_Exam_2026.pdf" },
+        { label: "2026", url: "/communication/pastpapers/Finals/Final_Summer_2026.pdf" },
+        { label: "2024-25", url: "/communication/pastpapers/Finals/Final_Summer_2024-25.pdf" },
+        { label: "2023", url: "/communication/pastpapers/Finals/Final_T3_2023_Version1.pdf" },
+        { label: "2023", url: "/communication/pastpapers/Finals/Final_T3_2023_Version2.pdf" },
+        { label: "2023", url: "/communication/pastpapers/Finals/Final_T3_2023_Version3.pdf" },
+        { label: "2022", url: "/communication/pastpapers/Finals/Final_Exam_2022.pdf" },
       ]
     } 
   },
@@ -1023,13 +1038,13 @@ protection_devices: {
 
       // 4. Mid Exams (مرتبة تنازلياً)
       mid: [
-        { label: "Mid Exam 2025 ", url: "/protection/past_papers/mid_2025.pdf" },
-        { label: "Mid Exam 2025 ", url: "/protection/past_papers/mid_2025_exam.pdf" },
-        { label: "Mid Exam 2024 ", url: "/protection/past_papers/mid_2024.pdf" },
-        { label: "Mid Exam 2024 ", url: "/protection/past_papers/mid_exam_2024.pdf" },
-        { label: "Mid Exam 2016", url: "/protection/past_papers/mid_2016.pdf" },
-        { label: "Mid Exam 2015", url: "/protection/past_papers/mid_2015.pdf" },
-        { label: "Mid Exam ", url: "/protection/past_papers/mid.pdf" }
+        { label: "2025", url: "/protection/past_papers/mid_2025.pdf" },
+        { label: "2025", url: "/protection/past_papers/mid_2025_exam.pdf" },
+        { label: "2024", url: "/protection/past_papers/mid_2024.pdf" },
+        { label: "2024", url: "/protection/past_papers/mid_exam_2024.pdf" },
+        { label: "2016", url: "/protection/past_papers/mid_2016.pdf" },
+        { label: "2015", url: "/protection/past_papers/mid_2015.pdf" },
+        { label: "MidExam", url: "/protection/past_papers/mid.pdf" }
       ], 
       
       // 5. Final Exams
