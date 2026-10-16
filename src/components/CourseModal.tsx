@@ -13,10 +13,11 @@ interface CourseModalProps {
 }
 
 export function CourseModal({ content, onClose, isCompleted, onToggleComplete }: CourseModalProps) {
-  const [openFolders, setOpenFolders] = useState<Record<number, boolean>>({});
+  // غيرنا المتغير ليقبل نصوص عشان نفصل بين قوائم الملخصات وقوائم الكويزات
+  const [openFolders, setOpenFolders] = useState<Record<string, boolean>>({});
 
-  const toggleFolder = (idx: number) => {
-    setOpenFolders(prev => ({ ...prev, [idx]: !prev[idx] }));
+  const toggleFolder = (id: string) => {
+    setOpenFolders(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
   return createPortal(
@@ -74,10 +75,10 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
               )}
             </div>
 
-            {/* قسم الفيديوهات والشروحات */}
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Lectures & Videos</h4>
-              {content.videos && content.videos.length > 0 ? (
+            {/* قسم الفيديوهات (يختفي تماماً إذا كان فارغاً) */}
+            {content.videos && content.videos.length > 0 && (
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Lectures & Videos</h4>
                 <div className="flex flex-col gap-2">
                   {content.videos.map((video, idx) => (
                     <a key={idx} href={video.url} target="_blank" rel="noopener noreferrer" className="flex justify-between items-center p-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 rounded-xl transition-colors group">
@@ -89,22 +90,20 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
                     </a>
                   ))}
                 </div>
-              ) : (
-                <p className="text-sm text-neutral-400 font-bold">No videos available yet.</p>
-              )}
-            </div>
+              </div>
+            )}
 
             {/* قسم الملخصات والدوسيات */}
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Materials & Summaries</h4>
-              {content.summaries && content.summaries.length > 0 ? (
+            {content.summaries && content.summaries.length > 0 && (
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Materials & Summaries</h4>
                 <div className="flex flex-col gap-3">
                   {content.summaries.map((summary, idx) => {
                     if ('type' in summary && summary.type === 'folder') {
                       return (
                         <div key={idx} className="border border-neutral-200 rounded-xl overflow-hidden bg-neutral-50 transition-all">
                           <button 
-                            onClick={() => toggleFolder(idx)}
+                            onClick={() => toggleFolder(`summary-${idx}`)}
                             className="w-full flex justify-between items-center p-4 hover:bg-neutral-100 transition-colors"
                           >
                             <div className="flex items-center gap-3">
@@ -114,10 +113,10 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
                                 {summary.items.length}
                               </span>
                             </div>
-                            {openFolders[idx] ? <ChevronDown size={16} className="text-neutral-400"/> : <ChevronLeft size={16} className="text-neutral-400"/>}
+                            {openFolders[`summary-${idx}`] ? <ChevronDown size={16} className="text-neutral-400"/> : <ChevronLeft size={16} className="text-neutral-400"/>}
                           </button>
                           
-                          <div className={`transition-all duration-300 ease-in-out ${openFolders[idx] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                          <div className={`transition-all duration-300 ease-in-out ${openFolders[`summary-${idx}`] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
                             <div className="border-t border-neutral-200 bg-white p-2 flex flex-col">
                               {summary.items.map((item, i) => (
                                 <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 p-3 text-sm font-bold text-neutral-500 hover:text-black hover:bg-neutral-50 rounded-lg transition-colors">
@@ -143,12 +142,62 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
                     }
                   })}
                 </div>
-              ) : (
-                <p className="text-sm text-neutral-400 font-bold">No materials available yet.</p>
-              )}
-            </div>
+              </div>
+            )}
 
-            {/* قسم أسئلة السنوات */}
+            {/* قسم الكويزات (القوائم المنسدلة الجديدة) */}
+            {content.quizzes && content.quizzes.length > 0 && (
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Quizzes</h4>
+                <div className="flex flex-col gap-3">
+                  {content.quizzes.map((quiz, idx) => {
+                    if ('type' in quiz && quiz.type === 'folder') {
+                      return (
+                        <div key={idx} className="border border-neutral-200 rounded-xl overflow-hidden bg-neutral-50 transition-all">
+                          <button 
+                            onClick={() => toggleFolder(`quiz-${idx}`)}
+                            className="w-full flex justify-between items-center p-4 hover:bg-neutral-100 transition-colors"
+                          >
+                            <div className="flex items-center gap-3">
+                              <FileText size={18} className="text-neutral-400" />
+                              <span className="font-bold text-neutral-700">{quiz.label}</span>
+                              <span className="text-xs bg-neutral-200 text-neutral-500 px-2 py-0.5 rounded-md font-mono">
+                                {quiz.items.length}
+                              </span>
+                            </div>
+                            {openFolders[`quiz-${idx}`] ? <ChevronDown size={16} className="text-neutral-400"/> : <ChevronLeft size={16} className="text-neutral-400"/>}
+                          </button>
+                          
+                          <div className={`transition-all duration-300 ease-in-out ${openFolders[`quiz-${idx}`] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                            <div className="border-t border-neutral-200 bg-white p-2 flex flex-col">
+                              {quiz.items.map((item, i) => (
+                                <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 p-3 text-sm font-bold text-neutral-500 hover:text-black hover:bg-neutral-50 rounded-lg transition-colors">
+                                  <ExternalLink size={14} className="text-neutral-300" />
+                                  {item.label}
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    } 
+                    else {
+                      return (
+                        <a key={idx} href={quiz.url} target="_blank" rel="noopener noreferrer" className="flex justify-between items-center p-4 bg-neutral-50 hover:bg-neutral-100 border border-neutral-200 rounded-xl transition-colors group">
+                          <div className="flex items-center gap-3">
+                            <FileText size={18} className="text-neutral-400 group-hover:text-black transition-colors" />
+                            <span className="font-bold text-neutral-700 group-hover:text-black">{quiz.label}</span>
+                          </div>
+                          <ExternalLink size={16} className="text-neutral-400 group-hover:text-black" />
+                        </a>
+                      );
+                    }
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* قسم أسئلة السنوات (الميد والفاينل) */}
             <div>
               <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Exam Archive</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
