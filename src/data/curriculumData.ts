@@ -250,11 +250,131 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-  circuits_1: { 
+ circuits_1: { 
     coords: { x: 63.21, y: 26.65, w: 5.48, h: 5.68 }, 
     content: {
-      titleEn: "Circuits 1", titleAr: "دوائر كهربائية 1",
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Circuits 1", 
+      titleAr: "Circuits 1", // No Arabic in UI
+      
+      // 1. Books & Solutions
+      books: [
+        // Book 1: Analysis of Electrical Electronic Circuits (Arabic) + Solution
+        { 
+          label: "Analysis of Electrical Electronic Circuits", 
+          url: "/Circuit_1/books/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.pdf",
+          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.png",
+          isArabic: true
+        },
+        { 
+          label: "Solutions Manual (Arabic)", 
+          url: "/Circuit_1/books/Book_Solutions_Analysis_of_Electrical_Electronic_Circuits_Arabic.pdf",
+          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.png",
+          isArabic: true,
+          isSolution: true 
+        },
+        
+        // Book 2: Fundamentals of Circuits 7th Ed + Solution
+        { 
+          label: "Fundamentals of Circuits 7th Ed", 
+          url: "/Circuit_1/books/Book_Fundamentals_of_Circuits_7th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.png"
+        },
+        { 
+          label: "Solutions Manual (7th Ed)", 
+          url: "/Circuit_1/books/Book_Solutions_Fundamentals_of_Circuits_7th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.png",
+          isSolution: true 
+        },
+
+        // Book 3: Engineering Circuit Analysis 9th Ed + Solution
+        { 
+          label: "Engineering Circuit Analysis 9th Ed", 
+          url: "/Circuit_1/books/Book_Engineering_Circuit_Analysis_9th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.png"
+        },
+        { 
+          label: "Solutions Manual (9th Ed)", 
+          url: "/Circuit_1/books/Book_Solutions_Engineering_Circuit_Analysis_9th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.png",
+          isSolution: true 
+        },
+
+        // Book 4: Electric Circuits 11th Edition
+        { 
+          label: "Electric Circuits 11th Edition", 
+          url: "/Circuit_1/books/Book_Electric_Circuits_11th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Electric_Circuits_11th_Edition.png"
+        },
+
+        // Book 5: Electronics Fundamentals 8th Edition
+        { 
+          label: "Electronics Fundamentals 8th Ed", 
+          url: "/Circuit_1/books/Book_Electronics_Fundamentals_Circuits_Devices_Applications_8th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Electronics_Fundamentals_Circuits_Devices_Applications_8th_Edition.png"
+        },
+
+        // Book 6: Introductory Circuit Analysis 13th Edition
+        { 
+          label: "Introductory Circuit Analysis 13th Ed", 
+          url: "/Circuit_1/books/Book_Introductory_Circuit_Analysis_13th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Introductory_Circuit_Analysis_13th_Edition.png"
+        }
+      ], 
+      
+      // 2. Videos / Lectures
+      videos: [
+        { label: "Spark Team ", url: "https://www.youtube.com/playlist?list=PL4Itv3LsZJuyWPRdr8mR849IKdb05XNX1" },
+        { label: "Samer Issa ", url: "https://www.youtube.com/playlist?list=PLawhbyHTpbgG2VR16b5y8v05-yW4kB-jP" },
+        { label: "Tesla Team ", url: "https://www.youtube.com/playlist?list=PL2C_OpeEqP-LgiDcixQR4QyN2n9EQTwuR" },
+        { label: "SREE ", url: "https://www.youtube.com/playlist?list=PLNBj23z192s-4nPfxC8jTxyayuuJRyTGz" },
+        { label: "CNE ", url: "https://www.youtube.com/playlist?list=PLJwCQtAhsso_vLmqT9lV1VGCHDAKsK1CS" },
+      ],
+
+      // 3. Summaries & Notes
+      summaries: [
+        { label: "Dr. Amjad Al-Hindi Notebook", url: "/Circuit_1/Summaries/Notebook_Dr_Amjad_AlHindi.pdf" },
+        { label: "Eng. Yaseen Slides", url: "/Circuit_1/Summaries/Slides_Eng_Yaseen_Circuit1.pdf" },
+        { label: "Spark Team Summary", url: "/Circuit_1/Summaries/Summary_Spark_Circuit1.pdf" },
+        { label: "Spark Team Summary (New)", url: "/Circuit_1/Summaries/Summary_Spark_New_Circuit1.pdf" },
+        { label: "Zero One Team Summary", url: "/Circuit_1/Summaries/Zero_One_Circuit1.pdf" }
+      ], 
+
+      // 4. Quizzes
+      quizzes: [
+        {
+          label: "Quizzes Archive",
+          type: 'folder',
+          items: [
+            { label: "Quiz 1", url: "/Circuit_1/Quizzes/Quiz_1.pdf" },
+            { label: "Quiz 2", url: "/Circuit_1/Quizzes/Quiz_2.pdf" },
+            { label: "Quiz 3", url: "/Circuit_1/Quizzes/Quiz_3.pdf" }
+          ]
+        }
+      ],
+      
+      // 5. Mid Exams
+      mid: [
+        { label: "Mid Exam 2014", url: "/Circuit_1/PastPapers/Mid_2014_Circuit1.pdf" },
+        { label: "Mid Exam 2015", url: "/Circuit_1/PastPapers/Mid_2015_Circuit1.pdf" },
+        { label: "Mid Exam 2023", url: "/Circuit_1/PastPapers/Mid_2023_Circuit1.pdf" },
+        { label: "Mid Exam 2024", url: "/Circuit_1/PastPapers/Mid_2024_Circuit1.pdf" },
+        { label: "Mid Summer 2024", url: "/Circuit_1/PastPapers/Mid_2024_Summer_Circuit1.pdf" },
+        { label: "Mid Exam 2025", url: "/Circuit_1/PastPapers/Mid_2025_Circuit1.pdf" },
+        { label: "Mid Exam 2025 (Alt)", url: "/Circuit_1/PastPapers/Mid_2025_Alt_Circuit1.pdf" },
+        { label: "Mid 2025 (Semester 1)", url: "/Circuit_1/PastPapers/Mid_2025_Sem1_Circuit1.pdf" },
+        { label: "Mid 2025 (Semester 2)", url: "/Circuit_1/PastPapers/Mid_2025_Sem2_Circuit1.pdf" },
+        { label: "Mid Exam 2026", url: "/Circuit_1/PastPapers/Mid_2026_Circuit1.pdf" },
+        { label: "Mid Exam General", url: "/Circuit_1/PastPapers/Mid_Exam_Circuit1.pdf" },
+        { label: "Mid Exam General 2", url: "/Circuit_1/PastPapers/Mid_Exam_Circuit1_2.pdf" },
+        { label: "Mid Makeup 2025", url: "/Circuit_1/PastPapers/Mid_Makeup_2025_Circuit1.pdf" },
+        { label: "Mid Screens (2020-2021)", url: "/Circuit_1/PastPapers/Mid_Screens_2020-2021_Circuit1.pdf" }
+      ], 
+      
+      // 6. Final Exams
+      final: [
+        { label: "Final Exam (2015-2018)", url: "/Circuit_1/PastPapers/Final_2015-2018_Circuit1.pdf" },
+        { label: "Final Exam 2024", url: "/Circuit_1/PastPapers/Final_2024_Circuit1.pdf" }
+      ]
     } 
   },
   
