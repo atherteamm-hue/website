@@ -354,8 +354,8 @@ circuits_1: {
         { label: "Screens (2020-2021)", url: "/Circuit_1/PastPapers/Mid_Screens_2020-2021_Circuit1.pdf" },
         { label: "2015", url: "/Circuit_1/PastPapers/Mid_2015_Circuit1.pdf" },
         { label: " 2014", url: "/Circuit_1/PastPapers/Mid_2014_Circuit1.pdf" },
-        { label: "Mid Exam General", url: "/Circuit_1/PastPapers/Mid_Exam_Circuit1.pdf" },
-        { label: "Mid Exam General 2", url: "/Circuit_1/PastPapers/Mid_Exam_Circuit1_2.pdf" }
+        { label: "Mid Exam ", url: "/Circuit_1/PastPapers/Mid_Exam_Circuit1.pdf" },
+        { label: "Mid Exam  2", url: "/Circuit_1/PastPapers/Mid_Exam_Circuit1_2.pdf" }
       ], 
       
       // 6. Final Exams (مرتبة تنازلياً)
@@ -443,22 +443,23 @@ circuits_2: {
       mid: [
         { label: "2025", url: "/Circuit_2/PastPapers/Mid_2025_Circuit2.pdf" },
         { label: "2024", url: "/Circuit_2/PastPapers/Mid_2024_Circuit2.pdf" },
-        { label: " 2024 (Alt)", url: "/Circuit_2/PastPapers/Mid_2024_Alt_Circuit2.pdf" },
+        { label: " 2024 ", url: "/Circuit_2/PastPapers/Mid_2024_Alt_Circuit2.pdf" },
+        { label: "  2024", url: "/Circuit_2/PastPapers/Mid_Exam_2024_Circuit2.pdf" },
+        { label: " 2023", url: "/Circuit_2/PastPapers/Mid_Exam_2023_Circuit2.pdf" },
         { label: " 2023", url: "/Circuit_2/PastPapers/Mid_2023_Circuit2.pdf" },
-        { label: " 2023 (Alt)", url: "/Circuit_2/PastPapers/Mid_2023_Alt_Circuit2.pdf" },
+        { label: " 2023 ", url: "/Circuit_2/PastPapers/Mid_2023_Alt_Circuit2.pdf" },
         { label: " 2022", url: "/Circuit_2/PastPapers/Mid_2022_Circuit2.pdf" },
         { label: " 2019", url: "/Circuit_2/PastPapers/Mid_2019_Circuit2.pdf" },
         { label: " 2016", url: "/Circuit_2/PastPapers/Mid_2016_Circuit2.pdf" },
-        { label: "Mid Exam General 2024", url: "/Circuit_2/PastPapers/Mid_Exam_2024_Circuit2.pdf" },
-        { label: "Mid Exam General 2023", url: "/Circuit_2/PastPapers/Mid_Exam_2023_Circuit2.pdf" },
-        { label: "Mid Exam General", url: "/Circuit_2/PastPapers/Mid_Exam_Circuit2.pdf" }
+
+        { label: "Mid Exam ", url: "/Circuit_2/PastPapers/Mid_Exam_Circuit2.pdf" }
       ], 
       
       // 5. Final Exams (مرتبة تنازلياً)
       final: [
         { label: " 2023", url: "/Circuit_2/PastPapers/Final_2023_Circuit2.pdf" },
         { label: " 2022", url: "/Circuit_2/PastPapers/Final_2022_Circuit2.pdf" },
-        { label: "Final Exam General", url: "/Circuit_2/PastPapers/Final_Circuit2.pdf" }
+        { label: "Final Exam ", url: "/Circuit_2/PastPapers/Final_Circuit2.pdf" }
       ]
     } 
   },
