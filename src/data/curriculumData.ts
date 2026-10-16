@@ -897,11 +897,145 @@ communication: {
     } 
   },
   
-  protection_devices: { 
+protection_devices: { 
     coords: { x: 67.2, y: 73.97, w: 6.62, h: 5.46 }, 
     content: {
-      titleEn: "Protection Devices", titleAr: "أجهزة حماية",
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Protection Devices", 
+      titleAr: "اجهزة الحماية", 
+      
+      // 1. Books
+      books: [
+        { 
+          label: "Protection Relaying Principles and Applications", 
+          url: "/protection/books/protection_relaying_principles_and_applications.pdf",
+          coverUrl: "/BooksCover/protection_relaying_principles_and_applications.png" 
+        },
+        { 
+          label: "Electrical Installation Handbook (Protection & Control)", 
+          url: "/protection/books/electrical_installation_handbook_protection_control_electrical_devices.pdf",
+          coverUrl: "/BooksCover/electrical_installation_handbook_protection_control_electrical_devices.png" 
+        },
+        { 
+          label: "Handbook for Protection Engineers", 
+          url: "/protection/books/handbook_for_protection_engineers.pdf",
+          coverUrl: "/BooksCover/handbook_for_protection_engineers.png" 
+        }
+      ], 
+      
+      // لا توجد فيديوهات لهذه المادة، سيختفي القسم تلقائياً
+
+      // 2. Summaries & Slides
+      summaries: [
+        {
+          label: "Numbered Slides",
+          type: 'folder',
+          items: [
+            { label: "01 Fuses", url: "/protection/summaries/slides/01_fuses.pdf" },
+            { label: "02 Fuses", url: "/protection/summaries/slides/02_fuses.pdf" },
+            { label: "03 Fuses", url: "/protection/summaries/slides/03_fuses.pdf" },
+            { label: "04 Circuit Breakers", url: "/protection/summaries/slides/04_circuit_breakers.pdf" },
+            { label: "05 Circuit Breakers", url: "/protection/summaries/slides/05_circuit_breakers.pdf" },
+            { label: "06 Circuit Breakers", url: "/protection/summaries/slides/06_circuit_breakers.pdf" },
+            { label: "07 Circuit Breakers", url: "/protection/summaries/slides/07_circuit_breakers.pdf" },
+            { label: "08 Circuit Breakers", url: "/protection/summaries/slides/08_circuit_breakers.pdf" },
+            { label: "09 Circuit Breakers", url: "/protection/summaries/slides/09_circuit_breakers.pdf" },
+            { label: "10 Circuit Breakers", url: "/protection/summaries/slides/10_circuit_breakers.pdf" },
+            { label: "12 Control Relays", url: "/protection/summaries/slides/12_control_relays.pdf" },
+            { label: "13 Contactors", url: "/protection/summaries/slides/13_contactors.pdf" },
+            { label: "14 Solenoid Valves", url: "/protection/summaries/slides/14_solenoid_valves.pdf" },
+            { label: "16 Voltage & Current Transformers", url: "/protection/summaries/slides/16_voltage_and_current_transformers.pdf" },
+            { label: "17 Solid State Relay", url: "/protection/summaries/slides/17_solid_state_relay.pdf" }
+          ]
+        },
+        {
+          label: "Subject Slides (Categorized)",
+          type: 'folder',
+          items: [
+            // Circuit Breakers
+            { label: "CB: Lighting", url: "/protection/summaries/subject_slides/circuit_breakers/11_circuit_breakers_lighting.pdf" },
+            { label: "CB: Distribution Boards", url: "/protection/summaries/subject_slides/circuit_breakers/distribution_boards.pdf" },
+            { label: "CB: EIG H LV Switchgear", url: "/protection/summaries/subject_slides/circuit_breakers/eig_h_lv_switchgear.pdf" },
+            { label: "CB: Electrical Installations", url: "/protection/summaries/subject_slides/circuit_breakers/electrical_installations_dr_mohammad_aly.pdf" },
+            { label: "CB: Fuses & Switchgear", url: "/protection/summaries/subject_slides/circuit_breakers/fuses_switchgear_circuit_breakers.pdf" },
+            { label: "CB: Industrial Control", url: "/protection/summaries/subject_slides/circuit_breakers/industrial_and_automatic_electrical_control.pdf" },
+            // Contactors
+            { label: "Contactors & Relays 1", url: "/protection/summaries/subject_slides/contactors/contactors_and_relays.pdf" },
+            { label: "Contactors & Relays 2", url: "/protection/summaries/subject_slides/contactors/contactors_relays.pdf" },
+            { label: "Contactors: Motor Starter", url: "/protection/summaries/subject_slides/contactors/motor_starter.pdf" },
+            // Electrical Switches
+            { label: "Switches: 03", url: "/protection/summaries/subject_slides/electrical_switches/03.pdf" },
+            { label: "Switches: Symbols & Diagrams", url: "/protection/summaries/subject_slides/electrical_switches/electrical_symbols_and_line_diagrams.pdf" },
+            { label: "Switches: Induction Type", url: "/protection/summaries/subject_slides/electrical_switches/induction_type_of_switches.pdf" },
+            { label: "Switches: Industrial Control", url: "/protection/summaries/subject_slides/electrical_switches/industrial_control.pdf" },
+            { label: "Switches: Residential Devices", url: "/protection/summaries/subject_slides/electrical_switches/residential_electrical_devices.pdf" },
+            { label: "Switches: Basics Web08", url: "/protection/summaries/subject_slides/electrical_switches/switch_basics_web08.pdf" },
+            { label: "Switches: General", url: "/protection/summaries/subject_slides/electrical_switches/switches.pdf" },
+            // Fuses
+            { label: "Fuses: 02 Characteristics", url: "/protection/summaries/subject_slides/fuses/02_fuse_characteristics.pdf" },
+            { label: "Fuses: 03 Fuses", url: "/protection/summaries/subject_slides/fuses/03_fuses.pdf" },
+            { label: "Fuses: ESD Components", url: "/protection/summaries/subject_slides/fuses/esd_1_electrical_components.pdf" },
+            { label: "Fuses: Classes", url: "/protection/summaries/subject_slides/fuses/fuse_classes.pdf" },
+            { label: "Fuses: Switchgear & CB", url: "/protection/summaries/subject_slides/fuses/fuses_switchgear_circuit_breakers.pdf" },
+            { label: "Fuses: gG Fuses", url: "/protection/summaries/subject_slides/fuses/gpeu_ferrule_gG_fuses.pdf" },
+            { label: "Fuses: Selection Guide", url: "/protection/summaries/subject_slides/fuses/guide_to_fuse_selection.pdf" },
+            { label: "Fuses: IP Protection Classes", url: "/protection/summaries/subject_slides/fuses/ip_protection_classes_01.pdf" },
+            { label: "Fuses: Safety Switches", url: "/protection/summaries/subject_slides/fuses/safety_switches_fuses.pdf" },
+            // Others
+            { label: "Others: Electromechanical Devices", url: "/protection/summaries/subject_slides/others/electromechanical_components_devices.pdf" },
+            // Relays
+            { label: "Relays: Lecture 1", url: "/protection/summaries/subject_slides/relays/01_lecture_1.pdf" },
+            { label: "Relays: Timer Relays", url: "/protection/summaries/subject_slides/relays/07_timer_relays.pdf" },
+            { label: "Relays: Automobile Types", url: "/protection/summaries/subject_slides/relays/automobile_relay_types.pdf" },
+            { label: "Relays: General", url: "/protection/summaries/subject_slides/relays/relays.pdf" },
+            { label: "Relays: Schematics & Contactors", url: "/protection/summaries/subject_slides/relays/schematics_contactors_and_relays.pdf" },
+            { label: "Relays: Sheldon Munns", url: "/protection/summaries/subject_slides/relays/sheldon_munns_a.pdf" },
+            { label: "Relays: Time Delay Applications", url: "/protection/summaries/subject_slides/relays/time_delay_relay_applications.pdf" },
+            // Resistors
+            { label: "Resistors: Potentiometers", url: "/protection/summaries/subject_slides/resistors/linear_potentiometers_structural_engineering.pdf" },
+            { label: "Resistors: Resistance", url: "/protection/summaries/subject_slides/resistors/resistance.pdf" },
+            { label: "Resistors: General", url: "/protection/summaries/subject_slides/resistors/resistors.pdf" },
+            { label: "Resistors: & Resistance", url: "/protection/summaries/subject_slides/resistors/resistors_and_resistance.pdf" },
+            { label: "Resistors: Colour Coding", url: "/protection/summaries/subject_slides/resistors/resistors_colour_coding.pdf" },
+            { label: "Resistors: Semiconductor Electronics", url: "/protection/summaries/subject_slides/resistors/semiconductor_electronics.pdf" },
+            // Sensors
+            { label: "Sensors: Basics", url: "/protection/summaries/subject_slides/sensors/basic_of_sensors.pdf" },
+            { label: "Sensors: Fundamentals", url: "/protection/summaries/subject_slides/sensors/fundamentals_of_sensing.pdf" }
+          ]
+        }
+      ], 
+      
+      // 3. Quizzes & MCQs (Test Banks)
+      quizzes: [
+        {
+          label: "MCQs & Test Banks",
+          type: 'folder',
+          items: [
+            { label: "Circuit Breaker MCQs 1", url: "/protection/past_papers/circuit_breaker_multiple_choice_questions.pdf" },
+            { label: "Circuit Breaker MCQs 2", url: "/protection/past_papers/circuit_breakers_mcqs.pdf" },
+            { label: "Electrical Fuse MCQ eBook", url: "/protection/past_papers/electrical_fuse_mcq_ebook.pdf" },
+            { label: "Electrical Switches Objective Qs", url: "/protection/past_papers/electrical_switches_objective_questions.pdf" },
+            { label: "Protection & Switchgear Test Bank", url: "/protection/past_papers/protection_and_switch_gear_test_bank.pdf" },
+            { label: "SAP MCQ Question Bank", url: "/protection/past_papers/sap_mcq_question_bank_e2_d.pdf" },
+            { label: "Sensors & Transducers Objective Qs", url: "/protection/past_papers/sensors_and_transducers_objective_questions.pdf" }
+          ]
+        }
+      ],
+
+      // 4. Mid Exams (مرتبة تنازلياً)
+      mid: [
+        { label: "Mid Exam 2025 ", url: "/protection/past_papers/mid_2025.pdf" },
+        { label: "Mid Exam 2025 ", url: "/protection/past_papers/mid_2025_exam.pdf" },
+        { label: "Mid Exam 2024 ", url: "/protection/past_papers/mid_2024.pdf" },
+        { label: "Mid Exam 2024 ", url: "/protection/past_papers/mid_exam_2024.pdf" },
+        { label: "Mid Exam 2016", url: "/protection/past_papers/mid_2016.pdf" },
+        { label: "Mid Exam 2015", url: "/protection/past_papers/mid_2015.pdf" },
+        { label: "Mid Exam ", url: "/protection/past_papers/mid.pdf" }
+      ], 
+      
+      // 5. Final Exams
+      final: [
+        { label: "Final Screens", url: "/protection/past_papers/final_screens.pdf" }
+      ]
     } 
   },
   
