@@ -366,11 +366,100 @@ circuits_1: {
     } 
   },
   
-  circuits_2: { 
+circuits_2: { 
     coords: { x: 78.61, y: 21.87, w: 5.25, h: 5.91 }, 
     content: {
-      titleEn: "Circuits 2", titleAr: "دوائر كهربائية 2",
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Circuits 2", 
+      titleAr: "دوائر كهربائية 2", 
+      
+      // 1. Books & Solutions (نفس كتب سيركت 1 بالضبط)
+      books: [
+        { 
+          label: "Analysis of Electrical Electronic Circuits", 
+          url: "/Circuit_1/books/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.pdf",
+          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.png",
+          isArabic: true
+        },
+        { 
+          label: "Solutions Manual (Arabic)", 
+          url: "/Circuit_1/books/Book_Solutions_Analysis_of_Electrical_Electronic_Circuits_Arabic.pdf",
+          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.png",
+          isArabic: true,
+          isSolution: true 
+        },
+        { 
+          label: "Fundamentals of Circuits 7th Ed", 
+          url: "/Circuit_1/books/Book_Fundamentals_of_Circuits_7th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.png"
+        },
+        { 
+          label: "Solutions Manual (7th Ed)", 
+          url: "/Circuit_1/books/Book_Solutions_Fundamentals_of_Circuits_7th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.png",
+          isSolution: true 
+        },
+        { 
+          label: "Engineering Circuit Analysis 9th Ed", 
+          url: "/Circuit_1/books/Book_Engineering_Circuit_Analysis_9th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.png"
+        },
+        { 
+          label: "Solutions Manual (9th Ed)", 
+          url: "/Circuit_1/books/Book_Solutions_Engineering_Circuit_Analysis_9th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.png",
+          isSolution: true 
+        },
+        { 
+          label: "Electric Circuits 11th Edition", 
+          url: "/Circuit_1/books/Book_Electric_Circuits_11th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Electric_Circuits_11th_Edition.png"
+        },
+        { 
+          label: "Electronics Fundamentals 8th Ed", 
+          url: "/Circuit_1/books/Book_Electronics_Fundamentals_Circuits_Devices_Applications_8th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Electronics_Fundamentals_Circuits_Devices_Applications_8th_Edition.png"
+        },
+        { 
+          label: "Introductory Circuit Analysis 13th Ed", 
+          url: "/Circuit_1/books/Book_Introductory_Circuit_Analysis_13th_Edition.pdf",
+          coverUrl: "/BooksCover/Book_Introductory_Circuit_Analysis_13th_Edition.png"
+        }
+      ], 
+      
+      // 2. Videos / Lectures
+      videos: [
+        { label: "Ahmad Khawaja Explanation", url: "https://www.youtube.com/playlist?list=PLfHIBOSWCljUsYwx7Q9HxH-ZK9B8uiv94" },
+        { label: "Eng. Kareem Explanation", url: "https://www.youtube.com/playlist?list=PLFM6wDAJoh-88gjdMrSJ28aPkw2-9uR6f" },
+        { label: "CNE Explanation", url: "https://www.youtube.com/playlist?list=PLJwCQtAhsso9OHZiNjPkdHXrsp3dCkpxA" }
+      ],
+
+      // 3. Summaries & Notes
+      summaries: [
+        { label: "Ahmad Khawaja Summary", url: "/Circuit_2/Summaries/Ahmad_Khawaja_Circuit2.pdf" },
+        { label: "Eng. Yaseen Slides", url: "/Circuit_2/Summaries/Slides_Eng_Yaseen_Circuit2.pdf" }
+      ], 
+      
+      // 4. Mid Exams (مرتبة تنازلياً)
+      mid: [
+        { label: "2025", url: "/Circuit_2/PastPapers/Mid_2025_Circuit2.pdf" },
+        { label: "2024", url: "/Circuit_2/PastPapers/Mid_2024_Circuit2.pdf" },
+        { label: " 2024 (Alt)", url: "/Circuit_2/PastPapers/Mid_2024_Alt_Circuit2.pdf" },
+        { label: " 2023", url: "/Circuit_2/PastPapers/Mid_2023_Circuit2.pdf" },
+        { label: " 2023 (Alt)", url: "/Circuit_2/PastPapers/Mid_2023_Alt_Circuit2.pdf" },
+        { label: " 2022", url: "/Circuit_2/PastPapers/Mid_2022_Circuit2.pdf" },
+        { label: " 2019", url: "/Circuit_2/PastPapers/Mid_2019_Circuit2.pdf" },
+        { label: " 2016", url: "/Circuit_2/PastPapers/Mid_2016_Circuit2.pdf" },
+        { label: "Mid Exam General 2024", url: "/Circuit_2/PastPapers/Mid_Exam_2024_Circuit2.pdf" },
+        { label: "Mid Exam General 2023", url: "/Circuit_2/PastPapers/Mid_Exam_2023_Circuit2.pdf" },
+        { label: "Mid Exam General", url: "/Circuit_2/PastPapers/Mid_Exam_Circuit2.pdf" }
+      ], 
+      
+      // 5. Final Exams (مرتبة تنازلياً)
+      final: [
+        { label: " 2023", url: "/Circuit_2/PastPapers/Final_2023_Circuit2.pdf" },
+        { label: " 2022", url: "/Circuit_2/PastPapers/Final_2022_Circuit2.pdf" },
+        { label: "Final Exam General", url: "/Circuit_2/PastPapers/Final_Circuit2.pdf" }
+      ]
     } 
   },
   
