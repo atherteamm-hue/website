@@ -468,7 +468,7 @@ circuits_lab: {
     coords: { x: 77.81, y: 31.65, w: 6.85, h: 5.92 }, 
     content: {
       titleEn: "Circuits Lab", 
-      titleAr: "Circuits Lab", // No Arabic in UI
+      titleAr: " مختبر دوائر كهربائية", 
       
       books: [], // فارغ، سيختفي القسم
       
