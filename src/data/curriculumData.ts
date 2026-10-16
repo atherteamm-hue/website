@@ -8,7 +8,11 @@ export interface CourseContent {
     | { label: string; url: string }
     | { label: string; type: 'folder'; items: { label: string; url: string }[] }
   )[];
-  videos: { label: string; url: string }[];
+  videos?: { label: string; url: string }[]; // حطينا ? عشان نقدر نمسحها من أي مادة
+  quizzes?: ( // ضفنا قسم الكويزات الجديد لحاله ويدعم القوائم المنسدلة
+    | { label: string; url: string }
+    | { label: string; type: 'folder'; items: { label: string; url: string }[] }
+  )[];
   mid: { label: string; url: string }[];
   final: { label: string; url: string }[];
 }
@@ -278,13 +282,12 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
- communication: { 
+communication: { 
     coords: { x: 47.81, y: 36.2, w: 5.36, h: 5.46 }, 
     content: {
       titleEn: "Communication", 
-      titleAr: "اتصالات وتراسل بيانات",
+      titleAr: "اتصالات وتراسل بيانات", 
       
-      // 1. Books
       books: [
         { 
           label: "Data Communication and Networking", 
@@ -304,7 +307,6 @@ export const curriculumData: Record<string, Course> = {
         }
       ], 
       
-      // 2. Notes, Slides, and Quizzes (Dropdowns)
       summaries: [
         { 
           label: "Notes & Summaries", 
@@ -342,10 +344,13 @@ export const curriculumData: Record<string, Course> = {
             { label: "Chapter 8", url: "/communication/Slides/Highlighted/Chapter_08.pdf" },
             { label: "Chapter 10", url: "/communication/Slides/Highlighted/Chapter_10.pdf" }
           ] 
-        },
-        // هنا وضعنا الكويزات كقائمة منسدلة لتظهر فوق الميد والفاينل
+        }
+      ], 
+      
+      // الكويزات هسا صارت بخانة مستقلة وجواها الدروب داون تبعها
+      quizzes: [
         {
-          label: "Quizzes (Past Papers)",
+          label: "Quizzes (Dropdown)",
           type: 'folder',
           items: [
             { label: "Quiz 1 (2022)", url: "/communication/pastpapers/Quizzes/Quiz_1_2022.pdf" },
@@ -358,11 +363,8 @@ export const curriculumData: Record<string, Course> = {
             { label: "Quiz Ch4 (T2 2023-24)", url: "/communication/pastpapers/Quizzes/Quiz_Ch4_T2_2023-24.pdf" }
           ]
         }
-      ], 
-      
-      videos: [], 
-      
-      // 3. Mid Exams (قائمة مباشرة)
+      ],
+
       mid: [
         { label: "Mid 2022 Additional", url: "/communication/pastpapers/Mids/Mid_2022_Additional.pdf" },
         { label: "Mid 2023", url: "/communication/pastpapers/Mids/Mid_2023.pdf" },
@@ -376,7 +378,6 @@ export const curriculumData: Record<string, Course> = {
         { label: "Mid 25-26 (1st Semester MAE)", url: "/communication/pastpapers/Mids/Mid_25-26_1st_Semester_MAE.pdf" }
       ], 
       
-      // 4. Final Exams (قائمة مباشرة)
       final: [
         { label: "Final Exam 2022", url: "/communication/pastpapers/Finals/Final_Exam_2022.pdf" },
         { label: "Final Exam 2026", url: "/communication/pastpapers/Finals/Final_Exam_2026.pdf" },
