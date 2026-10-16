@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FileArchive, FileEdit } from 'lucide-react'; // ضفنا استدعاء أيقونات الأدوات الجديدة
 import { curriculumData } from '../data/curriculumData.ts';
 import { CourseModal } from '../components/CourseModal.tsx';
 import { PdfMerger } from '../components/PdfMerger.tsx';
@@ -108,22 +109,66 @@ export function AcademicLibraryPage() {
           </div>
         </div>
 
-        {/* قسم أدوات فريق أثر */}
+        {/* قسم أدوات فريق أثر وأدوات مساعدة */}
         <div className="mt-24 border-t border-black/10 pt-16">
           <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-neutral-500 mb-2 text-center">
-            Athar Tools
+            Athar Tools & More
           </h2>
           <h3 className="text-3xl font-black tracking-tighter uppercase text-black text-center mb-10">
             Student Utilities
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-            <PdfMerger />
-            <PdfSplitter />
-            <ImgToPdf />
-            <PdfWatermark />
-            <PdfRotate />
-            <PdfPageNumbers />
+            
+            {/* 1. أدوات فريق أثر (مع شارة By Athar) */}
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <PdfMerger />
+            </div>
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <PdfSplitter />
+            </div>
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <ImgToPdf />
+            </div>
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <PdfWatermark />
+            </div>
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <PdfRotate />
+            </div>
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <PdfPageNumbers />
+            </div>
+
+            {/* 2. أدوات خارجية (Sejda - بدون شارة By Athar) */}
+            <a 
+              href="https://www.sejda.com/compress-pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-2xl hover:border-black hover:shadow-xl transition-all group"
+            >
+              <FileArchive size={32} className="text-neutral-400 group-hover:text-black mb-4 transition-colors" />
+              <h4 className="font-black text-lg text-black uppercase tracking-tight mb-2">Compress PDF</h4>
+              <p className="text-sm font-medium text-neutral-500 text-center">Reduce file size while optimizing for maximal PDF quality.</p>
+            </a>
+
+            <a 
+              href="https://www.sejda.com/pdf-editor" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-2xl hover:border-black hover:shadow-xl transition-all group"
+            >
+              <FileEdit size={32} className="text-neutral-400 group-hover:text-black mb-4 transition-colors" />
+              <h4 className="font-black text-lg text-black uppercase tracking-tight mb-2">PDF Editor</h4>
+              <p className="text-sm font-medium text-neutral-500 text-center">Fill out PDF forms, add text, images, and edit existing text.</p>
+            </a>
+
           </div>
         </div>
 
