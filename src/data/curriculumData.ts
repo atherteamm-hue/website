@@ -472,11 +472,65 @@ circuits_2: {
     } 
   },
   
-  signals: { 
+signals: { 
     coords: { x: 63.21, y: 38.93, w: 5.48, h: 5.46 }, 
     content: {
-      titleEn: "Signals", titleAr: "أنظمة و إشارات",
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Signals & Systems", 
+      titleAr: "انظمة واشارات", 
+      
+      // 1. Books
+     // 1. Books
+      books: [
+        { 
+          label: "Signals and Systems 2nd Ed (Schaum Outline)", 
+          url: "/Signal/books/Signals and Systems 2nd Edition - Schaum Outline_compressed.pdf",
+          coverUrl: "/BooksCover/Signals and Systems 2nd Edition - Schaum Outline_compressed.png" 
+        },
+        { 
+          label: "Signals and Systems 2nd Ed (Alan V. Oppenheim)", 
+          url: "/Signal/books/Signals and Systems 2nd Edition - alan v_compressed.pdf", 
+          coverUrl: "/BooksCover/Signals and Systems 2nd Edition - alan v_compressed.png" 
+        }
+      ],
+      
+      // 2. Videos / Lectures
+      videos: [
+        { label: "Spectrum Team ", url: "https://www.youtube.com/watch?v=ARB7PBRlPGc" },
+        { label: "Bashar Zayoud (EES) ", url: "https://www.youtube.com/playlist?list=PLdL3o9rqPLb6pX0jukRtna5XE-1ZKPGCI" },
+        { label: "Arabic Explanation Playlist", url: "https://www.youtube.com/watch?v=2mz2alVD8f4&list=PLmtVLconakTY6y0Thd050QsvkHTJF8TWa&index=1" },
+        { label: "Hazem Masoud ", url: "https://www.youtube.com/watch?v=HB1kOC7yWRw&list=PL2Ii6Wj70DwEfieCcOUh-EIrZkjab2YYl" }
+      ],
+
+      // 3. Summaries & Notes
+      summaries: [
+        { label: "Fourier & Laplace Transform", url: "/Signal/summaries/Fourier Transform and Laplace Transform.pdf" },
+        { label: "Signals & Systems By MAE & AF", url: "/Signal/summaries/Signals & Systems By MAE & AF.pdf" },
+        { label: "Eng. Nibal Notes", url: "/Signal/summaries/دوسية م.نبال_.pdf" },
+        { label: "Dr. Jawdat Slides", url: "/Signal/summaries/سلايدات د.جودت_.pdf" }
+      ], 
+      
+      // 4. Mid Exams (مرتبة تنازلياً)
+      mid: [
+        { label: "2025", url: "/Signal/pastpapers/midterms/ميد 2025_.pdf" },
+        { label: "2024", url: "/Signal/pastpapers/midterms/ميد 2024_.pdf" },
+        { label: "2023 ", url: "/Signal/pastpapers/midterms/Signal Midterm 2023.pdf" },
+        { label: "2023 ", url: "/Signal/pastpapers/midterms/امتحان ميد 2023_.pdf" },
+        { label: "2023 ", url: "/Signal/pastpapers/midterms/ميد 2023_.pdf" },
+        { label: "2008", url: "/Signal/pastpapers/midterms/ميد 2008_.pdf" },
+        { label: "2008", url: "/Signal/pastpapers/midterms/Midterm 2008.pdf" },
+        { label: "2006", url: "/Signal/pastpapers/midterms/Midterm 2006.pdf" },
+        { label: "2005 ", url: "/Signal/pastpapers/midterms/Exam Midterm 2005.pdf" },
+        { label: "2005 ", url: "/Signal/pastpapers/midterms/Midterm 2005.pdf" },
+        { label: "2005", url: "/Signal/pastpapers/midterms/Midterm Exam 2005.pdf" },
+        { label: "2004", url: "/Signal/pastpapers/midterms/Midterm 2004.pdf" },
+        { label: "2004", url: "/Signal/pastpapers/midterms/Midterm Exam 2004.pdf" }
+      ], 
+      
+      // 5. Final Exams (مرتبة تنازلياً)
+      final: [
+        { label: "2025", url: "/Signal/pastpapers/finals/فاينل 2025.pdf" },
+        { label: "2023", url: "/Signal/pastpapers/finals/فاينل 2023.pdf" }
+      ]
     } 
   },
   
