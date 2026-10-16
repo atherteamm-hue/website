@@ -13,7 +13,6 @@ interface CourseModalProps {
 }
 
 export function CourseModal({ content, onClose, isCompleted, onToggleComplete }: CourseModalProps) {
-  // غيرنا المتغير ليقبل نصوص عشان نفصل بين قوائم الملخصات وقوائم الكويزات
   const [openFolders, setOpenFolders] = useState<Record<string, boolean>>({});
 
   const toggleFolder = (id: string) => {
@@ -75,7 +74,7 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
               )}
             </div>
 
-            {/* قسم الفيديوهات (يختفي تماماً إذا كان فارغاً) */}
+            {/* قسم الفيديوهات */}
             {content.videos && content.videos.length > 0 && (
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Lectures & Videos</h4>
@@ -116,7 +115,8 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
                             {openFolders[`summary-${idx}`] ? <ChevronDown size={16} className="text-neutral-400"/> : <ChevronLeft size={16} className="text-neutral-400"/>}
                           </button>
                           
-                          <div className={`transition-all duration-300 ease-in-out ${openFolders[`summary-${idx}`] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                          {/* التعديل السحري صار هون */}
+                          <div className={`transition-all duration-300 ease-in-out ${openFolders[`summary-${idx}`] ? 'max-h-[50vh] opacity-100 overflow-y-auto custom-scrollbar' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                             <div className="border-t border-neutral-200 bg-white p-2 flex flex-col">
                               {summary.items.map((item, i) => (
                                 <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 p-3 text-sm font-bold text-neutral-500 hover:text-black hover:bg-neutral-50 rounded-lg transition-colors">
@@ -145,7 +145,7 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
               </div>
             )}
 
-            {/* قسم الكويزات (القوائم المنسدلة الجديدة) */}
+            {/* قسم الكويزات */}
             {content.quizzes && content.quizzes.length > 0 && (
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Quizzes</h4>
@@ -168,7 +168,8 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
                             {openFolders[`quiz-${idx}`] ? <ChevronDown size={16} className="text-neutral-400"/> : <ChevronLeft size={16} className="text-neutral-400"/>}
                           </button>
                           
-                          <div className={`transition-all duration-300 ease-in-out ${openFolders[`quiz-${idx}`] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                          {/* والتعديل السحري كمان هون */}
+                          <div className={`transition-all duration-300 ease-in-out ${openFolders[`quiz-${idx}`] ? 'max-h-[50vh] opacity-100 overflow-y-auto custom-scrollbar' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                             <div className="border-t border-neutral-200 bg-white p-2 flex flex-col">
                               {quiz.items.map((item, i) => (
                                 <a key={i} href={item.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 p-3 text-sm font-bold text-neutral-500 hover:text-black hover:bg-neutral-50 rounded-lg transition-colors">
@@ -197,7 +198,7 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
               </div>
             )}
 
-            {/* قسم أسئلة السنوات (الميد والفاينل) */}
+            {/* قسم أسئلة السنوات */}
             <div>
               <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Exam Archive</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
