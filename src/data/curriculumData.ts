@@ -479,13 +479,19 @@ signals: {
       titleAr: "انظمة واشارات", 
       
       // 1. Books
+     // 1. Books
       books: [
         { 
           label: "Signals and Systems 2nd Ed (Schaum Outline)", 
           url: "/Signal/books/Signals and Systems 2nd Edition - Schaum Outline_compressed.pdf",
           coverUrl: "/BooksCover/Signals and Systems 2nd Edition - Schaum Outline_compressed.png" 
+        },
+        { 
+          label: "Signals and Systems 2nd Ed (Alan V. Oppenheim)", 
+          url: "/Signal/books/Signals and Systems 2nd Edition - alan v_compressed.pdf", 
+          coverUrl: "/BooksCover/Signals and Systems 2nd Edition - alan v_compressed.png" 
         }
-      ], 
+      ],
       
       // 2. Videos / Lectures
       videos: [
