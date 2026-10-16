@@ -53,10 +53,10 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
         <div className="flex-1 overflow-y-auto p-8 custom-scrollbar bg-white">
           <div className="flex flex-col gap-12">
             
-            {/* قسم الكتب */}
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-8 border-b border-neutral-100 pb-2">Textbooks</h4>
-              {content.books && content.books.length > 0 ? (
+            {/* قسم الكتب - سيختفي بالكامل إذا كان فارغاً */}
+            {content.books && content.books.length > 0 && (
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-8 border-b border-neutral-100 pb-2">Textbooks</h4>
                 <div className="flex flex-wrap gap-14 justify-center sm:justify-start py-4">
                   {content.books.map((book, idx) => (
                     <Book3D 
@@ -69,12 +69,10 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
                     />
                   ))}
                 </div>
-              ) : (
-                <p className="text-sm text-neutral-400 font-bold">No textbooks available yet.</p>
-              )}
-            </div>
+              </div>
+            )}
 
-            {/* قسم الفيديوهات */}
+            {/* قسم الفيديوهات - سيختفي بالكامل إذا كان فارغاً */}
             {content.videos && content.videos.length > 0 && (
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Lectures & Videos</h4>
@@ -92,7 +90,7 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
               </div>
             )}
 
-            {/* قسم الملخصات والدوسيات */}
+            {/* قسم الملخصات والدوسيات - سيختفي بالكامل إذا كان فارغاً */}
             {content.summaries && content.summaries.length > 0 && (
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Materials & Summaries</h4>
@@ -115,7 +113,6 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
                             {openFolders[`summary-${idx}`] ? <ChevronDown size={16} className="text-neutral-400"/> : <ChevronLeft size={16} className="text-neutral-400"/>}
                           </button>
                           
-                          {/* التعديل السحري صار هون */}
                           <div className={`transition-all duration-300 ease-in-out ${openFolders[`summary-${idx}`] ? 'max-h-[50vh] opacity-100 overflow-y-auto custom-scrollbar' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                             <div className="border-t border-neutral-200 bg-white p-2 flex flex-col">
                               {summary.items.map((item, i) => (
@@ -145,7 +142,7 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
               </div>
             )}
 
-            {/* قسم الكويزات */}
+            {/* قسم الكويزات - سيختفي بالكامل إذا كان فارغاً */}
             {content.quizzes && content.quizzes.length > 0 && (
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-6 border-b border-neutral-100 pb-2">Quizzes</h4>
@@ -168,7 +165,6 @@ export function CourseModal({ content, onClose, isCompleted, onToggleComplete }:
                             {openFolders[`quiz-${idx}`] ? <ChevronDown size={16} className="text-neutral-400"/> : <ChevronLeft size={16} className="text-neutral-400"/>}
                           </button>
                           
-                          {/* والتعديل السحري كمان هون */}
                           <div className={`transition-all duration-300 ease-in-out ${openFolders[`quiz-${idx}`] ? 'max-h-[50vh] opacity-100 overflow-y-auto custom-scrollbar' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                             <div className="border-t border-neutral-200 bg-white p-2 flex flex-col">
                               {quiz.items.map((item, i) => (
