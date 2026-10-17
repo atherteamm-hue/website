@@ -171,10 +171,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             {activeModal === 'socials' ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { name: 'LinkedIn', url: '' },
+                  { name: 'LinkedIn', url: 'https://www.linkedin.com/company/team-athar/' },
                   { name: 'Instagram', url: 'https://www.instagram.com/team_athar_?stkn=MXRhbWx2ZmttNjVtZw%3D%3D' },
-                  { name: 'Facebook', url: '' },
-                  { name: 'YouTube', url: '' }
+                  { name: 'Facebook', url: 'https://www.facebook.com/share/19k5AGXANy/?mibextid=wwXIfr' },
+                  { name: 'YouTube', url: 'https://youtube.com/@atharteam-9?si=yniI07m_GxcRiuVp' }
                 ].map(social => (
                   <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="p-4 border border-neutral-100 rounded-xl hover:bg-neutral-50 transition-colors flex justify-between items-center group">
                     <span className="font-medium">{social.name}</span>
