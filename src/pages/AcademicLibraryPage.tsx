@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { FileArchive, FileEdit } from 'lucide-react';
 import { curriculumData } from '../data/curriculumData.ts';
 import { CourseModal } from '../components/CourseModal.tsx';
 import { PdfMerger } from '../components/PdfMerger.tsx';
@@ -13,60 +14,118 @@ export function AcademicLibraryPage() {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
   const [lang, setLang] = useState<'EN' | 'AR'>('EN');
   
-  // State لحفظ المواد المنجزة
   const [completedCourses, setCompletedCourses] = useState<string[]>([]);
+  // State جديدة لحفظ عدد المواد الاختيارية المنجزة (0, 1, 2)
+  const [electiveCount, setElectiveCount] = useState<number>(0);
 
-  // استرجاع البيانات من ذاكرة المتصفح أول ما تفتح الصفحة
   useEffect(() => {
-    const saved = localStorage.getItem('athar_completed_courses');
-    if (saved) {
+    // استرجاع مواد التخصص
+    const savedCourses = localStorage.getItem('athar_completed_courses');
+    if (savedCourses) {
       try {
-        setCompletedCourses(JSON.parse(saved));
+        setCompletedCourses(JSON.parse(savedCourses));
       } catch (e) {
         console.error("Error parsing completed courses", e);
       }
     }
+    
+    // استرجاع عدد المواد الاختيارية
+    const savedElectives = localStorage.getItem('athar_elective_count');
+    if (savedElectives) {
+      setElectiveCount(parseInt(savedElectives));
+    }
   }, []);
 
-  // دالة لإضافة أو إزالة مادة من قائمة الإنجاز
   const toggleCourseCompletion = (courseKey: string) => {
     setCompletedCourses(prev => {
       const isCompleted = prev.includes(courseKey);
       const newCompleted = isCompleted 
-        ? prev.filter(k => k !== courseKey) // إزالة إذا كانت موجودة
-        : [...prev, courseKey];             // إضافة إذا لم تكن موجودة
+        ? prev.filter(k => k !== courseKey)
+        : [...prev, courseKey];
       
-      // حفظ التحديث في المتصفح
       localStorage.setItem('athar_completed_courses', JSON.stringify(newCompleted));
       return newCompleted;
     });
   };
 
+  const handleElectiveChange = (count: number) => {
+    setElectiveCount(count);
+    localStorage.setItem('athar_elective_count', count.toString());
+  };
+
+  // ----------------------------------------------------
+  // حساب المجموع = (مواد التخصص) + (المواد الاختيارية * 3 ساعات)
+  // ----------------------------------------------------
+  const totalCompletedHours = useMemo(() => {
+    const coreHours = completedCourses.reduce((sum, courseKey) => {
+      const course = curriculumData[courseKey];
+      return sum + (course?.content?.credits || 0);
+    }, 0);
+    
+    return coreHours + (electiveCount * 3);
+  }, [completedCourses, electiveCount]);
+
   return (
     <div className="relative z-[5] min-h-screen bg-[#fafafa] pt-32 pb-20 px-5 sm:px-10 antialiased">
       <div className="max-w-7xl mx-auto">
         
-        {/* الجزء العلوي: العنوان والزر */}
-        <div className="mb-12 border-b border-black/10 pb-8">
-          <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-neutral-600 mb-4">
-            Curriculum Journey
-          </h2>
-          
-          <div className="flex justify-between items-center">
+        <div className="mb-12 border-b border-black/10 pb-8 flex flex-col md:flex-row md:justify-between md:items-end gap-6">
+          <div>
+            <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-neutral-600 mb-4">
+              Curriculum Journey
+            </h2>
             <h1 className="text-5xl font-black tracking-tighter uppercase text-black">
               Academic Library
             </h1>
-            
+          </div>
+          
+          <div className="flex flex-col items-end gap-4">
             <button 
               onClick={() => setLang(l => l === 'EN' ? 'AR' : 'EN')}
               className="px-8 py-3 bg-black text-white rounded-full font-bold text-xs uppercase tracking-widest hover:scale-105 hover:bg-neutral-800 transition-all shadow-md"
             >
               {lang === 'EN' ? 'VIEW ARABIC' : 'VIEW ENGLISH'}
             </button>
+            
+            {/* ---------------------------------------------------- */}
+            {/* قسم العدادات (مواد اختيارية + مجموع الساعات) */}
+            {/* ---------------------------------------------------- */}
+            <div className="flex flex-col sm:flex-row items-end sm:items-center gap-3">
+              
+              {/* عداد المواد الاختيارية */}
+              <div className="flex items-center gap-2 bg-white border border-neutral-200 shadow-sm rounded-full px-3 py-1.5">
+                <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest pl-2">
+                  {lang === 'EN' ? 'Electives Done:' : 'مواد اختياري:'}
+                </span>
+                <div className="flex gap-1 bg-neutral-100 rounded-full p-0.5">
+                  {[0, 1, 2].map(num => (
+                    <button
+                      key={num}
+                      onClick={() => handleElectiveChange(num)}
+                      className={`w-7 h-7 rounded-full text-xs font-bold transition-all ${
+                        electiveCount === num 
+                          ? 'bg-black text-white shadow-sm' 
+                          : 'text-neutral-500 hover:bg-white hover:text-black'
+                      }`}
+                    >
+                      {num}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* عداد الساعات الكلي */}
+              <div className="bg-white border border-neutral-200 shadow-sm rounded-full px-5 py-2 flex items-center gap-2 h-[40px]">
+                 <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">
+                   {lang === 'EN' ? 'Passed Hours:' : 'الساعات المقطوعة:'}
+                 </span>
+                 <span className="font-mono text-xl font-black text-black">{totalCompletedHours}</span>
+              </div>
+              
+            </div>
           </div>
         </div>
 
-        {/* الخريطة والأزرار الشفافة */}
         <div className="relative w-full border border-black/10 shadow-2xl rounded-[40px] overflow-hidden bg-white">
           <img 
             src={lang === 'EN' ? '/flowchart-en.svg' : '/flowchart-ar.svg'} 
@@ -80,7 +139,6 @@ export function AcademicLibraryPage() {
                 <button
                   key={key}
                   onClick={(e) => { e.stopPropagation(); setSelectedCourse(key); }}
-                  // هون السحر: إذا المادة منجزة بتتلون أخضر، غير هيك بتضل شفافة
                   className={`absolute rounded-lg transition-all cursor-pointer flex items-center justify-center
                     ${isCompleted 
                       ? 'bg-green-500/20 border-2 border-green-500 hover:bg-green-500/30 z-10' 
@@ -94,7 +152,6 @@ export function AcademicLibraryPage() {
                   }}
                   title={lang === 'EN' ? course.content.titleEn : course.content.titleAr}
                 >
-                  {/* علامة صح بتطلع بزاوية المادة المنجزة */}
                   {isCompleted && (
                     <div className="absolute -top-2 -right-2 bg-green-500 text-white rounded-full p-1 shadow-md animate-in zoom-in">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
@@ -108,31 +165,70 @@ export function AcademicLibraryPage() {
           </div>
         </div>
 
-        {/* قسم أدوات فريق أثر */}
         <div className="mt-24 border-t border-black/10 pt-16">
           <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-neutral-500 mb-2 text-center">
-            Athar Tools
+            Athar Tools & More
           </h2>
           <h3 className="text-3xl font-black tracking-tighter uppercase text-black text-center mb-10">
             Student Utilities
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-            <PdfMerger />
-            <PdfSplitter />
-            <ImgToPdf />
-            <PdfWatermark />
-            <PdfRotate />
-            <PdfPageNumbers />
+            
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <PdfMerger />
+            </div>
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <PdfSplitter />
+            </div>
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <ImgToPdf />
+            </div>
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <PdfWatermark />
+            </div>
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <PdfRotate />
+            </div>
+            <div className="relative group">
+              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
+              <PdfPageNumbers />
+            </div>
+
+            <a 
+              href="https://www.sejda.com/compress-pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-2xl hover:border-black hover:shadow-xl transition-all group"
+            >
+              <FileArchive size={32} className="text-neutral-400 group-hover:text-black mb-4 transition-colors" />
+              <h4 className="font-black text-lg text-black uppercase tracking-tight mb-2">Compress PDF</h4>
+              <p className="text-sm font-medium text-neutral-500 text-center">Reduce file size while optimizing for maximal PDF quality.</p>
+            </a>
+
+            <a 
+              href="https://www.sejda.com/pdf-editor" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-2xl hover:border-black hover:shadow-xl transition-all group"
+            >
+              <FileEdit size={32} className="text-neutral-400 group-hover:text-black mb-4 transition-colors" />
+              <h4 className="font-black text-lg text-black uppercase tracking-tight mb-2">PDF Editor</h4>
+              <p className="text-sm font-medium text-neutral-500 text-center">Fill out PDF forms, add text, images, and edit existing text.</p>
+            </a>
+
           </div>
         </div>
 
-        {/* قسم المحاكيات */}
         <MaeSimulations />
 
       </div>
 
-      {/* النافذة المنبثقة للمواد وتمرير حالة الإنجاز إلها */}
       {selectedCourse && curriculumData[selectedCourse] && (
         <CourseModal 
           content={curriculumData[selectedCourse].content} 

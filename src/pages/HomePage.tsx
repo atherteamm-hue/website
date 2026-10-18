@@ -128,9 +128,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             Follow our socials
           </button>
 
-          {/* الزر هنا تم تحويله لرابط خارجي */}
-          <a href="https://tally.so/r/dWB1GN" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] transition-colors hover:bg-black hover:text-white cursor-pointer shadow-xs">
-            Work with us
+          {/* الزر هنا تم تحويله للرابط الجديد */}
+          <a href="https://tally.so/r/0Vrbz0" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] transition-colors hover:bg-black hover:text-white cursor-pointer shadow-xs">
+            work with us
           </a>
 
           <button onClick={() => setActiveModal('gpa')} className="inline-flex items-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] transition-colors hover:bg-black hover:text-white cursor-pointer shadow-xs">
@@ -171,10 +171,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             {activeModal === 'socials' ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { name: 'LinkedIn', url: '' },
+                  { name: 'LinkedIn', url: 'https://www.linkedin.com/company/team-athar/' },
                   { name: 'Instagram', url: 'https://www.instagram.com/team_athar_?stkn=MXRhbWx2ZmttNjVtZw%3D%3D' },
-                  { name: 'Facebook', url: '' },
-                  { name: 'YouTube', url: '' }
+                  { name: 'Facebook', url: 'https://www.facebook.com/share/19k5AGXANy/?mibextid=wwXIfr' },
+                  { name: 'YouTube', url: 'https://youtube.com/@atharteam-9?si=yniI07m_GxcRiuVp' }
                 ].map(social => (
                   <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="p-4 border border-neutral-100 rounded-xl hover:bg-neutral-50 transition-colors flex justify-between items-center group">
                     <span className="font-medium">{social.name}</span>
