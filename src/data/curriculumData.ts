@@ -821,7 +821,45 @@ communication: {
     coords: { x: 73.71, y: 65.78, w: 6.84, h: 5.46 }, 
     content: {
       titleEn: "PLC", titleAr: "متحكمات منطقية مبرمجة", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Ourdev PLC Book", 
+          url: "/plc/books/plc_book_01_ourdev.pdf", 
+          coverUrl: "/plc/books/plc_book_01_ourdev.png" 
+        },
+        { 
+          label: "Process Control Instrumentation Technology", 
+          url: "/plc/books/plc_book_02_process_control_instrumentation_technology.pdf", 
+          coverUrl: "/plc/books/plc_book_02_process_control_instrumentation_technology.png" 
+        },
+        { 
+          label: "Programmable Logic Controllers - Petruzella", 
+          url: "/plc/books/plc_book_03_programmable_logic_controllers_petruzella.pdf", 
+          coverUrl: "/plc/books/plc_book_03_programmable_logic_controllers_petruzella.png" 
+        }
+      ], 
+      summaries: [
+        { label: "Timers & Counters Example", url: "/plc/summaries/plc_summary_01_timers_counters_example.pdf" },
+        { label: "PLC Slides", url: "/plc/summaries/plc_summary_02_plc_slides.pdf" },
+        { label: "Dr. Moezz Alsalahat", url: "/plc/summaries/plc_summary_03_dr_moezz_alsalahat.pdf" },
+        { label: "PLC Summary", url: "/plc/summaries/plc_summary_04_summary.pdf" },
+        { label: "PLC Theory Summary", url: "/plc/summaries/plc_summary_05_summary_plc_theory.pdf" }
+      ], 
+      videos: [], 
+      quizzes: [],
+      mid: [
+        { label: "2016", url: "/plc/pastpapers/plc_pastpaper_05_mid_2016.pdf" },
+        { label: "2016 Exam", url: "/plc/pastpapers/plc_pastpaper_04_mid_2016_exam.pdf" },
+        { label: "2023", url: "/plc/pastpapers/plc_pastpaper_06_mid_2023.pdf" },
+        { label: "2024", url: "/plc/pastpapers/plc_pastpaper_07_mid_2024.pdf" },
+        { label: "2025", url: "/plc/pastpapers/plc_pastpaper_08_mid_2025.pdf" }
+      ], 
+      final: [
+        { label: "2024", url: "/plc/pastpapers/plc_pastpaper_01_final_2024.pdf" },
+        { label: "MCQs", url: "/plc/pastpapers/plc_pastpaper_02_final_mcqs.pdf" },
+        { label: "Screens", url: "/plc/pastpapers/plc_pastpaper_03_final_screens.pdf" },
+        { label: "Mahmoud Final", url: "/plc/pastpapers/plc_pastpaper_09_final_mahmoud.pdf" }
+      ]
     } 
   },
   
