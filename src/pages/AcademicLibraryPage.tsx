@@ -15,15 +15,24 @@ export function AcademicLibraryPage() {
   const [lang, setLang] = useState<'EN' | 'AR'>('EN');
   
   const [completedCourses, setCompletedCourses] = useState<string[]>([]);
+  // State جديدة لحفظ عدد المواد الاختيارية المنجزة (0, 1, 2)
+  const [electiveCount, setElectiveCount] = useState<number>(0);
 
   useEffect(() => {
-    const saved = localStorage.getItem('athar_completed_courses');
-    if (saved) {
+    // استرجاع مواد التخصص
+    const savedCourses = localStorage.getItem('athar_completed_courses');
+    if (savedCourses) {
       try {
-        setCompletedCourses(JSON.parse(saved));
+        setCompletedCourses(JSON.parse(savedCourses));
       } catch (e) {
         console.error("Error parsing completed courses", e);
       }
+    }
+    
+    // استرجاع عدد المواد الاختيارية
+    const savedElectives = localStorage.getItem('athar_elective_count');
+    if (savedElectives) {
+      setElectiveCount(parseInt(savedElectives));
     }
   }, []);
 
@@ -39,15 +48,22 @@ export function AcademicLibraryPage() {
     });
   };
 
+  const handleElectiveChange = (count: number) => {
+    setElectiveCount(count);
+    localStorage.setItem('athar_elective_count', count.toString());
+  };
+
   // ----------------------------------------------------
-  // حساب مجموع الساعات للمواد المنجزة
+  // حساب المجموع = (مواد التخصص) + (المواد الاختيارية * 3 ساعات)
   // ----------------------------------------------------
   const totalCompletedHours = useMemo(() => {
-    return completedCourses.reduce((sum, courseKey) => {
+    const coreHours = completedCourses.reduce((sum, courseKey) => {
       const course = curriculumData[courseKey];
       return sum + (course?.content?.credits || 0);
     }, 0);
-  }, [completedCourses]);
+    
+    return coreHours + (electiveCount * 3);
+  }, [completedCourses, electiveCount]);
 
   return (
     <div className="relative z-[5] min-h-screen bg-[#fafafa] pt-32 pb-20 px-5 sm:px-10 antialiased">
@@ -63,7 +79,7 @@ export function AcademicLibraryPage() {
             </h1>
           </div>
           
-          <div className="flex flex-col items-end gap-3">
+          <div className="flex flex-col items-end gap-4">
             <button 
               onClick={() => setLang(l => l === 'EN' ? 'AR' : 'EN')}
               className="px-8 py-3 bg-black text-white rounded-full font-bold text-xs uppercase tracking-widest hover:scale-105 hover:bg-neutral-800 transition-all shadow-md"
@@ -72,11 +88,40 @@ export function AcademicLibraryPage() {
             </button>
             
             {/* ---------------------------------------------------- */}
-            {/* شارة عداد الساعات */}
+            {/* قسم العدادات (مواد اختيارية + مجموع الساعات) */}
             {/* ---------------------------------------------------- */}
-            <div className="bg-white border border-neutral-200 shadow-sm rounded-full px-5 py-2 flex items-center gap-2">
-               <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">Passed Hours:</span>
-               <span className="font-mono text-xl font-black text-black">{totalCompletedHours}</span>
+            <div className="flex flex-col sm:flex-row items-end sm:items-center gap-3">
+              
+              {/* عداد المواد الاختيارية */}
+              <div className="flex items-center gap-2 bg-white border border-neutral-200 shadow-sm rounded-full px-3 py-1.5">
+                <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest pl-2">
+                  {lang === 'EN' ? 'Electives Done:' : 'مواد اختياري:'}
+                </span>
+                <div className="flex gap-1 bg-neutral-100 rounded-full p-0.5">
+                  {[0, 1, 2].map(num => (
+                    <button
+                      key={num}
+                      onClick={() => handleElectiveChange(num)}
+                      className={`w-7 h-7 rounded-full text-xs font-bold transition-all ${
+                        electiveCount === num 
+                          ? 'bg-black text-white shadow-sm' 
+                          : 'text-neutral-500 hover:bg-white hover:text-black'
+                      }`}
+                    >
+                      {num}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* عداد الساعات الكلي */}
+              <div className="bg-white border border-neutral-200 shadow-sm rounded-full px-5 py-2 flex items-center gap-2 h-[40px]">
+                 <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">
+                   {lang === 'EN' ? 'Passed Hours:' : 'الساعات المقطوعة:'}
+                 </span>
+                 <span className="font-mono text-xl font-black text-black">{totalCompletedHours}</span>
+              </div>
+              
             </div>
           </div>
         </div>
