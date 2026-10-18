@@ -740,7 +740,6 @@ communication: {
         }
       ], 
       summaries: [
-        { label: "Spectrum Team Summary", url: "/electronics1/summarize/electronics_summary_spectrum.pdf" },
         { label: "Eng. Khoula Notebook", url: "/electronics1/summarize/notebook_m_khoula.pdf" },
         { label: "Dr. Majed Slides", url: "/electronics1/summarize/slides_dr_majed.pdf" },
         { label: "Mohammed Aid Slides", url: "/electronics1/summarize/slides_mohammed_aid.pdf" }
@@ -805,7 +804,52 @@ communication: {
     coords: { x: 91.51, y: 25.96, w: 5.24, h: 5.24 }, 
     content: {
       titleEn: "Electrical Machines 1", titleAr: "آلات كهربائية 1", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Electric Machinery Fundamentals 4th Edition", 
+          url: "/electric-machines-1/books/01_electric-machinery-fundamentals-4th-edition.pdf", 
+          coverUrl: "/BooksCover/01_electric-machinery-fundamentals-4th-edition.png" 
+        },
+        { 
+          label: "Principles of Electric Machines and Power Electronics", 
+          url: "/electric-machines-1/books/02_principles-of-electric-machines-and-power-electronics-3rd-edition.pdf", 
+          coverUrl: "/BooksCover/02_principles-of-electric-machines-and-power-electronics-3rd-edition.png" 
+        },
+        { 
+          label: "Electromagnetic and Electromechanical Machines", 
+          url: "/electric-machines-1/books/03_electromagnetic-and-electromechanical-machines-3rd-edition.pdf", 
+          coverUrl: "/BooksCover/03_electromagnetic-and-electromechanical-machines-3rd-edition.png" 
+        },
+        { 
+          label: "Solutions Manual (Fundamentals 4th Ed)", 
+          url: "/electric-machines-1/books/04_solutions-of-electric-machinery-fundamentals-4th-edition.pdf", 
+          coverUrl: "/BooksCover/01_electric-machinery-fundamentals-4th-edition.png", 
+          isSolution: true 
+        }
+      ], 
+      summaries: [
+        { label: "Spark Team Summary", url: "/electric-machines-1/past_papers/04_ملخص-سبارك.pdf" }
+      ], 
+      videos: [
+        { label: "CNE Explanation", url: "https://youtube.com/playlist?list=PLJwCQtAhsso9W8OA0W2Dx1sWA1dDqvixz&si=cu7raPTQ9r5PN8Xv" }
+      ], 
+      quizzes: [
+        {
+          label: "Quizzes",
+          type: 'folder',
+          items: [
+            { label: "Test Bank by MAE", url: "/electric-machines-1/past_papers/01_machines-test-bank-by-mae.pdf" }
+          ]
+        }
+      ],
+      mid: [
+        { label: "2023", url: "/electric-machines-1/past_papers/05_ميد-2023.pdf" },
+        { label: "2026", url: "/electric-machines-1/past_papers/06_ميد-2026.pdf" }
+      ], 
+      final: [
+        { label: "Screens", url: "/electric-machines-1/past_papers/02_شاشات-سبارك.pdf" },
+        { label: "2010", url: "/electric-machines-1/past_papers/03_فاينل-2010.pdf" }
+      ]
     } 
   },
   
@@ -825,17 +869,17 @@ communication: {
         { 
           label: "Ourdev PLC Book", 
           url: "/plc/books/plc_book_01_ourdev.pdf", 
-          coverUrl: "/plc/books/plc_book_01_ourdev.png" 
+          coverUrl: "/BooksCover/plc_book_01_ourdev.png" 
         },
         { 
           label: "Process Control Instrumentation Technology", 
           url: "/plc/books/plc_book_02_process_control_instrumentation_technology.pdf", 
-          coverUrl: "/plc/books/plc_book_02_process_control_instrumentation_technology.png" 
+          coverUrl: "/BooksCover/plc_book_02_process_control_instrumentation_technology.png" 
         },
         { 
           label: "Programmable Logic Controllers - Petruzella", 
           url: "/plc/books/plc_book_03_programmable_logic_controllers_petruzella.pdf", 
-          coverUrl: "/plc/books/plc_book_03_programmable_logic_controllers_petruzella.png" 
+          coverUrl: "/BooksCover/plc_book_03_programmable_logic_controllers_petruzella.png" 
         }
       ], 
       summaries: [
