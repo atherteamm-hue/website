@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { FileArchive, FileEdit } from 'lucide-react'; // ضفنا استدعاء أيقونات الأدوات الجديدة
+import React, { useState, useEffect, useMemo } from 'react';
+import { FileArchive, FileEdit } from 'lucide-react';
 import { curriculumData } from '../data/curriculumData.ts';
 import { CourseModal } from '../components/CourseModal.tsx';
 import { PdfMerger } from '../components/PdfMerger.tsx';
@@ -14,10 +14,8 @@ export function AcademicLibraryPage() {
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
   const [lang, setLang] = useState<'EN' | 'AR'>('EN');
   
-  // State لحفظ المواد المنجزة
   const [completedCourses, setCompletedCourses] = useState<string[]>([]);
 
-  // استرجاع البيانات من ذاكرة المتصفح أول ما تفتح الصفحة
   useEffect(() => {
     const saved = localStorage.getItem('athar_completed_courses');
     if (saved) {
@@ -29,45 +27,60 @@ export function AcademicLibraryPage() {
     }
   }, []);
 
-  // دالة لإضافة أو إزالة مادة من قائمة الإنجاز
   const toggleCourseCompletion = (courseKey: string) => {
     setCompletedCourses(prev => {
       const isCompleted = prev.includes(courseKey);
       const newCompleted = isCompleted 
-        ? prev.filter(k => k !== courseKey) // إزالة إذا كانت موجودة
-        : [...prev, courseKey];             // إضافة إذا لم تكن موجودة
+        ? prev.filter(k => k !== courseKey)
+        : [...prev, courseKey];
       
-      // حفظ التحديث في المتصفح
       localStorage.setItem('athar_completed_courses', JSON.stringify(newCompleted));
       return newCompleted;
     });
   };
 
+  // ----------------------------------------------------
+  // حساب مجموع الساعات للمواد المنجزة
+  // ----------------------------------------------------
+  const totalCompletedHours = useMemo(() => {
+    return completedCourses.reduce((sum, courseKey) => {
+      const course = curriculumData[courseKey];
+      return sum + (course?.content?.credits || 0);
+    }, 0);
+  }, [completedCourses]);
+
   return (
     <div className="relative z-[5] min-h-screen bg-[#fafafa] pt-32 pb-20 px-5 sm:px-10 antialiased">
       <div className="max-w-7xl mx-auto">
         
-        {/* الجزء العلوي: العنوان والزر */}
-        <div className="mb-12 border-b border-black/10 pb-8">
-          <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-neutral-600 mb-4">
-            Curriculum Journey
-          </h2>
-          
-          <div className="flex justify-between items-center">
+        <div className="mb-12 border-b border-black/10 pb-8 flex flex-col md:flex-row md:justify-between md:items-end gap-6">
+          <div>
+            <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-neutral-600 mb-4">
+              Curriculum Journey
+            </h2>
             <h1 className="text-5xl font-black tracking-tighter uppercase text-black">
               Academic Library
             </h1>
-            
+          </div>
+          
+          <div className="flex flex-col items-end gap-3">
             <button 
               onClick={() => setLang(l => l === 'EN' ? 'AR' : 'EN')}
               className="px-8 py-3 bg-black text-white rounded-full font-bold text-xs uppercase tracking-widest hover:scale-105 hover:bg-neutral-800 transition-all shadow-md"
             >
               {lang === 'EN' ? 'VIEW ARABIC' : 'VIEW ENGLISH'}
             </button>
+            
+            {/* ---------------------------------------------------- */}
+            {/* شارة عداد الساعات */}
+            {/* ---------------------------------------------------- */}
+            <div className="bg-white border border-neutral-200 shadow-sm rounded-full px-5 py-2 flex items-center gap-2">
+               <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">Passed Hours:</span>
+               <span className="font-mono text-xl font-black text-black">{totalCompletedHours}</span>
+            </div>
           </div>
         </div>
 
-        {/* الخريطة والأزرار الشفافة */}
         <div className="relative w-full border border-black/10 shadow-2xl rounded-[40px] overflow-hidden bg-white">
           <img 
             src={lang === 'EN' ? '/flowchart-en.svg' : '/flowchart-ar.svg'} 
@@ -81,7 +94,6 @@ export function AcademicLibraryPage() {
                 <button
                   key={key}
                   onClick={(e) => { e.stopPropagation(); setSelectedCourse(key); }}
-                  // هون السحر: إذا المادة منجزة بتتلون أخضر، غير هيك بتضل شفافة
                   className={`absolute rounded-lg transition-all cursor-pointer flex items-center justify-center
                     ${isCompleted 
                       ? 'bg-green-500/20 border-2 border-green-500 hover:bg-green-500/30 z-10' 
@@ -95,7 +107,6 @@ export function AcademicLibraryPage() {
                   }}
                   title={lang === 'EN' ? course.content.titleEn : course.content.titleAr}
                 >
-                  {/* علامة صح بتطلع بزاوية المادة المنجزة */}
                   {isCompleted && (
                     <div className="absolute -top-2 -right-2 bg-green-500 text-white rounded-full p-1 shadow-md animate-in zoom-in">
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
@@ -109,7 +120,6 @@ export function AcademicLibraryPage() {
           </div>
         </div>
 
-        {/* قسم أدوات فريق أثر وأدوات مساعدة */}
         <div className="mt-24 border-t border-black/10 pt-16">
           <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-neutral-500 mb-2 text-center">
             Athar Tools & More
@@ -120,7 +130,6 @@ export function AcademicLibraryPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             
-            {/* 1. أدوات فريق أثر (مع شارة By Athar) */}
             <div className="relative group">
               <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
               <PdfMerger />
@@ -146,7 +155,6 @@ export function AcademicLibraryPage() {
               <PdfPageNumbers />
             </div>
 
-            {/* 2. أدوات خارجية (Sejda - بدون شارة By Athar) */}
             <a 
               href="https://www.sejda.com/compress-pdf" 
               target="_blank" 
@@ -172,12 +180,10 @@ export function AcademicLibraryPage() {
           </div>
         </div>
 
-        {/* قسم المحاكيات */}
         <MaeSimulations />
 
       </div>
 
-      {/* النافذة المنبثقة للمواد وتمرير حالة الإنجاز إلها */}
       {selectedCourse && curriculumData[selectedCourse] && (
         <CourseModal 
           content={curriculumData[selectedCourse].content} 
