@@ -684,7 +684,51 @@ communication: {
     coords: { x: 80.44, y: 45.53, w: 5.7, h: 5.46 }, 
     content: {
       titleEn: "Electronics 1", titleAr: "إلكترونيات 1", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Electronic Devices and Circuit Theory 11th Ed", 
+          url: "/electronics1/books/electronics_devices_circuit_theory_11th_edition.pdf", 
+          coverUrl: "/BooksCover/electronics_devices_circuit_theory_11th_edition.png" 
+        },
+        { 
+          label: "Solutions Manual (11th Ed)", 
+          url: "/electronics1/books/electronics_devices_circuit_theory_11th_edition_solutions.pdf", 
+          coverUrl: "/BooksCover/electronics_devices_circuit_theory_11th_edition.png", 
+          isSolution: true 
+        }
+      ], 
+      summaries: [
+        { label: "Spectrum Team Summary", url: "/electronics1/summarize/electronics_summary_spectrum.pdf" },
+        { label: "Eng. Khoula Notebook", url: "/electronics1/summarize/notebook_m_khoula.pdf" },
+        { label: "Dr. Majed Slides", url: "/electronics1/summarize/slides_dr_majed.pdf" },
+        { label: "Mohammed Aid Slides", url: "/electronics1/summarize/slides_mohammed_aid.pdf" }
+      ], 
+      videos: [], 
+      quizzes: [
+        {
+          label: "Quizzes",
+          type: 'folder',
+          items: [
+            { label: "2025", url: "/electronics1/past papers/كويزات/quiz_1_2025.pdf" }
+          ]
+        }
+      ],
+      mid: [
+        { label: "2026", url: "/electronics1/past_papers/midterm_2026.pdf" },
+        { label: "2025", url: "/electronics1/past_papers/midterm_2025.pdf" },
+        { label: "2024", url: "/electronics1/past_papers/midterm_2024.pdf" },
+        { label: "2023", url: "/electronics1/past_papers/midterm_2023.pdf" },
+        { label: "2023", url: "/electronics1/past_papers/electronics_midterm_2023.pdf" },
+        { label: "2023", url: "/electronics1/past_papers/electronics_paper_2023.pdf" },
+        { label: "2022", url: "/electronics1/past_papers/midterm_2022.pdf" },
+        { label: "2016", url: "/electronics1/past_papers/midterm_2016.pdf" },
+        { label: "2012", url: "/electronics1/past_papers/midterm_2012.pdf" }
+      ], 
+      final: [
+        { label: "2025", url: "/electronics1/past_papers/final_2025.pdf" },
+        { label: "2024", url: "/electronics1/past_papers/final_2024.pdf" },
+        { label: "Screens", url: "/electronics1/past_papers/screens_final.pdf" }
+      ]
     } 
   },
   
