@@ -128,9 +128,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             Follow our socials
           </button>
 
-          {/* الزر هنا تم تحويله لرابط خارجي */}
-          <a href="https://tally.so/r/dWB1GN" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] transition-colors hover:bg-black hover:text-white cursor-pointer shadow-xs">
-            Work with us
+          {/* الزر هنا تم تحويله للرابط الجديد */}
+          <a href="https://tally.so/r/0Vrbz0" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] transition-colors hover:bg-black hover:text-white cursor-pointer shadow-xs">
+            Join us
           </a>
 
           <button onClick={() => setActiveModal('gpa')} className="inline-flex items-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] transition-colors hover:bg-black hover:text-white cursor-pointer shadow-xs">
