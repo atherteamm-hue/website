@@ -15,6 +15,7 @@ export interface CourseContent {
   )[];
   mid: { label: string; url: string }[];
   final: { label: string; url: string }[];
+  credits: number;
 }
 
 export interface Course {
@@ -27,7 +28,7 @@ export const curriculumData: Record<string, Course> = {
   english_1: { 
     coords: { x: 2.21, y: 4, w: 5.32, h: 5.21 }, 
     content: {
-      titleEn: "English 1", titleAr: "لغة إنجليزية 1",
+      titleEn: "English 1", titleAr: "لغة إنجليزية 1", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -35,7 +36,7 @@ export const curriculumData: Record<string, Course> = {
   english_2: { 
     coords: { x: 2.31, y: 15.42, w: 5.22, h: 5.2 }, 
     content: {
-      titleEn: "English 2", titleAr: "لغة إنجليزية 2",
+      titleEn: "English 2", titleAr: "لغة إنجليزية 2", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -43,7 +44,7 @@ export const curriculumData: Record<string, Course> = {
   tech_writing: { 
     coords: { x: 2.21, y: 26.43, w: 5.52, h: 5.2 }, 
     content: {
-      titleEn: "Technical Writing", titleAr: "الكتابة التقنية والاخلاقيات المهنية",
+      titleEn: "Technical Writing", titleAr: "الكتابة التقنية والاخلاقيات المهنية", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -51,7 +52,7 @@ export const curriculumData: Record<string, Course> = {
   nat_edu: { 
     coords: { x: 10.14, y: 5.01, w: 5.62, h: 5.4 }, 
     content: {
-      titleEn: "National Education", titleAr: "تربية وطنية",
+      titleEn: "National Education", titleAr: "تربية وطنية", credits: 3,
       books: [
         { label: "كتاب التربية الوطنية", url: "/Books/مدخل الى الثقافة الوطنية والمدنية_compressed.pdf", 
          coverUrl: "/BooksCover/national-cover.png", 
@@ -64,7 +65,7 @@ export const curriculumData: Record<string, Course> = {
   app_arabic: { 
     coords: { x: 10.64, y: 14.82, w: 5.22, h: 5.4 }, 
     content: {
-      titleEn: "Applied Arabic", titleAr: "لغة عربية تطبيقية",
+      titleEn: "Applied Arabic", titleAr: "لغة عربية تطبيقية", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -72,7 +73,7 @@ export const curriculumData: Record<string, Course> = {
   innovation: { 
     coords: { x: 11.55, y: 25.03, w: 3.41, h: 8.4 }, 
     content: {
-      titleEn: "Innovation", titleAr: "الريادة والابتكار",
+      titleEn: "Innovation", titleAr: "الريادة والابتكار", credits: 2,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -80,7 +81,7 @@ export const curriculumData: Record<string, Course> = {
   comp_skills: { 
     coords: { x: 17.77, y: 17.82, w: 6.73, h: 6 }, 
     content: {
-      titleEn: "Computer Skills", titleAr: "مهارات حاسوب",
+      titleEn: "Computer Skills", titleAr: "مهارات حاسوب", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -88,7 +89,7 @@ export const curriculumData: Record<string, Course> = {
   eng_drawing: { 
     coords: { x: 19.88, y: 3, w: 2.71, h: 8.61 }, 
     content: {
-      titleEn: "Engineering Drawing", titleAr: "رسم هندسي",
+      titleEn: "Engineering Drawing", titleAr: "رسم هندسي", credits: 2,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -96,7 +97,7 @@ export const curriculumData: Record<string, Course> = {
   workshop: { 
     coords: { x: 26.61, y: 3, w: 6.62, h: 6.41 }, 
     content: {
-      titleEn: "Engineering Workshop", titleAr: "مشاغل هندسية",
+      titleEn: "Engineering Workshop", titleAr: "مشاغل هندسية", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -104,7 +105,7 @@ export const curriculumData: Record<string, Course> = {
   calculus_1: { 
     coords: { x: 35.14, y: 3.6, w: 5.22, h: 5.61 }, 
     content: {
-      titleEn: "Calculus 1", titleAr: "تفاضل وتكامل 1",
+      titleEn: "Calculus 1", titleAr: "تفاضل وتكامل 1", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -112,7 +113,7 @@ export const curriculumData: Record<string, Course> = {
   calculus_2: { 
     coords: { x: 44.48, y: 3.8, w: 5.32, h: 5.61 }, 
     content: {
-      titleEn: "Calculus 2", titleAr: "تفاضل وتكامل 2",
+      titleEn: "Calculus 2", titleAr: "تفاضل وتكامل 2", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -120,7 +121,7 @@ export const curriculumData: Record<string, Course> = {
   diff_eq: { 
     coords: { x: 26.91, y: 15.82, w: 5.22, h: 5.6 }, 
     content: {
-      titleEn: "Differential Equations", titleAr: "معادلات تفاضلية",
+      titleEn: "Differential Equations", titleAr: "معادلات تفاضلية", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -128,7 +129,7 @@ export const curriculumData: Record<string, Course> = {
   numerical: { 
     coords: { x: 34.24, y: 16.02, w: 5.42, h: 5 }, 
     content: {
-      titleEn: "Numerical Methods", titleAr: "طرق عددية",
+      titleEn: "Numerical Methods", titleAr: "طرق عددية", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -136,7 +137,7 @@ export const curriculumData: Record<string, Course> = {
   probability: { 
     coords: { x: 41.57, y: 15.22, w: 5.62, h: 5.4 }, 
     content: {
-      titleEn: "Probability", titleAr: "احتمالات وإحصاء",
+      titleEn: "Probability", titleAr: "احتمالات وإحصاء", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -144,7 +145,7 @@ export const curriculumData: Record<string, Course> = {
   statics: { 
     coords: { x: 55.32, y: 3.6, w: 5.12, h: 5.81 }, 
     content: {
-      titleEn: "Statics", titleAr: "ستاتيكا",
+      titleEn: "Statics", titleAr: "ستاتيكا", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -152,7 +153,7 @@ export const curriculumData: Record<string, Course> = {
   physics_1: { 
     coords: { x: 73.09, y: 3.8, w: 5.83, h: 5.21 }, 
     content: {
-      titleEn: "Physics 1", titleAr: "فيزياء 1",
+      titleEn: "Physics 1", titleAr: "فيزياء 1", credits: 3,
       books: [
         { label: "Physics for Scientists and Engineers 9ed", 
          url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
@@ -171,7 +172,7 @@ export const curriculumData: Record<string, Course> = {
   physics_2: { 
     coords: { x: 73.39, y: 14.62, w: 5.53, h: 5.4 }, 
     content: {
-      titleEn: "Physics 2", titleAr: "فيزياء 2",
+      titleEn: "Physics 2", titleAr: "فيزياء 2", credits: 3,
       books: [
         { label: "Physics for Scientists and Engineers 9ed",
          url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
@@ -189,7 +190,7 @@ export const curriculumData: Record<string, Course> = {
   physics_lab: { 
     coords: { x: 62.55, y: 14.01, w: 6.73, h: 6.21 }, 
     content: {
-      titleEn: "Physics Lab", titleAr: "مختبر فيزياء",
+      titleEn: "Physics Lab", titleAr: "مختبر فيزياء", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -197,7 +198,7 @@ export const curriculumData: Record<string, Course> = {
   gen_chemistry: { 
     coords: { x: 91.77, y: 3.6, w: 5.42, h: 5.01 }, 
     content: {
-      titleEn: "General Chemistry", titleAr: "الكيمياء العامة",
+      titleEn: "General Chemistry", titleAr: "الكيمياء العامة", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -205,7 +206,7 @@ export const curriculumData: Record<string, Course> = {
   chem_lab: { 
     coords: { x: 91.27, y: 15.02, w: 6.72, h: 4.8 }, 
     content: {
-      titleEn: "Chemistry Lab", titleAr: "مختبر الكيمياء العامة",
+      titleEn: "Chemistry Lab", titleAr: "مختبر الكيمياء العامة", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -213,7 +214,7 @@ export const curriculumData: Record<string, Course> = {
   cpp: { 
     coords: { x: 28.64, y: 25.28, w: 5.25, h: 5.23 }, 
     content: {
-      titleEn: "C++", titleAr: "البرمجة للمهندسين (C++)",
+      titleEn: "C++", titleAr: "البرمجة للمهندسين (C++)", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -221,7 +222,7 @@ export const curriculumData: Record<string, Course> = {
   digital_logic: { 
     coords: { x: 37.88, y: 25.28, w: 5.25, h: 5.46 }, 
     content: {
-      titleEn: "Digital Logic", titleAr: "منطق رقمي",
+      titleEn: "Digital Logic", titleAr: "منطق رقمي", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -229,7 +230,7 @@ export const curriculumData: Record<string, Course> = {
   linear_algebra: { 
     coords: { x: 47.58, y: 24.14, w: 5.59, h: 5.24 }, 
     content: {
-      titleEn: "Linear Algebra", titleAr: "جبر خطي",
+      titleEn: "Linear Algebra", titleAr: "جبر خطي", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -237,7 +238,7 @@ export const curriculumData: Record<string, Course> = {
   machine_components: { 
     coords: { x: 54.99, y: 14.59, w: 5.48, h: 5.23 }, 
     content: {
-      titleEn: "Machine Components", titleAr: "أجزاء آلات",
+      titleEn: "Machine Components", titleAr: "أجزاء آلات", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -245,7 +246,7 @@ export const curriculumData: Record<string, Course> = {
   dynamic_vibration: { 
     coords: { x: 55.11, y: 25.74, w: 5.36, h: 5.68 }, 
     content: {
-      titleEn: "Dynamics and Vibration", titleAr: "ديناميكا واهتزازات",
+      titleEn: "Dynamics and Vibration", titleAr: "ديناميكا واهتزازات", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -254,7 +255,7 @@ circuits_1: {
     coords: { x: 63.21, y: 26.65, w: 5.48, h: 5.68 }, 
     content: {
       titleEn: "Circuits 1", 
-      titleAr: " دوائر كهربائية 1", 
+      titleAr: " دوائر كهربائية 1", credits: 3, 
       
       // 1. Books & Solutions
       books: [
@@ -370,7 +371,7 @@ circuits_2: {
     coords: { x: 78.61, y: 21.87, w: 5.25, h: 5.91 }, 
     content: {
       titleEn: "Circuits 2", 
-      titleAr: "دوائر كهربائية 2", 
+      titleAr: "دوائر كهربائية 2", credits: 3, 
       
       // 1. Books & Solutions (نفس كتب سيركت 1 بالضبط)
       books: [
@@ -468,7 +469,7 @@ circuits_lab: {
     coords: { x: 77.81, y: 31.65, w: 6.85, h: 5.92 }, 
     content: {
       titleEn: "Circuits Lab", 
-      titleAr: " مختبر دوائر كهربائية", 
+      titleAr: " مختبر دوائر كهربائية", credits: 1, 
       
       books: [], // فارغ، سيختفي القسم
       
@@ -490,7 +491,7 @@ signals: {
     coords: { x: 63.21, y: 38.93, w: 5.48, h: 5.46 }, 
     content: {
       titleEn: "Signals & Systems", 
-      titleAr: "انظمة واشارات", 
+      titleAr: "انظمة واشارات", credits: 3, 
       
       // 1. Books
      // 1. Books
@@ -552,7 +553,7 @@ communication: {
     coords: { x: 47.81, y: 36.2, w: 5.36, h: 5.46 }, 
     content: {
       titleEn: "Communication", 
-      titleAr: "اتصالات وتراسل بيانات", 
+      titleAr: "اتصالات وتراسل بيانات", credits: 3, 
       
       books: [
         { 
@@ -658,7 +659,7 @@ communication: {
   control: { 
     coords: { x: 63.32, y: 48.49, w: 5.25, h: 5.23 }, 
     content: {
-      titleEn: "Control", titleAr: "أنظمة تحكم",
+      titleEn: "Control", titleAr: "أنظمة تحكم", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -666,7 +667,7 @@ communication: {
   control_lab: { 
     coords: { x: 71.77, y: 48.03, w: 6.61, h: 6.37 }, 
     content: {
-      titleEn: "Control Lab", titleAr: "مختبر تحكم",
+      titleEn: "Control Lab", titleAr: "مختبر تحكم", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -674,7 +675,7 @@ communication: {
   advance_control: { 
     coords: { x: 55.91, y: 57.13, w: 5.59, h: 5.24 }, 
     content: {
-      titleEn: "Advanced Control", titleAr: "تحكم متقدم",
+      titleEn: "Advanced Control", titleAr: "تحكم متقدم", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -682,7 +683,7 @@ communication: {
   electronics_1: { 
     coords: { x: 80.44, y: 45.53, w: 5.7, h: 5.46 }, 
     content: {
-      titleEn: "Electronics 1", titleAr: "إلكترونيات 1",
+      titleEn: "Electronics 1", titleAr: "إلكترونيات 1", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -690,7 +691,7 @@ communication: {
   electronics_1_lab: { 
     coords: { x: 90.82, y: 44.62, w: 6.73, h: 6.6 }, 
     content: {
-      titleEn: "Electronics 1 Lab", titleAr: "مختبر إلكترونيات",
+      titleEn: "Electronics 1 Lab", titleAr: "مختبر إلكترونيات", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -698,7 +699,7 @@ communication: {
   power_electronics: { 
     coords: { x: 80.44, y: 57.36, w: 5.7, h: 5.23 }, 
     content: {
-      titleEn: "Power Electronics", titleAr: "إلكترونيات القدرة",
+      titleEn: "Power Electronics", titleAr: "إلكترونيات القدرة", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -706,7 +707,7 @@ communication: {
   power_electronics_lab: { 
     coords: { x: 91.16, y: 56.91, w: 6.85, h: 6.37 }, 
     content: {
-      titleEn: "Power Electronics Lab", titleAr: "مختبر إلكترونيات القدرة",
+      titleEn: "Power Electronics Lab", titleAr: "مختبر إلكترونيات القدرة", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -714,7 +715,7 @@ communication: {
   electrical_machines: { 
     coords: { x: 91.51, y: 25.96, w: 5.24, h: 5.24 }, 
     content: {
-      titleEn: "Electrical Machines 1", titleAr: "آلات كهربائية 1",
+      titleEn: "Electrical Machines 1", titleAr: "آلات كهربائية 1", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -722,7 +723,7 @@ communication: {
   machines_lab: { 
     coords: { x: 90.71, y: 35.75, w: 6.73, h: 6.37 }, 
     content: {
-      titleEn: "Electrical Machines Lab", titleAr: "مختبر آلات كهربائية",
+      titleEn: "Electrical Machines Lab", titleAr: "مختبر آلات كهربائية", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -730,7 +731,7 @@ communication: {
   plc: { 
     coords: { x: 73.71, y: 65.78, w: 6.84, h: 5.46 }, 
     content: {
-      titleEn: "PLC", titleAr: "متحكمات منطقية مبرمجة",
+      titleEn: "PLC", titleAr: "متحكمات منطقية مبرمجة", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -738,7 +739,7 @@ communication: {
   plc_lab: { 
     coords: { x: 74.51, y: 81.7, w: 5.24, h: 6.6 }, 
     content: {
-      titleEn: "PLC Lab", titleAr: "مختبر PLC",
+      titleEn: "PLC Lab", titleAr: "مختبر PLC", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -746,7 +747,7 @@ communication: {
   assembly: { 
     coords: { x: 26.01, y: 37.34, w: 5.71, h: 5.01 }, 
     content: {
-      titleEn: "Assembly", titleAr: "أنظمة المعالجات الدقيقة",
+      titleEn: "Assembly", titleAr: "أنظمة المعالجات الدقيقة", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -754,7 +755,7 @@ communication: {
   assembly_lab: { 
     coords: { x: 16.2, y: 36.43, w: 6.85, h: 6.37 }, 
     content: {
-      titleEn: "Assembly Lab", titleAr: "مختبر أنظمة المعالجات الدقيقة",
+      titleEn: "Assembly Lab", titleAr: "مختبر أنظمة المعالجات الدقيقة", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -762,7 +763,7 @@ communication: {
   sensors: { 
     coords: { x: 26.36, y: 50.76, w: 5.24, h: 5.46 }, 
     content: {
-      titleEn: "Sensors and Actuators", titleAr: "المجسات والمشغلات",
+      titleEn: "Sensors and Actuators", titleAr: "المجسات والمشغلات", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -770,7 +771,7 @@ communication: {
   sensors_lab: { 
     coords: { x: 16.66, y: 48.94, w: 6.84, h: 9.1 }, 
     content: {
-      titleEn: "Sensors Lab", titleAr: "مختبر المجسات والمشغلات",
+      titleEn: "Sensors Lab", titleAr: "مختبر المجسات والمشغلات", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -778,7 +779,7 @@ communication: {
   industrial_processes: { 
     coords: { x: 44.95, y: 43.94, w: 6.62, h: 5.46 }, 
     content: {
-      titleEn: "Industrial Processes", titleAr: " التجهيزات الصناعية والتحكم",
+      titleEn: "Industrial Processes", titleAr: " التجهيزات الصناعية والتحكم", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -786,7 +787,7 @@ communication: {
   industrial_processes_Lab: { 
     coords: { x: 33.41, y: 37.33, w: 8.05, h: 6.55 }, 
     content: {
-      titleEn: "Industrial Processes Lab", titleAr: "مختبر التجهيزات الصناعية والتحكم",
+      titleEn: "Industrial Processes Lab", titleAr: "مختبر التجهيزات الصناعية والتحكم", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -794,7 +795,7 @@ communication: {
   eng_materials: { 
     coords: { x: 45.07, y: 54.76, w: 6.27, h: 6.82 }, 
     content: {
-      titleEn: "Applied Engineering Materials", titleAr: "المواد الهندسية التطبيقية",
+      titleEn: "Applied Engineering Materials", titleAr: "المواد الهندسية التطبيقية", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -802,7 +803,7 @@ communication: {
   hydraulic_drive: { 
     coords: { x: 41.53, y: 66.92, w: 6.5, h: 5.46 }, 
     content: {
-      titleEn: "Hydraulic Drive", titleAr: "قيادة هيدروليكية",
+      titleEn: "Hydraulic Drive", titleAr: "قيادة هيدروليكية", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -810,7 +811,7 @@ communication: {
   hydraulic_lab: { 
     coords: { x: 52.14, y: 66.23, w: 8.45, h: 6.37 }, 
     content: {
-      titleEn: "Hydraulic Lab", titleAr: "مختبر هيدروليك",
+      titleEn: "Hydraulic Lab", titleAr: "مختبر هيدروليك", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -818,7 +819,7 @@ communication: {
   robotics_dynamics: { 
     coords: { x: 31.03, y: 73.06, w: 6.28, h: 7.05 }, 
     content: {
-      titleEn: "Robotics Dynamics", titleAr: "ديناميكا الروبوتات",
+      titleEn: "Robotics Dynamics", titleAr: "ديناميكا الروبوتات", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -826,7 +827,7 @@ communication: {
   robotics_lab: { 
     coords: { x: 18.6, y: 61.68, w: 7.98, h: 8.65 }, 
     content: {
-      titleEn: "Robotics Lab", titleAr: "مختبر روبوتات",
+      titleEn: "Robotics Lab", titleAr: "مختبر روبوتات", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -834,7 +835,7 @@ communication: {
   mechatronics_design: { 
     coords: { x: 53.28, y: 80.57, w: 5.48, h: 5.46 }, 
     content: {
-      titleEn: "Mechatronics Design", titleAr: "تصميم أنظمة ميكاترونكس",
+      titleEn: "Mechatronics Design", titleAr: "تصميم أنظمة ميكاترونكس", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -842,7 +843,7 @@ communication: {
   electric_drive: { 
     coords: { x: 63.32, y: 89.34, w: 5.25, h: 5 }, 
     content: {
-      titleEn: "Electric Drive", titleAr: "قيادة كهربائية",
+      titleEn: "Electric Drive", titleAr: "قيادة كهربائية", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -850,7 +851,7 @@ communication: {
   electric_drive_lab: { 
     coords: { x: 52.6, y: 88.66, w: 6.73, h: 6.14 }, 
     content: {
-      titleEn: "Electric Drive Lab", titleAr: "مختبر قيادة كهربائية",
+      titleEn: "Electric Drive Lab", titleAr: "مختبر قيادة كهربائية", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -858,7 +859,7 @@ communication: {
   renewable_energy: { 
     coords: { x: 24.42, y: 83.88, w: 6.96, h: 7.05 }, 
     content: {
-      titleEn: "Renewable Energy", titleAr: "طاقة متجددة",
+      titleEn: "Renewable Energy", titleAr: "طاقة متجددة", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -866,7 +867,7 @@ communication: {
   mems: { 
     coords: { x: 35.6, y: 88.07, w: 5.25, h: 5.46 }, 
     content: {
-      titleEn: "MEMS", titleAr: "أنظمة كهروميكانيكية صغرية",
+      titleEn: "MEMS", titleAr: "أنظمة كهروميكانيكية صغرية", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -874,7 +875,7 @@ communication: {
   cnc: { 
     coords: { x: 43.81, y: 88.3, w: 5.48, h: 5.46 }, 
     content: {
-      titleEn: "CNC", titleAr: "تحكم رقمي باستخدام الحاسوب",
+      titleEn: "CNC", titleAr: "تحكم رقمي باستخدام الحاسوب", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -882,7 +883,7 @@ communication: {
   robotics_eng: { 
     coords: { x: 19.51, y: 72.83, w: 6.5, h: 5.46 }, 
     content: {
-      titleEn: "Robotics Engineering", titleAr: "هندسة روبوتات",
+      titleEn: "Robotics Engineering", titleAr: "هندسة روبوتات", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -890,7 +891,7 @@ communication: {
   scada: { 
     coords: { x: 90.71, y: 66.69, w: 6.5, h: 5.69 }, 
     content: {
-      titleEn: "SCADA", titleAr: "أنظمة سكادا",
+      titleEn: "SCADA", titleAr: "التحكم الاشرافي والتقاط البيانات ", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -898,7 +899,7 @@ communication: {
   cam_cad: { 
     coords: { x: 34, y: 52.36, w: 6.28, h: 6.59 }, 
     content: {
-      titleEn: "CAM/CAD", titleAr: "تصميم وتصنيع بالحاسوب",
+      titleEn: "CAM/CAD", titleAr: "تصميم عناصر الالة والتصميم بالحاسوب", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -906,7 +907,7 @@ communication: {
   special_topics: { 
     coords: { x: 30.92, y: 62.82, w: 6.16, h: 6.83 }, 
     content: {
-      titleEn: "Special Topics", titleAr: "مواضيع خاصة",
+      titleEn: "Special Topics", titleAr: "	موضوعات خاصة في هندسة الميكاترونكس ", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -915,7 +916,7 @@ protection_devices: {
     coords: { x: 67.2, y: 73.97, w: 6.62, h: 5.46 }, 
     content: {
       titleEn: "Protection Devices", 
-      titleAr: "اجهزة الحماية", 
+      titleAr: "اجهزة الحماية", credits: 3, 
       
       // 1. Books
       books: [
@@ -1056,7 +1057,7 @@ protection_devices: {
   eng_economy: { 
     coords: { x: 82.95, y: 3.44, w: 4.9, h: 7.05 }, 
     content: {
-      titleEn: "Engineering Economy", titleAr: "اقتصاد هندسي",
+      titleEn: "Engineering Economy", titleAr: "اقتصاد هندسي", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -1064,7 +1065,7 @@ protection_devices: {
   military: { 
     coords: { x: 82.83, y: 13, w: 5.02, h: 7.28 }, 
     content: {
-      titleEn: "Military Sciences", titleAr: "علوم عسكرية",
+      titleEn: "Military Sciences", titleAr: "علوم عسكرية", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   }
