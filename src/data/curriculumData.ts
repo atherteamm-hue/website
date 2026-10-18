@@ -8,8 +8,8 @@ export interface CourseContent {
     | { label: string; url: string }
     | { label: string; type: 'folder'; items: { label: string; url: string }[] }
   )[];
-  videos?: { label: string; url: string }[]; // حطينا ? عشان نقدر نمسحها من أي مادة
-  quizzes?: ( // ضفنا قسم الكويزات الجديد لحاله ويدعم القوائم المنسدلة
+  videos?: { label: string; url: string }[];
+  quizzes?: (
     | { label: string; url: string }
     | { label: string; type: 'folder'; items: { label: string; url: string }[] }
   )[];
@@ -223,7 +223,49 @@ export const curriculumData: Record<string, Course> = {
     coords: { x: 37.88, y: 25.28, w: 5.25, h: 5.46 }, 
     content: {
       titleEn: "Digital Logic", titleAr: "تصميم المنطق رقمي", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Digital Design 5th Edition", 
+          url: "/digital logic design/books/dl_book_01.pdf", 
+          coverUrl: "/BooksCover/dl_book_01.png" 
+        },
+        { 
+          label: "Solutions Manual (5th Ed)", 
+          url: "/digital logic design/books/dl_book_02.pdf", 
+          coverUrl: "/BooksCover/dl_book_01.png", 
+          isSolution: true 
+        }
+      ], 
+      videos: [
+        { label: "Dr. Mohammed Al-Hammouri", url: "https://youtube.com/playlist?list=PLy42_pl2XRL5zomcjQRuiweCbq_TLg73n&si=Z6JZSRH5lMVvxJS6" },
+        { label: "Eng. Natalie Al-Kayed", url: "https://youtube.com/playlist?list=PLjiyR6nPcbxy_nbEQHBj5MwGicZRTRM_w&si=ZcOVSBMcilzFiAvA" },
+        { label: "Eng. Samer", url: "https://drive.google.com/drive/folders/1bN5m11Z-zCsAMwpOBeZ4bJ6BQ9GOkhht" }
+      ],
+      summaries: [
+        { label: "Dr. Mazen Summary", url: "/digital logic design/summaries/summary_01.pdf" },
+        { label: "Course Notebook", url: "/digital logic design/summaries/summary_02.pdf" },
+        { label: "Eng. Samah Notebook", url: "/digital logic design/summaries/summary_03.pdf" },
+        { label: "Dr. Shurahbeel Slides", url: "/digital logic design/summaries/summary_04.pdf" }
+      ], 
+      mid: [
+        { label: "Past Paper 1", url: "/digital logic design/pastpapers/pastpaper_01.pdf" },
+        { label: "Past Paper 2", url: "/digital logic design/pastpapers/pastpaper_02.pdf" },
+        { label: "Past Paper 3", url: "/digital logic design/pastpapers/pastpaper_03.pdf" },
+        { label: "Past Paper 4", url: "/digital logic design/pastpapers/pastpaper_04.pdf" },
+        { label: "Past Paper 5", url: "/digital logic design/pastpapers/pastpaper_05.pdf" },
+        { label: "Past Paper 6", url: "/digital logic design/pastpapers/pastpaper_06.pdf" },
+        { label: "Past Paper 7", url: "/digital logic design/pastpapers/pastpaper_07.pdf" },
+        { label: "Past Paper 8", url: "/digital logic design/pastpapers/pastpaper_08.pdf" },
+        { label: "Past Paper 9", url: "/digital logic design/pastpapers/pastpaper_09.pdf" },
+        { label: "Past Paper 10", url: "/digital logic design/pastpapers/pastpaper_10.pdf" },
+        { label: "Past Paper 11", url: "/digital logic design/pastpapers/pastpaper_11.pdf" }
+      ], 
+      final: [
+        { label: "Past Paper 12", url: "/digital logic design/pastpapers/pastpaper_12.pdf" },
+        { label: "Past Paper 13", url: "/digital logic design/pastpapers/pastpaper_13.pdf" },
+        { label: "Past Paper 14", url: "/digital logic design/pastpapers/pastpaper_14.pdf" },
+        { label: "Past Paper 15", url: "/digital logic design/pastpapers/pastpaper_15.pdf" }
+      ]
     } 
   },
   
@@ -703,7 +745,10 @@ communication: {
         { label: "Dr. Majed Slides", url: "/electronics1/summarize/slides_dr_majed.pdf" },
         { label: "Mohammed Aid Slides", url: "/electronics1/summarize/slides_mohammed_aid.pdf" }
       ], 
-      videos: [], 
+      videos: [
+        { label: "Spark Team Explanation", url: "https://www.youtube.com/playlist?list=PL4Itv3LsZJuyt-6bhNl99zDhkwf2zyaHo" },
+        { label: "Mohammed Aid Explanation", url: "https://www.youtube.com/playlist?list=PLkXK5Ys6YkPJeYfEHo8Rei1dToH6hB5e1" }
+      ], 
       quizzes: [
         {
           label: "Quizzes",
