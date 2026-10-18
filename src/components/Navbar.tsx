@@ -73,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
         {/* Desktop CTA (right, hidden below md): Join us (الآن رابط خارجي) */}
         <div className="hidden md:block">
           <a
-            href="https://tally.so/r/dWB1GN"
+            href="https://tally.so/r/0Vrbz0"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[23px] text-black underline underline-offset-2 hover:opacity-60 transition-opacity cursor-pointer bg-transparent border-0 p-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-black rounded-xs"
