@@ -81,7 +81,7 @@ export const curriculumData: Record<string, Course> = {
   comp_skills: { 
     coords: { x: 17.77, y: 17.82, w: 6.73, h: 6 }, 
     content: {
-      titleEn: "Computer Skills", titleAr: "مهارات حاسوب", credits: 3,
+      titleEn: "Computer Skills", titleAr: "مهارات حاسوب", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -97,7 +97,7 @@ export const curriculumData: Record<string, Course> = {
   workshop: { 
     coords: { x: 26.61, y: 3, w: 6.62, h: 6.41 }, 
     content: {
-      titleEn: "Engineering Workshop", titleAr: "مشاغل هندسية", credits: 3,
+      titleEn: "Engineering Workshop", titleAr: "مشاغل هندسية", credits: 1,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -129,7 +129,7 @@ export const curriculumData: Record<string, Course> = {
   numerical: { 
     coords: { x: 34.24, y: 16.02, w: 5.42, h: 5 }, 
     content: {
-      titleEn: "Numerical Methods", titleAr: "طرق عددية", credits: 3,
+      titleEn: "Numerical Methods", titleAr: "تقنيات عددية", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -137,7 +137,7 @@ export const curriculumData: Record<string, Course> = {
   probability: { 
     coords: { x: 41.57, y: 15.22, w: 5.62, h: 5.4 }, 
     content: {
-      titleEn: "Probability", titleAr: "احتمالات وإحصاء", credits: 3,
+      titleEn: "Probability", titleAr: "	احصاء واحتمالات للهندسة ", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -222,7 +222,7 @@ export const curriculumData: Record<string, Course> = {
   digital_logic: { 
     coords: { x: 37.88, y: 25.28, w: 5.25, h: 5.46 }, 
     content: {
-      titleEn: "Digital Logic", titleAr: "منطق رقمي", credits: 3,
+      titleEn: "Digital Logic", titleAr: "تصميم المنطق رقمي", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -238,7 +238,7 @@ export const curriculumData: Record<string, Course> = {
   machine_components: { 
     coords: { x: 54.99, y: 14.59, w: 5.48, h: 5.23 }, 
     content: {
-      titleEn: "Machine Components", titleAr: "أجزاء آلات", credits: 3,
+      titleEn: "Machine Components", titleAr: "مكونات الالة ", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
