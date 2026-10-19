@@ -5,12 +5,12 @@ import { X, Calculator, Play, RefreshCw, Trash2 } from 'lucide-react';
 import { 
   solveGaussJordanSteps, solveGaussianSteps, solveCramerSteps, solveInverseMethodSteps,
   getDeterminant, getTranspose, getTrace, getInverse, isSymmetric, operateMatrices, 
-  MathStep, getVarName, getRREFSteps, getRank, gramSchmidtSteps, 
-  dotProduct, crossProductSteps, vectorAngle, vectorMagnitude
+  MathStep, getVarName, getRREFSteps, getRank, gramSchmidtSteps, getNullity, getCofactorMatrix, getEigenvalues2x2,
+  dotProduct, crossProductSteps, vectorAngle, vectorMagnitude, linearTransformation
 } from '../utils/matrixMath';
 
 export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
-  const [mode, setMode] = useState<'system' | 'properties' | 'operations' | 'advanced' | 'vectors'>('system');
+  const [mode, setMode] = useState<'system' | 'properties' | 'operations' | 'advanced' | 'vectors' | 'transform'>('system');
   const [operation, setOperation] = useState('gauss'); 
   
   const [rows, setRows] = useState(3);
@@ -67,7 +67,7 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
   };
 
   const validateOperation = () => {
-    const requiresSquare = ['gauss', 'gaussian', 'cramer', 'inverse_method', 'det', 'inv', 'trace', 'sym'];
+    const requiresSquare = ['gauss', 'gaussian', 'cramer', 'inverse_method', 'det', 'inv', 'trace', 'sym', 'cofactor', 'eigen2x2'];
     if (requiresSquare.includes(operation) && rows !== cols && mode !== 'vectors') {
       throw new Error(`This operation requires a Square Matrix (N × N). Your matrix is ${rows} × ${cols}.`);
     }
@@ -90,6 +90,7 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
         if (operation === 'sym') setResultText(isSymmetric(matrixA) ? 'Matrix is SYMMETRIC' : 'Matrix is NOT SYMMETRIC');
         if (operation === 'trans') setSteps([{ title: "Transpose Aᵀ", description: "", matrix: getTranspose(matrixA) }]);
         if (operation === 'inv') setSteps([{ title: "Inverse A⁻¹", description: "", matrix: getInverse(matrixA) }]);
+        if (operation === 'cofactor') setSteps([{ title: "Cofactor Matrix", description: "Matrix of cofactors C_ij", matrix: getCofactorMatrix(matrixA) }]);
       }
       else if (mode === 'operations') {
         setSteps([{ title: `Result of A ${operation === 'add' ? '+' : operation === 'sub' ? '-' : '×'} B`, description: "", matrix: operateMatrices(matrixA, matrixB, operation as any) }]);
@@ -97,7 +98,12 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
       else if (mode === 'advanced') {
         if (operation === 'rref') setSteps(getRREFSteps(matrixA));
         if (operation === 'rank') setResultText(`Rank(A) = ${getRank(matrixA)}`);
+        if (operation === 'nullity') setResultText(`Nullity(A) = ${getNullity(matrixA)}`);
         if (operation === 'gram') setSteps(gramSchmidtSteps(matrixA));
+        if (operation === 'eigen2x2') setSteps(getEigenvalues2x2(matrixA));
+      }
+      else if (mode === 'transform') {
+        if (operation === 'linear_transform') setSteps(linearTransformation(matrixA, vectorB));
       }
       else if (mode === 'vectors') {
         if (operation === 'dot') setResultText(`U • V (Dot Product) = ${dotProduct(vectorU, vectorV)}`);
@@ -116,13 +122,12 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
     }
   };
 
-  // السر هون: استخدام createPortal لرمي المحاكي في آخر الـ body
   return createPortal(
     <div className="fixed inset-0 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md transition-all" style={{ zIndex: 2147483647 }} onClick={onClose}>
       
       <div className="bg-gradient-to-br from-neutral-50 to-neutral-200 w-full max-w-5xl max-h-[90vh] rounded-[30px] shadow-2xl flex flex-col overflow-y-auto relative custom-scrollbar" onClick={e => e.stopPropagation()}>
         
-        {/* الهيدر الثابت */}
+        {/* Header */}
         <div className="sticky top-0 z-50 flex justify-between items-center p-5 md:p-6 bg-white/70 backdrop-blur-xl border-b border-white/50 shadow-sm">
           <div className="flex items-center gap-4">
             <div className="p-3 bg-black text-white rounded-xl shadow-md"><Calculator size={24} /></div>
@@ -136,7 +141,7 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
 
         <div className="p-6 md:p-8 flex flex-col gap-8">
           
-          {/* لوحة التحكم */}
+          {/* Controls */}
           <div className="flex flex-col lg:flex-row flex-wrap justify-between items-center gap-6 bg-white/50 backdrop-blur-md p-6 rounded-3xl border border-white shadow-sm">
             <div className="flex items-center gap-6 bg-white/80 px-4 py-2 rounded-2xl border border-white shadow-sm">
               {mode === 'vectors' ? (
@@ -174,7 +179,12 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
                 <optgroup label="Advanced & Subspaces">
                   <option data-mode="advanced" value="rref">RREF (Row Echelon Form)</option>
                   <option data-mode="advanced" value="rank">Matrix Rank</option>
+                  <option data-mode="advanced" value="nullity">Matrix Nullity</option>
                   <option data-mode="advanced" value="gram">Gram-Schmidt Process</option>
+                  <option data-mode="advanced" value="eigen2x2">Eigenvalues (2x2)</option>
+                </optgroup>
+                <optgroup label="Transformations">
+                  <option data-mode="transform" value="linear_transform">Linear Transform T(v) = A·v</option>
                 </optgroup>
                 <optgroup label="Vector Calculus">
                   <option data-mode="vectors" value="dot">Dot Product (U • V)</option>
@@ -186,6 +196,7 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
                   <option data-mode="properties" value="det">Determinant |A|</option>
                   <option data-mode="properties" value="inv">Inverse A⁻¹</option>
                   <option data-mode="properties" value="trans">Transpose Aᵀ</option>
+                  <option data-mode="properties" value="cofactor">Cofactor Matrix</option>
                   <option data-mode="properties" value="trace">Trace(A)</option>
                   <option data-mode="properties" value="sym">Check Symmetry</option>
                 </optgroup>
@@ -204,7 +215,7 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
             </div>
           </div>
 
-          {/* مساحة إدخال الأرقام */}
+          {/* Input Area */}
           <div className="flex flex-wrap justify-center gap-8 bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-white shadow-sm">
             {mode === 'vectors' ? (
               <div className="flex flex-col gap-8 w-full items-center">
@@ -226,7 +237,9 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
             ) : (
               <>
                 <div className="flex flex-col items-center gap-3">
-                  <span className="font-bold text-neutral-500 text-sm bg-neutral-200/50 px-4 py-1.5 rounded-full">{operation === 'gram' ? 'Vectors (Rows)' : 'Matrix A'}</span>
+                  <span className="font-bold text-neutral-500 text-sm bg-neutral-200/50 px-4 py-1.5 rounded-full">
+                    {operation === 'gram' ? 'Vectors (Rows)' : operation === 'linear_transform' ? 'Transformation Matrix T' : 'Matrix A'}
+                  </span>
                   <div className="flex flex-col gap-1.5 border-l-2 border-r-2 border-black px-3 py-2">
                     {matrixA.map((row, i) => (
                       <div key={`A-${i}`} className="flex gap-1.5">
@@ -256,15 +269,17 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
                   </>
                 )}
 
-                {mode === 'system' && (
+                {(mode === 'system' || mode === 'transform') && (
                   <>
                     <div className="flex items-center text-3xl font-black text-neutral-300">|</div>
                     <div className="flex flex-col items-center gap-3">
-                      <span className="font-bold text-blue-600 text-sm bg-blue-100/50 px-4 py-1.5 rounded-full">Vector B</span>
+                      <span className="font-bold text-blue-600 text-sm bg-blue-100/50 px-4 py-1.5 rounded-full">
+                        {mode === 'transform' ? 'Input Vector (v)' : 'Vector B'}
+                      </span>
                       <div className="flex flex-col gap-1.5 border-l-2 border-r-2 border-blue-400 px-3 py-2">
                         {vectorB.map((val, i) => (
                           <div key={`v-wrap-${i}`} className="flex items-center gap-3">
-                            <span className="font-bold font-mono text-neutral-400 text-xs w-3">{getVarName(i)}</span>
+                            {mode === 'system' && <span className="font-bold font-mono text-neutral-400 text-xs w-3">{getVarName(i)}</span>}
                             <input key={`v-${i}`} type="number" value={val || ''} placeholder="0" onChange={(e) => updateVector(setVectorB, vectorB, i, e.target.value)} className="w-14 h-12 text-center bg-blue-50/50 border border-blue-200 rounded-lg font-mono font-bold focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all" />
                           </div>
                         ))}
@@ -276,12 +291,12 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
             )}
           </div>
 
-          {/* منطقة النتائج */}
+          {/* Results Area */}
           {error && <div className="p-4 bg-red-50/90 text-red-600 font-bold rounded-xl border border-red-200 text-center animate-in slide-in-from-top-2 shadow-sm backdrop-blur-sm">{error}</div>}
           
           {resultText && (
             <div className="bg-green-50/90 p-6 rounded-3xl border border-green-200 text-center animate-in zoom-in-95 shadow-sm backdrop-blur-sm">
-              <h3 className="text-green-800 font-black text-2xl">{resultText}</h3>
+              <h3 className="text-green-800 font-black text-2xl whitespace-pre-line">{resultText}</h3>
             </div>
           )}
 
@@ -289,8 +304,8 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
             <div key={index} className="bg-white/80 backdrop-blur-sm p-6 rounded-3xl border border-white shadow-sm hover:shadow-md transition-shadow flex flex-col lg:flex-row gap-6 items-center animate-in slide-in-from-bottom-4" style={{ animationDelay: `${index * 50}ms` }}>
               <div className="flex-1 w-full text-center lg:text-left">
                 {(mode === 'system' || operation === 'rref' || operation === 'gram') && <div className="inline-block px-3 py-1 bg-black text-white text-[10px] font-bold rounded-full mb-3 shadow-sm">Step {index + 1}</div>}
-                <h5 className="text-lg font-black text-black mb-1">{step.title}</h5>
-                <p className="text-sm text-neutral-500 leading-relaxed">{step.description}</p>
+                <h5 className="text-lg font-black text-black mb-1 whitespace-pre-line">{step.title}</h5>
+                <p className="text-sm text-neutral-500 leading-relaxed whitespace-pre-line">{step.description}</p>
               </div>
               
               {(step.matrix || step.vector) && (
@@ -308,7 +323,7 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
                     <>
                       {step.matrix && <div className="w-px h-full bg-neutral-300 mx-2"></div>}
                       <div className="flex flex-col gap-2">
-                        {mode === 'vectors' || operation === 'gram' ? (
+                        {mode === 'vectors' || operation === 'gram' || operation === 'linear_transform' ? (
                           <div className="flex items-center gap-2">
                             <span className="font-bold text-neutral-400">[</span>
                             {step.vector.map((val, i) => <span key={i} className="w-14 text-center font-mono text-sm font-bold text-blue-600">{Number.isInteger(val) ? val : val.toFixed(2)}</span>)}
@@ -341,6 +356,6 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
         </div>
       </div>
     </div>,
-    document.body // يتم إرسال المحاكي إلى الـ body مباشرة
+    document.body
   );
 }
