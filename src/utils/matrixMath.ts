@@ -48,18 +48,24 @@ export function isSymmetric(A: number[][]): boolean {
   return true;
 }
 
-export function getInverse(A: number[][]): number[][] {
-  const det = getDeterminant(A);
-  if (Math.abs(det) < 1e-10) throw new Error("Matrix is singular (Det = 0). No inverse exists.");
+export function getCofactorMatrix(A: number[][]): number[][] {
   const n = A.length;
-  if (n === 1) return [[1 / A[0][0]]];
-  const adjugate = A.map((row, i) =>
+  if (n === 1) return [[1]];
+  return A.map((row, i) =>
     row.map((_, j) => {
       const sub = A.filter((_, r) => r !== i).map(cRow => cRow.filter((_, c) => c !== j));
       const sign = (i + j) % 2 === 0 ? 1 : -1;
       return sign * getDeterminant(sub);
     })
   );
+}
+
+export function getInverse(A: number[][]): number[][] {
+  const det = getDeterminant(A);
+  if (Math.abs(det) < 1e-10) throw new Error("Matrix is singular (Det = 0). No inverse exists.");
+  const n = A.length;
+  if (n === 1) return [[1 / A[0][0]]];
+  const adjugate = getCofactorMatrix(A);
   return getTranspose(adjugate).map(row => row.map(val => val / det));
 }
 
@@ -74,7 +80,7 @@ export function operateMatrices(A: number[][], B: number[][], operation: 'add' |
 }
 
 // ==========================================
-// 2. Advanced & Subspaces (RREF, Rank, Gram-Schmidt)
+// 2. Advanced & Subspaces (RREF, Rank, Nullity, Eigen, Gram-Schmidt)
 // ==========================================
 
 export function getRREFSteps(A: number[][]): MathStep[] {
@@ -122,6 +128,36 @@ export function getRank(A: number[][]): number {
   return rank;
 }
 
+export function getNullity(A: number[][]): number {
+  const rank = getRank(A);
+  return A[0].length - rank;
+}
+
+export function getEigenvalues2x2(A: number[][]): MathStep[] {
+  if (A.length !== 2 || A[0].length !== 2) throw new Error("This calculator currently supports Eigenvalues analytical solving for 2x2 matrices only.");
+  const a = A[0][0], b = A[0][1], c = A[1][0], d = A[1][1];
+  const trace = a + d;
+  const det = a * d - b * c;
+  const desc = trace * trace - 4 * det;
+  
+  const steps: MathStep[] = [];
+  steps.push({ 
+    title: "Characteristic Equation", 
+    description: `Det(A - λI) = 0\nλ² - Trace(A)λ + Det(A) = 0\nλ² - (${trace})λ + (${det}) = 0` 
+  });
+
+  if (desc >= 0) {
+    const l1 = (trace + Math.sqrt(desc)) / 2;
+    const l2 = (trace - Math.sqrt(desc)) / 2;
+    steps.push({ title: "Eigenvalues (Real Roots)", description: `λ₁ = ${l1.toFixed(4)}\nλ₂ = ${l2.toFixed(4)}` });
+  } else {
+    const real = trace / 2;
+    const img = Math.sqrt(-desc) / 2;
+    steps.push({ title: "Eigenvalues (Complex Roots)", description: `λ₁ = ${real.toFixed(4)} + ${img.toFixed(4)}i\nλ₂ = ${real.toFixed(4)} - ${img.toFixed(4)}i` });
+  }
+  return steps;
+}
+
 export function gramSchmidtSteps(vectors: number[][]): MathStep[] {
   const steps: MathStep[] = [];
   const u: number[][] = [];
@@ -150,7 +186,7 @@ export function gramSchmidtSteps(vectors: number[][]): MathStep[] {
 }
 
 // ==========================================
-// 3. Vectors Math (Dot, Cross, Proj, Angle)
+// 3. Vectors Math & Transformations
 // ==========================================
 
 export function dotProduct(u: number[], v: number[]): number {
@@ -180,10 +216,17 @@ export function vectorAngle(u: number[], v: number[]): number {
   return (Math.acos(dot / mags) * 180) / Math.PI; // In Degrees
 }
 
+export function linearTransformation(A: number[][], v: number[]): MathStep[] {
+  if (A[0].length !== v.length) throw new Error("Matrix columns must match Vector size for Transformation (T(v) = Av).");
+  const result = A.map(row => row.reduce((sum, val, i) => sum + val * v[i], 0));
+  return [
+    { title: "Linear Transformation", description: "T(v) = A · v", vector: result }
+  ];
+}
+
 // ==========================================
 // 4. Solving Systems
 // ==========================================
-// (أبقِ الدوال القديمة للحل هون: solveGaussJordanSteps, solveGaussianSteps, solveCramerSteps, solveInverseMethodSteps)
 export function solveGaussJordanSteps(A: number[][], B: number[]): MathStep[] {
     const steps: MathStep[] = [];
     const n = A.length;
