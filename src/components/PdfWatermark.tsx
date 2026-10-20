@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
 import { PDFDocument, StandardFonts, rgb, degrees } from 'pdf-lib';
-import { FileUp, Trash2, FileText, Type, Image as ImageIcon, ImagePlus } from 'lucide-react';
+// هون ضفنا حرف الـ X اللي كان ناقص وعمل المشكلة
+import { FileUp, Trash2, FileText, Type, Image as ImageIcon, ImagePlus, X } from 'lucide-react';
 
 export function PdfWatermark() {
   const [file, setFile] = useState<File | null>(null);
   
-  // التحكم بنوع الووتر مارك
   const [watermarkType, setWatermarkType] = useState<'text' | 'image'>('text');
   
-  // حالة النص
   const [watermarkText, setWatermarkText] = useState('Athar Team');
   
-  // حالة الصورة
   const [watermarkImage, setWatermarkImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const [isProcessing, setIsProcessing] = useState(false);
 
-  // معالجة رفع الـ PDF
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       if (e.target.files[0].type === 'application/pdf') {
@@ -26,7 +23,6 @@ export function PdfWatermark() {
     }
   };
 
-  // معالجة رفع صورة الووتر مارك
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const imgFile = e.target.files[0];
@@ -55,26 +51,23 @@ export function PdfWatermark() {
       const pages = pdfDoc.getPages();
 
       if (watermarkType === 'text') {
-        // --- وضع العلامة المائية النصية ---
         const helveticaFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
         pages.forEach(page => {
           const { width, height } = page.getSize();
           page.drawText(watermarkText, {
-            x: width / 2 - 100, // تقريب للمركز
+            x: width / 2 - 100,
             y: height / 2,
             size: 50,
             font: helveticaFont,
-            color: rgb(0.8, 0.8, 0.8), // رمادي فاتح
+            color: rgb(0.8, 0.8, 0.8),
             opacity: 0.5,
             rotate: degrees(45),
           });
         });
       } else if (watermarkType === 'image' && watermarkImage) {
-        // --- وضع العلامة المائية كصورة ---
         const imgArrayBuffer = await watermarkImage.arrayBuffer();
         let pdfImage;
         
-        // التحقق من نوع الصورة لدعم PNG و JPEG
         if (watermarkImage.type === 'image/png') {
           pdfImage = await pdfDoc.embedPng(imgArrayBuffer);
         } else if (watermarkImage.type === 'image/jpeg' || watermarkImage.type === 'image/jpg') {
@@ -83,7 +76,7 @@ export function PdfWatermark() {
           throw new Error("Only PNG and JPEG images are supported.");
         }
 
-        const imgDims = pdfImage.scale(0.5); // تصغير حجم الصورة للنصف كافتراضي
+        const imgDims = pdfImage.scale(0.5);
 
         pages.forEach(page => {
           const { width, height } = page.getSize();
@@ -92,8 +85,8 @@ export function PdfWatermark() {
             y: height / 2 - imgDims.height / 2,
             width: imgDims.width,
             height: imgDims.height,
-            opacity: 0.3, // شفافية الصورة (خفيفة لتبين علامة مائية)
-            rotate: degrees(45), // إمالة الصورة (تقدر تشيلها إذا بدك إياها مستقيمة)
+            opacity: 0.3,
+            rotate: degrees(45),
           });
         });
       }
@@ -113,13 +106,11 @@ export function PdfWatermark() {
     }
   };
 
-  // التحقق من جاهزية الزر
   const isReady = file && ((watermarkType === 'text' && watermarkText) || (watermarkType === 'image' && watermarkImage));
 
   return (
     <div className="bg-white border border-black/10 rounded-[30px] p-8 shadow-sm flex flex-col h-full">
       
-      {/* الهيدر مع أزرار التبديل */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
           <div className="p-3 bg-black text-white rounded-xl">
@@ -131,7 +122,6 @@ export function PdfWatermark() {
           </div>
         </div>
 
-        {/* أزرار اختيار نوع الووتر مارك */}
         <div className="flex bg-neutral-100 p-1 rounded-xl">
           <button 
             onClick={() => setWatermarkType('text')}
@@ -149,7 +139,6 @@ export function PdfWatermark() {
       </div>
 
       <div className="space-y-4 flex-1">
-        {/* رفع الـ PDF */}
         {!file ? (
           <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-neutral-300 rounded-2xl hover:bg-neutral-50 hover:border-black transition-all cursor-pointer group">
             <FileUp size={28} className="text-neutral-400 group-hover:text-black mb-2 transition-colors" />
@@ -166,7 +155,6 @@ export function PdfWatermark() {
               <button onClick={() => setFile(null)} className="text-neutral-400 hover:text-red-500 p-1"><Trash2 size={16} /></button>
             </div>
 
-            {/* إعدادات الووتر مارك حسب النوع */}
             {watermarkType === 'text' ? (
               <div>
                 <label className="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">Watermark Text</label>
@@ -193,6 +181,7 @@ export function PdfWatermark() {
                        <img src={imagePreview!} alt="Watermark Preview" className="w-10 h-10 object-cover rounded-lg border border-neutral-100" />
                        <span className="text-xs font-bold truncate text-black max-w-[120px]">{watermarkImage.name}</span>
                      </div>
+                     {/* المشكلة كانت بهاد الزر لأننا نسينا الـ import تبعت X */}
                      <button onClick={removeImage} className="text-neutral-400 hover:text-red-500 p-2"><X size={16} /></button>
                    </div>
                  )}
