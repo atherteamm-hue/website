@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { PDFDocument, StandardFonts, rgb, degrees } from 'pdf-lib';
-// هون ضفنا حرف الـ X اللي كان ناقص وعمل المشكلة
 import { FileUp, Trash2, FileText, Type, Image as ImageIcon, ImagePlus, X } from 'lucide-react';
 
 export function PdfWatermark() {
@@ -61,7 +60,7 @@ export function PdfWatermark() {
             font: helveticaFont,
             color: rgb(0.8, 0.8, 0.8),
             opacity: 0.5,
-            rotate: degrees(45),
+            rotate: degrees(45), // النص بضل مايل
           });
         });
       } else if (watermarkType === 'image' && watermarkImage) {
@@ -76,17 +75,17 @@ export function PdfWatermark() {
           throw new Error("Only PNG and JPEG images are supported.");
         }
 
-        const imgDims = pdfImage.scale(0.5);
+        const imgDims = pdfImage.scale(0.5); // تصغير حجم الصورة للنصف كافتراضي
 
         pages.forEach(page => {
           const { width, height } = page.getSize();
           page.drawImage(pdfImage, {
-            x: width / 2 - imgDims.width / 2,
-            y: height / 2 - imgDims.height / 2,
+            x: width / 2 - imgDims.width / 2, // تمركز أفقي
+            y: height / 2 - imgDims.height / 2, // تمركز عمودي
             width: imgDims.width,
             height: imgDims.height,
-            opacity: 0.3,
-            rotate: degrees(45),
+            opacity: 0.3, // شفافية الصورة (خفيفة لتبين علامة مائية)
+            // شلنا الـ rotate هون عشان تضل الصورة جالسة بالنص بدون ما تنقص
           });
         });
       }
@@ -181,7 +180,6 @@ export function PdfWatermark() {
                        <img src={imagePreview!} alt="Watermark Preview" className="w-10 h-10 object-cover rounded-lg border border-neutral-100" />
                        <span className="text-xs font-bold truncate text-black max-w-[120px]">{watermarkImage.name}</span>
                      </div>
-                     {/* المشكلة كانت بهاد الزر لأننا نسينا الـ import تبعت X */}
                      <button onClick={removeImage} className="text-neutral-400 hover:text-red-500 p-2"><X size={16} /></button>
                    </div>
                  )}
