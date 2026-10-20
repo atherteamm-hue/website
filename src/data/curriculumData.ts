@@ -13,6 +13,10 @@ export interface CourseContent {
     | { label: string; url: string }
     | { label: string; type: 'folder'; items: { label: string; url: string }[] }
   )[];
+  testBanks?: ( // الخانة الجديدة للـ Test Banks & MCQs
+    | { label: string; url: string }
+    | { label: string; type: 'folder'; items: { label: string; url: string }[] }
+  )[];
   mid: { label: string; url: string }[];
   final: { label: string; url: string }[];
   credits: number;
@@ -662,20 +666,20 @@ communication: {
           type: 'folder',
           items: [
             { label: "2026", url: "/communication/pastpapers/Quizzes/Quiz_1_2026.pdf" },
-            { label: "Ch4 (2023-24)", url: "/communication/pastpapers/Quizzes/Quiz_Ch4_T2_2023-24.pdf" }, // ← الفاصلة اللي كانت ناقصة
+            { label: "Ch4 (2023-24)", url: "/communication/pastpapers/Quizzes/Quiz_Ch4_T2_2023-24.pdf" }, 
             { label: "2023", url: "/communication/pastpapers/Quizzes/Quiz_1_T3_2023.pdf" },
             { label: "2023", url: "/communication/pastpapers/Quizzes/Quiz_2_T3_2023.pdf" },
             { label: "2023", url: "/communication/pastpapers/Quizzes/Quiz_3_T3_2023.pdf" },
             { label: "2022", url: "/communication/pastpapers/Quizzes/Quiz_1_2022.pdf" },
             { label: "2022", url: "/communication/pastpapers/Quizzes/Quiz_2_2022.pdf" },
-            { label: "2022", url: "/communication/pastpapers/Quizzes/Quiz_3_2022.pdf" } // آخر عنصر ما بيحتاج فاصلة
+            { label: "2022", url: "/communication/pastpapers/Quizzes/Quiz_3_2022.pdf" } 
           ]
         }
       ],
 
       mid: [
         { label: "2026", url: "/communication/pastpapers/Mids/Mid_2026.pdf" },
-        { label: "25-26", url: "/communication/pastpapers/Mids/Mid_25-26_1st_Semester_MAE.pdf" }, // ← الفاصلة اللي كانت ناقصة
+        { label: "25-26", url: "/communication/pastpapers/Mids/Mid_25-26_1st_Semester_MAE.pdf" }, 
         { label: "2025", url: "/communication/pastpapers/Mids/Mid_2025.pdf" },
         { label: "2024", url: "/communication/pastpapers/Mids/Mid_2024.pdf" },
         { label: "2024", url: "/communication/pastpapers/Mids/Mid_Exam_2024.pdf" },
@@ -683,7 +687,7 @@ communication: {
         { label: "2023", url: "/communication/pastpapers/Mids/Mid_T3_2023.pdf" },
         { label: "2023", url: "/communication/pastpapers/Mids/Mid_2023.pdf" },
         { label: "22-23", url: "/communication/pastpapers/Mids/Mid_Fall_2022-23.pdf" },
-        { label: "2022 ", url: "/communication/pastpapers/Mids/Mid_2022_Additional.pdf" } // آخر عنصر ما بيحتاج فاصلة
+        { label: "2022 ", url: "/communication/pastpapers/Mids/Mid_2022_Additional.pdf" } 
       ], 
       
       final: [
@@ -833,9 +837,10 @@ communication: {
       videos: [
         { label: "CNE Explanation", url: "https://youtube.com/playlist?list=PLJwCQtAhsso9W8OA0W2Dx1sWA1dDqvixz&si=cu7raPTQ9r5PN8Xv" }
       ], 
-      quizzes: [
+      quizzes: [], // فضيناها ونقلناها تحت
+      testBanks: [
         {
-          label: "Quizzes",
+          label: "Test Banks & MCQs",
           type: 'folder',
           items: [
             { label: "Test Bank by MAE", url: "/electric-machines-1/past_papers/01_machines-test-bank-by-mae.pdf" }
@@ -1108,8 +1113,6 @@ protection_devices: {
         }
       ], 
       
-      // لا توجد فيديوهات لهذه المادة، سيختفي القسم تلقائياً
-
       // 2. Summaries & Slides
       summaries: [
         {
@@ -1190,8 +1193,8 @@ protection_devices: {
         }
       ], 
       
-      // 3. Quizzes & MCQs (Test Banks)
-      quizzes: [
+      quizzes: [], // فضيناها ونقلناها للـ testBanks
+      testBanks: [
         {
           label: "MCQs & Test Banks",
           type: 'folder',
