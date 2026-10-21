@@ -141,7 +141,7 @@ export const curriculumData: Record<string, Course> = {
   probability: { 
     coords: { x: 41.57, y: 15.22, w: 5.62, h: 5.4 }, 
     content: {
-      titleEn: "Probability", titleAr: "	احصاء واحتمالات للهندسة ", credits: 3,
+      titleEn: "Probability", titleAr: "احصاء واحتمالات للهندسة ", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
@@ -297,7 +297,7 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-circuits_1: { 
+  circuits_1: { 
     coords: { x: 63.21, y: 26.65, w: 5.48, h: 5.68 }, 
     content: {
       titleEn: "Circuits 1", 
@@ -414,7 +414,7 @@ circuits_1: {
     } 
   },
   
-circuits_2: { 
+  circuits_2: { 
     coords: { x: 78.61, y: 21.87, w: 5.25, h: 5.91 }, 
     content: {
       titleEn: "Circuits 2", 
@@ -499,7 +499,6 @@ circuits_2: {
         { label: "2022", url: "/Circuit_2/PastPapers/Mid_2022_Circuit2.pdf" },
         { label: "2019", url: "/Circuit_2/PastPapers/Mid_2019_Circuit2.pdf" },
         { label: "2016", url: "/Circuit_2/PastPapers/Mid_2016_Circuit2.pdf" },
-
         { label: "Mid Exam", url: "/Circuit_2/PastPapers/Mid_Exam_Circuit2.pdf" }
       ], 
       
@@ -512,7 +511,7 @@ circuits_2: {
     } 
   },
   
-circuits_lab: { 
+  circuits_lab: { 
     coords: { x: 77.81, y: 31.65, w: 6.85, h: 5.92 }, 
     content: {
       titleEn: "Circuits Lab", 
@@ -534,7 +533,7 @@ circuits_lab: {
     } 
   },
   
-signals: { 
+  signals: { 
     coords: { x: 63.21, y: 38.93, w: 5.48, h: 5.46 }, 
     content: {
       titleEn: "Signals & Systems", 
@@ -595,7 +594,7 @@ signals: {
     } 
   },
   
-communication: { 
+  communication: { 
     coords: { x: 47.81, y: 36.2, w: 5.36, h: 5.46 }, 
     content: {
       titleEn: "Communication", 
@@ -924,7 +923,18 @@ communication: {
     coords: { x: 26.01, y: 37.34, w: 5.71, h: 5.01 }, 
     content: {
       titleEn: "Assembly", titleAr: "أنظمة المعالجات الدقيقة", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [], 
+      summaries: [], 
+      videos: [], 
+      mid: [], 
+      final: [
+        { label: "2025", url: "/assembly/pastpapers/final/Final_2025.pdf" },
+        { label: "2023", url: "/assembly/pastpapers/final/Final_2023.pdf" },
+        { label: "2022 (Arab Academy)", url: "/assembly/pastpapers/final/Final_2022_Arab_Academy.pdf" },
+        { label: "2022 (El Soor)", url: "/assembly/pastpapers/final/Final_2022_El_Soor.pdf" },
+        { label: "Moodle Quiz Screens", url: "/assembly/pastpapers/final/Final_Moodle_Quiz_Screens.pdf" },
+        { label: "Final Exam", url: "/assembly/pastpapers/final/Final_Undated.pdf" }
+      ]
     } 
   },
   
@@ -1083,12 +1093,12 @@ communication: {
   special_topics: { 
     coords: { x: 30.92, y: 62.82, w: 6.16, h: 6.83 }, 
     content: {
-      titleEn: "Special Topics", titleAr: "	موضوعات خاصة في هندسة الميكاترونكس ", credits: 3,
+      titleEn: "Special Topics", titleAr: "موضوعات خاصة في هندسة الميكاترونكس ", credits: 3,
       books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
   
-protection_devices: { 
+  protection_devices: { 
     coords: { x: 67.2, y: 73.97, w: 6.62, h: 5.46 }, 
     content: {
       titleEn: "Protection Devices", 
