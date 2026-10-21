@@ -252,23 +252,23 @@ export const curriculumData: Record<string, Course> = {
         { label: "Dr. Shurahbeel Slides", url: "/digital logic design/summaries/summary_04.pdf" }
       ], 
       mid: [
-        { label: "Past Paper 1", url: "/digital logic design/pastpapers/pastpaper_01.pdf" },
-        { label: "Past Paper 2", url: "/digital logic design/pastpapers/pastpaper_02.pdf" },
-        { label: "Past Paper 3", url: "/digital logic design/pastpapers/pastpaper_03.pdf" },
-        { label: "Past Paper 4", url: "/digital logic design/pastpapers/pastpaper_04.pdf" },
-        { label: "Past Paper 5", url: "/digital logic design/pastpapers/pastpaper_05.pdf" },
-        { label: "Past Paper 6", url: "/digital logic design/pastpapers/pastpaper_06.pdf" },
-        { label: "Past Paper 7", url: "/digital logic design/pastpapers/pastpaper_07.pdf" },
-        { label: "Past Paper 8", url: "/digital logic design/pastpapers/pastpaper_08.pdf" },
-        { label: "Past Paper 9", url: "/digital logic design/pastpapers/pastpaper_09.pdf" },
-        { label: "Past Paper 10", url: "/digital logic design/pastpapers/pastpaper_10.pdf" },
-        { label: "Past Paper 11", url: "/digital logic design/pastpapers/pastpaper_11.pdf" }
+        { label: "2026", url: "/digital logic design/pastpapers/pastpaper_15.pdf" },
+        { label: "2025", url: "/digital logic design/pastpapers/pastpaper_14.pdf" },
+        { label: "2025", url: "/digital logic design/pastpapers/pastpaper_01.pdf" },
+        { label: "2023", url: "/digital logic design/pastpapers/pastpaper_13.pdf" },
+        { label: "screens", url: "/digital logic design/pastpapers/pastpaper_03.pdf" },
+        { label: "screens", url: "/digital logic design/pastpapers/pastpaper_04.pdf" },
+        { label: "2017", url: "/digital logic design/pastpapers/pastpaper_06.pdf" },
+        { label: "2017", url: "/digital logic design/pastpapers/pastpaper_11.pdf" },
+        { label: "2016", url: "/digital logic design/pastpapers/pastpaper_10.pdf" },
+        { label: "2016", url: "/digital logic design/pastpapers/pastpaper_02.pdf" }
       ], 
       final: [
-        { label: "Past Paper 12", url: "/digital logic design/pastpapers/pastpaper_12.pdf" },
-        { label: "Past Paper 13", url: "/digital logic design/pastpapers/pastpaper_13.pdf" },
-        { label: "Past Paper 14", url: "/digital logic design/pastpapers/pastpaper_14.pdf" },
-        { label: "Past Paper 15", url: "/digital logic design/pastpapers/pastpaper_15.pdf" }
+        { label: "2025", url: "/digital logic design/pastpapers/pastpaper_07.pdf" },
+        { label: "2025", url: "/digital logic design/pastpapers/pastpaper_08.pdf" },
+        { label: "2016", url: "/digital logic design/pastpapers/pastpaper_05.pdf" },
+        { label: "2015", url: "/digital logic design/pastpapers/pastpaper_09.pdf" },
+        { label: "Final exam", url: "/digital logic design/pastpapers/pastpaper_12.pdf" }
       ]
     } 
   },
@@ -359,10 +359,11 @@ circuits_1: {
       
       // 2. Videos / Lectures
       videos: [
-        { label: "Spark Team Explanation", url: "https://www.youtube.com/playlist?list=PL4Itv3LsZJuyWPRdr8mR849IKdb05XNX1" },
-        { label: "Samer Issa Explanation", url: "https://www.youtube.com/playlist?list=PLawhbyHTpbgG2VR16b5y8v05-yW4kB-jP" },
-        { label: "Tesla Team Explanation", url: "https://www.youtube.com/playlist?list=PL2C_OpeEqP-LgiDcixQR4QyN2n9EQTwuR" },
-        { label: "SREE Explanation", url: "https://www.youtube.com/playlist?list=PLNBj23z192s-4nPfxC8jTxyayuuJRyTGz" }
+        { label: "Spark Team", url: "https://www.youtube.com/playlist?list=PL4Itv3LsZJuyWPRdr8mR849IKdb05XNX1" },
+        { label: "Samer Issa", url: "https://www.youtube.com/playlist?list=PLawhbyHTpbgG2VR16b5y8v05-yW4kB-jP" },
+        { label: "Tesla Team", url: "https://www.youtube.com/playlist?list=PL2C_OpeEqP-LgiDcixQR4QyN2n9EQTwuR" },
+        { label: "SREE", url: "https://www.youtube.com/playlist?list=PLNBj23z192s-4nPfxC8jTxyayuuJRyTGz" },
+        { label: "CNE", url: "https://youtube.com/playlist?list=PLJwCQtAhsso_vLmqT9lV1VGCHDAKsK1CS&si=GZoRfqQhvQ4-GQaZ" }
       ],
 
       // 3. Summaries & Notes
@@ -475,9 +476,9 @@ circuits_2: {
       
       // 2. Videos / Lectures
       videos: [
-        { label: "Ahmad Khawaja Explanation", url: "https://www.youtube.com/playlist?list=PLfHIBOSWCljUsYwx7Q9HxH-ZK9B8uiv94" },
-        { label: "Eng. Kareem Explanation", url: "https://www.youtube.com/playlist?list=PLFM6wDAJoh-88gjdMrSJ28aPkw2-9uR6f" },
-        { label: "CNE Explanation", url: "https://www.youtube.com/playlist?list=PLJwCQtAhsso9OHZiNjPkdHXrsp3dCkpxA" }
+        { label: "Ahmad Khawaja", url: "https://www.youtube.com/playlist?list=PLfHIBOSWCljUsYwx7Q9HxH-ZK9B8uiv94" },
+        { label: "Eng. Kareem", url: "https://www.youtube.com/playlist?list=PLFM6wDAJoh-88gjdMrSJ28aPkw2-9uR6f" },
+        { label: "CNE", url: "https://www.youtube.com/playlist?list=PLJwCQtAhsso9OHZiNjPkdHXrsp3dCkpxA" }
       ],
 
       // 3. Summaries & Notes
@@ -540,7 +541,6 @@ signals: {
       titleAr: "انظمة واشارات", credits: 3, 
       
       // 1. Books
-     // 1. Books
       books: [
         { 
           label: "Signals and Systems 2nd Ed (Schaum Outline)", 
@@ -556,10 +556,10 @@ signals: {
       
       // 2. Videos / Lectures
       videos: [
-        { label: "Spectrum Team ", url: "https://www.youtube.com/watch?v=ARB7PBRlPGc" },
-        { label: "Bashar Zayoud (EES) ", url: "https://www.youtube.com/playlist?list=PLdL3o9rqPLb6pX0jukRtna5XE-1ZKPGCI" },
-        { label: "Arabic Explanation Playlist", url: "https://www.youtube.com/watch?v=2mz2alVD8f4&list=PLmtVLconakTY6y0Thd050QsvkHTJF8TWa&index=1" },
-        { label: "Hazem Masoud ", url: "https://www.youtube.com/watch?v=HB1kOC7yWRw&list=PL2Ii6Wj70DwEfieCcOUh-EIrZkjab2YYl" }
+        { label: "Spectrum Team", url: "https://www.youtube.com/watch?v=ARB7PBRlPGc" },
+        { label: "Bashar Zayoud (EES)", url: "https://www.youtube.com/playlist?list=PLdL3o9rqPLb6pX0jukRtna5XE-1ZKPGCI" },
+        { label: "Arabic Playlist", url: "https://www.youtube.com/watch?v=2mz2alVD8f4&list=PLmtVLconakTY6y0Thd050QsvkHTJF8TWa&index=1" },
+        { label: "Hazem Masoud", url: "https://www.youtube.com/watch?v=HB1kOC7yWRw&list=PL2Ii6Wj70DwEfieCcOUh-EIrZkjab2YYl" }
       ],
 
       // 3. Summaries & Notes
@@ -608,15 +608,15 @@ communication: {
           coverUrl: "/BooksCover/Data-Communications-And-Networking.png" 
         },
         { 
-          label: "Data and Computer Communications", 
-          url: "/communication/Books/Book_Data_and_Computer_Communications.pdf",
-          coverUrl: "/BooksCover/Data-and-Computer-Communications-tenth-edition.png" 
-        },
-        { 
           label: "Solutions Manual", 
           url: "/communication/Books/Book_Solutions_Data_Communication_and_Networking.pdf",
           coverUrl: "/BooksCover/Data-Communications-And-Networking.png",
           isSolution: true 
+        },
+        { 
+          label: "Data and Computer Communications", 
+          url: "/communication/Books/Book_Data_and_Computer_Communications.pdf",
+          coverUrl: "/BooksCover/Data-and-Computer-Communications-tenth-edition.png" 
         }
       ], 
       
@@ -749,8 +749,8 @@ communication: {
         { label: "Mohammed Aid Slides", url: "/electronics1/summarize/slides_mohammed_aid.pdf" }
       ], 
       videos: [
-        { label: "Spark Team Explanation", url: "https://www.youtube.com/playlist?list=PL4Itv3LsZJuyt-6bhNl99zDhkwf2zyaHo" },
-        { label: "Mohammed Aid Explanation", url: "https://www.youtube.com/playlist?list=PLkXK5Ys6YkPJeYfEHo8Rei1dToH6hB5e1" }
+        { label: "Spark Team", url: "https://www.youtube.com/playlist?list=PL4Itv3LsZJuyt-6bhNl99zDhkwf2zyaHo" },
+        { label: "Mohammed Aid", url: "https://www.youtube.com/playlist?list=PLkXK5Ys6YkPJeYfEHo8Rei1dToH6hB5e1" }
       ], 
       quizzes: [
         {
@@ -815,6 +815,12 @@ communication: {
           coverUrl: "/BooksCover/01_electric-machinery-fundamentals-4th-edition.png" 
         },
         { 
+          label: "Solutions Manual (Fundamentals 4th Ed)", 
+          url: "/electric-machines-1/books/04_solutions-of-electric-machinery-fundamentals-4th-edition.pdf", 
+          coverUrl: "/BooksCover/01_electric-machinery-fundamentals-4th-edition.png", 
+          isSolution: true 
+        },
+        { 
           label: "Principles of Electric Machines and Power Electronics", 
           url: "/electric-machines-1/books/02_principles-of-electric-machines-and-power-electronics-3rd-edition.pdf", 
           coverUrl: "/BooksCover/02_principles-of-electric-machines-and-power-electronics-3rd-edition.png" 
@@ -823,19 +829,13 @@ communication: {
           label: "Electromagnetic and Electromechanical Machines", 
           url: "/electric-machines-1/books/03_electromagnetic-and-electromechanical-machines-3rd-edition.pdf", 
           coverUrl: "/BooksCover/03_electromagnetic-and-electromechanical-machines-3rd-edition.png" 
-        },
-        { 
-          label: "Solutions Manual (Fundamentals 4th Ed)", 
-          url: "/electric-machines-1/books/04_solutions-of-electric-machinery-fundamentals-4th-edition.pdf", 
-          coverUrl: "/BooksCover/01_electric-machinery-fundamentals-4th-edition.png", 
-          isSolution: true 
         }
       ], 
       summaries: [
         { label: "Spark Team Summary", url: "/electric-machines-1/past_papers/04_ملخص-سبارك.pdf" }
       ], 
       videos: [
-        { label: "CNE Explanation", url: "https://youtube.com/playlist?list=PLJwCQtAhsso9W8OA0W2Dx1sWA1dDqvixz&si=cu7raPTQ9r5PN8Xv" }
+        { label: "CNE", url: "https://youtube.com/playlist?list=PLJwCQtAhsso9W8OA0W2Dx1sWA1dDqvixz&si=cu7raPTQ9r5PN8Xv" }
       ], 
       quizzes: [], // فضيناها ونقلناها تحت
       testBanks: [
@@ -848,8 +848,8 @@ communication: {
         }
       ],
       mid: [
-        { label: "2023", url: "/electric-machines-1/past_papers/05_ميد-2023.pdf" },
-        { label: "2026", url: "/electric-machines-1/past_papers/06_ميد-2026.pdf" }
+        { label: "2026", url: "/electric-machines-1/past_papers/06_ميد-2026.pdf" },
+        { label: "2023", url: "/electric-machines-1/past_papers/05_ميد-2023.pdf" }
       ], 
       final: [
         { label: "Screens", url: "/electric-machines-1/past_papers/02_شاشات-سبارك.pdf" },
