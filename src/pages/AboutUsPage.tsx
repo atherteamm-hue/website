@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-import awsImg from '../../members photos/Aws gharaibeh.jpeg';
-import yaraImg from '../../members photos/Yara Alabadi.jpeg';
-import ahmadImg from '../../members photos/Ahamd Radhwan.jpeg';
-import ansamImg from '../../members photos/ansam tayeh.jpeg';
-import anasImg from '../../members photos/Anas majdi.jpeg';
-import mohammadImg from '../../members photos/Mohammad abuelyan.jpeg';
-import abdalrhmanImg from '../../members photos/Abdalrhman Abdorabbeh.jpeg';
-import abdullahImg from '../../members photos/Abdullah bsaiso.jpeg';
-import adnanImg from '../../members photos/Adnan abusamaha.jpeg';
-import bahaaImg from '../../members photos/Bahaa Alsaeed.jpeg';
+import awsImg from '../../members photos/Aws gharaibeh.webp';
+import yaraImg from '../../members photos/Yara Alabadi.webp';
+import ahmadImg from '../../members photos/Ahamd Radhwan.webp';
+import ansamImg from '../../members photos/ansam tayeh.webp';
+import anasImg from '../../members photos/Anas majdi.webp';
+import mohammadImg from '../../members photos/Mohammad abuelyan.webp';
+import abdalrhmanImg from '../../members photos/Abdalrhman Abdorabbeh.webp';
+import abdullahImg from '../../members photos/Abdullah bsaiso.webp';
+import adnanImg from '../../members photos/Adnan abusamaha.webp';
+import bahaaImg from '../../members photos/Bahaa Alsaeed.webp';
 
 const TEAM_MEMBERS = [
   {
@@ -215,7 +215,7 @@ export const AboutUsPage: React.FC = () => {
                 
                 <div className="md:w-2/5 bg-neutral-50 border-b md:border-b-0 md:border-r border-neutral-200/80 flex items-center justify-center relative overflow-hidden min-h-[300px] md:min-h-full">
                   {member.image ? (
-                    <img src={member.image} alt={member.name} className="absolute inset-0 w-full h-full object-cover object-top" />
+                    <img src={member.image} alt={member.name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top" />
                   ) : (
                     <span className="text-xs font-mono text-neutral-400 tracking-widest text-center z-10">
                       [ IMAGE PLACEHOLDER <br/> MEMBER {idx + 1} ]

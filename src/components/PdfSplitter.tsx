@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { PDFDocument } from 'pdf-lib';
+// pdf-lib is ~350 KB — pull it in on demand instead of shipping it
+// with the page bundle. The first click pays for it, the rest is cached.
+const loadPdfLib = () => import('pdf-lib');
+
 import { FileUp, Trash2, FileText, Scissors } from 'lucide-react';
 
 export function PdfSplitter() {
@@ -18,6 +21,7 @@ export function PdfSplitter() {
       
       // قراءة الملف لمعرفة عدد الصفحات الكلي فوراً
       try {
+        const { PDFDocument } = await loadPdfLib();
         const arrayBuffer = await selectedFile.arrayBuffer();
         const pdfDoc = await PDFDocument.load(arrayBuffer);
         const totalPages = pdfDoc.getPageCount();
@@ -51,6 +55,7 @@ export function PdfSplitter() {
     setIsSplitting(true);
     
     try {
+      const { PDFDocument } = await loadPdfLib();
       const arrayBuffer = await file.arrayBuffer();
       const originalPdf = await PDFDocument.load(arrayBuffer);
       const newPdf = await PDFDocument.create();
@@ -67,7 +72,7 @@ export function PdfSplitter() {
       const newPdfFile = await newPdf.save();
       
       // تحميل الملف المقصوص
-      const blob = new Blob([newPdfFile], { type: 'application/pdf' });
+      const blob = new Blob([newPdfFile as unknown as BlobPart], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

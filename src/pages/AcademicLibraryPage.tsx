@@ -127,10 +127,14 @@ export function AcademicLibraryPage() {
         </div>
 
         <div className="relative w-full border border-black/10 shadow-2xl rounded-[40px] overflow-hidden bg-white">
-          <img 
-            src={lang === 'EN' ? '/flowchart-en.svg' : '/flowchart-ar.svg'} 
-            className="w-full h-auto block pointer-events-none select-none" 
-            alt="Curriculum Flowchart" 
+          <img
+            src={lang === 'EN' ? '/flowchart-en.svg' : '/flowchart-ar.svg'}
+            width={4000}
+            height={2002}
+            fetchPriority="high"
+            decoding="async"
+            className="w-full h-auto block pointer-events-none select-none"
+            alt="Curriculum Flowchart"
           />
           <div className="absolute inset-0">
             {Object.entries(curriculumData).map(([key, course]) => {

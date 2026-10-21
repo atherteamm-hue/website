@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageId } from '../types.ts';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/logo.svg';
 
 interface NavbarProps {
   currentPage: PageId;
@@ -41,6 +41,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           <img
             src={logoImg}
             alt="Mainframe Logo"
+            width={1024}
+            height={1024}
             className="h-7 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
         </div>
@@ -109,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
       {/* Mobile overlay (z-index: 9) */}
       <div
-        className={`fixed inset-0 z-[9] bg-white/95 backdrop-blur-sm flex flex-col justify-center px-8 gap-8 transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 z-[9] bg-white/95 flex flex-col justify-center px-8 gap-8 transition-all duration-300 md:hidden ${
           isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -118,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           onClick={() => handleNavClick('home')}
           className="flex items-center gap-3 text-left text-[32px] font-medium text-black hover:opacity-60 transition-opacity cursor-pointer bg-transparent border-0 p-0"
         >
-          <img src={logoImg} alt="Mainframe Logo" className="h-9 w-auto object-contain" />
+          <img src={logoImg} alt="Mainframe Logo" width={1024} height={1024} className="h-9 w-auto object-contain" />
           <span>Home</span>
         </button>
         {navLinks.map((item) => (

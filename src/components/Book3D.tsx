@@ -24,7 +24,7 @@ export function Book3D({ title, url, coverUrl, isArabic, isSolution }: Book3DPro
           {/* 1. الغلاف الأمامي */}
           <div className="absolute inset-0 [transform:translateZ(12px)] bg-white rounded-[2px] shadow-sm border border-neutral-300 overflow-hidden">
             {coverUrl ? (
-              <img src={coverUrl} alt={title} className="w-full h-full object-cover" />
+              <img src={coverUrl} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
             ) : (
               <div className="w-full h-full bg-neutral-100 flex items-center justify-center text-xs font-bold text-neutral-400 text-center p-2">No Cover</div>
             )}

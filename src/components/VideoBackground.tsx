@@ -4,6 +4,9 @@ interface VideoBackgroundProps {
   dimmed?: boolean;
 }
 
+/** Minimum milliseconds between two video seeks while scrubbing. */
+const SEEK_INTERVAL_MS = 50;
+
 export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const prevXRef = useRef<number | null>(null);
@@ -12,7 +15,14 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
   const appliedTargetRef = useRef<number>(-1);
   const seekTimerRef = useRef<number | null>(null);
   const rafRef = useRef<number | null>(null);
-  const [duration, setDuration] = useState<number>(4.0);
+  // Kept in a ref, not state: writing it would re-render the <video>, and
+  // re-rendering a <video> whose children are <source> elements makes the
+  // browser restart source selection — it fires a spurious `error` event
+  // with no MediaError, which used to tear the video out of the DOM.
+  const durationRef = useRef<number>(4.0);
+  // Set once the video has been primed (played briefly and paused on a
+  // decoded frame).
+  const primedRef = useRef<boolean>(false);
   // Set when the video can't be used (unsupported codec, failed request,
   // reduced motion). The poster layer then becomes the visible background.
   const [posterOnly, setPosterOnly] = useState(false);
@@ -23,6 +33,9 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
   // fallback for builds that ship without an H.264 decoder.
   const videoSrc = `${cleanBase}mainframe-aria.mp4`;
   const videoSrcWebm = `${cleanBase}mainframe-aria.webm`;
+  // Much smaller encode for phones — a 4G phone has no business pulling the
+  // 1080p file when it is only ever shown at ~390 CSS pixels wide.
+  const videoSrcMobile = `${cleanBase}mainframe-aria-mobile.mp4`;
   const posterSrc = `${cleanBase}mainframe-aria-poster.jpg`;
 
   // ── Playback ────────────────────────────────────────────────────────────
@@ -58,6 +71,17 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
     primePlayback();
     video.addEventListener('canplay', primePlayback, { once: true });
 
+    // Safety net: if the media data never gets far enough for 'canplay' (a
+    // very slow connection), stop the video anyway so it never plays on its
+    // own in the background.
+    const stopTimer = window.setTimeout(() => {
+      const current = videoRef.current;
+      if (current && !current.paused) {
+        primedRef.current = true;
+        current.pause();
+      }
+    }, 2500);
+
     // Respect the OS "reduce motion" setting: show the still frame instead.
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const applyMotionPreference = () => {
@@ -70,6 +94,7 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
     motionQuery.addEventListener('change', applyMotionPreference);
 
     return () => {
+      window.clearTimeout(stopTimer);
       video.removeEventListener('canplay', primePlayback);
       motionQuery.removeEventListener('change', applyMotionPreference);
     };
@@ -104,19 +129,46 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
     }
   }, []);
 
-  // Coalesce pointer moves into at most one seek per animation frame.
+  // Coalesce pointer moves into at most one seek per animation frame, and
+  // rate-limit the seeks themselves. A video seek re-decodes a frame and
+  // repaints a full-viewport video, so doing that on every frame the mouse
+  // moves is expensive; ~20/second is indistinguishable to the eye.
+  const lastSeekAtRef = useRef<number>(0);
+  const pendingSeekRef = useRef<boolean>(false);
+  const trailingTimerRef = useRef<number | null>(null);
+
+  const applySeekNow = useCallback(() => {
+    lastSeekAtRef.current = performance.now();
+    pendingSeekRef.current = false;
+    seekToTarget();
+  }, [seekToTarget]);
+
   const scheduleSeek = useCallback(() => {
     if (rafRef.current !== null) return;
     rafRef.current = requestAnimationFrame(() => {
       rafRef.current = null;
-      seekToTarget();
+      const elapsed = performance.now() - lastSeekAtRef.current;
+      if (elapsed >= SEEK_INTERVAL_MS) {
+        applySeekNow();
+        return;
+      }
+      // Too soon after the last seek — remember it so the final position of
+      // the gesture is still applied, just a moment later.
+      pendingSeekRef.current = true;
+      if (trailingTimerRef.current === null) {
+        trailingTimerRef.current = window.setTimeout(() => {
+          trailingTimerRef.current = null;
+          if (pendingSeekRef.current) applySeekNow();
+        }, SEEK_INTERVAL_MS - elapsed);
+      }
     });
-  }, [seekToTarget]);
+  }, [applySeekNow]);
 
   useEffect(() => {
     return () => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
       if (seekTimerRef.current !== null) window.clearTimeout(seekTimerRef.current);
+      if (trailingTimerRef.current !== null) window.clearTimeout(trailingTimerRef.current);
     };
   }, []);
 
@@ -124,7 +176,7 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
     (clientX: number) => {
       const video = videoRef.current;
       if (!video) return;
-      const dur = video.duration || duration || 4.0;
+      const dur = video.duration || durationRef.current || 4.0;
 
       if (prevXRef.current === null) {
         prevXRef.current = clientX;
@@ -140,7 +192,7 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
 
       scheduleSeek();
     },
-    [duration, scheduleSeek]
+    [scheduleSeek]
   );
 
   const handleMouseMove = useCallback(
@@ -179,21 +231,38 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
     if (!video) return;
 
     const dur = video.duration || 4.0;
-    setDuration(dur);
+    durationRef.current = dur;
     targetTimeRef.current = Math.min(0.05, dur / 2);
 
     primePlayback();
   };
 
-  // The video is a scrubbable element, not a looping background: as soon as
-  // the priming play() starts, pause it again so the frame stays put and
-  // only follows the pointer.
-  const handlePlaying = () => {
+  // The video is a scrubbable element, not a looping background: it is
+  // played once (muted) so the engine really decodes a frame, then paused
+  // so the frame stays put and only follows the pointer.
+  //
+  // The pause has to wait for the media *data* though. A paused video that
+  // only has metadata (readyState 1) silently ignores currentTime writes,
+  // so seeking it at that point does nothing and every later scrub is
+  // dropped as well. 'canplay' means readyState >= 3, i.e. there is real
+  // data to seek into.
+  const handleCanPlay = () => {
+    if (primedRef.current) return;
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || video.readyState < 3) return;
+
+    primedRef.current = true;
     video.pause();
     appliedTargetRef.current = -1;
     seekToTarget();
+  };
+
+  const handlePlaying = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    // Keep playing until the data is buffered — see handleCanPlay.
+    if (!primedRef.current) return;
+    video.pause();
   };
 
   const handleSeeked = () => {
@@ -205,6 +274,12 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
   };
 
   const handleError = () => {
+    const video = videoRef.current;
+    // Only give up when the media genuinely failed to load. The element also
+    // fires `error` with no MediaError when the browser restarts source
+    // selection, and tearing the video out of the DOM in that case would
+    // break the scrub interaction.
+    if (!video || !video.error) return;
     // No playable source (unsupported codec / failed request) — show the poster.
     setPosterOnly(true);
   };
@@ -238,15 +313,17 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
           }}
           muted
           playsInline
-          preload="auto"
+          preload={dimmed ? 'metadata' : 'auto'}
           disablePictureInPicture
           disableRemotePlayback
           onLoadedMetadata={handleLoadedMetadata}
+          onCanPlay={handleCanPlay}
           onPlaying={handlePlaying}
           onSeeked={handleSeeked}
           onError={handleError}
           aria-hidden="true"
         >
+          <source src={videoSrcMobile} type="video/mp4" media="(max-width: 768px)" />
           <source src={videoSrc} type="video/mp4" />
           <source src={videoSrcWebm} type="video/webm" />
         </video>
@@ -254,7 +331,7 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
 
       {dimmed && (
         <div
-          className="fixed inset-0 z-0 bg-white/70 backdrop-blur-md pointer-events-none transition-all duration-700"
+          className="fixed inset-0 z-0 bg-white/75 pointer-events-none transition-all duration-700"
           aria-hidden="true"
         />
       )}

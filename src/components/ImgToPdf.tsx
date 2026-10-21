@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { PDFDocument } from 'pdf-lib';
+// pdf-lib is ~350 KB — pull it in on demand instead of shipping it
+// with the page bundle. The first click pays for it, the rest is cached.
+const loadPdfLib = () => import('pdf-lib');
+
 import { FileUp, Trash2, Image as ImageIcon, Download, ChevronUp, ChevronDown } from 'lucide-react';
 
 export function ImgToPdf() {
@@ -30,6 +33,7 @@ export function ImgToPdf() {
     if (images.length === 0) return;
     setIsConverting(true);
     try {
+      const { PDFDocument } = await loadPdfLib();
       const pdfDoc = await PDFDocument.create();
       for (const imgFile of images) {
         const imgBytes = await imgFile.arrayBuffer();
@@ -42,7 +46,7 @@ export function ImgToPdf() {
         page.drawImage(pdfImage, { x: 0, y: 0, width, height });
       }
       const pdfBytes = await pdfDoc.save();
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const blob = new Blob([pdfBytes as unknown as BlobPart], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

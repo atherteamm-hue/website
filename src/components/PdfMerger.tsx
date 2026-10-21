@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { PDFDocument } from 'pdf-lib';
+// pdf-lib is ~350 KB — pull it in on demand instead of shipping it
+// with the page bundle. The first click pays for it, the rest is cached.
+const loadPdfLib = () => import('pdf-lib');
+
 import { FileUp, FileDown, Trash2, FileText, ChevronUp, ChevronDown } from 'lucide-react';
 
 export function PdfMerger() {
@@ -32,6 +35,7 @@ export function PdfMerger() {
     if (files.length < 2) return;
     setIsMerging(true);
     try {
+      const { PDFDocument } = await loadPdfLib();
       const mergedPdf = await PDFDocument.create();
       for (const file of files) {
         const arrayBuffer = await file.arrayBuffer();
@@ -40,7 +44,7 @@ export function PdfMerger() {
         copiedPages.forEach((page) => mergedPdf.addPage(page));
       }
       const mergedPdfFile = await mergedPdf.save();
-      const blob = new Blob([mergedPdfFile], { type: 'application/pdf' });
+      const blob = new Blob([mergedPdfFile as unknown as BlobPart], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

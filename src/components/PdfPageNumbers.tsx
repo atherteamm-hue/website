@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
+// pdf-lib is ~350 KB — pull it in on demand instead of shipping it
+// with the page bundle. The first click pays for it, the rest is cached.
+const loadPdfLib = () => import('pdf-lib');
+
 import { FileUp, Trash2, FileText, Hash } from 'lucide-react';
 
 export function PdfPageNumbers() {
@@ -16,6 +19,7 @@ export function PdfPageNumbers() {
     if (!file) return;
     setIsProcessing(true);
     try {
+      const { PDFDocument, StandardFonts, rgb } = await loadPdfLib();
       const arrayBuffer = await file.arrayBuffer();
       const pdfDoc = await PDFDocument.load(arrayBuffer);
       const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
@@ -33,7 +37,7 @@ export function PdfPageNumbers() {
       });
 
       const pdfBytes = await pdfDoc.save();
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const blob = new Blob([pdfBytes as unknown as BlobPart], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

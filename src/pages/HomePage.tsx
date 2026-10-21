@@ -6,6 +6,26 @@ interface HomePageProps {
   onNavigate: (page: PageId) => void;
 }
 
+const HERO_TEXT = 'ATHAR\nAdvanced Technologies in Hardware, Automation, and Robotics.';
+
+/**
+ * Owns the typewriter state so that the ~26 state updates per second only
+ * re-render this line, instead of the whole home page (which contains the
+ * GPA calculator with 36 inputs).
+ */
+const TypewriterLine: React.FC = () => {
+  const { displayed, done } = useTypewriter(HERO_TEXT, 38, 600);
+
+  return (
+    <p className="absolute inset-0 text-black font-normal whitespace-pre-line text-[clamp(18px,4vw,26px)] leading-[1.35] overflow-hidden">
+      <span>{displayed}</span>
+      {!done && (
+        <span className="inline-block w-[2px] h-[1.1em] bg-black align-middle ml-[2px] cursor-blink" />
+      )}
+    </p>
+  );
+};
+
 // ═══════════════ GPA CONSTANTS ═══════════════
 const GRADE_LABELS = ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"];
 const NEW_WEIGHTS = [4, 3.75, 3.5, 3.25, 3, 2.75, 2.5, 2, 1.75, 1.25, 1, 0.5];
@@ -47,12 +67,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
     const timer = setTimeout(() => setButtonsVisible(true), 400);
     return () => clearTimeout(timer);
   }, []);
-
-  const { displayed, done } = useTypewriter(
-    'ATHAR\nAdvanced Technologies in Hardware, Automation, and Robotics.',
-    38,
-    600
-  );
 
   // ═══════════════ GPA CALCULATION LOGIC ═══════════════
   const gpaResult = useMemo(() => {
@@ -114,12 +128,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
 
         {/* 2. Typewriter text */}
-        <p className="text-black mb-5 sm:mb-6 font-normal min-h-[54px] whitespace-pre-line text-[clamp(18px,4vw,26px)] leading-[1.35]">
-          <span>{displayed}</span>
-          {!done && (
-            <span className="inline-block w-[2px] h-[1.1em] bg-black align-middle ml-[2px] cursor-blink" />
-          )}
-        </p>
+        <div className="relative mb-5 sm:mb-6">
+          {/* An invisible copy of the finished text reserves the space, so the
+              line never grows while typing and the buttons below it don't
+              jump around (this was the page's only layout shift). */}
+          <span
+            aria-hidden="true"
+            className="invisible block whitespace-pre-line font-normal text-[clamp(18px,4vw,26px)] leading-[1.35]"
+          >
+            {HERO_TEXT}
+          </span>
+          <TypewriterLine />
+        </div>
 
         {/* 3. Action pill buttons */}
         <div className={`flex flex-wrap gap-y-1 transition-all duration-400 ease-out ${buttonsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>

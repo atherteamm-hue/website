@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+/*
+  Self-hosted so the fonts don't depend on a third-party CDN round trip on
+  the critical path. `swap` means text paints immediately with the fallback
+  instead of waiting (FOIT). The woff2 files are preloaded from index.html.
+  Fonts made from onlinewebfonts.com, licensed under CC BY 4.0.
+*/
+@font-face {
+  font-family: 'HelveticaNowDisplay-Medium';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/fonts/helvetica-now-display-medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'HelveticaNowDisplayW01-Rg';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/fonts/helvetica-now-display-w01-rg.woff2') format('woff2');
+}
+
 :root {
   --font-heading: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;

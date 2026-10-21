@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as pdfjs from 'pdfjs-dist';
 
-// This uses a public CDN for the worker to avoid complex local setup on GitHub
-pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.mjs`;
+// This uses a public CDN for the worker to avoid complex local setup on GitHub.
+// The worker version must match the pdfjs-dist major version in package.json.
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
 
 export const PDFCover = ({ url }: { url: string }) => {
   const [thumb, setThumb] = useState<string | null>(null);

@@ -14,9 +14,10 @@
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium" />
-    <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg" />
+    <!-- Fonts: self-hosted woff2 (see src/index.css). Preloaded so they
+         download in parallel with the CSS instead of after a CDN round trip. -->
+    <link rel="preload" href="/fonts/helvetica-now-display-w01-rg.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/helvetica-now-display-medium.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body class="bg-white text-black antialiased selection:bg-black selection:text-white">
     <div id="root"></div>

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { PDFDocument, StandardFonts, rgb, degrees } from 'pdf-lib';
+// pdf-lib is ~350 KB — pull it in on demand instead of shipping it
+// with the page bundle. The first click pays for it, the rest is cached.
+const loadPdfLib = () => import('pdf-lib');
+
 import { FileUp, Trash2, FileText, Type, Image as ImageIcon, ImagePlus, X } from 'lucide-react';
 
 export function PdfWatermark() {
@@ -45,6 +48,7 @@ export function PdfWatermark() {
 
     setIsProcessing(true);
     try {
+      const { PDFDocument, StandardFonts, rgb, degrees } = await loadPdfLib();
       const arrayBuffer = await file.arrayBuffer();
       const pdfDoc = await PDFDocument.load(arrayBuffer);
       const pages = pdfDoc.getPages();
@@ -91,7 +95,7 @@ export function PdfWatermark() {
       }
 
       const pdfBytes = await pdfDoc.save();
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const blob = new Blob([pdfBytes as unknown as BlobPart], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
