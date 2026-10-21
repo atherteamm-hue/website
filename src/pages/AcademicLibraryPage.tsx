@@ -139,11 +139,9 @@ export function AcademicLibraryPage() {
                 <button
                   key={key}
                   onClick={(e) => { e.stopPropagation(); setSelectedCourse(key); }}
-                  className={`absolute rounded-lg transition-all cursor-pointer flex items-center justify-center
-                    ${isCompleted 
-                      ? 'bg-green-500/20 border-2 border-green-500 hover:bg-green-500/30 z-10' 
-                      : 'hover:bg-black/5 hover:border-2 hover:border-black/20 z-0'
-                    }`}
+                  className={`absolute rounded-lg transition-all cursor-pointer flex items-center justify-center hover:bg-black/5 hover:border-2 hover:border-black/20 ${
+                    isCompleted ? 'z-10' : 'z-0'
+                  }`}
                   style={{
                     left: `${course.coords.x}%`,
                     top: `${course.coords.y}%`,
