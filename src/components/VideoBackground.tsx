@@ -10,9 +10,10 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
   const targetTimeRef = useRef<number>(0);
   const isSeekingRef = useRef<boolean>(false);
   const appliedTargetRef = useRef<number>(-1);
+  const seekTimerRef = useRef<number | null>(null);
   const rafRef = useRef<number | null>(null);
   const [duration, setDuration] = useState<number>(4.0);
-  // Set when the video can't be used (unsupported codec, autoplay blocked,
+  // Set when the video can't be used (unsupported codec, failed request,
   // reduced motion). The poster layer then becomes the visible background.
   const [posterOnly, setPosterOnly] = useState(false);
 
@@ -25,21 +26,22 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
   const posterSrc = `${cleanBase}mainframe-aria-poster.jpg`;
 
   // ── Playback ────────────────────────────────────────────────────────────
-  // Muted + playsInline + autoplay is the only combination every browser
-  // (Chrome, Safari, iOS/Android) allows to start without a user gesture.
-  const attemptPlay = useCallback(() => {
+  // The clip is a scrubbable element: the frame follows the pointer/finger
+  // instead of playing on its own. It is still played once (muted) so that
+  // every engine has actually decoded a frame — iOS/Safari otherwise keep
+  // their own poster overlay on top and the scrub would look frozen.
+  const primePlayback = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Some engines only honour the muted flag when set on the property.
     video.muted = true;
     video.defaultMuted = true;
 
     const promise = video.play();
     if (promise && typeof promise.catch === 'function') {
       promise.catch((err: unknown) => {
-        // NotAllowedError = autoplay policy blocked it (iOS Low Power Mode,
-        // etc.). Fall back to the poster. Other errors are transient.
+        // Autoplay blocked (iOS Low Power Mode, etc.) — the paused first
+        // frame is still shown, so there is nothing to recover from.
         if (err instanceof Error && err.name === 'NotAllowedError') {
           setPosterOnly(true);
         }
@@ -53,8 +55,8 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
 
     // Safari/iOS often reject the first play() before the media is ready,
     // so retry once the data is actually available.
-    attemptPlay();
-    video.addEventListener('canplay', attemptPlay, { once: true });
+    primePlayback();
+    video.addEventListener('canplay', primePlayback, { once: true });
 
     // Respect the OS "reduce motion" setting: show the still frame instead.
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -68,10 +70,10 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
     motionQuery.addEventListener('change', applyMotionPreference);
 
     return () => {
-      video.removeEventListener('canplay', attemptPlay);
+      video.removeEventListener('canplay', primePlayback);
       motionQuery.removeEventListener('change', applyMotionPreference);
     };
-  }, [attemptPlay]);
+  }, [primePlayback]);
 
   // ── Seeking (scrubbing) ─────────────────────────────────────────────────
   const seekToTarget = useCallback(() => {
@@ -81,30 +83,22 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
     const dur = video.duration;
     const target = Math.max(0, Math.min(dur, targetTimeRef.current));
 
-    // Already aimed at this position. A playing video drifts past the target
-    // on its own, so re-seeking here would loop forever and stall playback.
-    if (Math.abs(appliedTargetRef.current - target) <= 0.01) {
-      isSeekingRef.current = false;
-      return;
-    }
-
-    // Already there (or close enough) — clear the in-flight flag and stop.
-    if (Math.abs(video.currentTime - target) <= 0.02) {
-      isSeekingRef.current = false;
-      appliedTargetRef.current = target;
-      return;
-    }
+    // Already aimed at this position — nothing to do.
+    if (Math.abs(appliedTargetRef.current - target) <= 0.005) return;
     if (isSeekingRef.current) return;
 
     try {
-      const fastSeek = (video as HTMLVideoElement & { fastSeek?: (t: number) => void }).fastSeek;
-      if (typeof fastSeek === 'function') {
-        fastSeek.call(video, target);
-      } else {
-        video.currentTime = target;
-      }
-      isSeekingRef.current = true;
+      // An exact seek (rather than fastSeek) guarantees a 'seeked' event, so
+      // the in-flight flag can never get stuck and disable scrubbing.
+      video.currentTime = target;
       appliedTargetRef.current = target;
+      isSeekingRef.current = true;
+
+      // Safety net: if the engine never reports 'seeked', unlock anyway.
+      if (seekTimerRef.current !== null) window.clearTimeout(seekTimerRef.current);
+      seekTimerRef.current = window.setTimeout(() => {
+        isSeekingRef.current = false;
+      }, 400);
     } catch (err) {
       isSeekingRef.current = false;
     }
@@ -122,6 +116,7 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
   useEffect(() => {
     return () => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      if (seekTimerRef.current !== null) window.clearTimeout(seekTimerRef.current);
     };
   }, []);
 
@@ -187,21 +182,26 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
     setDuration(dur);
     targetTimeRef.current = Math.min(0.05, dur / 2);
 
-    // Nudge off the very first frame while the video is still paused.
-    if (video.paused) {
-      try {
-        video.currentTime = targetTimeRef.current;
-      } catch (e) {
-        // Ignore invalid seek targets.
-      }
-    }
-    attemptPlay();
+    primePlayback();
+  };
+
+  // The video is a scrubbable element, not a looping background: as soon as
+  // the priming play() starts, pause it again so the frame stays put and
+  // only follows the pointer.
+  const handlePlaying = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.pause();
+    appliedTargetRef.current = -1;
+    seekToTarget();
   };
 
   const handleSeeked = () => {
     isSeekingRef.current = false;
-    // The target may have moved on while the seek was in flight.
-    scheduleSeek();
+    if (seekTimerRef.current !== null) {
+      window.clearTimeout(seekTimerRef.current);
+      seekTimerRef.current = null;
+    }
   };
 
   const handleError = () => {
@@ -213,7 +213,10 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
     <>
       {/* Poster layer: sits behind the video and becomes the visible background
           whenever the video can't be played. Guarantees the hero is never a
-          black box on browsers without a matching decoder. */}
+          black box on browsers without a matching decoder. It is a background
+          image rather than the `poster` attribute on purpose — iOS keeps the
+          poster attribute painted over the video until playback starts, which
+          would hide the scrubbing. */}
       <div
         className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-700"
         style={{
@@ -233,15 +236,13 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
             objectPosition: '70% center',
             opacity: dimmed ? 0.25 : 1,
           }}
-          poster={posterSrc}
-          autoPlay
-          loop
           muted
           playsInline
           preload="auto"
           disablePictureInPicture
           disableRemotePlayback
           onLoadedMetadata={handleLoadedMetadata}
+          onPlaying={handlePlaying}
           onSeeked={handleSeeked}
           onError={handleError}
           aria-hidden="true"
