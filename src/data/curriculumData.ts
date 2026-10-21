@@ -919,20 +919,83 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-  assembly: { 
+assembly: { 
     coords: { x: 26.01, y: 37.34, w: 5.71, h: 5.01 }, 
     content: {
-      titleEn: "Assembly", titleAr: "أنظمة المعالجات الدقيقة", credits: 3,
-      books: [], 
-      summaries: [], 
-      videos: [], 
-      mid: [], 
+      titleEn: "Assembly", 
+      titleAr: "أنظمة المعالجات الدقيقة", 
+      credits: 3,
+      
+      // 1. Books
+      books: [
+        { 
+          label: "Assembly Language for x86 Processors 7th Ed", 
+          url: "/assembly/books/Assembly_Language_for_x86_Processors_7th_Edition.pdf", 
+          coverUrl: "/BooksCover/Assembly_Language_for_x86_Processors_7th_Edition.png" 
+        },
+        { 
+          label: "Assembly Language Step-by-Step (Linux) 3rd Ed", 
+          url: "/assembly/books/Assembly_Language_Step_by_Step_Programming_with_Linux_3rd_Edition.pdf", 
+          coverUrl: "/BooksCover/Assembly_Language_Step_by_Step_Programming_with_Linux_3rd_Edition.png" 
+        }
+      ], 
+      
+      // 2. Videos / Lectures
+      videos: [
+        { label: "CNE", url: "https://youtube.com/playlist?list=PLJwCQtAhsso-kEA-V2NTfm5vXr3tq2fez&si=VF9CgTZrO533lkeE" },
+        { label: "Spark Team", url: "https://youtube.com/playlist?list=PL4Itv3LsZJuzvacR1ReJxHbayiyr7VqhD&si=P3F78zGw4uG9uIbY" },
+        { label: "Zero One Team", url: "https://youtube.com/playlist?list=PLL4N3hz14nvEI2-RTSjySl_BOKfKLsO5r&si=5ORTvnqTl2h1d7kB" },
+        { label: "Omar Aid", url: "https://youtube.com/playlist?list=PLF1ZTFPI256E&si=sHipQlddfz34p5Og" }
+      ],
+
+      // 3. Summaries & Notes
+      summaries: [
+        { label: "Spark Team Notebook", url: "/assembly/notes/Notebook_Microprocessor_Systems_Spark_Summer.pdf" },
+        { label: "Zero One Team Notebook (Nour El-Zein)", url: "/assembly/notes/Notebook_Assembly_ZeroOne_Summer2023_Nour_ElZein.pdf" },
+        { label: "Dr. M. Roz Slides", url: "/assembly/notes/Slides_Microprocessor_Interfacing_MRoz.pdf" }
+      ], 
+
+      // 4. Quizzes (مرتبة تنازلياً)
+      quizzes: [
+        {
+          label: "Quizzes",
+          type: 'folder',
+          items: [
+            { label: "2026", url: "/assembly/pastpapers/quizzes/Quiz_Online_2026.pdf" },
+            { label: "2025", url: "/assembly/pastpapers/quizzes/Quiz_2025.pdf" }
+          ]
+        }
+      ],
+
+      // 5. Test Banks
+      testBanks: [
+        {
+          label: "Test Banks",
+          type: 'folder',
+          items: [
+            { label: "Test Bank by MAE", url: "/assembly/pastpapers/test banks/Assembly Test Bank By MAE.pdf" }
+          ]
+        }
+      ],
+      
+      // 6. Mid Exams (مرتبة تنازلياً)
+      mid: [
+        { label: "2026", url: "/assembly/pastpapers/midterm/Midterm_2026.pdf" },
+        { label: "2025", url: "/assembly/pastpapers/midterm/Midterm_2025.pdf" },
+        { label: "2023", url: "/assembly/pastpapers/midterm/Midterm_2023.pdf" },
+        { label: "2022", url: "/assembly/pastpapers/midterm/Midterm_2022.pdf" },
+        { label: "2022", url: "/assembly/pastpapers/midterm/Midterm_2022_Copy.pdf" },
+        { label: "2021", url: "/assembly/pastpapers/midterm/Midterm_2021.pdf" },
+        { label: "Screens", url: "/assembly/pastpapers/midterm/Midterm_Moodle_Quiz_Screens.pdf" },
+        { label: "2018", url: "/assembly/pastpapers/midterm/Midterm_2018.pdf" },
+        { label: "2016", url: "/assembly/pastpapers/midterm/Midterm_2016.pdf" }
+      ], 
       final: [
         { label: "2025", url: "/assembly/pastpapers/final/Final_2025.pdf" },
         { label: "2023", url: "/assembly/pastpapers/final/Final_2023.pdf" },
-        { label: "2022 (Arab Academy)", url: "/assembly/pastpapers/final/Final_2022_Arab_Academy.pdf" },
-        { label: "2022 (El Soor)", url: "/assembly/pastpapers/final/Final_2022_El_Soor.pdf" },
-        { label: "Moodle Quiz Screens", url: "/assembly/pastpapers/final/Final_Moodle_Quiz_Screens.pdf" },
+        { label: "2022 ", url: "/assembly/pastpapers/final/Final_2022_Arab_Academy.pdf" },
+        { label: "2022 ", url: "/assembly/pastpapers/final/Final_2022_El_Soor.pdf" },
+        { label: " Screens", url: "/assembly/pastpapers/final/Final_Moodle_Quiz_Screens.pdf" },
         { label: "Final Exam", url: "/assembly/pastpapers/final/Final_Undated.pdf" }
       ]
     } 
