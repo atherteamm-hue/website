@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import awsImg from '../../members photos/Aws gharaibeh.webp';
-import yaraImg from '../../members photos/Yara Alabadi.webp';
+import noorImg from '../../members photos/noor ibrrahim.jpeg';
 import ahmadImg from '../../members photos/Ahamd Radhwan.webp';
 import ansamImg from '../../members photos/ansam tayeh.webp';
 import anasImg from '../../members photos/Anas majdi.webp';
@@ -26,15 +26,15 @@ const TEAM_MEMBERS = [
   },
   {
     id: 2,
-    name: "Yara Alabadi",
-    role: "Chairwoman of ATHAR Group",
+    name: "Noor Ibrahim",
+    role: "Chairwoman",
     major: "Mechatronics Engineering ∙ 4th Year",
-    description: "A passionate fourth-year Mechatronics Engineering student and Robotics Instructor at NIRT, combining a strong theoretical foundation with hands-on technical expertise. Skilled in 3D mechanical modeling using SolidWorks, with extensive experience developing embedded and smart systems utilizing Arduino, ESP, and Raspberry Pi. Proficient in analyzing and integrating electrical and control systems, from industrial hardware to autonomous competition robotics. Dedicated to technical mentorship and education, with a proven track record of simplifying complex engineering concepts, coaching competitive teams, and turning innovative engineering ideas into practical, high-performance solutions.",
-    linkedin: "https://www.linkedin.com/in/yara-alabadi-7b0895354/",
+    description: "A fourth-year Mechatronics Engineering student with a strong foundation in C++ programming and currently expanding her skills in Python. Passionate about robotics and automation. Actively involved in scientific volunteering and educational activities in schools . An IEEE member and former member of Gloob Jordan, an astronomy-focused team, combining technical interests with a passion for science, innovation, and community engagement.",
+    linkedin: "",
     github: "",
     instagram: "",
     website: "",
-    image: yaraImg
+    image: noorImg
   },
   { 
     id: 3, 
@@ -110,7 +110,7 @@ const TEAM_MEMBERS = [
   },
   { 
     id: 9, 
-    name: "Adnan Jehad Abu Samaha", 
+    name: "Adnan Abu Samaha", 
     role: "Electrical & Electronics Technical Lead | PR Team Leader", 
     major: "Mechatronics Engineering ∙ 3rd Year", 
     description: "He served as the head of the club's Public Relations team and as the technical lead for electrical and electronics solutions. His responsibilities included drafting the club's bylaws, establishing its administrative and organizational structure, and coordinating administrative board meetings. Additionally, he organized internal workshops and training courses and represented various teams in competitions such as the Maze Robot and Line-Following Robot challenges. Adnan possesses expertise in electrical power, control systems, electronics, and the design of electrical drive circuits and automated control systems; he has also conducted numerous training courses in the fields of electrical and electronic engineering.", 
@@ -123,7 +123,7 @@ const TEAM_MEMBERS = [
   { 
     id: 10, 
     name: "Bahaa Alsaeed", 
-    role: "Software Technical Leader | Treasure", 
+    role: "Software Technical Leader", 
     major: "Mechatronics Engineering ∙ 3rd Year", 
     description: "The software backbone of our team, specializing in C++ and Python, with a strong foundation in electronics and experience with MATLAB and Simulink. Currently expanding his expertise in STM32 embedded systems, bridging the gap between software, hardware, and intelligent robotics. As the Software Technical Leader, he leads the development and integration of our team’s software systems.", 
     linkedin: "https://www.linkedin.com/in/bahaa-alsaeed-abb301369/", 
