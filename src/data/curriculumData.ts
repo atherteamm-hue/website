@@ -109,8 +109,42 @@ export const curriculumData: Record<string, Course> = {
   calculus_1: { 
     coords: { x: 35.14, y: 3.6, w: 5.22, h: 5.61 }, 
     content: {
-      titleEn: "Calculus 1", titleAr: "تفاضل وتكامل 1", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Calculus 1", 
+      titleAr: "تفاضل وتكامل 1", 
+      credits: 3,
+      books: [
+        { 
+          label: "Calculus 10th Edition", 
+          url: "/calc1/books/textbook-calculus-101-10th-edition.pdf", 
+          coverUrl: "/BooksCover/textbook-calculus-101-10th-edition.png" 
+        },
+        { 
+          label: "Solutions Manual", 
+          url: "/calc1/books/solutions-manual-calculus-101-10th-edition.pdf", 
+          coverUrl: "/BooksCover/textbook-calculus-101-10th-edition.png", 
+          isSolution: true 
+        }
+      ], 
+      summaries: [
+        { label: "Ahmed Arafa Summary", url: "/calc1/summarize/summary-ahmed-arafa-calculus-101.pdf" }
+      ], 
+      videos: [
+        { label: "Dr. Kamel Fleifel", url: "https://youtube.com/playlist?list=PLSr-OUj6vInvJL5SXMDPjhrg0YEg3ysng&si=0jjX_iMRiflQwHHC" },
+        { label: "Dr. Abdellatif Yousef", url: "https://youtube.com/playlist?list=PLVlLjjK9xCyd_8kMA8F2fNmr3LefBxuOy&si=8QQGW2_kXsrAvyS4" }
+      ], 
+      quizzes: [],
+      testBanks: [],
+      mid: [
+        { label: "Mid 2026 (Ch 2) - Dr. Maamoun", url: "/calc1/past-papers/mid/mid-2026-chapter-2-dr-maamoun.pdf" },
+        { label: "Mid 2024 (Ch 1)", url: "/calc1/past-papers/mid/mid-2024-chapter-1.pdf" },
+        { label: "Mid 2022", url: "/calc1/past-papers/mid/mid-2022.pdf" }
+      ], 
+      final: [
+        { label: "Final 2025", url: "/calc1/past-papers/final/final-2025.pdf" },
+        { label: "Final 2017-2018", url: "/calc1/past-papers/final/final-2017-2018.pdf" },
+        { label: "Solved Exam Handwritten", url: "/calc1/past-papers/final/final-solved-exam-handwritten.pdf" },
+        { label: "Solutions Scanned (32 Pages)", url: "/calc1/past-papers/final/final-solutions-scanned-32-pages.pdf" }
+      ]
     } 
   },
   
@@ -303,7 +337,6 @@ export const curriculumData: Record<string, Course> = {
       titleEn: "Circuits 1", 
       titleAr: " دوائر كهربائية 1", credits: 3, 
       
-      // 1. Books & Solutions
       books: [
         { 
           label: "Analysis of Electrical Electronic Circuits", 
@@ -357,7 +390,6 @@ export const curriculumData: Record<string, Course> = {
         }
       ], 
       
-      // 2. Videos / Lectures
       videos: [
         { label: "Spark Team", url: "https://www.youtube.com/playlist?list=PL4Itv3LsZJuyWPRdr8mR849IKdb05XNX1" },
         { label: "Samer Issa", url: "https://www.youtube.com/playlist?list=PLawhbyHTpbgG2VR16b5y8v05-yW4kB-jP" },
@@ -366,7 +398,6 @@ export const curriculumData: Record<string, Course> = {
         { label: "CNE", url: "https://youtube.com/playlist?list=PLJwCQtAhsso_vLmqT9lV1VGCHDAKsK1CS&si=GZoRfqQhvQ4-GQaZ" }
       ],
 
-      // 3. Summaries & Notes
       summaries: [
         { label: "Dr. Amjad Al-Hindi Notebook", url: "/Circuit_1/Summaries/Notebook_Dr_Amjad_AlHindi.pdf" },
         { label: "Eng. Yaseen Slides", url: "/Circuit_1/Summaries/Slides_Eng_Yaseen_Circuit1.pdf" },
@@ -375,7 +406,6 @@ export const curriculumData: Record<string, Course> = {
         { label: "Zero One Team Summary", url: "/Circuit_1/Summaries/Zero_One_Circuit1.pdf" }
       ], 
 
-      // 4. Quizzes
       quizzes: [
         {
           label: "Quizzes Archive",
@@ -388,7 +418,6 @@ export const curriculumData: Record<string, Course> = {
         }
       ],
       
-      // 5. Mid Exams (مرتبة تنازلياً)
       mid: [
         { label: "2026", url: "/Circuit_1/PastPapers/Mid_2026_Circuit1.pdf" },
         { label: "2026", url: "/Circuit_1/PastPapers/Mid_2025_Sem2_Circuit1.pdf" },
@@ -406,7 +435,6 @@ export const curriculumData: Record<string, Course> = {
         { label: "Mid Exam", url: "/Circuit_1/PastPapers/Mid_Exam_Circuit1_2.pdf" }
       ], 
       
-      // 6. Final Exams (مرتبة تنازلياً)
       final: [
         { label: " 2024", url: "/Circuit_1/PastPapers/Final_2024_Circuit1.pdf" },
         { label: "2015-2018", url: "/Circuit_1/PastPapers/Final_2015-2018_Circuit1.pdf" }
@@ -420,7 +448,6 @@ export const curriculumData: Record<string, Course> = {
       titleEn: "Circuits 2", 
       titleAr: "دوائر كهربائية 2", credits: 3, 
       
-      // 1. Books & Solutions (نفس كتب سيركت 1 بالضبط)
       books: [
         { 
           label: "Analysis of Electrical Electronic Circuits", 
@@ -474,20 +501,17 @@ export const curriculumData: Record<string, Course> = {
         }
       ], 
       
-      // 2. Videos / Lectures
       videos: [
         { label: "Ahmad Khawaja", url: "https://www.youtube.com/playlist?list=PLfHIBOSWCljUsYwx7Q9HxH-ZK9B8uiv94" },
         { label: "Eng. Kareem", url: "https://www.youtube.com/playlist?list=PLFM6wDAJoh-88gjdMrSJ28aPkw2-9uR6f" },
         { label: "CNE", url: "https://www.youtube.com/playlist?list=PLJwCQtAhsso9OHZiNjPkdHXrsp3dCkpxA" }
       ],
 
-      // 3. Summaries & Notes
       summaries: [
         { label: "Ahmad Khawaja Summary", url: "/Circuit_2/Summaries/Ahmad_Khawaja_Circuit2.pdf" },
         { label: "Eng. Yaseen Slides", url: "/Circuit_2/Summaries/Slides_Eng_Yaseen_Circuit2.pdf" }
       ], 
       
-      // 4. Mid Exams (مرتبة تنازلياً)
       mid: [
         { label: "2025", url: "/Circuit_2/PastPapers/Mid_2025_Circuit2.pdf" },
         { label: "2024", url: "/Circuit_2/PastPapers/Mid_2024_Circuit2.pdf" },
@@ -502,7 +526,6 @@ export const curriculumData: Record<string, Course> = {
         { label: "Mid Exam", url: "/Circuit_2/PastPapers/Mid_Exam_Circuit2.pdf" }
       ], 
       
-      // 5. Final Exams (مرتبة تنازلياً)
       final: [
         { label: "2023", url: "/Circuit_2/PastPapers/Final_2023_Circuit2.pdf" },
         { label: "2022", url: "/Circuit_2/PastPapers/Final_2022_Circuit2.pdf" },
@@ -919,7 +942,7 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-assembly: { 
+  assembly: { 
     coords: { x: 26.01, y: 37.34, w: 5.71, h: 5.01 }, 
     content: {
       titleEn: "Assembly", 
