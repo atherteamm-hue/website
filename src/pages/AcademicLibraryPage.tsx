@@ -53,6 +53,7 @@ export function AcademicLibraryPage() {
   );
 
   useEffect(() => {
+    // استرجاع مواد التخصص
     const savedCourses = localStorage.getItem('athar_completed_courses');
     if (savedCourses) {
       try {
@@ -62,6 +63,7 @@ export function AcademicLibraryPage() {
       }
     }
     
+    // استرجاع عدد المواد الاختيارية
     const savedElectives = localStorage.getItem('athar_elective_count');
     if (savedElectives) {
       setElectiveCount(parseInt(savedElectives));
@@ -85,6 +87,9 @@ export function AcademicLibraryPage() {
     localStorage.setItem('athar_elective_count', count.toString());
   };
 
+  // ----------------------------------------------------
+  // حساب المجموع = (مواد التخصص) + (المواد الاختيارية * 3 ساعات)
+  // ----------------------------------------------------
   const totalCompletedHours = useMemo(() => {
     const coreHours = completedCourses.reduce((sum, courseKey) => {
       const course = curriculumData[courseKey];
@@ -155,7 +160,12 @@ export function AcademicLibraryPage() {
               {lang === 'EN' ? 'VIEW ARABIC' : 'VIEW ENGLISH'}
             </button>
             
+            {/* ---------------------------------------------------- */}
+            {/* قسم العدادات (مواد اختيارية + مجموع الساعات) */}
+            {/* ---------------------------------------------------- */}
             <div className="flex flex-col sm:flex-row items-end sm:items-center gap-3">
+              
+              {/* عداد المواد الاختيارية */}
               <div className="flex items-center gap-2 bg-white border border-neutral-200 shadow-sm rounded-full px-3 py-1.5">
                 <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest pl-2">
                   {lang === 'EN' ? 'Electives Done:' : 'مواد اختياري:'}
@@ -177,12 +187,14 @@ export function AcademicLibraryPage() {
                 </div>
               </div>
 
+              {/* عداد الساعات الكلي */}
               <div className="bg-white border border-neutral-200 shadow-sm rounded-full px-5 py-2 flex items-center gap-2 h-[40px]">
                  <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">
                    {lang === 'EN' ? 'Passed Hours:' : 'الساعات المقطوعة:'}
                  </span>
                  <span className="font-mono text-xl font-black text-black">{totalCompletedHours}</span>
               </div>
+              
             </div>
           </div>
         </div>
@@ -238,16 +250,38 @@ export function AcademicLibraryPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             
-            {/* GPA Calculator Card (New Placement) */}
-            <button 
-              onClick={() => setIsGpaModalOpen(true)}
-              className="relative flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-2xl hover:border-black hover:shadow-xl transition-all group cursor-pointer w-full text-left"
-            >
-              <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
-              <Calculator size={32} className="text-neutral-400 group-hover:text-black mb-4 transition-colors" />
-              <h4 className="font-black text-lg text-black uppercase tracking-tight mb-2">GPA Calculator</h4>
-              <p className="text-sm font-medium text-neutral-500 text-center">Calculate your cumulative and semester GPA easily.</p>
-            </button>
+            {/* GPA Calculator Card (Athar Integrated Style) */}
+            <div className="bg-white border border-black/10 rounded-[30px] p-8 shadow-sm flex flex-col h-full transition-all hover:border-black/30 relative group">
+              <span className="absolute -top-3 left-6 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-10 shadow-sm pointer-events-none">
+                By Athar
+              </span>
+              
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 bg-black text-white rounded-xl group-hover:scale-105 transition-transform">
+                  <Calculator size={24} />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold uppercase tracking-tighter text-black">GPA Calculator</h3>
+                  <p className="text-xs text-neutral-400 font-medium">Track your academic progress</p>
+                </div>
+              </div>
+              
+              <div className="flex-1 flex flex-col items-center justify-center bg-neutral-50 rounded-2xl border border-neutral-100 p-6 mb-4">
+                <div className="text-center space-y-2">
+                  <div className="font-mono text-3xl font-black text-neutral-300">4.00</div>
+                  <p className="text-xs text-neutral-500 font-medium max-w-[200px] leading-relaxed">
+                    Calculate your cumulative & semester GPA, and repeat courses easily.
+                  </p>
+                </div>
+              </div>
+
+              <button 
+                onClick={() => setIsGpaModalOpen(true)}
+                className="w-full py-4 rounded-xl font-bold text-sm uppercase tracking-widest bg-black text-white hover:scale-[1.02] shadow-lg transition-all"
+              >
+                Open Calculator
+              </button>
+            </div>
 
             <div className="relative group">
               <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
