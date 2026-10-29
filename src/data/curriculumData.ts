@@ -213,11 +213,67 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-  numerical: { 
+numerical: { 
     coords: { x: 34.24, y: 16.02, w: 5.42, h: 5 }, 
     content: {
-      titleEn: "Numerical Methods", titleAr: "تقنيات عددية", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Numerical Methods", 
+      titleAr: "تقنيات عددية", 
+      credits: 3,
+      
+      books: [
+        { 
+          label: "Numerical Methods Textbook", 
+          url: "/Numerical Methods/books/textbook-numerical-methods.pdf", 
+          coverUrl: "/BooksCover/textbook-numerical-methods.png" 
+        },
+        { 
+          label: "Solutions Manual", 
+          url: "/Numerical Methods/books/solutions-manual-numerical-methods.pdf", 
+          coverUrl: "/BooksCover/textbook-numerical-methods.png", 
+          isSolution: true 
+        }
+      ], 
+      
+      summaries: [
+        { label: "Course Notes Handwritten (Full)", url: "/Numerical Methods/summarize/course-notes-handwritten-full.pdf" },
+        { label: "Notebook Dr. Amjad", url: "/Numerical Methods/summarize/notebook-dr-amjad.pdf" },
+        { label: "Summary and Mid Past Years", url: "/Numerical Methods/summarize/summary-and-mid-past-years.pdf" },
+        { label: "Summary Videos", url: "/Numerical Methods/summarize/summary-videos.pdf" }
+      ], 
+      
+      videos: [
+        { label: "Civil By Turk - Midterm", url: "https://youtube.com/playlist?list=PL-_Vu9osHhTRehWrWvTYCeKWJxTbXZfKc&si=f02c1cvlnUQOr5ew" },
+        { label: "Civil By Turk - Final", url: "https://youtube.com/playlist?list=PL-_Vu9osHhTRgn-daobThwirk71lulg7Q&si=DqcMrSLKT9XXoDCy" }
+      ], 
+      
+      quizzes: [],
+      
+      testBanks: [],
+      
+      mid: [
+        { label: "2026", url: "/Numerical Methods/past-papers/mid/mid-2026-summer.pdf" },
+        { label: "2026", url: "/Numerical Methods/past-papers/mid/mid-2026-sem2.pdf" },
+        { label: "2025", url: "/Numerical Methods/past-papers/mid/mid-2025-summer-solved.pdf" },
+        { label: "2025", url: "/Numerical Methods/past-papers/mid/mid-2025-sem2.pdf" },
+        { label: "2025", url: "/Numerical Methods/past-papers/mid/mid-2025-sem1.pdf" },
+        { label: "2025 ", url: "/Numerical Methods/past-papers/mid/mid-2025-sem1-key.pdf" },
+        { label: "2024", url: "/Numerical Methods/past-papers/mid/mid-2024-summer-solved.pdf" },
+        { label: "2024", url: "/Numerical Methods/past-papers/mid/mid-2024-solved.pdf" },
+        { label: "2024", url: "/Numerical Methods/past-papers/mid/mid-2024-sem1-solved.pdf" },
+        { label: "2023", url: "/Numerical Methods/past-papers/mid/mid-2023-t2.pdf" },
+        { label: "2023", url: "/Numerical Methods/past-papers/mid/mid-2023-t1.pdf" },
+        { label: "2023", url: "/Numerical Methods/past-papers/mid/mid-2023-summer.pdf" },
+        { label: "2023", url: "/Numerical Methods/past-papers/mid/mid-2023-sem2.pdf" }
+      ], 
+      
+      final: [
+        { label: "2025 ", url: "/Numerical Methods/past-papers/final/final-2025-set2.pdf" },
+        { label: "2025 ", url: "/Numerical Methods/past-papers/final/final-2025-set1.pdf" },
+        { label: "2024", url: "/Numerical Methods/past-papers/final/final-2024-summer.pdf" },
+        { label: "2024", url: "/Numerical Methods/past-papers/final/final-2024-sem2.pdf" },
+        { label: "2023", url: "/Numerical Methods/past-papers/final/final-2023.pdf" },
+        { label: "MCQ Paper", url: "/Numerical Methods/past-papers/final/final-mcq-paper.pdf" }
+      ]
     } 
   },
   
@@ -1381,11 +1437,40 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-  military: { 
+ military: { 
     coords: { x: 82.83, y: 13, w: 5.02, h: 7.28 }, 
     content: {
-      titleEn: "Military Sciences", titleAr: "علوم عسكرية", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Military Sciences", 
+      titleAr: "علوم عسكرية", 
+      credits: 3,
+      
+      books: [
+        { 
+          label: "كتاب المادة", 
+          url: "/Military Sciences/books/textbook-military-science.pdf", 
+          coverUrl: "public/BooksCover/textbook-military-science.png", // يمكنك تغيير الغلاف لاحقاً إذا كان هناك غلاف مخصص
+          isArabic: true 
+        }
+      ], 
+      
+      summaries: [
+        { label: "Military Science Summary", url: "/Military Sciences/summarize/summary-military-science.pdf" }
+      ], 
+      
+      videos: [], 
+      
+      quizzes: [],
+      
+      testBanks: [],
+      
+      mid: [
+        { label: "Part 1", url: "/Military Sciences/past-papers/mid/mid-part-1.pdf" },
+        { label: "Part 2", url: "/Military Sciences/past-papers/mid/mid-part-2.pdf" }
+      ], 
+      
+      final: [
+        { label: "Past Years Questions", url: "/Military Sciences/past-papers/final/final-past-years-questions.pdf" },
+        { label: "2014", url: "/Military Sciences/past-papers/final/final-2014-scanned.pdf" }
+      ]
     } 
   }
-};
