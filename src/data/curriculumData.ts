@@ -135,14 +135,14 @@ export const curriculumData: Record<string, Course> = {
       quizzes: [],
       testBanks: [],
       mid: [
-        { label: "Mid 2026 (Ch 2) - Dr. Maamoun", url: "/calc1/past-papers/mid/mid-2026-chapter-2-dr-maamoun.pdf" },
-        { label: "Mid 2024 (Ch 1)", url: "/calc1/past-papers/mid/mid-2024-chapter-1.pdf" },
-        { label: "Mid 2022", url: "/calc1/past-papers/mid/mid-2022.pdf" }
+        { label: "2026", url: "/calc1/past-papers/mid/mid-2026-chapter-2-dr-maamoun.pdf" },
+        { label: "2024", url: "/calc1/past-papers/mid/mid-2024-chapter-1.pdf" },
+        { label: "2022", url: "/calc1/past-papers/mid/mid-2022.pdf" }
       ], 
       final: [
-        { label: "Final 2025", url: "/calc1/past-papers/final/final-2025.pdf" },
-        { label: "Final 2017-2018", url: "/calc1/past-papers/final/final-2017-2018.pdf" },
-        { label: "Solved Exam Handwritten", url: "/calc1/past-papers/final/final-solved-exam-handwritten.pdf" },
+        { label: "2025", url: "/calc1/past-papers/final/final-2025.pdf" },
+        { label: "2017-2018", url: "/calc1/past-papers/final/final-2017-2018.pdf" },
+        { label: "Final Exam ", url: "/calc1/past-papers/final/final-solved-exam-handwritten.pdf" },
         { label: "Solutions Scanned (32 Pages)", url: "/calc1/past-papers/final/final-solutions-scanned-32-pages.pdf" }
       ]
     } 
