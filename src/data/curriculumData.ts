@@ -66,11 +66,51 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-  app_arabic: { 
+ app_arabic: { 
     coords: { x: 10.64, y: 14.82, w: 5.22, h: 5.4 }, 
     content: {
-      titleEn: "Applied Arabic", titleAr: "لغة عربية تطبيقية", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Applied Arabic", 
+      titleAr: "لغة عربية تطبيقية", 
+      credits: 3,
+      
+      books: [
+        { 
+          label: "كتاب المادة", 
+          url: "/arabic101/books/textbook-applied-arabic.pdf", 
+          coverUrl: "/BooksCover/textbook-applied-arabic.png",
+          isArabic: true
+        },
+        { 
+          label: "حلول أول ثلاث وحد", 
+          url: "/arabic101/books/textbook-solutions-units-1-2-3.pdf", 
+          coverUrl: "/BooksCover/textbook-applied-arabic.png",
+          isArabic: true,
+          isSolution: true
+        }
+      ], 
+      
+      summaries: [
+        { label: "Book Plan By Years 2025", url: "/arabic101/summarize/book-plan-by-years-2025.pdf" },
+        { label: "Study Guide - Rama Aldaifi", url: "/arabic101/summarize/study-guide-rama-aldaifi.pdf" }
+      ], 
+      
+      videos: [], 
+      
+      quizzes: [],
+      
+      testBanks: [],
+      
+      mid: [
+        { label: " Unit 1", url: "/arabic101/past-papers/mid/mid-unit-1-past-years-solved.pdf" },
+        { label: " Unit 2", url: "/arabic101/past-papers/mid/mid-unit-2-past-years-solved.pdf" }
+      ], 
+      
+      final: [
+        { label: " Unit 3", url: "/arabic101/past-papers/final/final-unit-3-solved.pdf" },
+        { label: " Unit 4", url: "/arabic101/past-papers/final/final-unit-4-solved.pdf" },
+        { label: " Unit 5", url: "/arabic101/past-papers/final/final-unit-5-solved.pdf" },
+        { label: " Unit 6", url: "/arabic101/past-papers/final/final-unit-6-solved.pdf" }
+      ]
     } 
   },
   
@@ -1448,7 +1488,7 @@ numerical: {
         { 
           label: "كتاب المادة", 
           url: "/Military Sciences/books/textbook-military-science.pdf", 
-          coverUrl: "public/BooksCover/textbook-military-science.png", // يمكنك تغيير الغلاف لاحقاً إذا كان هناك غلاف مخصص
+          coverUrl: "/BooksCover/textbook-military-science.png", // يمكنك تغيير الغلاف لاحقاً إذا كان هناك غلاف مخصص
           isArabic: true 
         }
       ], 
