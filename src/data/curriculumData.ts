@@ -13,7 +13,7 @@ export interface CourseContent {
     | { label: string; url: string }
     | { label: string; type: 'folder'; items: { label: string; url: string }[] }
   )[];
-  testBanks?: ( // الخانة الجديدة للـ Test Banks & MCQs
+  testBanks?: (
     | { label: string; url: string }
     | { label: string; type: 'folder'; items: { label: string; url: string }[] }
   )[];
@@ -32,16 +32,58 @@ export const curriculumData: Record<string, Course> = {
   english_1: { 
     coords: { x: 2.21, y: 4, w: 5.32, h: 5.21 }, 
     content: {
-      titleEn: "English 1", titleAr: "لغة إنجليزية 1", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "English 1", 
+      titleAr: "لغة إنجليزية 1", 
+      credits: 3,
+      books: [
+        { label: "English 101 Textbook", url: "/english101/books/textbook-english-101.pdf", coverUrl: "/BooksCover/textbook-english-101.png" },
+        { label: "Textbook Solutions", url: "/english101/books/textbook-solutions.pdf", coverUrl: "/BooksCover/textbook-english-101.png", isSolution: true }
+      ], 
+      summaries: [
+        { label: "Grammar Summary", url: "/english101/summarize/grammar-summary.pdf" },
+        { label: "Study Guide Videos", url: "/english101/summarize/study-guide-videos.docx" },
+        { label: "English 101 Summary", url: "/english101/summarize/summary-english-101.pdf" },
+        { label: "Vocabulary Meanings", url: "/english101/summarize/vocabulary-meanings.pdf" }
+      ], 
+      videos: [], 
+      mid: [
+        { label: "Mid Unit 1 Solved", url: "/english101/past-papers/mid/mid-unit-1-solved.pdf" },
+        { label: "Mid Unit 2 Solved", url: "/english101/past-papers/mid/mid-unit-2-solved.pdf" },
+        { label: "Mid Unit 3 Solved", url: "/english101/past-papers/mid/mid-unit-3-solved.pdf" }
+      ], 
+      final: [
+        { label: "Final Unit 4 Solved", url: "/english101/past-papers/final/final-unit-4-solved.pdf" },
+        { label: "Final Unit 5 Solved", url: "/english101/past-papers/final/final-unit-5-solved.pdf" },
+        { label: "Final Unit 6 Solved", url: "/english101/past-papers/final/final-unit-6-solved.pdf" }
+      ]
     } 
   },
   
   english_2: { 
     coords: { x: 2.31, y: 15.42, w: 5.22, h: 5.2 }, 
     content: {
-      titleEn: "English 2", titleAr: "لغة إنجليزية 2", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "English 2", 
+      titleAr: "لغة إنجليزية 2", 
+      credits: 3,
+      books: [
+        { label: "English 102 Textbook", url: "/english102/books/textbook-english-102.pdf", coverUrl: "/BooksCover/textbook-english-102.png" },
+        { label: "Textbook Solutions", url: "/english102/books/textbook-solutions.pdf", coverUrl: "/BooksCover/textbook-english-102.png", isSolution: true }
+      ], 
+      summaries: [
+        { label: "Grammar Summary", url: "/english102/summarize/grammar-summary.pdf" },
+        { label: "Study Guide Videos", url: "/english102/summarize/study-guide-videos.docx" },
+        { label: "Vocabulary Meanings", url: "/english102/summarize/vocabulary-meanings.pdf" }
+      ], 
+      videos: [], 
+      mid: [
+        { label: "Mid Unit 1 Solved", url: "/english102/past-papers/mid/mid-unit-1-solved.pdf" },
+        { label: "Mid Unit 2 Solved", url: "/english102/past-papers/mid/mid-unit-2-solved.pdf" }
+      ], 
+      final: [
+        { label: "Final Unit 3 Solved", url: "/english102/past-papers/final/final-unit-3-solved.pdf" },
+        { label: "Final Unit 4 Solved", url: "/english102/past-papers/final/final-unit-4-solved.pdf" },
+        { label: "Final Unit 5 Solved", url: "/english102/past-papers/final/final-unit-5-solved.pdf" }
+      ]
     } 
   },
   
@@ -66,7 +108,7 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
- app_arabic: { 
+  app_arabic: { 
     coords: { x: 10.64, y: 14.82, w: 5.22, h: 5.4 }, 
     content: {
       titleEn: "Applied Arabic", 
@@ -75,13 +117,13 @@ export const curriculumData: Record<string, Course> = {
       
       books: [
         { 
-          label: "كتاب المادة", 
+          label: "Applied Arabic Textbook", 
           url: "/arabic101/books/textbook-applied-arabic.pdf", 
           coverUrl: "/BooksCover/textbook-applied-arabic.png",
           isArabic: true
         },
         { 
-          label: "حلول أول ثلاث وحد", 
+          label: "Textbook Solutions (Units 1-3)", 
           url: "/arabic101/books/textbook-solutions-units-1-2-3.pdf", 
           coverUrl: "/BooksCover/textbook-applied-arabic.png",
           isArabic: true,
@@ -101,15 +143,15 @@ export const curriculumData: Record<string, Course> = {
       testBanks: [],
       
       mid: [
-        { label: " Unit 1", url: "/arabic101/past-papers/mid/mid-unit-1-past-years-solved.pdf" },
-        { label: " Unit 2", url: "/arabic101/past-papers/mid/mid-unit-2-past-years-solved.pdf" }
+        { label: "Mid Unit 1 (Solved)", url: "/arabic101/past-papers/mid/mid-unit-1-past-years-solved.pdf" },
+        { label: "Mid Unit 2 (Solved)", url: "/arabic101/past-papers/mid/mid-unit-2-past-years-solved.pdf" }
       ], 
       
       final: [
-        { label: " Unit 3", url: "/arabic101/past-papers/final/final-unit-3-solved.pdf" },
-        { label: " Unit 4", url: "/arabic101/past-papers/final/final-unit-4-solved.pdf" },
-        { label: " Unit 5", url: "/arabic101/past-papers/final/final-unit-5-solved.pdf" },
-        { label: " Unit 6", url: "/arabic101/past-papers/final/final-unit-6-solved.pdf" }
+        { label: "Final Unit 3 (Solved)", url: "/arabic101/past-papers/final/final-unit-3-solved.pdf" },
+        { label: "Final Unit 4 (Solved)", url: "/arabic101/past-papers/final/final-unit-4-solved.pdf" },
+        { label: "Final Unit 5 (Solved)", url: "/arabic101/past-papers/final/final-unit-5-solved.pdf" },
+        { label: "Final Unit 6 (Solved)", url: "/arabic101/past-papers/final/final-unit-6-solved.pdf" }
       ]
     } 
   },
@@ -253,7 +295,7 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-numerical: { 
+  numerical: { 
     coords: { x: 34.24, y: 16.02, w: 5.42, h: 5 }, 
     content: {
       titleEn: "Numerical Methods", 
@@ -1477,7 +1519,7 @@ numerical: {
     } 
   },
   
- military: { 
+  military: { 
     coords: { x: 82.83, y: 13, w: 5.02, h: 7.28 }, 
     content: {
       titleEn: "Military Sciences", 
@@ -1488,7 +1530,7 @@ numerical: {
         { 
           label: "كتاب المادة", 
           url: "/Military Sciences/books/textbook-military-science.pdf", 
-          coverUrl: "/BooksCover/textbook-military-science.png", // يمكنك تغيير الغلاف لاحقاً إذا كان هناك غلاف مخصص
+          coverUrl: "/BooksCover/textbook-military-science.png",
           isArabic: true 
         }
       ], 
@@ -1514,3 +1556,4 @@ numerical: {
       ]
     } 
   }
+};
