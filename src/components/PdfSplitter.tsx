@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-// pdf-lib is ~350 KB — pull it in on demand instead of shipping it
-// with the page bundle. The first click pays for it, the rest is cached.
 const loadPdfLib = () => import('pdf-lib');
-
 import { FileUp, Trash2, FileText, Scissors } from 'lucide-react';
 
 export function PdfSplitter() {
   const [file, setFile] = useState<File | null>(null);
   const [numPages, setNumPages] = useState<number>(0);
-  const [startPage, setStartPage] = useState<number | ''>('');
-  const [endPage, setEndPage] = useState<number | ''>('');
+  const [rangeInput, setRangeInput] = useState<string>('');
   const [isSplitting, setIsSplitting] = useState(false);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,15 +15,13 @@ export function PdfSplitter() {
       
       setFile(selectedFile);
       
-      // قراءة الملف لمعرفة عدد الصفحات الكلي فوراً
       try {
         const { PDFDocument } = await loadPdfLib();
         const arrayBuffer = await selectedFile.arrayBuffer();
         const pdfDoc = await PDFDocument.load(arrayBuffer);
         const totalPages = pdfDoc.getPageCount();
         setNumPages(totalPages);
-        setStartPage(1);
-        setEndPage(totalPages);
+        setRangeInput(`1-${totalPages}`);
       } catch (error) {
         console.error("Error reading PDF:", error);
       }
@@ -37,18 +31,49 @@ export function PdfSplitter() {
   const removeFile = () => {
     setFile(null);
     setNumPages(0);
-    setStartPage('');
-    setEndPage('');
+    setRangeInput('');
+  };
+
+  // خوارزمية تحليل النص واستخراج أرقام الصفحات
+  const parseRanges = (input: string, maxPages: number): number[] | null => {
+    const pages = new Set<number>();
+    const parts = input.split(',');
+
+    for (let part of parts) {
+      part = part.trim();
+      if (!part) continue;
+
+      if (part.includes('-')) {
+        const [startStr, endStr] = part.split('-');
+        const start = parseInt(startStr);
+        const end = parseInt(endStr);
+        
+        if (isNaN(start) || isNaN(end) || start < 1 || end > maxPages || start > end) {
+          return null; // إدخال غير صالح
+        }
+        for (let i = start; i <= end; i++) {
+          pages.add(i - 1); // pdf-lib يستخدم فهرسة تبدأ من 0
+        }
+      } else {
+        const num = parseInt(part);
+        if (isNaN(num) || num < 1 || num > maxPages) {
+          return null; // إدخال غير صالح
+        }
+        pages.add(num - 1);
+      }
+    }
+    
+    // إرجاع المصفوفة مرتبة
+    return Array.from(pages).sort((a, b) => a - b);
   };
 
   const splitPdf = async () => {
-    if (!file || startPage === '' || endPage === '') return;
+    if (!file || !rangeInput.trim()) return;
     
-    const start = parseInt(startPage.toString());
-    const end = parseInt(endPage.toString());
-
-    if (start < 1 || end > numPages || start > end) {
-      alert(`Please enter a valid range between 1 and ${numPages}.`);
+    const pageIndices = parseRanges(rangeInput, numPages);
+    
+    if (!pageIndices || pageIndices.length === 0) {
+      alert(`Invalid range! Please use formats like "1-5, 8, 11-13" (Max pages: ${numPages}).`);
       return;
     }
 
@@ -60,43 +85,36 @@ export function PdfSplitter() {
       const originalPdf = await PDFDocument.load(arrayBuffer);
       const newPdf = await PDFDocument.create();
 
-      // إنشاء مصفوفة بأرقام الصفحات المطلوبة (الفهرسة تبدأ من 0)
-      const pageIndices = [];
-      for (let i = start - 1; i <= end - 1; i++) {
-        pageIndices.push(i);
-      }
-
       const copiedPages = await newPdf.copyPages(originalPdf, pageIndices);
       copiedPages.forEach((page) => newPdf.addPage(page));
 
       const newPdfFile = await newPdf.save();
       
-      // تحميل الملف المقصوص
       const blob = new Blob([newPdfFile as unknown as BlobPart], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `Athar_Extracted_Pages_${start}-${end}.pdf`;
+      a.download = `Athar_Extracted_Pages.pdf`;
       a.click();
       URL.revokeObjectURL(url);
       
     } catch (error) {
       console.error("Error splitting PDF:", error);
-      alert("Error splitting the file. Please try again.");
+      alert("Error processing the file. Please try again.");
     } finally {
       setIsSplitting(false);
     }
   };
 
   return (
-    <div className="bg-white border border-black/10 rounded-[30px] p-8 shadow-sm flex flex-col h-full">
+    <div className="bg-white border border-black/10 rounded-[30px] p-8 shadow-sm flex flex-col h-full transition-all hover:border-black/30">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-3 bg-black text-white rounded-xl">
           <Scissors size={24} />
         </div>
         <div>
           <h3 className="text-xl font-bold uppercase tracking-tighter text-black">PDF Splitter</h3>
-          <p className="text-xs text-neutral-400 font-medium">Extract specific pages from a PDF</p>
+          <p className="text-xs text-neutral-400 font-medium">Extract custom page ranges</p>
         </div>
       </div>
 
@@ -114,7 +132,7 @@ export function PdfSplitter() {
                 <FileText size={16} className="text-red-500 shrink-0" />
                 <div className="flex flex-col">
                   <span className="text-xs font-bold truncate text-black max-w-[150px]">{file.name}</span>
-                  <span className="text-[10px] text-neutral-400">{numPages} pages</span>
+                  <span className="text-[10px] text-neutral-400">{numPages} total pages</span>
                 </div>
               </div>
               <button onClick={removeFile} className="text-neutral-400 hover:text-red-500 transition-colors p-1">
@@ -122,31 +140,17 @@ export function PdfSplitter() {
               </button>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="flex-1">
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">From Page</label>
-                <input 
-                  type="number" 
-                  min="1" 
-                  max={numPages} 
-                  value={startPage} 
-                  onChange={(e) => setStartPage(e.target.value === '' ? '' : Number(e.target.value))}
-                  className="w-full p-3 bg-white border border-neutral-200 rounded-xl text-sm font-bold outline-none focus:border-black transition-colors"
-                  placeholder="1"
-                />
-              </div>
-              <div className="flex-1">
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">To Page</label>
-                <input 
-                  type="number" 
-                  min="1" 
-                  max={numPages} 
-                  value={endPage} 
-                  onChange={(e) => setEndPage(e.target.value === '' ? '' : Number(e.target.value))}
-                  className="w-full p-3 bg-white border border-neutral-200 rounded-xl text-sm font-bold outline-none focus:border-black transition-colors"
-                  placeholder={numPages.toString()}
-                />
-              </div>
+            <div className="flex flex-col">
+              <label className="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-2">
+                Pages to extract (e.g., 1-5, 8, 11-13)
+              </label>
+              <input 
+                type="text" 
+                value={rangeInput} 
+                onChange={(e) => setRangeInput(e.target.value)}
+                className="w-full p-3 bg-white border border-neutral-200 rounded-xl text-sm font-bold outline-none focus:border-black transition-colors"
+                placeholder={`e.g. 1-${numPages > 5 ? '5' : numPages}, 7`}
+              />
             </div>
           </div>
         )}
@@ -154,9 +158,9 @@ export function PdfSplitter() {
 
       <button
         onClick={splitPdf}
-        disabled={!file || startPage === '' || endPage === '' || isSplitting}
+        disabled={!file || !rangeInput.trim() || isSplitting}
         className={`w-full py-4 mt-4 rounded-xl font-bold text-sm uppercase tracking-widest transition-all ${
-          !file || startPage === '' || endPage === '' ? 'bg-neutral-100 text-neutral-400 cursor-not-allowed' : 'bg-black text-white hover:scale-[1.02] shadow-lg'
+          !file || !rangeInput.trim() ? 'bg-neutral-100 text-neutral-400 cursor-not-allowed' : 'bg-black text-white hover:scale-[1.02] shadow-lg'
         }`}
       >
         {isSplitting ? 'Processing...' : (!file ? 'Upload a file first' : 'Split & Download')}
