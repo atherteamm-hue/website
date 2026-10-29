@@ -151,8 +151,57 @@ export const curriculumData: Record<string, Course> = {
   calculus_2: { 
     coords: { x: 44.48, y: 3.8, w: 5.32, h: 5.61 }, 
     content: {
-      titleEn: "Calculus 2", titleAr: "تفاضل وتكامل 2", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Calculus 2", 
+      titleAr: "تفاضل وتكامل 2", 
+      credits: 3,
+      
+      books: [
+        { 
+          label: "Calculus Textbook", 
+          url: "/calc2/Books/Calculus2-Textbook.pdf", 
+          coverUrl: "/BooksCover/Calculus2-Textbook.png" 
+        },
+        { 
+          label: "Solutions Manual", 
+          url: "/calc2/Books/Calculus2-Textbook-Solutions.pdf", 
+          coverUrl: "/BooksCover/Calculus2-Textbook.png", 
+          isSolution: true 
+        }
+      ], 
+      
+      summaries: [
+        { label: "Dr. Ghaleb Notes", url: "/calc2/Summaries/Calculus2-Notes-Dr-Ghaleb.pdf" },
+        { label: "Iman Notes", url: "/calc2/Summaries/Calculus2-Notes-Iman.pdf" },
+        { label: "Dr. Kamel Slides", url: "/calc2/Summaries/Calculus2-Slides-Dr-Kamel.pdf" }
+      ], 
+      
+      videos: [
+        { label: "Dr. Abdellatif Yousef", url: "https://youtube.com/playlist?list=PLFi1eGgZ7jfW-rAw6mDCNCB-7jCBFPZWu&si=XzlFvUEigBc1Xh5v" },
+        { label: "Dr. Kamel Fleifel", url: "https://youtube.com/playlist?list=PLSr-OUj6vInu6gHD6q3LBd5jP-3LWuWtc&si=RczgkOV_bNptBzuF" }
+      ], 
+      
+      quizzes: [],
+      
+      testBanks: [],
+      
+      mid: [
+        { label: "2026", url: "/calc2/Past-Papers/Mid/Mid-2026-Summer.pdf" },
+        { label: "2026", url: "/calc2/Past-Papers/Mid/Mid-2026-Semester2.pdf" },
+        { label: "2025", url: "/calc2/Past-Papers/Mid/Mid-2025-Dr-Mamoun.pdf" },
+        { label: "2025", url: "/calc2/Past-Papers/Mid/Mid-2025.pdf" },
+        { label: "2024", url: "/calc2/Past-Papers/Mid/Mid-2024-Semester2-Answer-Key.pdf" },
+        { label: "2023", url: "/calc2/Past-Papers/Mid/Mid-2023-Semester2-Solutions.pdf" },
+        { label: "2023", url: "/calc2/Past-Papers/Mid/Mid-2023-Semester2.pdf" }
+      ], 
+      
+      final: [
+        { label: "2026", url: "/calc2/Past-Papers/Final/Final-2026.pdf" },
+        { label: "2025", url: "/calc2/Past-Papers/Final/Final-2025-Solutions-Two-Models-Essay.pdf" },
+        { label: "2024", url: "/calc2/Past-Papers/Final/Final-2024-Semester2.pdf" },
+        { label: "2024", url: "/calc2/Past-Papers/Final/Final-2024-Semester1.pdf" },
+        { label: "2023", url: "/calc2/Past-Papers/Final/Final-2023.pdf" },
+        { label: "2020", url: "/calc2/Past-Papers/Final/Final-2020.pdf" }
+      ]
     } 
   },
   
