@@ -216,7 +216,7 @@ export function AcademicLibraryPage() {
                 <button
                   key={key}
                   onClick={(e) => { e.stopPropagation(); setSelectedCourse(key); }}
-                  className={`absolute rounded-lg transition-all cursor-pointer flex items-center justify-center hover:bg-black/5 hover:border-2 hover:border-black/20 ${
+                  className={`absolute rounded-lg transition-all cursor-pointer flex items-center justify-center outline-none ${
                     isCompleted ? 'z-10' : 'z-0'
                   }`}
                   style={{
