@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MessageCircle } from 'lucide-react'; // 👈 استدعاء الأيقونات الجديدة
+import { Mail, MessageCircle } from 'lucide-react'; 
 
 import awsImg from '../../members photos/Aws gharaibeh.webp';
 import noorImg from '../../members photos/noor ibrrahim.jpeg';
@@ -326,7 +326,7 @@ export const AboutUsPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           
-          {/* Email Card (Hides the ugly email spelling in the UI, uses it in href) */}
+          {/* Email Card */}
           <a 
             href="mailto:atherteamm@gmail.com" 
             className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-[2rem] hover:border-black hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
@@ -341,7 +341,7 @@ export const AboutUsPage: React.FC = () => {
             </span>
           </a>
 
-          {/* Chair Card (WhatsApp Link) */}
+          {/* Chair Card */}
           <a 
             href="https://wa.me/962795977852" 
             target="_blank" 
@@ -354,11 +354,11 @@ export const AboutUsPage: React.FC = () => {
             <h4 className="font-bold text-lg text-black uppercase tracking-tight mb-2">Aws Gharaibeh</h4>
             <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-2">Team Chair</div>
             <span className="text-sm font-mono font-bold text-neutral-500 group-hover:text-black transition-colors">
-              +962 7 9597 7852
+              Chat on WhatsApp ↗
             </span>
           </a>
 
-          {/* Vice Chair Card (WhatsApp Link) */}
+          {/* Vice Chair Card */}
           <a 
             href="https://wa.me/962787001254" 
             target="_blank" 
@@ -371,7 +371,7 @@ export const AboutUsPage: React.FC = () => {
             <h4 className="font-bold text-lg text-black uppercase tracking-tight mb-2">Ahmad Radwan</h4>
             <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-2">Vice-Chair</div>
             <span className="text-sm font-mono font-bold text-neutral-500 group-hover:text-black transition-colors">
-              +962 7 8700 1254
+              Chat on WhatsApp ↗
             </span>
           </a>
 
