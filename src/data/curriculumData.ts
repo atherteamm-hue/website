@@ -433,12 +433,12 @@ probability: {
         {
           label: "Probability and Statistics Book",
           url: "/Probability/books/كتاب احصاء و احتمالات.pdf",
-          coverUrl: "/BooksCover/probability_book.png",
+          coverUrl: "/BooksCover/Screenshot 2026-10-30 224436.png",
         },
         {
           label: "Book Solutions",
           url: "/Probability/books/حلول كتاب احصاء و احتمالات.pdf",
-          coverUrl: "/BooksCover/probability_book.png",
+          coverUrl: "/BooksCover/Screenshot 2026-10-30 224436.png",
           isSolution: true
         }
       ],
