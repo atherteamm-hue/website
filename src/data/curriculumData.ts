@@ -45,16 +45,18 @@ export const curriculumData: Record<string, Course> = {
         { label: "English 101 Summary", url: "/english101/summarize/summary-english-101.pdf" },
         { label: "Vocabulary Meanings", url: "/english101/summarize/vocabulary-meanings.pdf" }
       ], 
-      videos: [], 
+      videos: [
+        { label: "Dr. Raghda AlSharabati", url: "https://youtube.com/playlist?list=PL2ZbvaoJe0oSXhkaBMp6EuTygRGgAxU5g&si=P7lQBt9BCTraFk97" },
+      ], 
       mid: [
-        { label: "Mid Unit 1 Solved", url: "/english101/past-papers/mid/mid-unit-1-solved.pdf" },
-        { label: "Mid Unit 2 Solved", url: "/english101/past-papers/mid/mid-unit-2-solved.pdf" },
-        { label: "Mid Unit 3 Solved", url: "/english101/past-papers/mid/mid-unit-3-solved.pdf" }
+        { label: "Unit 1", url: "/english101/past-papers/mid/mid-unit-1-solved.pdf" },
+        { label: "Unit 2", url: "/english101/past-papers/mid/mid-unit-2-solved.pdf" },
+        { label: "Unit 3", url: "/english101/past-papers/mid/mid-unit-3-solved.pdf" }
       ], 
       final: [
-        { label: "Final Unit 4 Solved", url: "/english101/past-papers/final/final-unit-4-solved.pdf" },
-        { label: "Final Unit 5 Solved", url: "/english101/past-papers/final/final-unit-5-solved.pdf" },
-        { label: "Final Unit 6 Solved", url: "/english101/past-papers/final/final-unit-6-solved.pdf" }
+        { label: "Unit 4", url: "/english101/past-papers/final/final-unit-4-solved.pdf" },
+        { label: "Unit 5", url: "/english101/past-papers/final/final-unit-5-solved.pdf" },
+        { label: "Unit 6", url: "/english101/past-papers/final/final-unit-6-solved.pdf" }
       ]
     } 
   },
@@ -74,15 +76,17 @@ export const curriculumData: Record<string, Course> = {
         { label: "Study Guide Videos", url: "/english102/summarize/study-guide-videos.docx" },
         { label: "Vocabulary Meanings", url: "/english102/summarize/vocabulary-meanings.pdf" }
       ], 
-      videos: [], 
+      videos: [
+        { label: "Dr. Raghda AlSharabati", url: "https://youtube.com/playlist?list=PL2ZbvaoJe0oTIivT7eXW0xH6OlhdWFIYp&si=HoR3fwzvHv56c2vj" },
+      ], 
       mid: [
-        { label: "Mid Unit 1 Solved", url: "/english102/past-papers/mid/mid-unit-1-solved.pdf" },
-        { label: "Mid Unit 2 Solved", url: "/english102/past-papers/mid/mid-unit-2-solved.pdf" }
+        { label: "Unit 1", url: "/english102/past-papers/mid/mid-unit-1-solved.pdf" },
+        { label: "Unit 2", url: "/english102/past-papers/mid/mid-unit-2-solved.pdf" }
       ], 
       final: [
-        { label: "Final Unit 3 Solved", url: "/english102/past-papers/final/final-unit-3-solved.pdf" },
-        { label: "Final Unit 4 Solved", url: "/english102/past-papers/final/final-unit-4-solved.pdf" },
-        { label: "Final Unit 5 Solved", url: "/english102/past-papers/final/final-unit-5-solved.pdf" }
+        { label: "Unit 3", url: "/english102/past-papers/final/final-unit-3-solved.pdf" },
+        { label: "Unit 4", url: "/english102/past-papers/final/final-unit-4-solved.pdf" },
+        { label: "Unit 5", url: "/english102/past-papers/final/final-unit-5-solved.pdf" }
       ]
     } 
   },
@@ -143,15 +147,15 @@ export const curriculumData: Record<string, Course> = {
       testBanks: [],
       
       mid: [
-        { label: "Mid Unit 1 (Solved)", url: "/arabic101/past-papers/mid/mid-unit-1-past-years-solved.pdf" },
-        { label: "Mid Unit 2 (Solved)", url: "/arabic101/past-papers/mid/mid-unit-2-past-years-solved.pdf" }
+        { label: "Unit 1", url: "/arabic101/past-papers/mid/mid-unit-1-past-years-solved.pdf" },
+        { label: "Unit 2", url: "/arabic101/past-papers/mid/mid-unit-2-past-years-solved.pdf" }
       ], 
       
       final: [
-        { label: "Final Unit 3 (Solved)", url: "/arabic101/past-papers/final/final-unit-3-solved.pdf" },
-        { label: "Final Unit 4 (Solved)", url: "/arabic101/past-papers/final/final-unit-4-solved.pdf" },
-        { label: "Final Unit 5 (Solved)", url: "/arabic101/past-papers/final/final-unit-5-solved.pdf" },
-        { label: "Final Unit 6 (Solved)", url: "/arabic101/past-papers/final/final-unit-6-solved.pdf" }
+        { label: "Unit 3", url: "/arabic101/past-papers/final/final-unit-3-solved.pdf" },
+        { label: "Unit 4", url: "/arabic101/past-papers/final/final-unit-4-solved.pdf" },
+        { label: "Unit 5", url: "/arabic101/past-papers/final/final-unit-5-solved.pdf" },
+        { label: "Unit 6", url: "/arabic101/past-papers/final/final-unit-6-solved.pdf" }
       ]
     } 
   },
