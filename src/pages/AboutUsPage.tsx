@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Mail, MessageCircle } from 'lucide-react'; // 👈 استدعاء الأيقونات الجديدة
 
 import awsImg from '../../members photos/Aws gharaibeh.webp';
 import noorImg from '../../members photos/noor ibrrahim.jpeg';
@@ -308,6 +309,75 @@ export const AboutUsPage: React.FC = () => {
         </div>
 
       </div>
+
+      {/* ═══════════════ CONTACT US SECTION ═══════════════ */}
+      <div className="mt-32 mb-10 border-t border-neutral-200/80 pt-20">
+        <div className="text-center mb-16">
+          <div className="text-sm md:text-base font-bold font-mono tracking-widest text-neutral-500 uppercase mb-3">
+            GET IN TOUCH
+          </div>
+          <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-black uppercase">
+            Contact Us
+          </h2>
+          <p className="text-neutral-500 mt-4 max-w-lg mx-auto text-sm md:text-base font-medium leading-relaxed">
+            Have a question, a project idea, or want to collaborate? Reach out to our leadership directly. We're always open to new opportunities.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          
+          {/* Email Card (Hides the ugly email spelling in the UI, uses it in href) */}
+          <a 
+            href="mailto:atherteamm@gmail.com" 
+            className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-[2rem] hover:border-black hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+          >
+            <div className="w-16 h-16 bg-neutral-50 text-neutral-600 flex items-center justify-center rounded-2xl mb-6 group-hover:bg-black group-hover:text-white transition-colors duration-300 shadow-sm">
+              <Mail size={28} strokeWidth={1.5} />
+            </div>
+            <h4 className="font-bold text-lg text-black uppercase tracking-tight mb-2">Team Email</h4>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-2">General Inquiries</div>
+            <span className="text-sm font-mono font-bold text-neutral-500 group-hover:text-black transition-colors">
+              Drop us a message ↗
+            </span>
+          </a>
+
+          {/* Chair Card (WhatsApp Link) */}
+          <a 
+            href="https://wa.me/962795977852" 
+            target="_blank" 
+            rel="noreferrer"
+            className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-[2rem] hover:border-black hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+          >
+            <div className="w-16 h-16 bg-neutral-50 text-neutral-600 flex items-center justify-center rounded-2xl mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+              <MessageCircle size={28} strokeWidth={1.5} />
+            </div>
+            <h4 className="font-bold text-lg text-black uppercase tracking-tight mb-2">Aws Gharaibeh</h4>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-2">Team Chair</div>
+            <span className="text-sm font-mono font-bold text-neutral-500 group-hover:text-black transition-colors">
+              +962 7 9597 7852
+            </span>
+          </a>
+
+          {/* Vice Chair Card (WhatsApp Link) */}
+          <a 
+            href="https://wa.me/962787001254" 
+            target="_blank" 
+            rel="noreferrer"
+            className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-[2rem] hover:border-black hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+          >
+            <div className="w-16 h-16 bg-neutral-50 text-neutral-600 flex items-center justify-center rounded-2xl mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+              <MessageCircle size={28} strokeWidth={1.5} />
+            </div>
+            <h4 className="font-bold text-lg text-black uppercase tracking-tight mb-2">Ahmad Radwan</h4>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-2">Vice-Chair</div>
+            <span className="text-sm font-mono font-bold text-neutral-500 group-hover:text-black transition-colors">
+              +962 7 8700 1254
+            </span>
+          </a>
+
+        </div>
+      </div>
+      
     </div>
   );
 };
