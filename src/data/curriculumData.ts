@@ -425,12 +425,52 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-  probability: { 
-    coords: { x: 41.57, y: 15.22, w: 5.62, h: 5.4 }, 
+probability: {
+    coords: { x: 41.57, y: 15.22, w: 5.62, h: 5.4 },
     content: {
-      titleEn: "Probability", titleAr: "احصاء واحتمالات للهندسة ", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
-    } 
+      titleEn: "Probability", titleAr: "احصاء واحتمالات للهندسة", credits: 3,
+      books: [
+        {
+          label: "Probability and Statistics Book",
+          url: "/Probability/books/كتاب احصاء و احتمالات.pdf",
+          coverUrl: "/BooksCover/probability_book.png",
+        },
+        {
+          label: "Book Solutions",
+          url: "/Probability/books/حلول كتاب احصاء و احتمالات.pdf",
+          coverUrl: "/BooksCover/probability_book.png",
+          isSolution: true
+        }
+      ],
+      summaries: [
+        { label: "Zero One Summary", url: "/Probability/Summaries/zero one.pdf" },
+        { label: "Mohammed Fouad Summary", url: "/Probability/Summaries/احصاء ملخص محمد فؤاد .pdf" },
+        { label: "Dr. Mohammed Fouad Notebook", url: "/Probability/Summaries/احصاء واحتمالات - دفتر د.محمد فؤاد.pdf" },
+        { label: "Spark Rules Summary", url: "/Probability/Summaries/سبارك ملخص القوانين.pdf" }
+      ],
+      videos: [
+        { label: "Dr.Mohammed Fouad", url: "https://youtube.com/playlist?list=PLFUszXtJ26-7Lox-o7iM7J-5SfSrsESsz&si=kHrfjOEnP8YAVCSJ" }
+      ],
+      quizzes: [],
+      testBanks: [],
+      mid: [
+        { label: "2026", url: "/Probability/pastpapers/سنوات ميد/احصاء ميد 2026 - صيفي.pdf" },
+        { label: "2026", url: "/Probability/pastpapers/سنوات ميد/احصاء ميد 2026 - فصل2.pdf" },
+        { label: "2025", url: "/Probability/pastpapers/سنوات ميد/ميد 2025 - الفصل2 (النموذجين).pdf" },
+        { label: "2025", url: "/Probability/pastpapers/سنوات ميد/ميد 2025 (صيفي).pdf" },
+        { label: "2025", url: "/Probability/pastpapers/سنوات ميد/احصاء 2025 - فصل 1.pdf" },
+        { label: "2023", url: "/Probability/pastpapers/سنوات ميد/ميد 2023 (فصل2) - احصاء.pdf" },
+        { label: "2023", url: "/Probability/pastpapers/سنوات ميد/ميد 2023 (فصل1) - احصاء.pdf" }
+      ],
+      final: [
+        { label: "2026", url: "/Probability/pastpapers/سنوات فاينل/Probability-2026 final (1).pdf" },
+        { label: "2025", url: "/Probability/pastpapers/سنوات فاينل/فاينال احصاء الصيفي 2025 - محلول.pdf" },
+        { label: "2025", url: "/Probability/pastpapers/سنوات فاينل/احصاء فاينال ف2 - 2025 محلول.pdf" },
+        { label: "2025", url: "/Probability/pastpapers/سنوات فاينل/احصاء فاينال ف1 - 2025 محلول.pdf" },
+        { label: "2024", url: "/Probability/pastpapers/سنوات فاينل/فاينال احصاء الصيفي - 2024 محلول.pdf" },
+        { label: "2024", url: "/Probability/pastpapers/سنوات فاينل/احصاء فاينال - 2024 محلول.pdf" }
+      ]
+    }
   },
   
   statics: { 
