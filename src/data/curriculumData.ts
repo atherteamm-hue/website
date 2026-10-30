@@ -91,11 +91,73 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-  tech_writing: { 
+ tech_writing: { 
     coords: { x: 2.21, y: 26.43, w: 5.52, h: 5.2 }, 
     content: {
-      titleEn: "Technical Writing", titleAr: "الكتابة التقنية والاخلاقيات المهنية", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Technical Writing", 
+      titleAr: "الكتابة التقنية والاخلاقيات المهنية", 
+      credits: 3,
+      
+     books: [
+        { 
+          label: "Technical Writing Part 1", 
+          url: "/Technical Writing/books/technical-writing-part-1.pdf",
+          coverUrl: "/BooksCover/technical-writing-part-1.png"
+        },
+        { 
+          label: "Professional Ethics Part 2", 
+          url: "/Technical Writing/books/professional-ethics-part-2.pdf",
+          coverUrl: "/BooksCover/professional-ethics-part-2.png"
+        }
+      ],
+      
+      summaries: [
+        { label: "Midterm Important Notes", url: "/Technical Writing/summaries/midterm-important-notes.pdf" },
+        { label: "Technical Writing Full Summary", url: "/Technical Writing/summaries/technical-writing-full-summary.pdf" },
+        { label: "Technical Writing Sections 1-7 Summary", url: "/Technical Writing/summaries/technical-writing-sections-1-7-summary.pdf" }
+      ], 
+      
+      videos: [], 
+      
+      quizzes: [
+        {
+          label: "Quizzes",
+          type: 'folder',
+          items: [
+            { label: "2024", url: "/Technical Writing/past-papers/quizzes/writing-quizzes.pdf" },
+            { label: "Final 2020", url: "/Technical Writing/past-papers/quizzes/final-quizzes.pdf" },
+            { label: "2020", url: "/Technical Writing/past-papers/quizzes/technical-writing-quiz.pdf" },
+            { label: "General", url: "/Technical Writing/past-papers/quizzes/general-quiz.pdf" },
+            { label: "2023", url: "/Technical Writing/past-papers/quizzes/quizzes-summer-2023.pdf" },
+            { label: "Section 02", url: "/Technical Writing/past-papers/quizzes/section-02-quiz.pdf" },
+            { label: "Section 03", url: "/Technical Writing/past-papers/quizzes/section-03-quiz.pdf" },
+            { label: "Section 04", url: "/Technical Writing/past-papers/quizzes/section-04-quiz.pdf" },
+            { label: "Section 08", url: "/Technical Writing/past-papers/quizzes/section-08-quiz.pdf" },
+            { label: "Section 09", url: "/Technical Writing/past-papers/quizzes/section-09-quiz.pdf" },
+            { label: "Section 10", url: "/Technical Writing/past-papers/quizzes/section-10-quiz.pdf" },
+            { label: "Section 11", url: "/Technical Writing/past-papers/quizzes/section-11-quiz.pdf" },
+            { label: "Section 12", url: "/Technical Writing/past-papers/quizzes/section-12-quiz.pdf" },
+            { label: "Section 14", url: "/Technical Writing/past-papers/quizzes/section-14-quiz.pdf" }
+          ]
+        }
+      ],
+      
+      testBanks: [],
+      
+      mid: [
+        { label: "2021", url: "/Technical Writing/past-papers/mid/midterm-03.pdf" },
+        { label: "2021", url: "/Technical Writing/past-papers/mid/midterm-04.pdf" },
+        { label: "2020", url: "/Technical Writing/past-papers/mid/midterm-01.pdf" },
+        { label: "2020", url: "/Technical Writing/past-papers/mid/midterm-02.pdf" },
+        { label: "screens", url: "/Technical Writing/past-papers/mid/midterm-05.pdf" },
+      ], 
+      
+      final: [
+        { label: "2020", url: "/Technical Writing/past-papers/final/final-02.pdf" },
+        { label: "screens", url: "/Technical Writing/past-papers/final/final-01.pdf" },
+        { label: "screens", url: "/Technical Writing/past-papers/final/final-03.pdf" },
+        { label: "screens", url: "/Technical Writing/past-papers/final/final-04.pdf" }
+      ]
     } 
   },
   
