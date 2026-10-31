@@ -250,42 +250,44 @@ export function AcademicLibraryPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             
-            {/* GPA Calculator Card (Premium Dark Ethereal Style - FIXED) */}
-            <div className="bg-[#0a0a0a] border border-neutral-800 rounded-[30px] p-8 shadow-2xl flex flex-col h-full transition-all hover:border-neutral-600 relative group">
+            {/* GPA Calculator Card (Subtle Distinction + Hover Focus Mode) */}
+            <div className="bg-gradient-to-br from-white to-neutral-50 border border-neutral-300 rounded-[30px] p-8 shadow-md flex flex-col h-full transition-all duration-500 hover:border-black/30 hover:shadow-2xl relative group overflow-hidden">
               
-              {/* Ethereal Glow Effect (Safe without overflow-hidden) */}
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/15 via-transparent to-transparent rounded-[30px] opacity-60 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+              {/* Subtle Ethereal Glow on Hover */}
+              <div className="absolute -top-24 -right-24 w-64 h-64 bg-black/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
-              {/* Fixed Badge Position */}
-              <span className="absolute -top-3 left-6 bg-white text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-20 shadow-[0_0_15px_rgba(255,255,255,0.3)] pointer-events-none">
+              {/* Badge: Darker by default to hint it's special */}
+              <span className="absolute -top-3 left-6 bg-neutral-800 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-20 shadow-md transition-colors duration-500 group-hover:bg-black pointer-events-none">
                 By Athar
               </span>
               
               <div className="flex items-center gap-3 mb-6 relative z-10">
-                <div className="p-3 bg-white/10 text-white rounded-xl backdrop-blur-md border border-white/20 group-hover:scale-105 transition-transform shadow-inner">
+                {/* Icon: Crisp white box -> Turns Black & Pops up on hover */}
+                <div className="p-3 bg-white text-neutral-600 rounded-xl border border-neutral-200 shadow-sm transition-all duration-500 group-hover:bg-black group-hover:text-white group-hover:border-black group-hover:scale-105">
                   <GraduationCap size={24} strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold uppercase tracking-tighter text-white drop-shadow-md">GPA Calculator</h3>
-                  <p className="text-xs text-neutral-400 font-medium">Track your academic progress</p>
+                  <h3 className="text-xl font-bold uppercase tracking-tighter text-neutral-800 transition-colors duration-500 group-hover:text-black">GPA Calculator</h3>
+                  <p className="text-xs text-neutral-500 font-medium">Track your academic progress</p>
                 </div>
               </div>
               
-              <div className="flex-1 flex flex-col items-center justify-center bg-white/5 rounded-2xl border border-white/10 p-6 mb-5 backdrop-blur-sm relative z-10">
+              <div className="flex-1 flex flex-col items-center justify-center bg-white/60 rounded-2xl border border-neutral-200 p-6 mb-5 relative z-10 transition-colors duration-500 group-hover:bg-white">
                 <div className="text-center space-y-2">
-                  {/* Fixed Gradient for 4.00 (Much brighter at the bottom) */}
-                  <div className="font-mono text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-400 tracking-tighter drop-shadow-lg">
+                  {/* Premium Gradient 4.00 -> Gets darker/sharper on hover */}
+                  <div className="font-mono text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-neutral-600 to-neutral-300 tracking-tighter transition-all duration-500 drop-shadow-sm group-hover:from-black group-hover:to-neutral-500">
                     4.00
                   </div>
-                  <p className="text-xs text-neutral-400 font-medium max-w-[200px] leading-relaxed mx-auto">
+                  <p className="text-xs text-neutral-500 font-medium max-w-[200px] leading-relaxed mx-auto transition-colors duration-500">
                     Calculate your cumulative & semester GPA, and repeat courses easily.
                   </p>
                 </div>
               </div>
 
+              {/* Button: Subtle outline -> Turns Solid Black & Pops up on hover */}
               <button 
                 onClick={() => setIsGpaModalOpen(true)}
-                className="w-full py-4 rounded-xl font-bold text-sm uppercase tracking-widest bg-white text-black hover:scale-[1.02] shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all relative z-10"
+                className="w-full py-4 rounded-xl font-bold text-sm uppercase tracking-widest bg-white border border-neutral-200 text-neutral-600 shadow-sm transition-all duration-500 relative z-10 group-hover:bg-black group-hover:text-white group-hover:border-black group-hover:scale-[1.02] group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.15)]"
               >
                 Open Calculator
               </button>
