@@ -250,29 +250,31 @@ export function AcademicLibraryPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             
-            {/* GPA Calculator Card (Premium Dark Ethereal Style) */}
-            <div className="bg-[#0a0a0a] border border-neutral-800 rounded-[30px] p-8 shadow-2xl flex flex-col h-full transition-all hover:border-neutral-600 relative group overflow-hidden">
+            {/* GPA Calculator Card (Premium Dark Ethereal Style - FIXED) */}
+            <div className="bg-[#0a0a0a] border border-neutral-800 rounded-[30px] p-8 shadow-2xl flex flex-col h-full transition-all hover:border-neutral-600 relative group">
               
-              {/* Ethereal Glow Effect */}
-              <div className="absolute -top-24 -right-24 w-64 h-64 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-all duration-700 pointer-events-none"></div>
+              {/* Ethereal Glow Effect (Safe without overflow-hidden) */}
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/15 via-transparent to-transparent rounded-[30px] opacity-60 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
-              <span className="absolute -top-3 left-6 bg-white text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-10 shadow-[0_0_15px_rgba(255,255,255,0.2)] pointer-events-none">
+              {/* Fixed Badge Position */}
+              <span className="absolute -top-3 left-6 bg-white text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-20 shadow-[0_0_15px_rgba(255,255,255,0.3)] pointer-events-none">
                 By Athar
               </span>
               
               <div className="flex items-center gap-3 mb-6 relative z-10">
-                <div className="p-3 bg-white/10 text-white rounded-xl backdrop-blur-md border border-white/10 group-hover:scale-105 transition-transform shadow-inner">
+                <div className="p-3 bg-white/10 text-white rounded-xl backdrop-blur-md border border-white/20 group-hover:scale-105 transition-transform shadow-inner">
                   <GraduationCap size={24} strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold uppercase tracking-tighter text-white">GPA Calculator</h3>
+                  <h3 className="text-xl font-bold uppercase tracking-tighter text-white drop-shadow-md">GPA Calculator</h3>
                   <p className="text-xs text-neutral-400 font-medium">Track your academic progress</p>
                 </div>
               </div>
               
               <div className="flex-1 flex flex-col items-center justify-center bg-white/5 rounded-2xl border border-white/10 p-6 mb-5 backdrop-blur-sm relative z-10">
                 <div className="text-center space-y-2">
-                  <div className="font-mono text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-600 tracking-tighter drop-shadow-sm">
+                  {/* Fixed Gradient for 4.00 (Much brighter at the bottom) */}
+                  <div className="font-mono text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-400 tracking-tighter drop-shadow-lg">
                     4.00
                   </div>
                   <p className="text-xs text-neutral-400 font-medium max-w-[200px] leading-relaxed mx-auto">
@@ -283,7 +285,7 @@ export function AcademicLibraryPage() {
 
               <button 
                 onClick={() => setIsGpaModalOpen(true)}
-                className="w-full py-4 rounded-xl font-bold text-sm uppercase tracking-widest bg-white text-black hover:scale-[1.02] shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.25)] transition-all relative z-10"
+                className="w-full py-4 rounded-xl font-bold text-sm uppercase tracking-widest bg-white text-black hover:scale-[1.02] shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all relative z-10"
               >
                 Open Calculator
               </button>
