@@ -251,12 +251,14 @@ export function AcademicLibraryPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             
             {/* GPA Calculator Card (Subtle Distinction + Hover Focus Mode) */}
-            <div className="bg-gradient-to-br from-white to-neutral-50 border border-neutral-300 rounded-[30px] p-8 shadow-md flex flex-col h-full transition-all duration-500 hover:border-black/30 hover:shadow-2xl relative group overflow-hidden">
+            <div className="bg-gradient-to-br from-white to-neutral-50 border border-neutral-300 rounded-[30px] p-8 shadow-md flex flex-col h-full transition-all duration-500 hover:border-black/30 hover:shadow-2xl relative group">
               
-              {/* Subtle Ethereal Glow on Hover */}
-              <div className="absolute -top-24 -right-24 w-64 h-64 bg-black/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+              {/* Ethereal Glow Wrapper (Contains the glow without clipping the badge) */}
+              <div className="absolute inset-0 overflow-hidden rounded-[30px] pointer-events-none z-0">
+                <div className="absolute -top-24 -right-24 w-64 h-64 bg-black/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              </div>
 
-              {/* Badge: Darker by default to hint it's special */}
+              {/* Badge: Darker by default to hint it's special (Now fully visible) */}
               <span className="absolute -top-3 left-6 bg-neutral-800 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-20 shadow-md transition-colors duration-500 group-hover:bg-black pointer-events-none">
                 By Athar
               </span>
