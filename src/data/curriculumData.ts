@@ -526,11 +526,65 @@ probability: {
     } 
   },
   
-  gen_chemistry: { 
+gen_chemistry: { 
     coords: { x: 91.77, y: 3.6, w: 5.42, h: 5.01 }, 
     content: {
-      titleEn: "General Chemistry", titleAr: "الكيمياء العامة", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "General Chemistry", 
+      titleAr: "الكيمياء العامة", 
+      credits: 3,
+      
+      // 1. Books
+      books: [
+        { 
+          label: "Chemistry Textbook", 
+          url: "/Chemistry/Books/Chemistry1-Textbook.pdf", 
+          coverUrl: "/BooksCover/Chemistry1-Textbook.png" 
+        },
+        { 
+          label: "Solutions Manual", 
+          url: "/Chemistry/Books/Chemistry1-Textbook-Solutions.pdf", 
+          coverUrl: "/BooksCover/Chemistry1-Textbook.png", 
+          isSolution: true 
+        }
+      ], 
+      
+      // 2. Videos
+      videos: [
+        { label: "Dr. Reem", url: "https://youtube.com/playlist?list=PLFUszXtJ26-4YwfUoCy64U3TUeiLT7sLZ&si=-wbaVMIWTLPRiJXA" },
+        { label: "Midterm Revision - Dr. Reem", url: "https://youtube.com/playlist?list=PLFUszXtJ26-7BXY4hepzQgQibP6bSc1Vs&si=sB0ZSuKs9YTFTlRC" }
+      ],
+
+      // 3. Summaries & Notes
+      summaries: [
+        { label: "Dr. Reem", url: "/Chemistry/Summaries/Chemistry1-Slides-Dr-Reem.pdf" },
+        { label: "Dr. Heba", url: "/Chemistry/Summaries/Chemistry1-Slides-Dr-Heba.pdf" },
+        { label: "Dr. Ali", url: "/Chemistry/Summaries/Chemistry1-Slides-Dr-Ali.pdf" },
+        { label: "Dr. Mansour Notes", url: "/Chemistry/Summaries/Chemistry1-Notes-Dr-Mansour.pdf" },
+        { label: "SPU Summary", url: "/Chemistry/Summaries/Chemistry1-SPU-Summary.pdf" },
+        { label: "Formulas Summary (2021)", url: "/Chemistry/Summaries/Chemistry1-Formulas-Summary-2021.pdf" },
+        { label: "Formulas Summary", url: "/Chemistry/Summaries/Chemistry1-Formulas-Summary.pdf" }
+      ], 
+      
+      // 4. Mid Exams (مرتبة تنازلياً)
+      mid: [
+        { label: "2018", url: "/Chemistry/Past-Papers/Mid/Mid-2018-Semester1.pdf" },
+        { label: "Screens", url: "/Chemistry/Past-Papers/Mid/Mid-Screens-Solved.pdf" },
+        { label: "Online", url: "/Chemistry/Past-Papers/Mid/Mid-Online-Questions.pdf" },
+        { label: "Online", url: "/Chemistry/Past-Papers/Mid/Mid-Question-Bank.pdf" },
+        { label: "Online", url: "/Chemistry/Past-Papers/Mid/Mid-Compiled-Question-Bank.pdf" }
+      ], 
+      
+      // 5. Final Exams (مرتبة تنازلياً)
+      final: [
+        { label: "2024", url: "/Chemistry/Past-Papers/Final/Final-2024-Paper-4.pdf" },
+        { label: "2023", url: "/Chemistry/Past-Papers/Final/Final-2023-Paper-3.pdf" },
+        { label: "2023", url: "/Chemistry/Past-Papers/Final/Final-2023-Paper-2.pdf" },
+        { label: "2016", url: "/Chemistry/Past-Papers/Final/Final-2016-Semester1.pdf" },
+        { label: "2011-2014", url: "/Chemistry/Past-Papers/Final/Final-2011-2014.pdf" },
+        { label: "Final Exam ", url: "/Chemistry/Past-Papers/Final/Final-Paper-1.pdf" },
+        { label: "Part 3 Compilation", url: "/Chemistry/Past-Papers/Final/Final-Paper-Part-3-Compilation.pdf" },
+        { label: "Online", url: "/Chemistry/Past-Papers/Final/Final-Electronic-Part-1-Compilation.pdf" }
+      ]
     } 
   },
   
@@ -600,11 +654,62 @@ probability: {
     } 
   },
   
-  linear_algebra: { 
+linear_algebra: { 
     coords: { x: 47.58, y: 24.14, w: 5.59, h: 5.24 }, 
     content: {
-      titleEn: "Linear Algebra", titleAr: "جبر خطي", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Linear Algebra", 
+      titleAr: "جبر خطي", 
+      credits: 3,
+      
+      books: [
+        { 
+          label: "Linear Algebra (Anton 12th Edition)", 
+          url: "/linear/Books/Linear-Algebra-Anton-12th-Edition.pdf", 
+          coverUrl: "/BooksCover/Linear-Algebra-Anton-12th-Edition.png" 
+        },
+        { 
+          label: "Linear Algebra (Kolman 8th Edition - Spanish)", 
+          url: "/linear/Books/Linear-Algebra-Kolman-8th-Edition-Spanish.pdf", 
+          coverUrl: "/BooksCover/Linear-Algebra-Kolman-8th-Edition-Spanish.png" 
+        },
+        { 
+          label: "Manga Guide to Linear Algebra", 
+          url: "/linear/Books/Linear-Algebra-Manga-Guide.pdf", 
+          coverUrl: "/BooksCover/Linear-Algebra-Manga-Guide.png" 
+        },
+        { 
+          label: "Linear Algebra (Strang 4th Edition)", 
+          url: "/linear/Books/Linear-Algebra-Strang-4th-Edition.pdf", 
+          coverUrl: "/BooksCover/Linear-Algebra-Strang-4th-Edition.png" 
+        }
+      ],
+      
+      videos: [
+        { label: "Dr. Eman", url: "https://youtube.com/playlist?list=PLFUszXtJ26-68uQf4z7S5wjekW1IPIP7I&si=aG7zdf3ct2vVvVYz" },
+        { label: "Anas Abu Zahra", url: "https://youtube.com/playlist?list=PLvuToPs04FnD1lFBolGr4ROQaxQ_zyC1c&si=rGJuOrbq_9tOdu5E" },
+        { label: "CNE", url: "https://youtube.com/playlist?list=PLJwCQtAhsso8zTABIMUd0-BVAmRRbYsna&si=B4XPNp3lK1aocKQq" }
+      ],
+
+      summaries: [
+        { label: "Dr. Eman Notes", url: "/linear/Summaries/Linear-Algebra-Notes-Dr-Eman.pdf" },
+        { label: "Dr. Kamel Notes", url: "/linear/Summaries/Linear-Algebra-Notes-Dr-Kamel.pdf" }
+      ],
+      
+      mid: [
+        { label: "2026", url: "/linear/Past-Papers/Mid/Mid-2026.pdf" },
+        { label: "2025", url: "/linear/Past-Papers/Mid/Mid-2025-Summer.pdf" },
+        { label: "2025", url: "/linear/Past-Papers/Mid/Mid-2025-Semester2.pdf" },
+        { label: "2025", url: "/linear/Past-Papers/Mid/Mid-2025-Semester1-Two-Models.pdf" },
+        { label: "2022", url: "/linear/Past-Papers/Mid/Mid-2022-Summer-Solved.pdf" },
+        { label: "2022", url: "/linear/Past-Papers/Mid/Mid-2022-Solved.pdf" }
+      ],
+      
+      final: [
+        { label: "2023-2024", url: "/linear/Past-Papers/Final/Final-2023-2024-Term1.pdf" },
+        { label: "2023", url: "/linear/Past-Papers/Final/Final-2023-Term1.pdf" },
+        { label: "Final Exam", url: "/linear/Past-Papers/Final/Final-Undated-1.pdf" },
+        { label: "Final Exam", url: "/linear/Past-Papers/Final/Final-Undated-2.pdf" }
+      ]
     } 
   },
   
