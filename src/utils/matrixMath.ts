@@ -160,7 +160,10 @@ export class Frac {
     if (this.n === 0n) return '0';
     if (asDecimal) {
       const val = this.toNumber();
-      return Number.isInteger(val) ? val.toString() : Number(val.toFixed(decimals)).toString();
+      if (Number.isInteger(val)) return val.toString();
+      const r = Number(val.toFixed(decimals));
+      // Fix: Display extremely small numbers precisely rather than rounding to '0'
+      return r === 0 ? val.toPrecision(3) : r.toString();
     }
     return this.d === 1n ? `${this.n}` : `${this.n}/${this.d}`;
   }
@@ -320,7 +323,7 @@ function buildVerification(A: Frac[][], x: Frac[], B: Frac[]): { equations: stri
 
 /** √x for a non-negative fraction, simplified: 2√3, √5/2, 3/2 ... */
 function sqrtExpr(x: Frac): string {
-  const [out0, inner] = simplifySqrt(x.n * x.d); // √(n/d) = √(n·d)/d
+  const [out0, inner] = simplifySqrt(x.n * x.d);
   let out = out0;
   let d = x.d;
   if (inner === 1n) return new Frac(out, d).toString();
@@ -1775,7 +1778,9 @@ const LATEX_MAP: Record<string, string> = {
   '∞': '$\\infty$', 'Σ': '$\\Sigma$', 'ₚ': '$_{p}$', '—': '---', '…': '\\ldots{}',
   '²': '$^{2}$', '³': '$^{3}$', '⁴': '$^{4}$', '⁵': '$^{5}$', '⁶': '$^{6}$',
   '₀': '$_{0}$', '₁': '$_{1}$', '₂': '$_{2}$', '₃': '$_{3}$', '₄': '$_{4}$',
-  '₅': '$_{5}$', '₆': '$_{6}$', '₇': '$_{7}$', '₈': '$_{8}$', '₉': '$_{9}$'
+  '₅': '$_{5}$', '₆': '$_{6}$', '₇': '$_{7}$', '₈': '$_{8}$', '₉': '$_{9}$',
+  'ᵢ': '$_{i}$', 'ⱼ': '$_{j}$', 'ₖ': '$_{k}$', 'ₙ': '$_{n}$', '¹': '$^{1}$',
+  '⁷': '$^{7}$', '⁸': '$^{8}$', '⁹': '$^{9}$' // Fixed: Missing subscript & superscript unicode chars added
 };
 const LATEX_CHARS = new RegExp(`[${Object.keys(LATEX_MAP).join('')}]`, 'g');
 
