@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import {
   X, Calculator, Play, Pause, RefreshCw, Trash2, FileText,
-  Copy, Check, ChevronLeft, ChevronRight, Sparkles, CheckCircle2,
+  Copy, Check, ChevronLeft, ChevronRight, CheckCircle2,
   AlertTriangle, Layers, Download, History as HistoryIcon
 } from 'lucide-react';
 import {
@@ -65,24 +65,6 @@ const OPS: OpDef[] = [
 
 const GROUPS = Array.from(new Set(OPS.map(o => o.group)));
 const opOf = (k: string): OpDef => OPS.find(o => o.key === k) ?? OPS[0];
-
-interface Preset {
-  label: string;
-  op: string;
-  A: string[][];
-  b?: string[];
-  tone?: 'normal' | 'accent';
-}
-
-const PRESETS: Preset[] = [
-  { label: 'Unique solution', op: 'gauss', A: [['2', '1', '-1'], ['-3', '-1', '2'], ['-2', '1', '2']], b: ['8', '-11', '-3'] },
-  { label: 'Infinite solutions', op: 'gauss', A: [['1', '2', '-1'], ['2', '4', '-2'], ['1', '1', '1']], b: ['3', '6', '4'] },
-  { label: 'No solution', op: 'gauss', A: [['1', '-1', '2'], ['2', '-2', '4'], ['3', '1', '-1']], b: ['5', '14', '2'] },
-  { label: 'Fractions', op: 'gauss', tone: 'accent', A: [['1/2', '1/3', '-1/4'], ['2/3', '-1/2', '1/6'], ['1/4', '1/2', '1/3']], b: ['7/12', '1/3', '13/12'] },
-  { label: 'Eigen (repeated λ)', op: 'eigen', A: [['2', '1', '0'], ['1', '2', '0'], ['0', '0', '3']] },
-  { label: 'LU', op: 'lu', A: [['2', '1', '1'], ['4', '-6', '0'], ['-2', '7', '2']] },
-  { label: 'Least squares line', op: 'lsq', A: [['1', '1'], ['1', '2'], ['1', '3']], b: ['1', '2', '2'] }
-];
 
 const statusStyle: Record<string, { bar: string; pill: string }> = {
   info: { bar: 'border-l-neutral-300', pill: 'bg-neutral-100 text-neutral-700 border-neutral-300' },
@@ -411,15 +393,6 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
     resetUI();
   };
 
-  const loadPreset = (p: Preset) => {
-    setOperation(p.op);
-    setRows(p.A.length);
-    setCols(p.A[0].length);
-    setRawA(p.A.map(r => [...r]));
-    if (p.b) setRawVecB([...p.b]);
-    resetUI();
-  };
-
   const runOperation = (): MathStep[] => {
     const A = parseGrid(rawA, 'A');
     switch (operation) {
@@ -668,16 +641,6 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
                 <Play size={16} /> SIMULATE
               </button>
             </div>
-          </div>
-
-          {/* Presets */}
-          <div className="flex flex-wrap items-center gap-3 px-4 py-3 bg-neutral-900 text-white rounded-2xl text-xs">
-            <span className="flex gap-2 items-center font-bold text-neutral-300"><Sparkles size={15} className="text-amber-400" /> Examples</span>
-            {PRESETS.map(p => (
-              <button key={p.label} onClick={() => loadPreset(p)} className={`px-3 py-1 rounded font-semibold ${p.tone === 'accent' ? 'bg-amber-500/20 text-amber-300' : 'bg-neutral-800 hover:bg-neutral-700'}`}>
-                {p.label}
-              </button>
-            ))}
           </div>
 
           {/* Inputs */}
