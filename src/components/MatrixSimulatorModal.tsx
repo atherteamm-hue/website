@@ -2,8 +2,9 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import {
-  X, Calculator, Play, RefreshCw, Trash2, Copy, Check, ChevronLeft, ChevronRight,
-  Sparkles, CheckCircle2, AlertTriangle, Layers, Download, History as HistoryIcon, Pause
+  X, Calculator, Play, Pause, RefreshCw, Trash2, FileText,
+  Copy, Check, ChevronLeft, ChevronRight, Sparkles, CheckCircle2,
+  AlertTriangle, Layers, Download, History as HistoryIcon
 } from 'lucide-react';
 import {
   Frac, MathStep, getVarName, stepsToLatexDocument,
@@ -491,14 +492,70 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
     } catch { setError('Could not access the clipboard. Use "Download .tex" instead.'); }
   };
 
-  const downloadLatex = () => {
-    const blob = new Blob([latexText()], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `athar-${operation}.tex`;
-    a.click();
-    URL.revokeObjectURL(url);
+  // Export Academic PDF Worksheet via Print Window
+  const handleExportPDF = () => {
+    const printWin = window.open('', '_blank', 'width=950,height=800');
+    if (!printWin) return;
+
+    const renderMatrixHtml = (step: MathStep) => {
+      if (!step.fracMatrix) return '';
+      const rCount = step.fracMatrix.length;
+      const rowsHtml = Array.from({ length: rCount }, (_, r) => {
+        const cCount = step.fracMatrix![r].length;
+        const cells = Array.from({ length: cCount }, (__, c) => {
+          const txt = fmt(step.fracMatrix![r][c]);
+          return `<td style="padding:6px 12px; text-align:center; font-family:monospace; font-weight:700;">${txt}</td>`;
+        }).join('');
+        const augCell = step.augMatrix
+          ? `<td style="padding:6px 12px; border-left:2px solid #94a3b8; color:#1d4ed8; font-family:monospace; font-weight:700; text-align:center;">${fmt(step.augMatrix[r][0])}</td>`
+          : '';
+        return `<tr>${cells}${augCell}</tr>`;
+      }).join('');
+
+      return `<table style="border-collapse:collapse; border-left:2.5px solid #0f172a; border-right:2.5px solid #0f172a; margin:10px 0;">${rowsHtml}</table>`;
+    };
+
+    const stepsHtml = steps
+      .map(
+        (st, idx) => `
+      <div style="border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin-bottom:14px; page-break-inside:avoid;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <strong style="font-size:15px;">Step ${idx + 1}: ${st.title}</strong>
+          ${st.operationBadge ? `<span style="background:#0f172a; color:#fff; padding:3px 10px; border-radius:99px; font-family:monospace; font-size:12px;">${st.operationBadge}</span>` : ''}
+        </div>
+        <div style="color:#475569; font-size:13px; white-space:pre-line; margin-bottom:8px;">${st.description}</div>
+        ${renderMatrixHtml(st)}
+        ${st.fracVector ? `<div style="font-family:monospace; font-weight:700; color:#1d4ed8; margin-top:6px;">Vector = [ ${st.fracVector.map(v => fmt(v)).join(', ')} ]</div>` : ''}
+        ${st.resultText && st.status !== 'info' ? `<div style="margin-top:10px; padding:8px 12px; background:#0f172a; color:#fff; border-radius:8px; font-family:monospace; font-size:13px; font-weight:700;">${st.resultText}</div>` : ''}
+      </div>`
+      )
+      .join('');
+
+    printWin.document.write(`
+      <html>
+        <head>
+          <title>Athar Matrix Studio — Solution Report</title>
+          <style>
+            body { font-family: system-ui, -apple-system, sans-serif; color: #0f172a; padding: 32px; }
+            .header { display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #0f172a; padding-bottom:16px; margin-bottom:24px; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div>
+              <h1 style="margin:0; font-size:24px; text-transform:uppercase;">Athar Matrix Studio</h1>
+              <p style="margin:4px 0 0; color:#64748b; font-size:12px; font-weight:700;">ACADEMIC LINEAR ALGEBRA REPORT • OPERATION: ${operation.toUpperCase()}</p>
+            </div>
+            <div style="text-align:right; font-size:12px; color:#64748b;">
+              Date: ${new Date().toLocaleDateString()}
+            </div>
+          </div>
+          ${stepsHtml}
+          <script>window.onload = () => { window.print(); };</script>
+        </body>
+      </html>
+    `);
+    printWin.document.close();
   };
 
   const finalResult = useMemo(() => [...steps].reverse().find(s => s.resultText)?.resultText ?? '', [steps]);
@@ -532,8 +589,8 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
                 <button onClick={copyLatex} className="px-3 py-2 bg-white border border-neutral-300 rounded-xl text-xs font-bold flex gap-1 items-center">
                   {copied ? <Check size={15} className="text-emerald-600" /> : <Copy size={15} />} LaTeX
                 </button>
-                <button onClick={downloadLatex} className="px-3 py-2 bg-white border border-neutral-300 rounded-xl text-xs font-bold flex gap-1 items-center">
-                  <Download size={15} /> .tex
+                <button onClick={handleExportPDF} className="px-3 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold flex gap-1 items-center">
+                  <FileText size={15} /> Export PDF
                 </button>
               </>
             )}
@@ -647,7 +704,6 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
                 )}
                 {(def.kind === 'system' || def.kind === 'transform') && (
                   <>
-                    <div className="self-center text-3xl font-black text-neutral-300">{def.kind === 'system' ? '|' : '·'}</div>
                     <GridInput
                       title={bTitle}
                       grid={rawVecB.map(v => [v])}
