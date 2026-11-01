@@ -4,7 +4,8 @@ import { createPortal } from 'react-dom';
 import {
   X, Calculator, Play, Pause, RefreshCw, Trash2, FileText,
   Copy, Check, ChevronLeft, ChevronRight, CheckCircle2,
-  AlertTriangle, Layers, Download, History as HistoryIcon
+  AlertTriangle, Layers, Download, History as HistoryIcon,
+  ArrowLeft
 } from 'lucide-react';
 import {
   Frac, MathStep, getVarName, stepsToLatexDocument,
@@ -465,44 +466,105 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
     } catch { setError('Could not access the clipboard. Use "Download .tex" instead.'); }
   };
 
-  // Export Academic PDF Worksheet via Print Window
+  const downloadLatex = () => {
+    const blob = new Blob([latexText()], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `athar-${operation}.tex`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  // Export Academic PDF Worksheet via Print Window (Fixed to iterate all columns and include Extra Matrices)
   const handleExportPDF = () => {
     const printWin = window.open('', '_blank', 'width=950,height=800');
     if (!printWin) return;
 
-    const renderMatrixHtml = (step: MathStep) => {
-      if (!step.fracMatrix) return '';
-      const rCount = step.fracMatrix.length;
-      const rowsHtml = Array.from({ length: rCount }, (_, r) => {
-        const cCount = step.fracMatrix![r].length;
-        const cells = Array.from({ length: cCount }, (__, c) => {
-          const txt = fmt(step.fracMatrix![r][c]);
-          return `<td style="padding:6px 12px; text-align:center; font-family:monospace; font-weight:700;">${txt}</td>`;
-        }).join('');
-        const augCell = step.augMatrix
-          ? `<td style="padding:6px 12px; border-left:2px solid #94a3b8; color:#1d4ed8; font-family:monospace; font-weight:700; text-align:center;">${fmt(step.augMatrix[r][0])}</td>`
-          : '';
-        return `<tr>${cells}${augCell}</tr>`;
-      }).join('');
+    const escapeHtml = (unsafe: string) => 
+      (unsafe ?? '').replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 
-      return `<table style="border-collapse:collapse; border-left:2.5px solid #0f172a; border-right:2.5px solid #0f172a; margin:10px 0;">${rowsHtml}</table>`;
+    const renderMatrixHtml = (mat: Frac[][], aug?: Frac[][], label?: string) => {
+      if (!mat) return '';
+      const rCount = mat.length;
+      const rowsHtml = Array.from({ length: rCount }, (_, r) => {
+        const cells = mat[r].map(v => `<td style="padding:6px 12px; text-align:center; font-family:monospace; font-weight:700;">${fmt(v)}</td>`).join('');
+        const augCells = aug
+          ? aug[r].map((v, c) => `<td style="padding:6px 12px; ${c === 0 ? 'border-left:2px dashed #94a3b8;' : ''} color:#1d4ed8; font-family:monospace; font-weight:700; text-align:center;">${fmt(v)}</td>`).join('')
+          : '';
+        return `<tr>${cells}${augCells}</tr>`;
+      }).join('');
+      
+      const labelHtml = label ? `<div style="text-align:center; font-size:12px; font-weight:bold; color:#64748b; margin-bottom:4px;">${escapeHtml(label)}</div>` : '';
+
+      return `<div style="display:inline-block; margin: 10px 20px 10px 0; vertical-align: top;">
+                ${labelHtml}
+                <table style="border-collapse:collapse; border-left:2.5px solid #0f172a; border-right:2.5px solid #0f172a;">${rowsHtml}</table>
+              </div>`;
     };
 
-    const stepsHtml = steps
-      .map(
-        (st, idx) => `
-      <div style="border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin-bottom:14px; page-break-inside:avoid;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-          <strong style="font-size:15px;">Step ${idx + 1}: ${st.title}</strong>
-          ${st.operationBadge ? `<span style="background:#0f172a; color:#fff; padding:3px 10px; border-radius:99px; font-family:monospace; font-size:12px;">${st.operationBadge}</span>` : ''}
-        </div>
-        <div style="color:#475569; font-size:13px; white-space:pre-line; margin-bottom:8px;">${st.description}</div>
-        ${renderMatrixHtml(st)}
-        ${st.fracVector ? `<div style="font-family:monospace; font-weight:700; color:#1d4ed8; margin-top:6px;">Vector = [ ${st.fracVector.map(v => fmt(v)).join(', ')} ]</div>` : ''}
-        ${st.resultText && st.status !== 'info' ? `<div style="margin-top:10px; padding:8px 12px; background:#0f172a; color:#fff; border-radius:8px; font-family:monospace; font-size:13px; font-weight:700;">${st.resultText}</div>` : ''}
-      </div>`
-      )
-      .join('');
+    const stepsHtml = steps.map((st, idx) => {
+      let html = `<div style="border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin-bottom:14px; page-break-inside:avoid;">`;
+      
+      html += `<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <strong style="font-size:15px;">Step ${idx + 1}: ${escapeHtml(st.title)}</strong>
+                ${st.operationBadge ? `<span style="background:#0f172a; color:#fff; padding:3px 10px; border-radius:99px; font-family:monospace; font-size:12px;">${escapeHtml(st.operationBadge)}</span>` : ''}
+              </div>`;
+      
+      if (st.description) {
+         html += `<div style="color:#475569; font-size:13px; white-space:pre-line; margin-bottom:12px;">${escapeHtml(st.description)}</div>`;
+      }
+
+      if (st.parametricSolution) {
+         html += `<div style="margin-bottom:12px; padding:10px; background:#fff7ed; border:1px solid #fed7aa; border-radius:8px;">
+                    <strong style="font-size:12px; color:#9a3412;">Parametric Solution:</strong>
+                    <div style="font-family:monospace; font-size:13px; color:#7c2d12; margin-top:4px;">
+                      ${st.parametricSolution.map(eq => `<div>• ${escapeHtml(eq)}</div>`).join('')}
+                    </div>
+                  </div>`;
+      }
+
+      html += `<div style="display:flex; flex-wrap:wrap; align-items:center; gap: 15px; margin-bottom:10px;">`;
+      
+      if (st.fracMatrix) {
+          html += renderMatrixHtml(st.fracMatrix, st.augMatrix, st.matrixLabel);
+      }
+      if (st.fracVector) {
+          const vecHtml = st.fracVector.map(v => `<div style="padding:4px 12px; font-family:monospace; font-weight:700; color:#1d4ed8; text-align:center;">${fmt(v)}</div>`).join('');
+          html += `<div style="display:inline-block; vertical-align:top; margin: 10px 0;">
+                     ${st.vectorLabel ? `<div style="text-align:center; font-size:12px; font-weight:bold; color:#64748b; margin-bottom:4px;">${escapeHtml(st.vectorLabel)}</div>` : ''}
+                     <div style="border-left:2.5px solid #1d4ed8; border-right:2.5px solid #1d4ed8;">${vecHtml}</div>
+                   </div>`;
+      }
+      if (st.extraMatrices) {
+          st.extraMatrices.forEach(em => {
+             html += renderMatrixHtml(em.matrix, undefined, em.label);
+          });
+      }
+
+      html += `</div>`; // end matrices flex
+
+      if (st.verification) {
+         const color = st.verification.passed ? '#065f46' : '#991b1b';
+         const bg = st.verification.passed ? '#ecfdf5' : '#fef2f2';
+         const border = st.verification.passed ? '#a7f3d0' : '#fecaca';
+         html += `<div style="margin-top:12px; padding:10px; background:${bg}; border:1px solid ${border}; border-radius:8px;">
+                    <strong style="font-size:12px; color:${color};">Verification:</strong>
+                    <div style="font-family:monospace; font-size:12px; color:${color}; margin-top:4px;">
+                      ${st.verification.equations.map(eq => `<div>${escapeHtml(eq)}</div>`).join('')}
+                    </div>
+                  </div>`;
+      }
+
+      if (st.resultText && st.status !== 'info') {
+         html += `<div style="margin-top:12px; padding:10px 14px; background:#0f172a; color:#fff; border-radius:8px; font-family:monospace; font-size:13px; font-weight:700;">
+                    ${escapeHtml(st.resultText)}
+                  </div>`;
+      }
+
+      html += `</div>`;
+      return html;
+    }).join('');
 
     printWin.document.write(`
       <html>
@@ -667,6 +729,7 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
                 )}
                 {(def.kind === 'system' || def.kind === 'transform') && (
                   <>
+                    <div className="self-center text-3xl font-black text-neutral-300">{def.kind === 'system' ? '|' : '·'}</div>
                     <GridInput
                       title={bTitle}
                       grid={rawVecB.map(v => [v])}
@@ -699,7 +762,19 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
 
             {steps.length > 0 && (
               <div className="flex flex-wrap justify-between items-center gap-3 bg-white p-4 rounded-2xl border border-neutral-200 shadow-sm">
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
+                  <button 
+                    onClick={() => { 
+                      setSteps([]); 
+                      setError(''); 
+                      setIsPlaying(false);
+                      document.querySelector('.overflow-y-auto')?.scrollTo({ top: 0, behavior: 'smooth' });
+                    }} 
+                    className="px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 bg-red-50 text-red-600 hover:bg-red-100 border border-red-100 transition-colors"
+                  >
+                    <ArrowLeft size={14} /> Back to Edit
+                  </button>
+
                   <button onClick={() => { setViewMode('all'); setIsPlaying(false); }} className={`px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1 ${viewMode === 'all' ? 'bg-black text-white' : 'bg-neutral-100'}`}>
                     <Layers size={14} /> Full solution ({steps.length})
                   </button>
