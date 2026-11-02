@@ -1,5 +1,6 @@
+// src/pages/AcademicLibraryPage.tsx
 import React, { useState, useEffect, useMemo } from 'react';
-import { FileArchive, FileEdit, GraduationCap, ArrowRight, Sparkles } from 'lucide-react';
+import { FileArchive, FileEdit, GraduationCap, ArrowRight } from 'lucide-react';
 import { curriculumData } from '../data/curriculumData.ts';
 import { CourseModal } from '../components/CourseModal.tsx';
 import { PdfMerger } from '../components/PdfMerger.tsx';
@@ -229,26 +230,25 @@ export function AcademicLibraryPage() {
           </div>
         </div>
 
-        {/* ═══════════════ DEDICATED GPA CALCULATOR BANNER ═══════════════ */}
+        {/* ═══════════════ DEDICATED GPA CALCULATOR BANNER (Clean Light Theme) ═══════════════ */}
         <div 
           onClick={() => setIsGpaModalOpen(true)}
-          className="relative bg-black text-white rounded-[40px] p-8 md:p-12 mb-20 flex flex-col md:flex-row items-center justify-between shadow-2xl overflow-hidden cursor-pointer group transition-transform hover:scale-[1.01] duration-500"
+          className="relative bg-white border border-neutral-200 rounded-[40px] p-8 md:p-12 mb-20 flex flex-col md:flex-row items-center justify-between shadow-sm hover:shadow-xl hover:border-black/20 overflow-hidden cursor-pointer group transition-all duration-500"
         >
-          {/* Decorative Glow */}
-          <div className="absolute -top-32 -right-32 w-96 h-96 bg-white/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-white/20 transition-colors duration-700"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[60px] pointer-events-none"></div>
-
           <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6 w-full text-center md:text-left">
-            <div className="p-5 bg-white/10 rounded-3xl backdrop-blur-md border border-white/20 shadow-lg text-white group-hover:scale-105 transition-transform duration-500">
+            <div className="p-5 bg-neutral-50 rounded-3xl border border-neutral-200 text-black group-hover:scale-105 group-hover:bg-black group-hover:text-white transition-all duration-500">
               <GraduationCap size={48} strokeWidth={1.5} />
             </div>
             <div>
-              <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
-                <Sparkles size={16} className="text-yellow-400" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-300">By Athar</span>
+              <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+                <span className="bg-black text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-sm">
+                  By Athar
+                </span>
               </div>
-              <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-3">GPA Calculator</h3>
-              <p className="text-neutral-400 max-w-md font-medium text-sm leading-relaxed">
+              <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-3 text-black">
+                GPA Calculator
+              </h3>
+              <p className="text-neutral-500 max-w-md font-medium text-sm leading-relaxed">
                 Track your academic progress. Calculate your cumulative & semester GPA, and simulate repeated courses easily.
               </p>
             </div>
@@ -257,9 +257,9 @@ export function AcademicLibraryPage() {
           <div className="relative z-10 mt-8 md:mt-0 flex items-center gap-6 shrink-0">
             <div className="text-right hidden sm:block">
               <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Target Score</div>
-              <div className="text-5xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-br from-white to-neutral-500">4.00</div>
+              <div className="text-5xl font-black font-mono text-black group-hover:text-neutral-600 transition-colors duration-300">4.00</div>
             </div>
-            <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.2)] group-hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] group-hover:scale-110 transition-all duration-500">
+            <div className="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-all duration-500">
               <ArrowRight size={24} strokeWidth={2.5} />
             </div>
           </div>
@@ -274,7 +274,6 @@ export function AcademicLibraryPage() {
             Academic Toolkit
           </h3>
 
-          {/* 8 Items -> Perfect 4 Columns Grid on large screens */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
             <div className="relative group">
               <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
