@@ -1237,14 +1237,14 @@ linear_algebra: {
           label: "Quizzes",
           type: 'folder',
           items: [
-            { label: "2026", url: "/communication/pastpapers/Quizzes/Quiz_1_2026.pdf" },
-            { label: "Ch4 (2023-24)", url: "/communication/pastpapers/Quizzes/Quiz_Ch4_T2_2023-24.pdf" }, 
-            { label: "2023", url: "/communication/pastpapers/Quizzes/Quiz_1_T3_2023.pdf" },
-            { label: "2023", url: "/communication/pastpapers/Quizzes/Quiz_2_T3_2023.pdf" },
-            { label: "2023", url: "/communication/pastpapers/Quizzes/Quiz_3_T3_2023.pdf" },
-            { label: "2022", url: "/communication/pastpapers/Quizzes/Quiz_1_2022.pdf" },
-            { label: "2022", url: "/communication/pastpapers/Quizzes/Quiz_2_2022.pdf" },
-            { label: "2022", url: "/communication/pastpapers/Quizzes/Quiz_3_2022.pdf" } 
+            { label: "Quiz 1-2026", url: "/communication/pastpapers/Quizzes/Quiz_1_2026.pdf" },
+            { label: "Quiz 1-2023", url: "/communication/pastpapers/Quizzes/Quiz_Ch4_T2_2023-24.pdf" }, 
+            { label: "Quiz 1-2023", url: "/communication/pastpapers/Quizzes/Quiz_1_T3_2023.pdf" },
+            { label: "Quiz 1-2022", url: "/communication/pastpapers/Quizzes/Quiz_1_2022.pdf" },
+            { label: "Quiz 2-2023", url: "/communication/pastpapers/Quizzes/Quiz_2_T3_2023.pdf" },
+            { label: "Quiz 2-2022", url: "/communication/pastpapers/Quizzes/Quiz_2_2022.pdf" },
+            { label: "Quiz 3-2023", url: "/communication/pastpapers/Quizzes/Quiz_3_T3_2023.pdf" },
+            { label: "Quiz 3-2022", url: "/communication/pastpapers/Quizzes/Quiz_3_2022.pdf" } 
           ]
         }
       ],
@@ -1598,11 +1598,36 @@ linear_algebra: {
     } 
   },
   
-  industrial_processes: { 
+industrial_processes: { 
     coords: { x: 44.95, y: 43.94, w: 6.62, h: 5.46 }, 
     content: {
-      titleEn: "Industrial Processes", titleAr: " التجهيزات الصناعية والتحكم", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: " Processes control", titleAr: " التجهيزات الصناعية والتحكم بالعمليات", credits: 3,
+      books: [
+        { 
+          label: "Process Control Textbook", 
+          url: "/process control/books/process-control-lecture-notes.pdf", 
+          coverUrl: "/BooksCover/process-control-textbook.png" 
+        }
+      ], 
+      summaries: [], 
+      videos: [], 
+      quizzes: [
+        {
+          label: "Quizzes",
+          type: 'folder',
+          items: [
+            { label: "Quiz 1 Online", url: "/process control/past-papers/quizzes/quiz-1-online.pdf" }
+          ]
+        }
+      ],
+      mid: [
+        { label: "2024 Scan", url: "/process control/past-papers/mid/mid-2024-scan.jpg" },
+        { label: "2021", url: "/process control/past-papers/mid/mid-2021.pdf" },
+        { label: "2016", url: "/process control/past-papers/mid/mid-2016.pdf" }
+      ], 
+      final: [
+        { label: "50 Questions", url: "/process control/past-papers/final/final-50-questions.pdf" }
+      ]
     } 
   },
   
