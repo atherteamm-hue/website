@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { FileArchive, FileEdit, GraduationCap } from 'lucide-react';
+import { FileArchive, FileEdit, GraduationCap, ArrowRight, Sparkles } from 'lucide-react';
 import { curriculumData } from '../data/curriculumData.ts';
 import { CourseModal } from '../components/CourseModal.tsx';
 import { PdfMerger } from '../components/PdfMerger.tsx';
@@ -53,7 +53,6 @@ export function AcademicLibraryPage() {
   );
 
   useEffect(() => {
-    // استرجاع مواد التخصص
     const savedCourses = localStorage.getItem('athar_completed_courses');
     if (savedCourses) {
       try {
@@ -63,7 +62,6 @@ export function AcademicLibraryPage() {
       }
     }
     
-    // استرجاع عدد المواد الاختيارية
     const savedElectives = localStorage.getItem('athar_elective_count');
     if (savedElectives) {
       setElectiveCount(parseInt(savedElectives));
@@ -87,9 +85,6 @@ export function AcademicLibraryPage() {
     localStorage.setItem('athar_elective_count', count.toString());
   };
 
-  // ----------------------------------------------------
-  // حساب المجموع = (مواد التخصص) + (المواد الاختيارية * 3 ساعات)
-  // ----------------------------------------------------
   const totalCompletedHours = useMemo(() => {
     const coreHours = completedCourses.reduce((sum, courseKey) => {
       const course = curriculumData[courseKey];
@@ -99,7 +94,6 @@ export function AcademicLibraryPage() {
     return coreHours + (electiveCount * 3);
   }, [completedCourses, electiveCount]);
 
-  // ═══════════════ GPA CALCULATION LOGIC ═══════════════
   const gpaResult = useMemo(() => {
     const curH = parseFloat(currentH) || 0;
     const curG = parseFloat(currentG) || 0;
@@ -142,6 +136,7 @@ export function AcademicLibraryPage() {
     <div className="relative z-[5] min-h-screen bg-[#fafafa] pt-32 pb-20 px-5 sm:px-10 antialiased">
       <div className="max-w-7xl mx-auto">
         
+        {/* Header Section */}
         <div className="mb-12 border-b border-black/10 pb-8 flex flex-col md:flex-row md:justify-between md:items-end gap-6">
           <div>
             <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-neutral-600 mb-4">
@@ -160,12 +155,7 @@ export function AcademicLibraryPage() {
               {lang === 'EN' ? 'VIEW ARABIC' : 'VIEW ENGLISH'}
             </button>
             
-            {/* ---------------------------------------------------- */}
-            {/* قسم العدادات (مواد اختيارية + مجموع الساعات) */}
-            {/* ---------------------------------------------------- */}
             <div className="flex flex-col sm:flex-row items-end sm:items-center gap-3">
-              
-              {/* عداد المواد الاختيارية */}
               <div className="flex items-center gap-2 bg-white border border-neutral-200 shadow-sm rounded-full px-3 py-1.5">
                 <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest pl-2">
                   {lang === 'EN' ? 'Electives Done:' : 'مواد اختياري:'}
@@ -187,19 +177,18 @@ export function AcademicLibraryPage() {
                 </div>
               </div>
 
-              {/* عداد الساعات الكلي */}
               <div className="bg-white border border-neutral-200 shadow-sm rounded-full px-5 py-2 flex items-center gap-2 h-[40px]">
                  <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">
                    {lang === 'EN' ? 'Passed Hours:' : 'الساعات المقطوعة:'}
                  </span>
                  <span className="font-mono text-xl font-black text-black">{totalCompletedHours}</span>
               </div>
-              
             </div>
           </div>
         </div>
 
-        <div className="relative w-full border border-black/10 shadow-2xl rounded-[40px] overflow-hidden bg-white">
+        {/* Flowchart Section */}
+        <div className="relative w-full border border-black/10 shadow-2xl rounded-[40px] overflow-hidden bg-white mb-24">
           <img
             src={lang === 'EN' ? '/flowchart-en.svg' : '/flowchart-ar.svg'}
             width={4000}
@@ -240,7 +229,44 @@ export function AcademicLibraryPage() {
           </div>
         </div>
 
-        <div className="mt-24 border-t border-black/10 pt-16">
+        {/* ═══════════════ DEDICATED GPA CALCULATOR BANNER ═══════════════ */}
+        <div 
+          onClick={() => setIsGpaModalOpen(true)}
+          className="relative bg-black text-white rounded-[40px] p-8 md:p-12 mb-20 flex flex-col md:flex-row items-center justify-between shadow-2xl overflow-hidden cursor-pointer group transition-transform hover:scale-[1.01] duration-500"
+        >
+          {/* Decorative Glow */}
+          <div className="absolute -top-32 -right-32 w-96 h-96 bg-white/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-white/20 transition-colors duration-700"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[60px] pointer-events-none"></div>
+
+          <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-6 w-full text-center md:text-left">
+            <div className="p-5 bg-white/10 rounded-3xl backdrop-blur-md border border-white/20 shadow-lg text-white group-hover:scale-105 transition-transform duration-500">
+              <GraduationCap size={48} strokeWidth={1.5} />
+            </div>
+            <div>
+              <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
+                <Sparkles size={16} className="text-yellow-400" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-300">By Athar</span>
+              </div>
+              <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-3">GPA Calculator</h3>
+              <p className="text-neutral-400 max-w-md font-medium text-sm leading-relaxed">
+                Track your academic progress. Calculate your cumulative & semester GPA, and simulate repeated courses easily.
+              </p>
+            </div>
+          </div>
+
+          <div className="relative z-10 mt-8 md:mt-0 flex items-center gap-6 shrink-0">
+            <div className="text-right hidden sm:block">
+              <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1">Target Score</div>
+              <div className="text-5xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-br from-white to-neutral-500">4.00</div>
+            </div>
+            <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-[0_0_30px_rgba(255,255,255,0.2)] group-hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] group-hover:scale-110 transition-all duration-500">
+              <ArrowRight size={24} strokeWidth={2.5} />
+            </div>
+          </div>
+        </div>
+
+        {/* ═══════════════ ACADEMIC TOOLKIT (PDF TOOLS) ═══════════════ */}
+        <div className="border-t border-black/10 pt-16">
           <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-neutral-500 mb-2 text-center">
             Athar Tools & More
           </h2>
@@ -248,53 +274,8 @@ export function AcademicLibraryPage() {
             Academic Toolkit
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-            
-            {/* GPA Calculator Card (Subtle Distinction + Hover Focus Mode) */}
-            <div className="bg-gradient-to-br from-white to-neutral-50 border border-neutral-300 rounded-[30px] p-8 shadow-md flex flex-col h-full transition-all duration-500 hover:border-black/30 hover:shadow-2xl relative group">
-              
-              {/* Ethereal Glow Wrapper (Contains the glow without clipping the badge) */}
-              <div className="absolute inset-0 overflow-hidden rounded-[30px] pointer-events-none z-0">
-                <div className="absolute -top-24 -right-24 w-64 h-64 bg-black/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              </div>
-
-              {/* Badge: Darker by default to hint it's special (Now fully visible) */}
-              <span className="absolute -top-3 left-6 bg-neutral-800 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full z-20 shadow-md transition-colors duration-500 group-hover:bg-black pointer-events-none">
-                By Athar
-              </span>
-              
-              <div className="flex items-center gap-3 mb-6 relative z-10">
-                {/* Icon: Crisp white box -> Turns Black & Pops up on hover */}
-                <div className="p-3 bg-white text-neutral-600 rounded-xl border border-neutral-200 shadow-sm transition-all duration-500 group-hover:bg-black group-hover:text-white group-hover:border-black group-hover:scale-105">
-                  <GraduationCap size={24} strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold uppercase tracking-tighter text-neutral-800 transition-colors duration-500 group-hover:text-black">GPA Calculator</h3>
-                  <p className="text-xs text-neutral-500 font-medium">Track your academic progress</p>
-                </div>
-              </div>
-              
-              <div className="flex-1 flex flex-col items-center justify-center bg-white/60 rounded-2xl border border-neutral-200 p-6 mb-5 relative z-10 transition-colors duration-500 group-hover:bg-white">
-                <div className="text-center space-y-2">
-                  {/* Premium Gradient 4.00 -> Gets darker/sharper on hover */}
-                  <div className="font-mono text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-neutral-600 to-neutral-300 tracking-tighter transition-all duration-500 drop-shadow-sm group-hover:from-black group-hover:to-neutral-500">
-                    4.00
-                  </div>
-                  <p className="text-xs text-neutral-500 font-medium max-w-[200px] leading-relaxed mx-auto transition-colors duration-500">
-                    Calculate your cumulative & semester GPA, and repeat courses easily.
-                  </p>
-                </div>
-              </div>
-
-              {/* Button: Subtle outline -> Turns Solid Black & Pops up on hover */}
-              <button 
-                onClick={() => setIsGpaModalOpen(true)}
-                className="w-full py-4 rounded-xl font-bold text-sm uppercase tracking-widest bg-white border border-neutral-200 text-neutral-600 shadow-sm transition-all duration-500 relative z-10 group-hover:bg-black group-hover:text-white group-hover:border-black group-hover:scale-[1.02] group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.15)]"
-              >
-                Open Calculator
-              </button>
-            </div>
-
+          {/* 8 Items -> Perfect 4 Columns Grid on large screens */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
             <div className="relative group">
               <span className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full z-10 shadow-sm pointer-events-none">By Athar</span>
               <PdfMerger />
@@ -324,31 +305,32 @@ export function AcademicLibraryPage() {
               href="https://www.sejda.com/compress-pdf" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-2xl hover:border-black hover:shadow-xl transition-all group"
+              className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-3xl hover:border-black hover:shadow-xl transition-all group h-full"
             >
               <FileArchive size={32} className="text-neutral-400 group-hover:text-black mb-4 transition-colors" />
               <h4 className="font-black text-lg text-black uppercase tracking-tight mb-2">Compress PDF</h4>
-              <p className="text-sm font-medium text-neutral-500 text-center">Reduce file size while optimizing for maximal PDF quality.</p>
+              <p className="text-xs font-medium text-neutral-500 text-center leading-relaxed">Reduce file size while optimizing for maximal PDF quality.</p>
             </a>
 
             <a 
               href="https://www.sejda.com/pdf-editor" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-2xl hover:border-black hover:shadow-xl transition-all group"
+              className="flex flex-col items-center justify-center p-8 bg-white border border-neutral-200 rounded-3xl hover:border-black hover:shadow-xl transition-all group h-full"
             >
               <FileEdit size={32} className="text-neutral-400 group-hover:text-black mb-4 transition-colors" />
               <h4 className="font-black text-lg text-black uppercase tracking-tight mb-2">PDF Editor</h4>
-              <p className="text-sm font-medium text-neutral-500 text-center">Fill out PDF forms, add text, images, and edit existing text.</p>
+              <p className="text-xs font-medium text-neutral-500 text-center leading-relaxed">Fill out PDF forms, add text, images, and edit existing text.</p>
             </a>
-
           </div>
         </div>
 
+        {/* ═══════════════ ACADEMIC TOOLBOX (Simulations & Tools) ═══════════════ */}
         <MaeSimulations />
 
       </div>
 
+      {/* Curriculum Course Modal */}
       {selectedCourse && curriculumData[selectedCourse] && (
         <CourseModal 
           content={curriculumData[selectedCourse].content} 
@@ -374,54 +356,54 @@ export function AcademicLibraryPage() {
               <div className="grid grid-cols-2 gap-4 bg-neutral-50 p-4 rounded-xl">
                 <div>
                   <label className="block text-[10px] uppercase tracking-tighter text-neutral-500 mb-1">Total Earned Hours</label>
-                  <input type="number" value={currentH} onChange={e => setCurrentH(e.target.value)} placeholder="0" className="w-full bg-transparent border-b border-neutral-300 focus:border-black outline-none py-1" />
+                  <input type="number" value={currentH} onChange={e => setCurrentH(e.target.value)} placeholder="0" className="w-full bg-transparent border-b border-neutral-300 focus:border-black outline-none py-1 font-bold" />
                 </div>
                 <div>
                   <label className="block text-[10px] uppercase tracking-tighter text-neutral-500 mb-1">Current Cumulative GPA</label>
-                  <input type="number" value={currentG} onChange={e => setCurrentG(e.target.value)} placeholder="0.00" className="w-full bg-transparent border-b border-neutral-300 focus:border-black outline-none py-1" />
+                  <input type="number" value={currentG} onChange={e => setCurrentG(e.target.value)} placeholder="0.00" className="w-full bg-transparent border-b border-neutral-300 focus:border-black outline-none py-1 font-bold" />
                 </div>
               </div>
 
               <div className="space-y-3">
                 {courses.map((course, idx) => (
-                  <div key={idx} className={`p-3 border rounded-xl transition-all ${course.enabled ? 'border-neutral-200 shadow-sm' : 'border-neutral-100 opacity-40'}`}>
+                  <div key={idx} className={`p-3 border rounded-xl transition-all ${course.enabled ? 'border-neutral-200 shadow-sm bg-white' : 'border-neutral-100 opacity-50 bg-neutral-50'}`}>
                     <div className="flex items-center gap-3 mb-2">
-                      <input type="checkbox" checked={course.enabled} onChange={e => updateCourse(idx, { enabled: e.target.checked })} className="accent-black w-4 h-4" />
-                      <input type="text" placeholder={`Course ${idx + 1} Name`} value={course.name} onChange={e => updateCourse(idx, { name: e.target.value })} disabled={!course.enabled} className="flex-1 text-sm bg-transparent outline-none border-b border-transparent focus:border-neutral-200" />
+                      <input type="checkbox" checked={course.enabled} onChange={e => updateCourse(idx, { enabled: e.target.checked })} className="accent-black w-4 h-4 cursor-pointer" />
+                      <input type="text" placeholder={`Course ${idx + 1} Name`} value={course.name} onChange={e => updateCourse(idx, { name: e.target.value })} disabled={!course.enabled} className="flex-1 text-sm font-bold bg-transparent outline-none border-b border-transparent focus:border-neutral-200" />
                     </div>
                     
                     {course.enabled && (
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                         <div className="flex flex-col">
                           <label className="text-neutral-500 mb-1">Hours</label>
-                          <select value={course.hours} onChange={e => updateCourse(idx, { hours: parseInt(e.target.value) })} className="bg-white border rounded p-1 outline-none">
+                          <select value={course.hours} onChange={e => updateCourse(idx, { hours: parseInt(e.target.value) })} className="bg-white border border-neutral-200 rounded p-1.5 outline-none font-medium">
                             {[3, 2, 1, 0].map(h => <option key={h} value={h}>{h} Hours</option>)}
                           </select>
                         </div>
                         <div className="flex flex-col">
                           <label className="text-neutral-500 mb-1">Expected Grade</label>
-                          <select value={course.gradeIndex} onChange={e => updateCourse(idx, { gradeIndex: parseInt(e.target.value) })} className="bg-white border rounded p-1 outline-none">
+                          <select value={course.gradeIndex} onChange={e => updateCourse(idx, { gradeIndex: parseInt(e.target.value) })} className="bg-white border border-neutral-200 rounded p-1.5 outline-none font-bold">
                             {GRADE_LABELS.map((g, i) => <option key={g} value={i}>{g} ({NEW_WEIGHTS[i]})</option>)}
                           </select>
                         </div>
-                        <div className="flex flex-col justify-end">
-                          <label className="flex items-center gap-2 cursor-pointer py-1">
-                            <input type="checkbox" checked={course.isRepeated} onChange={e => updateCourse(idx, { isRepeated: e.target.checked })} className="accent-black" />
-                            Repeating?
+                        <div className="flex flex-col justify-end sm:col-span-2">
+                          <label className="flex items-center gap-2 cursor-pointer py-1.5 font-medium">
+                            <input type="checkbox" checked={course.isRepeated} onChange={e => updateCourse(idx, { isRepeated: e.target.checked })} className="accent-black w-3.5 h-3.5" />
+                            Repeating a course?
                           </label>
                         </div>
                       </div>
                     )}
 
                     {course.enabled && course.isRepeated && (
-                      <div className="mt-3 pt-3 border-t border-dashed border-neutral-100">
+                      <div className="mt-3 pt-3 border-t border-dashed border-neutral-200">
                          <div className="flex flex-wrap gap-4 items-end">
                             <div className="flex gap-4">
-                               <label className="flex items-center gap-1 text-[10px] cursor-pointer"><input type="radio" checked={!course.isOldWeight} onChange={() => updateCourse(idx, { isOldWeight: false })} className="accent-black" /> New Weight</label>
-                               <label className="flex items-center gap-1 text-[10px] cursor-pointer"><input type="radio" checked={course.isOldWeight} onChange={() => updateCourse(idx, { isOldWeight: true })} className="accent-black" /> Old Weight</label>
+                               <label className="flex items-center gap-1.5 text-[11px] font-medium cursor-pointer"><input type="radio" checked={!course.isOldWeight} onChange={() => updateCourse(idx, { isOldWeight: false })} className="accent-black w-3.5 h-3.5" /> New Weight</label>
+                               <label className="flex items-center gap-1.5 text-[11px] font-medium cursor-pointer"><input type="radio" checked={course.isOldWeight} onChange={() => updateCourse(idx, { isOldWeight: true })} className="accent-black w-3.5 h-3.5" /> Old Weight</label>
                             </div>
-                            <select value={course.oldGradeIndex} onChange={e => updateCourse(idx, { oldGradeIndex: parseInt(e.target.value) })} className="text-[10px] bg-white border rounded p-1 outline-none">
-                               <option value="-1">Previous Grade</option>
+                            <select value={course.oldGradeIndex} onChange={e => updateCourse(idx, { oldGradeIndex: parseInt(e.target.value) })} className="text-[11px] bg-white border border-neutral-200 rounded p-1.5 outline-none font-bold">
+                               <option value="-1">Select Previous Grade...</option>
                                {GRADE_LABELS.map((g, i) => (
                                  <option key={g} value={i}>{g} ({course.isOldWeight ? OLD_WEIGHTS[i] : NEW_WEIGHTS[i]})</option>
                                ))}
@@ -433,27 +415,27 @@ export function AcademicLibraryPage() {
                 ))}
               </div>
 
-              <div className="sticky bottom-0 bg-white pt-4 border-t border-neutral-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+              <div className="sticky bottom-0 bg-white pt-5 pb-2 border-t border-neutral-100 flex flex-col sm:flex-row justify-between items-center gap-4">
                 <div className="flex gap-8 text-center sm:text-left w-full sm:w-auto">
                   <div>
                     <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Expected GPA</div>
-                    <div className="text-3xl font-bold font-mono tracking-tighter">{gpaResult.gpa}</div>
+                    <div className="text-4xl font-black font-mono tracking-tighter text-black">{gpaResult.gpa}</div>
                   </div>
                   <div>
                     <div className="text-[10px] uppercase tracking-widest text-neutral-500 mb-1">Rating</div>
-                    <div className={`text-sm font-medium ${gpaResult.rate === 'Fail' ? 'text-red-600' : 'text-black'}`}>
+                    <div className={`text-base font-bold mt-1.5 ${gpaResult.rate === 'Fail' ? 'text-red-600' : 'text-emerald-600'}`}>
                       {gpaResult.rate}
                     </div>
                   </div>
                 </div>
 
-                <div className="text-[9px] border border-neutral-100 p-2.5 rounded-lg bg-neutral-50 font-mono w-full sm:w-auto">
-                  <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+                <div className="text-[9px] border border-neutral-200 p-3 rounded-xl bg-neutral-50 font-mono w-full sm:w-auto shadow-inner">
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-1.5 text-neutral-600">
                     <span>Excellent: ≥ 3.65</span>
                     <span>Good: ≥ 3.00</span>
                     <span>Satisfactory: ≥ 2.50</span>
-                    <span>Minimally Acceptable: ≥ 2.00</span>
-                    <span className="text-red-600 font-bold">Fail: &lt; 2.00</span>
+                    <span>Acceptable: ≥ 2.00</span>
+                    <span className="text-red-600 font-bold col-span-2 text-center mt-1">Fail: &lt; 2.00</span>
                   </div>
                 </div>
               </div>
