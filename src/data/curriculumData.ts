@@ -161,16 +161,27 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
-  nat_edu: { 
+nat_edu: { 
     coords: { x: 10.14, y: 5.01, w: 5.62, h: 5.4 }, 
     content: {
       titleEn: "National Education", titleAr: "تربية وطنية", credits: 3,
       books: [
-        { label: "كتاب التربية الوطنية", url: "/Books/مدخل الى الثقافة الوطنية والمدنية_compressed.pdf", 
-         coverUrl: "/BooksCover/national-cover.png", 
-         isArabic: true }
+        { 
+          label: "كتاب التربية الوطنية", 
+          url: "/Books/مدخل الى الثقافة الوطنية والمدنية_compressed.pdf", 
+          coverUrl: "/BooksCover/national-cover.png", 
+          isArabic: true 
+        }
       ], 
-      summaries: [], videos: [], mid: [], final: []
+      summaries: [], 
+      videos: [], 
+      mid: [
+        { label: "Question Bank", url: "/National Education/past-papers/mid/mid-question-bank.pdf" }
+      ], 
+      final: [
+        { label: "2025 Bank", url: "/National Education/past-papers/final/final-2025-bank.pdf" },
+        { label: "Question Bank Screens", url: "/National Education/past-papers/final/final-question-bank-screens.pdf" }
+      ]
     } 
   },
   
@@ -685,11 +696,40 @@ chem_lab: {
     } 
   },
   
-  cpp: { 
+cpp: { 
     coords: { x: 28.64, y: 25.28, w: 5.25, h: 5.23 }, 
     content: {
       titleEn: "C++", titleAr: "البرمجة للمهندسين (C++)", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "C++ Course Book", 
+          url: "/CPP/books/cpp-course-book.pdf", 
+          coverUrl: "/BooksCover/cpp-course-book.png" 
+        },
+        { 
+          label: "C++ How to Program (7th Ed)", 
+          url: "/CPP/books/cpp-how-to-program-7th-edition.pdf", 
+          coverUrl: "/BooksCover/cpp-how-to-program-7th-edition.png" 
+        }
+      ], 
+      videos: [
+        { label: "Adel Nasim", url: "https://youtube.com/playlist?list=PLCInYL3l2AajFAiw4s1U4QbGszcQ-rAb3&si=4wrDl-yF9NA8s0H9" },
+        { label: "CNE", url: "https://youtube.com/playlist?list=PLJwCQtAhsso_YNp8gh6b6sMkNJ8XzK9AP&si=WWpyxGq95d-x4Syz" }
+      ],
+      summaries: [
+        { label: "Solved Examples", url: "/CPP/summarize/cpp-solved-examples.pdf" },
+        { label: "Examples", url: "/CPP/summarize/cpp-examples.pdf" },
+        { label: "Functions Assignment", url: "/CPP/summarize/cpp-functions-assignment.pdf" },
+        { label: "Eng. Samah Slides", url: "/CPP/summarize/slides-samah-programming.pdf" }
+      ], 
+      mid: [
+        { label: "2025", url: "/CPP/past-papers/mid/mid-2025-solved.pdf" },
+        { label: "Paper exam", url: "/CPP/past-papers/mid/mid-paper-scan.pdf" }
+      ], 
+      final: [
+        { label: "2025", url: "/CPP/past-papers/final/final-2025-solved.pdf" },
+        { label: "screens", url: "/CPP/past-papers/final/final-past-years.pdf" }
+      ]
     } 
   },
   
