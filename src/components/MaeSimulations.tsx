@@ -1,5 +1,6 @@
+// src/components/MaeSimulations.tsx
 import React, { useState } from 'react';
-import { ExternalLink, Settings, Zap, Code, Terminal, Activity, Server, Binary, Wind, Calculator } from 'lucide-react';
+import { ExternalLink, Settings, Zap, Code, Activity, Server, Binary, Wind, Calculator } from 'lucide-react';
 import { MatrixSimulatorModal } from './MatrixSimulatorModal';
 
 const simulationsData = [
@@ -31,13 +32,6 @@ const simulationsData = [
     description: "Interactive Multi-Language Simulation & Trace Studio (MASM 8086, Python, C++, C).",
     icon: <Code size={32} strokeWidth={1.5} />,
     link: "https://maeacademy.org/simulations/code",
-    provider: "mae"
-  },
-  {
-    title: "Arduino Studio",
-    description: "Embedded Systems & Microcontrollers: write Arduino C++ and watch live serial monitor.",
-    icon: <Terminal size={32} strokeWidth={1.5} />,
-    link: "https://maeacademy.org/simulators/arduino-studio",
     provider: "mae"
   },
   {
@@ -83,7 +77,7 @@ export function MaeSimulations() {
   return (
     <div className="mt-32 pt-20 border-t border-black/10">
       
-      {/* عنوان القسم */}
+      {/* عنوان القسم المحدث */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
         <div>
           <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-neutral-500 mb-3 flex items-center gap-2">
@@ -91,11 +85,11 @@ export function MaeSimulations() {
             Athar & MAE Academy
           </h2>
           <h3 className="text-4xl sm:text-5xl font-black tracking-tighter uppercase text-black">
-            Practical Simulations
+            Academic Toolbox
           </h3>
         </div>
         <p className="text-sm font-medium text-neutral-500 max-w-sm md:text-right leading-relaxed">
-          Applied laboratories and exclusive tools for control, computation, mathematics, and engineering systems.
+          Interactive laboratories and exclusive tools to visualize, simulate, and study engineering systems.
         </p>
       </div>
 
@@ -146,6 +140,8 @@ export function MaeSimulations() {
             <a 
               key={`sim-${index}`}
               href={sim.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative group flex flex-col bg-white border border-neutral-200 rounded-[30px] p-6 hover:shadow-2xl hover:border-black/20 transition-all duration-300 outline-none"
             >
               <ProviderBadge />
