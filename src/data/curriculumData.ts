@@ -237,7 +237,14 @@ innovation: {
     coords: { x: 11.55, y: 25.03, w: 3.41, h: 8.4 }, 
     content: {
       titleEn: "Innovation", titleAr: "الريادة والابتكار", credits: 2,
-      books: [], 
+      books: [
+        { 
+          label: "Innovation Textbook", 
+          url: "/Innovation-Organized/Books/Innovation-Textbook.pdf", 
+          coverUrl: "/BooksCover/Innovation-Textbook.png",
+          isArabic: true // بفرض إنه الكتاب بالعربي بما إنها مادة متطلبات
+        }
+      ], 
       summaries: [
         { label: "Course Summary", url: "/Innovation-Organized/Summaries/Innovation-Course-Summary.pdf" },
         { label: "SWOT Analysis Summary", url: "/Innovation-Organized/Summaries/SWOT-Analysis-Summary.pdf" }
@@ -1671,11 +1678,26 @@ linear_algebra: {
     } 
   },
   
-  renewable_energy: { 
+renewable_energy: { 
     coords: { x: 24.42, y: 83.88, w: 6.96, h: 7.05 }, 
     content: {
       titleEn: "Renewable Energy", titleAr: "طاقة متجددة", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Advances in Renewable Energies", 
+          url: "/11-Renewable energy/books/textbook-advances-renewable-energies.pdf", 
+          coverUrl: "/BooksCover/textbook-advances-renewable-energies.png" 
+        },
+        { 
+          label: "Renewable and Efficient Electric Power Systems", 
+          url: "/11-Renewable energy/books/textbook-renewable-efficient-power-systems.pdf", 
+          coverUrl: "/BooksCover/textbook-renewable-efficient-power-systems.png" 
+        }
+      ], 
+      summaries: [], 
+      videos: [], 
+      mid: [], 
+      final: []
     } 
   },
   
