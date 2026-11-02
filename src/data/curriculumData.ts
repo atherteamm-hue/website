@@ -233,11 +233,27 @@ nat_edu: {
     } 
   },
   
-  innovation: { 
+innovation: { 
     coords: { x: 11.55, y: 25.03, w: 3.41, h: 8.4 }, 
     content: {
       titleEn: "Innovation", titleAr: "الريادة والابتكار", credits: 2,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [], 
+      summaries: [
+        { label: "Course Summary", url: "/Innovation-Organized/Summaries/Innovation-Course-Summary.pdf" },
+        { label: "SWOT Analysis Summary", url: "/Innovation-Organized/Summaries/SWOT-Analysis-Summary.pdf" }
+      ], 
+      videos: [], 
+      mid: [
+        { label: "2025 Screens", url: "/Innovation-Organized/Past-Papers/Mid/Mid-2025-Screens.pdf" },
+        { label: "Question Bank", url: "/Innovation-Organized/Past-Papers/Mid/Mid-Question-Bank.pdf" },
+        { label: "Review Questions", url: "/Innovation-Organized/Past-Papers/Mid/Mid-Review-Questions.pdf" }
+      ], 
+      final: [
+        { label: "2025 Screens", url: "/Innovation-Organized/Past-Papers/Final/Final-2025-Screens.pdf" },
+        { label: "Compiled Solved", url: "/Innovation-Organized/Past-Papers/Final/Final-Compiled-Solved.pdf" },
+        { label: "Question Bank", url: "/Innovation-Organized/Past-Papers/Final/Final-Question-Bank.pdf" },
+        { label: "Review Questions", url: "/Innovation-Organized/Past-Papers/Final/Final-Review-Questions.pdf" }
+      ]
     } 
   },
   
