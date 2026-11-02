@@ -114,7 +114,8 @@ export function PdfWatermark() {
   return (
     <div className="bg-white border border-black/10 rounded-[30px] p-8 shadow-sm flex flex-col h-full">
       
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+      {/* ════════ التعديل هون: flex-wrap و items-start ════════ */}
+      <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
         <div className="flex items-center gap-3">
           <div className="p-3 bg-black text-white rounded-xl">
             {watermarkType === 'text' ? <Type size={24} /> : <ImageIcon size={24} />}
@@ -125,16 +126,17 @@ export function PdfWatermark() {
           </div>
         </div>
 
-        <div className="flex bg-neutral-100 p-1 rounded-xl">
+        {/* ════════ التعديل هون: shrink-0 و w-full sm:w-auto ════════ */}
+        <div className="flex items-center bg-neutral-100 p-1 rounded-xl shrink-0 w-full sm:w-auto">
           <button 
             onClick={() => setWatermarkType('text')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${watermarkType === 'text' ? 'bg-white text-black shadow-sm' : 'text-neutral-500 hover:text-black'}`}
+            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${watermarkType === 'text' ? 'bg-white text-black shadow-sm' : 'text-neutral-500 hover:text-black'}`}
           >
             <Type size={14} /> Text
           </button>
           <button 
             onClick={() => setWatermarkType('image')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${watermarkType === 'image' ? 'bg-white text-black shadow-sm' : 'text-neutral-500 hover:text-black'}`}
+            className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-bold transition-all ${watermarkType === 'image' ? 'bg-white text-black shadow-sm' : 'text-neutral-500 hover:text-black'}`}
           >
             <ImageIcon size={14} /> Image
           </button>
