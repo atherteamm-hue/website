@@ -1914,11 +1914,37 @@ renewable_energy: {
     } 
   },
   
-  eng_economy: { 
+eng_economy: { 
     coords: { x: 82.95, y: 3.44, w: 4.9, h: 7.05 }, 
     content: {
       titleEn: "Engineering Economy", titleAr: "اقتصاد هندسي", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Engineering Economy Textbook", 
+          url: "/Engineering Economy/books/textbook-engineering-economy.pdf", 
+          coverUrl: "/BooksCover/textbook-engineering-economy.png" 
+        }
+      ], 
+      summaries: [
+        { label: "Compound Interest Tables", url: "/Engineering Economy/summarize/compound-interest-tables.pdf" },
+        { label: "Formulas", url: "/Engineering Economy/summarize/formulas-engineering-economy.pdf" },
+        { label: "Mohamed Saeed Summary", url: "/Engineering Economy/summarize/summary-mohamed-saeed.pdf" },
+        { label: "Yaseen Hassan Summary", url: "/Engineering Economy/summarize/summary-yaseen-hassan.pdf" }
+      ], 
+      videos: [
+        { label: "Civil Team", url: "https://youtube.com/playlist?list=PLFz-6NJG8G4T2rkx0XLUHbud1iId0v0pp&si=aUhCNs-4Ap8erp8k" }
+      ], 
+      mid: [
+        { label: "2026", url: "/Engineering Economy/past-papers/mid/mid-2026.pdf" },
+        { label: "2025 Summer", url: "/Engineering Economy/past-papers/mid/mid-2025-summer.pdf" },
+        { label: "Screens", url: "/Engineering Economy/past-papers/mid/mid-question-bank-screens.pdf" },
+        { label: "Paper Scan", url: "/Engineering Economy/past-papers/mid/mid-paper-scan.pdf" }
+      ], 
+      final: [
+        { label: "2025", url: "/Engineering Economy/past-papers/final/final-2025-two-versions.pdf" },
+        { label: "Past Questions", url: "/Engineering Economy/past-papers/final/final-past-questions.pdf" },
+        { label: "Screens", url: "/Engineering Economy/past-papers/final/final-question-bank-screens.pdf" }
+      ]
     } 
   },
   
