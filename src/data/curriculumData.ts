@@ -1606,7 +1606,7 @@ industrial_processes: {
         { 
           label: "Process Control Textbook", 
           url: "/process control/books/process-control-lecture-notes.pdf", 
-          coverUrl: "/BooksCover/process-control-textbook.png" 
+          coverUrl: "/BooksCover/process-control-lecture-notes.png" 
         }
       ], 
       summaries: [], 
@@ -1621,7 +1621,7 @@ industrial_processes: {
         }
       ],
       mid: [
-        { label: "2024 Scan", url: "/process control/past-papers/mid/mid-2024-scan.jpg" },
+        { label: "2024 ", url: "/process control/past-papers/mid/mid-2024-scan.jpg" },
         { label: "2021", url: "/process control/past-papers/mid/mid-2021.pdf" },
         { label: "2016", url: "/process control/past-papers/mid/mid-2016.pdf" }
       ], 
