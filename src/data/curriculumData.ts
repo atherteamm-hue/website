@@ -481,7 +481,7 @@ probability: {
     } 
   },
   
-  physics_1: { 
+physics_1: { 
     coords: { x: 73.09, y: 3.8, w: 5.83, h: 5.21 }, 
     content: {
       titleEn: "Physics 1", titleAr: "فيزياء 1", credits: 3,
@@ -496,7 +496,44 @@ probability: {
          isSolution: true
         }
       ],
-      summaries: [], videos: [], mid: [], final: []
+      videos: [
+        { label: "Dr. Ahmed Awad", url: "https://youtube.com/playlist?list=PLxRkgs4bYI6_CQSgywl7YKsjI6HT_8blD&si=qpyRcGcIU9_nnjDv" },
+        { label: "Eng. Hussam Alzamel", url: "https://youtube.com/playlist?list=PL1GsKyC4pE5XJ-xd3Uue5F23R07zOEY_h&si=nErmWaaDlG1ECrJf" }
+      ],
+      summaries: [
+        { label: "Summary of Laws", url: "/physics1/ملخصات/Summary of the Laws of General Physics 101.pdf" },
+        { label: "General Summary", url: "/physics1/ملخصات/ملخص فيزياء 1.pdf" },
+        {
+          label: "Dr. Ziad Slides",
+          type: 'folder',
+          items: [
+            { label: "Chapter 1", url: "/physics1/سلايدات د.زياد/chapter1.pdf" },
+            { label: "Problems Ch1", url: "/physics1/سلايدات د.زياد/proplems chapter 1 (1).pdf" },
+            { label: "Chapter 2", url: "/physics1/سلايدات د.زياد/chapter2.pdf" },
+            { label: "Problems Ch2", url: "/physics1/سلايدات د.زياد/problems chapter 2 (1).pdf" },
+            { label: "Chapter 3", url: "/physics1/سلايدات د.زياد/chapter3.pdf" },
+            { label: "Problems Ch3", url: "/physics1/سلايدات د.زياد/proplems chapter 3.pdf" },
+            { label: "Chapter 4", url: "/physics1/سلايدات د.زياد/chapter4.pdf" },
+            { label: "Problems Ch4", url: "/physics1/سلايدات د.زياد/proplems chapter 4.pdf" },
+            { label: "Chapter 5", url: "/physics1/سلايدات د.زياد/Chapter5.pdf" },
+            { label: "Problems Ch5", url: "/physics1/سلايدات د.زياد/proplems chapter 5.pdf" },
+            { label: "Chapter 6", url: "/physics1/سلايدات د.زياد/Chapter6.pdf" },
+            { label: "Chapter 7", url: "/physics1/سلايدات د.زياد/Chapter7.pdf" },
+            { label: "Problems Ch7", url: "/physics1/سلايدات د.زياد/proplems chapter 7.pdf" },
+            { label: "Chapter 8", url: "/physics1/سلايدات د.زياد/Chapter8.pdf" },
+            { label: "Problems Ch8", url: "/physics1/سلايدات د.زياد/proplems chapter 8.pdf" }
+          ]
+        }
+      ],
+      mid: [
+        { label: "2023-2024", url: "/physics1/سنوات/Mid Exam 2023-2024 A.pdf" },
+        { label: "2023-2024", url: "/physics1/سنوات/Mid Exam 2023-2024 B.pdf" },
+      ], 
+      final: [
+        { label: "Final Exam", url: "/physics1/سنوات/Final physics.pdf" },
+        { label: "Final Exam", url: "/physics1/سنوات/Physics final exam.pdf" },
+        { label: "Ch5 100 problems", url: "/physics1/سنوات/100_laws_of_motion_practice_questions.pdf" }
+      ]
     } 
   },
   
@@ -588,11 +625,63 @@ gen_chemistry: {
     } 
   },
   
-  chem_lab: { 
+chem_lab: { 
     coords: { x: 91.27, y: 15.02, w: 6.72, h: 4.8 }, 
     content: {
       titleEn: "Chemistry Lab", titleAr: "مختبر الكيمياء العامة", credits: 1,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Chemistry Lab Manual", 
+          url: "/Chemistry-Lab/Books/Chemistry-Lab-Manual.pdf", 
+          coverUrl: "/BooksCover/Chemistry-Lab-Manual.png" 
+        },
+        { 
+          label: "Solutions - Dr. Reem", 
+          url: "/Chemistry-Lab/Books/Solutions-Manual-Dr-Reem.pdf", 
+          coverUrl: "/BooksCover/Chemistry-Lab-Manual.png", 
+          isSolution: true 
+        },
+        { 
+          label: "Solutions - Dr. Heba", 
+          url: "/Chemistry-Lab/Books/Solutions-Manual-Dr-Heba.pdf", 
+          coverUrl: "/BooksCover/Chemistry-Lab-Manual.png", 
+          isSolution: true 
+        }
+      ], 
+      videos: [
+        { label: "Dr. Reem", url: "https://youtube.com/playlist?list=PLFUszXtJ26-6-HO1W70DC17Bhmg1vb4T3&si=q-FJHHan1n0UaHpI" },
+        { label: "Dr. Heba", url: "https://youtube.com/playlist?list=PLFUszXtJ26-47CybMirDoAsPaspzgtKAW&si=ux30_zMtoYfoFLrs" }
+      ],
+      summaries: [
+        { label: "Laws Summary", url: "/Chemistry-Lab/Summaries/Chemistry-Lab-Formulas-Summary.pdf" },
+        { label: "Dr. Reem Notes", url: "/Chemistry-Lab/Summaries/Chemistry-Lab-Notes-Dr-Reem.pdf" }
+      ], 
+      mid: [
+        { label: "2026", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-2026-Summer.pdf" },
+        { label: "2026", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-2026-Semester2.pdf" },
+        { label: "2026", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-2026-Semester1.pdf" },
+        { label: "2025", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-2025-Model-2.pdf" },
+        { label: "2025", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-2025-Model-1.pdf" },
+        { label: "2024", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-2024-Summer.pdf" },
+        { label: "2024", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-2024.pdf" },
+        { label: "2023", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-2023-Semester1.pdf" },
+        { label: "2022", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-2022-2.pdf" },
+        { label: "2022", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-2022.pdf" },
+        { label: "2021", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-2021.pdf" },
+        { label: "Mid Exams", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-Compiled-Years.pdf" },
+        { label: "Screens", url: "/Chemistry-Lab/Past-Papers/Mid/Mid-Screens.pdf" }
+      ], 
+      final: [
+        { label: "2025", url: "/Chemistry-Lab/Past-Papers/Final/Final-2025.pdf" },
+        { label: "2024", url: "/Chemistry-Lab/Past-Papers/Final/Final-2024.pdf" },
+        { label: "2023", url: "/Chemistry-Lab/Past-Papers/Final/Final-2023.pdf" },
+        { label: "Final Exam", url: "/Chemistry-Lab/Past-Papers/Final/Final-Paper-2.pdf" },
+        { label: "Final Exams", url: "/Chemistry-Lab/Past-Papers/Final/Final-Compiled-Years.pdf" },
+        { label: "Final Exams", url: "/Chemistry-Lab/Past-Papers/Final/Final-Lab-Questions-1.pdf" },
+        { label: "Final Exams", url: "/Chemistry-Lab/Past-Papers/Final/Final-Lab-Questions-2.pdf" },
+        { label: "Final Exams", url: "/Chemistry-Lab/Past-Papers/Final/Final-Question-Bank.pdf" },
+        { label: "Screens", url: "/Chemistry-Lab/Past-Papers/Final/Final-Screens.pdf" }
+      ]
     } 
   },
   
