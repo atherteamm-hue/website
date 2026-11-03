@@ -161,7 +161,7 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
- nat_edu: { 
+nat_edu: { 
     coords: { x: 10.14, y: 5.01, w: 5.62, h: 5.4 }, 
     content: {
       titleEn: "National Education", titleAr: "تربية وطنية", credits: 3,
@@ -233,7 +233,7 @@ export const curriculumData: Record<string, Course> = {
     } 
   },
   
- innovation: { 
+innovation: { 
     coords: { x: 11.55, y: 25.03, w: 3.41, h: 8.4 }, 
     content: {
       titleEn: "Innovation", titleAr: "الريادة والابتكار", credits: 2,
@@ -242,7 +242,7 @@ export const curriculumData: Record<string, Course> = {
           label: "Innovation Textbook", 
           url: "/Innovation-Organized/Books/Innovation-Textbook.pdf", 
           coverUrl: "/BooksCover/Innovation-Textbook.png",
-          isArabic: true
+          isArabic: true // بفرض إنه الكتاب بالعربي بما إنها مادة متطلبات
         }
       ], 
       summaries: [
@@ -576,131 +576,24 @@ physics_1: {
     content: {
       titleEn: "Physics 2", titleAr: "فيزياء 2", credits: 3,
       books: [
-        { 
-          label: "Physics for Scientists and Engineers 9ed",
-          url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
-          coverUrl: "/BooksCover/physics-cover.png" 
-        },
-        { 
-          label: "Physics Solutions Manual", 
-          url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf", 
-          coverUrl: "/BooksCover/PhysicsSolution-cover.png",
-          isSolution: true
+        { label: "Physics for Scientists and Engineers 9ed",
+         url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
+         coverUrl: "/BooksCover/physics-cover.png" },
+        { label: "Physics Solutions Manual", 
+         url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf", 
+         coverUrl: "/BooksCover/PhysicsSolution-cover.png",
+         isSolution: true
         }
       ],
-      videos: [
-        { label: "Dr. Ahmed Awad", url: "https://youtube.com/playlist?list=PLGfzCRt_uWkeed0GtFGOvXvtkhihL2b2z&si=AtjvLKp80Usu8WSO" },
-        { label: "Anas Majdi", url: "https://youtube.com/playlist?list=PLRNaExsfJ1quwDNQF-9yEWHok_KOIRUMT&si=TbrdBai-c6Q23zRC" }
-      ],
-      summaries: [
-        { label: "Formulas Summary", url: "/physics2/Physics2-Formulas-Summary.pdf" },
-        { label: "Full Summary (Dr. Sokainah)", url: "/physics2/Physics2-Full-Summary-Dr-Sokainah.pdf" },
-        { label: "Summary (Dr. Ahmed Awad)", url: "/physics2/Physics2-Summary-Dr-Ahmed-Awad.pdf" },
-        { label: "Summary (Student Aws)", url: "/physics2/Physics2-Summary-Student-Aws.pdf" },
-        {
-          label: "Dr. Wasan Slides",
-          type: 'folder',
-          items: [
-            { label: "Chapter 23", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch23.pdf" },
-            { label: "Chapter 23 Problems", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch23-Problems.pdf" },
-            { label: "Chapter 24", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch24.pdf" },
-            { label: "Chapter 24 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch24-Problems-Solved.pdf" },
-            { label: "Chapter 25", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch25.pdf" },
-            { label: "Chapter 25 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch25-Problems-Solved.pdf" },
-            { label: "Chapter 26", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch26.pdf" },
-            { label: "Chapter 26 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch26-Problems-Solved.pdf" },
-            { label: "Chapter 27", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch27.pdf" },
-            { label: "Chapter 27 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch27-Problems-Solved.pdf" },
-            { label: "Chapter 28", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch28.pdf" },
-            { label: "Chapter 28 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch28-Problems-Solved.pdf" }
-          ]
-        },
-        {
-          label: "Dr. Ziad Slides",
-          type: 'folder',
-          items: [
-            { label: "Chapter 23", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch23.pdf" },
-            { label: "Chapter 23 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch23-Problems-Solved.pdf" },
-            { label: "Chapter 24", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch24.pdf" },
-            { label: "Chapter 24 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch24-Problems-Solved.pdf" },
-            { label: "Chapter 25", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch25.pdf" },
-            { label: "Chapter 25 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch25-Problems-Solved.pdf" },
-            { label: "Chapter 26", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch26.pdf" },
-            { label: "Chapter 26 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch26-Problems-Solved.pdf" },
-            { label: "Chapter 27", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch27.pdf" },
-            { label: "Chapter 27 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch27-Problems-Solved.pdf" },
-            { label: "Chapter 28", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch28.pdf" },
-            { label: "Chapter 28 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch28-Problems-Solved.pdf" }
-          ]
-        }
-      ],
-      mid: [
-        { label: "2026 Semester 2", url: "/physics2/Past-Papers/Mid/Mid-2026-Semester2.pdf" },
-        { label: "2025 Semester 2", url: "/physics2/Past-Papers/Mid/Mid-2025-Semester2.pdf" },
-        { label: "Compiled Years", url: "/physics2/Past-Papers/Mid/Mid-Compiled-Paper-Years.pdf" }
-      ], 
-      final: [
-        { label: "2026", url: "/physics2/Past-Papers/Final/Final-2026.pdf" },
-        { label: "2024 Semester 2", url: "/physics2/Past-Papers/Final/Final-2024-Semester2.pdf" }
-      ]
+      summaries: [], videos: [], mid: [], final: []
     } 
   },
   
   physics_lab: { 
-    coords: { x: 91.27, y: 22.84, w: 6.72, h: 4.8 }, 
+    coords: { x: 62.55, y: 14.01, w: 6.73, h: 6.21 }, 
     content: {
-      titleEn: "Physics Lab", titleAr: "مختبر فيزياء عامة", credits: 1,
-      books: [
-        { 
-          label: "Solved Lab Manual (All Experiments)", 
-          url: "/Physics-Lab/Books/Solved-Lab-Manual-All-Experiments.pdf", 
-          coverUrl: "/BooksCover/Physics-lab.png",
-          isSolution: true
-        },
-        { 
-          label: "Solved Lab Reports (Final)", 
-          url: "/Physics-Lab/Books/Solved-Lab-Reports-Final.pdf", 
-          coverUrl: "/BooksCover/Physics-lab.png",
-          isSolution: true
-        },
-        { 
-          label: "Solved Lab Reports (Mid)", 
-          url: "/Physics-Lab/Books/Solved-Lab-Reports-Mid.pdf", 
-          coverUrl: "/BooksCover/Physics-lab.png",
-          isSolution: true
-        }
-      ], 
-      summaries: [
-        { label: "Experiments Explained (Dr. Anwar Al-Shishani)", url: "/Physics-Lab/Summaries/Experiments-Explained-Dr-Anwar-Al-Shishani.pdf" },
-        { label: "Experiments Explained (Moh. Ali)", url: "/Physics-Lab/Summaries/Experiments-Explained-Moh-Ali.pdf" },
-        { label: "Formulas Summary", url: "/Physics-Lab/Summaries/Formulas-Summary.pdf" },
-        { label: "Formulas Summary (Short)", url: "/Physics-Lab/Summaries/Formulas-Summary-Short.pdf" },
-        { label: "Summary (Dr. Anwar Al-Shishani)", url: "/Physics-Lab/Summaries/Summary-Dr-Anwar-Al-Shishani.pdf" },
-        { label: "Summary (Hussam Zamel)", url: "/Physics-Lab/Summaries/Summary-Hussam-Zamel.pdf" }
-      ], 
-      videos: [
-        { label: "Eng. Hussam Zamel", url: "https://youtube.com/playlist?list=PLRNaExsfJ1qs5_zE_GzWb-6w_nB6XvT_Q&si=..." }
-      ], 
-      mid: [
-        { label: "2024 Questions", url: "/Physics-Lab/Past-Papers/Mid/Mid-2024-Questions.pdf" },
-        { label: "2023 Term 2", url: "/Physics-Lab/Past-Papers/Mid/Mid-2023-Term2.pdf" },
-        { label: "2022 Term 2", url: "/Physics-Lab/Past-Papers/Mid/Mid-2022-Term2.pdf" },
-        { label: "Lab 1B", url: "/Physics-Lab/Past-Papers/Mid/Mid-Lab-1B.pdf" },
-        { label: "Mid Paper New", url: "/Physics-Lab/Past-Papers/Mid/Mid-Paper-New.pdf" },
-        { label: "Paper Scan 2026", url: "/Physics-Lab/Past-Papers/Mid/Mid-Paper-Scan-2026.pdf" },
-        { label: "Screens Part 1", url: "/Physics-Lab/Past-Papers/Mid/Mid-Screens-Part-1.pdf" },
-        { label: "Screens Part 2", url: "/Physics-Lab/Past-Papers/Mid/Mid-Screens-Part-2.pdf" },
-        { label: "Screens", url: "/Physics-Lab/Past-Papers/Mid/Mid-Screens.pdf" }
-      ], 
-      final: [
-        { label: "2022 Term 2", url: "/Physics-Lab/Past-Papers/Final/Final-2022-Term2.pdf" },
-        { label: "Exam A", url: "/Physics-Lab/Past-Papers/Final/Final-Exam-A.pdf" },
-        { label: "Final New", url: "/Physics-Lab/Past-Papers/Final/Final-New.pdf" },
-        { label: "Online", url: "/Physics-Lab/Past-Papers/Final/Final-Online.pdf" },
-        { label: "Questions Solved", url: "/Physics-Lab/Past-Papers/Final/Final-Questions-Solved.pdf" },
-        { label: "Screens 1", url: "/Physics-Lab/Past-Papers/Final/Final-Screens-1.pdf" },
-        { label: "Screens 2", url: "/Physics-Lab/Past-Papers/Final/Final-Screens-2.pdf" }
-      ]
+      titleEn: "Physics Lab", titleAr: "مختبر فيزياء", credits: 1,
+      books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
   
@@ -976,30 +869,7 @@ linear_algebra: {
     coords: { x: 54.99, y: 14.59, w: 5.48, h: 5.23 }, 
     content: {
       titleEn: "Machine Components", titleAr: "مكونات الالة ", credits: 3,
-      books: [
-        { 
-          label: "Machines and Mechanisms (4th Edition)", 
-          url: "/machine components/books/Book_Machines-and-Mechanisms_4th-Edition.pdf", 
-          coverUrl: "/BooksCover/Book_Machines-and-Mechanisms_4th-Edition.png" 
-        },
-        { 
-          label: "Solutions Manual (4th Edition)", 
-          url: "/machine components/books/Book_Solutions-Manual_Machines-and-Mechanisms_4th-Edition.pdf", 
-          coverUrl: "/BooksCover/Book_Machines-and-Mechanisms_4th-Edition.png",
-          isSolution: true
-        }
-      ], 
-      summaries: [
-        { label: "First Summary", url: "/machine components/summarize/Summary_Machine-Components_First.pdf" }
-      ], 
-      videos: [], 
-      mid: [
-        { label: "2022 Spring Page 1", url: "/machine components/past papers/mid/Midterm_2022_Spring_Page-1.jpg" },
-        { label: "2022 Spring Page 2", url: "/machine components/past papers/mid/Midterm_2022_Spring_Page-2.jpg" },
-        { label: "2022 Spring Page 3", url: "/machine components/past papers/mid/Midterm_2022_Spring_Page-3.jpg" },
-        { label: "2022 Spring Page 4", url: "/machine components/past papers/mid/Midterm_2022_Spring_Page-4.jpg" }
-      ], 
-      final: []
+      books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
   
@@ -1404,49 +1274,11 @@ linear_algebra: {
     } 
   },
   
-control: { 
+  control: { 
     coords: { x: 63.32, y: 48.49, w: 5.25, h: 5.23 }, 
     content: {
       titleEn: "Control", titleAr: "أنظمة تحكم", credits: 3,
-      books: [
-        { 
-          label: "Modern Control Engineering (Ogata)", 
-          url: "/contorl/books/Book_Modern-Control-Engineering_Ogata.pdf", 
-          coverUrl: "/BooksCover/Book_Modern-Control-Engineering_Ogata.png" 
-        },
-        { 
-          label: "Solutions Manual (Ogata)", 
-          url: "/contorl/books/Book_Solutions-Manual_Modern-Control-Engineering_Ogata.pdf", 
-          coverUrl: "/BooksCover/Book_Modern-Control-Engineering_Ogata.png",
-          isSolution: true
-        }
-      ], 
-      summaries: [
-        { label: "Slides Control Systems", url: "/contorl/summarize/Slides_Control-Systems_2022-October.pdf" },
-        { label: "MAE", url: "/contorl/summarize/Summary_Control-Systems_MAE.pdf" }
-      ], 
-      videos: [
-        { label: "MAE Team", url: "https://youtube.com/playlist?list=PLRNaExsfJ1qs6LF5rdDHq9w0S3YueJQwS&si=TnF673x04bFWMOLe" }
-      ], 
-      quizzes: [
-        {
-          label: "Quizzes",
-          type: 'folder',
-          items: [
-            { label: "Quiz 1", url: "/contorl/past papers/quizzes/Quiz_1.pdf" },
-            { label: "Quiz 2", url: "/contorl/past papers/quizzes/Quiz_2.pdf" },
-            { label: "Quiz 3", url: "/contorl/past papers/quizzes/Quiz_3.pdf" }
-          ]
-        }
-      ],
-      mid: [
-        { label: "2025", url: "/contorl/past papers/mid/Midterm_2025.pdf" },
-        { label: "2016", url: "/contorl/past papers/mid/Midterm_2016.pdf" },
-        { label: "MAE", url: "/contorl/past papers/mid/Midterm_Control-Systems_MAE.pdf" }
-      ], 
-      final: [
-        { label: "MAE", url: "/contorl/past papers/final/Final_Control-Systems_MAE.pdf" }
-      ]
+      books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
   
@@ -1454,34 +1286,7 @@ control: {
     coords: { x: 71.77, y: 48.03, w: 6.61, h: 6.37 }, 
     content: {
       titleEn: "Control Lab", titleAr: "مختبر تحكم", credits: 1,
-      books: [
-        { 
-          label: "Control System Lab Manual", 
-          url: "/Control Lab/books/control-system-lab-manual.pdf", 
-          coverUrl: "/BooksCover/control-system-lab-manual.png" 
-        }
-      ], 
-      summaries: [
-        { label: "Hilmi Nazzal Booklet (3rd Ed)", url: "/Control Lab/summarize/hilmi-nazzal-booklet-3rd-edition.pdf" },
-        { label: "Lab Summary New", url: "/Control Lab/summarize/lab-summary-new.pdf" }
-      ], 
-      videos: [], 
-      mid: [
-        { label: "2024-2025 Solved", url: "/Control Lab/past-papers/mid/mid-2024-2025-solved.pdf" },
-        { label: "Past Years", url: "/Control Lab/past-papers/mid/mid-past-years.pdf" },
-        { label: "Mid Paper 2", url: "/Control Lab/past-papers/mid/mid-paper-2.pdf" },
-        { label: "Mid Paper 1", url: "/Control Lab/past-papers/mid/mid-paper-1.pdf" },
-        { label: "IZD9 - 3", url: "/Control Lab/past-papers/mid/mid-izd9-3.pdf" },
-        { label: "IZD9 - 2", url: "/Control Lab/past-papers/mid/mid-izd9-2.pdf" },
-        { label: "IZD9 - 1", url: "/Control Lab/past-papers/mid/mid-izd9-1.pdf" }
-      ], 
-      final: [
-        { label: "2024-2025 Solved", url: "/Control Lab/past-papers/final/final-2024-2025-solved.pdf" },
-        { label: "Final Paper 4", url: "/Control Lab/past-papers/final/final-paper-4.pdf" },
-        { label: "Final Paper 3", url: "/Control Lab/past-papers/final/final-paper-3.pdf" },
-        { label: "Final Paper 2", url: "/Control Lab/past-papers/final/final-paper-2.pdf" },
-        { label: "Final Paper 1", url: "/Control Lab/past-papers/final/final-paper-1.pdf" }
-      ]
+      books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
   
@@ -1559,67 +1364,7 @@ control: {
     coords: { x: 80.44, y: 57.36, w: 5.7, h: 5.23 }, 
     content: {
       titleEn: "Power Electronics", titleAr: "إلكترونيات القدرة", credits: 3,
-      books: [
-        { 
-          label: "Power Electronics Handbook (Muhammad H. Rashid)", 
-          url: "/power/books/Book_Power-Electronics-Handbook_Muhammad-H-Rashid.pdf", 
-          coverUrl: "/BooksCover/Book_Power-Electronics-Handbook_Muhammad-H-Rashid.png" 
-        },
-        { 
-          label: "Power Electronics: Converters, Applications, and Design", 
-          url: "/power/books/Book_Power-Electronics_Converters-Applications-and-Design.pdf", 
-          coverUrl: "/BooksCover/Book_Power-Electronics_Converters-Applications-and-Design.png" 
-        },
-        { 
-          label: "Power Electronics (Daniel W. Hart)", 
-          url: "/power/books/Book_Power-Electronics_Daniel-W-Hart.pdf", 
-          coverUrl: "/BooksCover/Book_Power-Electronics_Daniel-W-Hart.png" 
-        },
-        { 
-          label: "Power Semiconductor Circuits (Dewan & Straughen)", 
-          url: "/power/books/Book_Power-Semiconductor-Circuits_Dewan-Straughen.pdf", 
-          coverUrl: "/BooksCover/Book_Power-Semiconductor-Circuits_Dewan-Straughen.png" 
-        }
-      ], 
-      summaries: [
-        {
-          label: "Course Slides",
-          type: 'folder',
-          items: [
-            { label: "Chapter 1", url: "/power/summarize/Slides_Chapter-01.pdf" },
-            { label: "Chapter 2: Power Calculations", url: "/power/summarize/Slides_Chapter-02_Power-Calculations.pdf" },
-            { label: "Chapter 3: Half-Wave Rectifiers", url: "/power/summarize/Slides_Chapter-03_Half-Wave-Rectifiers.pdf" },
-            { label: "Chapter 4: Full-Wave Rectifiers", url: "/power/summarize/Slides_Chapter-04_Full-Wave-Rectifiers.pdf" },
-            { label: "Chapter 4.3: 3-Phase Controlled Rectifiers", url: "/power/summarize/Slides_Chapter-04-3_Three-Phase-Controlled-Rectifiers.pdf" },
-            { label: "Chapter 4.3: 3-Phase Uncontrolled Rectifiers", url: "/power/summarize/Slides_Chapter-04-3_Three-Phase-Uncontrolled-Rectifiers.pdf" },
-            { label: "Chapter 4.4: 3-Phase Full-Wave Controlled Rectifiers", url: "/power/summarize/Slides_Chapter-04-4_Three-Phase-Full-Wave-Controlled-Rectifiers.pdf" },
-            { label: "Chapter 5: AC Voltage Controllers", url: "/power/summarize/Slides_Chapter-05_AC-Voltage-Controllers.pdf" },
-            { label: "Chapter 6: DC-DC Converters", url: "/power/summarize/Slides_Chapter-06_DC-DC-Converters.pdf" },
-            { label: "DC-DC Converters (Part 1)", url: "/power/summarize/Slides_DC-DC-Converters-1.pdf" },
-            { label: "Inverters (Part 1)", url: "/power/summarize/Slides_Inverters-1.pdf" }
-          ]
-        },
-        { label: "SPARK Scanned Notes", url: "/power/summarize/Summary_SPARK_Scanned-Notes.pdf" }
-      ], 
-      videos: [
-        { label: "Spectrum Team", url: "https://youtube.com/playlist?list=PLRNaExsfJ1qtLOy1R4l4n-r1Qnz8JMdNg&si=xsOwX8eeS0RoknFo" }
-      ], 
-      quizzes: [
-        {
-          label: "Quizzes",
-          type: 'folder',
-          items: [
-            { label: "Power Electronics MCQs", url: "/power/past papers/quizzes/Quizzes_Power-Electronics-MCQ.pdf" }
-          ]
-        }
-      ],
-      mid: [
-        { label: "2017", url: "/power/past papers/mid/Midterm_2017.pdf" }
-      ], 
-      final: [
-        { label: "Past Years Questions", url: "/power/past papers/final/Past-Years-Questions_Power-Electronics.pdf" },
-        { label: "Past Years Solved (SPARK)", url: "/power/past papers/final/Past-Years-Solved_Power-Electronics_SPARK-Team.pdf" }
-      ]
+      books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
   
@@ -1736,6 +1481,14 @@ control: {
         { label: "Screens", url: "/plc/pastpapers/plc_pastpaper_03_final_screens.pdf" },
         { label: "Mahmoud Final", url: "/plc/pastpapers/plc_pastpaper_09_final_mahmoud.pdf" }
       ]
+    } 
+  },
+  
+  plc_lab: { 
+    coords: { x: 74.51, y: 81.7, w: 5.24, h: 6.6 }, 
+    content: {
+      titleEn: "PLC Lab", titleAr: "مختبر PLC", credits: 1,
+      books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
   
@@ -1878,6 +1631,14 @@ industrial_processes: {
     } 
   },
   
+  industrial_processes_Lab: { 
+    coords: { x: 33.41, y: 37.33, w: 8.05, h: 6.55 }, 
+    content: {
+      titleEn: "Industrial Processes Lab", titleAr: "مختبر التجهيزات الصناعية والتحكم", credits: 1,
+      books: [], summaries: [], videos: [], mid: [], final: []
+    } 
+  },
+  
   eng_materials: { 
     coords: { x: 45.07, y: 54.76, w: 6.27, h: 6.82 }, 
     content: {
@@ -1965,31 +1726,11 @@ renewable_energy: {
     } 
   },
   
-mems: { 
+  mems: { 
     coords: { x: 35.6, y: 88.07, w: 5.25, h: 5.46 }, 
     content: {
-      titleEn: "MEMS", titleAr: "الأنظمة الكهروميكانيكية الميكروية", credits: 3,
-      books: [
-        { 
-          label: "Foundations of MEMS", 
-          url: "/MEMS/Foundations of MEMS.pdf", 
-          coverUrl: "/BooksCover/Foundations of MEMS.png" 
-        },
-        { 
-          label: "MEMS and Microsystems Design and Manufacture", 
-          url: "/MEMS/MEMS and Microsystems Design and Manufacture.pdf", 
-          coverUrl: "/BooksCover/MEMS and Microsystems Design and Manufacture.png" 
-        },
-        { 
-          label: "Microsystem Technology and Microrobotics", 
-          url: "/MEMS/Microsystem Technology and Microrobotics.pdf", 
-          coverUrl: "/BooksCover/Microsystem Technology and Microrobotics.png" 
-        }
-      ], 
-      summaries: [], 
-      videos: [], 
-      mid: [], 
-      final: []
+      titleEn: "MEMS", titleAr: "أنظمة كهروميكانيكية صغرية", credits: 3,
+      books: [], summaries: [], videos: [], mid: [], final: []
     } 
   },
   
@@ -2245,43 +1986,3 @@ eng_economy: {
     } 
   }
 };
-
-// Materials added from the academic archive. Grouped links keep the modal easy
-// to scan while each document remains directly accessible.
-Object.assign(curriculumData, {
-  workshop: { ...curriculumData.workshop, content: { ...curriculumData.workshop.content,
-    books: ['Carpentry-and-Decor', 'Electrical', 'Lathe-and-Fitting', 'Welding'].map((name) => ({ label: `Workshop: ${name.replaceAll('-', ' ')}`, url: `/Engineering-Workshop/مشغل هندسي/books/Book_Workshop-${name}.pdf` })),
-    summaries: ['Carpentry', 'Electrical-Theory', 'Lathe-Theory', 'Welding-Theory'].map((name) => ({ label: `${name.replaceAll('-', ' ')} Summary`, url: `/Engineering-Workshop/مشغل هندسي/summarize/Summary_${name}.pdf` })), videos: [], mid: [],
-    final: Array.from({ length: 7 }, (_, index) => ({ label: `Past Papers ${index + 1}`, url: `/Engineering-Workshop/مشغل هندسي/past papers/Past-Papers_Workshop-${index + 1}.pdf` })) } },
-  electronics_1_lab: { ...curriculumData.electronics_1_lab, content: { ...curriculumData.electronics_1_lab.content,
-    books: [{ label: 'Electronics Lab Manual (2021)', url: '/electronics-lab-organized/Electronics Lab/books/electronics-lab-manual-2021.pdf' }],
-    summaries: ['experiment-solutions', 'lab-explanation', 'lab-slides-dr-majed-al-duwari', 'lab-summary-new', 'summary-lin-abu-shuweimah'].map((name) => ({ label: name.replaceAll('-', ' '), url: `/electronics-lab-organized/Electronics Lab/summarize/${name}.pdf` })), videos: [],
-    mid: ['2019-2020', '2020-2021', 'paper'].map((name) => ({ label: `Mid ${name}`, url: `/electronics-lab-organized/Electronics Lab/past-papers/mid/mid-${name}.pdf` })),
-    final: [{ label: '2020–2021', url: '/electronics-lab-organized/Electronics Lab/past-papers/final/final-2020-2021.pdf' }, { label: 'Lab Electronics', url: '/electronics-lab-organized/Electronics Lab/past-papers/final/final-lab-electronics.pdf' }] } },
-  assembly_lab: { ...curriculumData.assembly_lab, content: { ...curriculumData.assembly_lab.content,
-    books: [{ label: 'Emulator Setup Guide', url: '/Assembly-Lab/لاب اسمبلي /books/Guide_Emulator-Setup.pdf' }],
-    summaries: [{ label: 'Assembly Lab Summary', url: '/Assembly-Lab/لاب اسمبلي /summarize/Summary_Assembly-Lab.pdf' }, { label: 'Interrupts Summary', url: '/Assembly-Lab/لاب اسمبلي /summarize/Summary_Interrupts.pdf' }, { label: 'String Instructions', url: '/Assembly-Lab/لاب اسمبلي /summarize/Summary_String-Instructions.pdf' }], videos: [],
-    mid: [{ label: '2023', url: '/Assembly-Lab/لاب اسمبلي /past papers/mid/Midterm_2023.pdf' }, { label: 'Scanned', url: '/Assembly-Lab/لاب اسمبلي /past papers/mid/Midterm_Scanned.pdf' }],
-    final: ['2022', '2023', '2024'].map((year) => ({ label: year, url: `/Assembly-Lab/لاب اسمبلي /past papers/final/Final_${year}.pdf` })) } },
-  electric_drive: { ...curriculumData.electric_drive, content: { ...curriculumData.electric_drive.content,
-    books: [{ label: 'Fundamentals of Electric Drives', url: '/Electrical-Drives/Books/Fundamentals-of-Electric-Drives.pdf' }, { label: 'Hybrid Vehicles', url: '/Electrical-Drives/Books/Hybrid-Vehicles-Freebook.pdf' }, { label: 'Thyristor-Controlled Motor Drives', url: '/Electrical-Drives/Books/Power-Electronics-Thyristor-Controlled-Motor-Drives.pdf' }, { label: 'Semiconductor-Controlled Drives', url: '/Electrical-Drives/Books/Power-Semiconductor-Controlled-Drives.pdf' }],
-    summaries: [{ label: 'Electric Drives Booklet', url: '/Electrical-Drives/Summaries/Electric-Drives-Booklet.pdf' }, { label: 'SPARK Team Booklet', url: '/Electrical-Drives/Summaries/Electric-Drives-Booklet-SPARK-Team.pdf' }, { label: 'Fundamentals Summary', url: '/Electrical-Drives/Summaries/Fundamentals-of-Electric-Drives-SPARK-Team.pdf' }], videos: [],
-    mid: ['2025', '2024-Semester1', '2023-Semester2', '2022-Solved'].map((name) => ({ label: name.replaceAll('-', ' '), url: `/Electrical-Drives/Past-Papers/Mid/Mid-${name}.pdf` })), final: [{ label: 'Final Exam A', url: '/Electrical-Drives/Past-Papers/Final/Final-Exam-A.pdf' }] } }
-});
-
-// The original Power Electronics archive uses a different folder layout.
-// Keep the existing book covers, but point every material/exam link at the
-// files that are actually published with this repository.
-const powerElectronics = curriculumData.power_electronics.content;
-powerElectronics.summaries = [
-  { label: 'Course Slides', type: 'folder', items: [
-    '01', '02_Power-Calculations', '03_Half-Wave-Rectifiers', '04_Full-Wave-Rectifiers', '05_AC-Voltage-Controllers', '06_DC-DC-Converters'
-  ].map((chapter) => ({ label: `Chapter ${chapter.replaceAll('_', ': ')}`, url: `/power electronics/summarize/Slides_Chapter-${chapter}.pdf` })) },
-  { label: 'SPARK Scanned Notes', url: '/power electronics/summarize/Summary_SPARK_Scanned-Notes.pdf' }
-];
-powerElectronics.quizzes = [{ label: 'Power Electronics MCQs', url: '/power electronics/past papers/quizzes/Quizzes_Power-Electronics-MCQ.pdf' }];
-powerElectronics.mid = [{ label: '2017', url: '/power electronics/past papers/mid/Midterm_2017.pdf' }];
-powerElectronics.final = [
-  { label: 'Past Years Questions', url: '/power electronics/past papers/Past-Years-Questions_Power-Electronics.pdf' },
-  { label: 'Past Years Solved (SPARK)', url: '/power electronics/past papers/Past-Years-Solved_Power-Electronics_SPARK-Team.pdf' }
-];
