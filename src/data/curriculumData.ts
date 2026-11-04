@@ -285,10 +285,26 @@ workshop: {
     content: {
       titleEn: "Engineering Workshop", titleAr: "مشاغل هندسية", credits: 1,
       books: [
-        { label: "Workshop Carpentry and Decor", url: "/workshop_lab/books/Book_Workshop-Carpentry-and-Decor.pdf" },
-        { label: "Workshop Electrical", url: "/workshop_lab/books/Book_Workshop-Electrical.pdf" },
-        { label: "Workshop Lathe and Fitting", url: "/workshop_lab/books/Book_Workshop-Lathe-and-Fitting.pdf" },
-        { label: "Workshop Welding", url: "/workshop_lab/books/Book_Workshop-Welding.pdf" }
+        { 
+          label: "Workshop Carpentry and Decor", 
+          url: "/workshop_lab/books/Book_Workshop-Carpentry-and-Decor.pdf",
+          coverUrl: "/BooksCover/Book_Workshop-Carpentry-and-Decor.png"
+        },
+        { 
+          label: "Workshop Electrical", 
+          url: "/workshop_lab/books/Book_Workshop-Electrical.pdf",
+          coverUrl: "/BooksCover/Book_Workshop-Electrical.png"
+        },
+        { 
+          label: "Workshop Lathe and Fitting", 
+          url: "/workshop_lab/books/Book_Workshop-Lathe-and-Fitting.pdf",
+          coverUrl: "/BooksCover/Book_Workshop-Lathe-and-Fitting.png"
+        },
+        { 
+          label: "Workshop Welding", 
+          url: "/workshop_lab/books/Book_Workshop-Welding.pdf",
+          coverUrl: "/BooksCover/Book_Workshop-Welding.png"
+        }
       ], 
       summaries: [
         { label: "Carpentry Summary", url: "/workshop_lab/summarize/Summary_Carpentry.pdf" },
