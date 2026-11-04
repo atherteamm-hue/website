@@ -196,14 +196,7 @@ export const AboutUsPage: React.FC = () => {
           <span className="text-sm md:text-base font-bold font-mono tracking-widest text-neutral-500 uppercase">
             MEET OUR MEMBERS
           </span>
-          <div className="flex gap-3">
-            <button onClick={prevSlide} className="w-10 h-10 flex items-center justify-center rounded-full border border-neutral-200 hover:bg-neutral-100 transition-colors text-neutral-600">
-              ←
-            </button>
-            <button onClick={nextSlide} className="w-10 h-10 flex items-center justify-center rounded-full border border-neutral-200 hover:bg-neutral-100 transition-colors text-neutral-600">
-              →
-            </button>
-          </div>
+          {/* تم إزالة الأسهم من هنا */}
         </div>
 
         <div className="relative overflow-hidden rounded-3xl bg-white border border-neutral-200/80 shadow-sm">
@@ -296,8 +289,19 @@ export const AboutUsPage: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* الأسهم الدائرية بعد التكبير والنقل */}
+        <div className="flex justify-center gap-4 mt-8">
+          <button onClick={prevSlide} className="w-12 h-12 flex items-center justify-center rounded-full border border-neutral-200 hover:bg-neutral-100 transition-colors text-neutral-600">
+            ←
+          </button>
+          <button onClick={nextSlide} className="w-12 h-12 flex items-center justify-center rounded-full border border-neutral-200 hover:bg-neutral-100 transition-colors text-neutral-600">
+            →
+          </button>
+        </div>
         
-        <div className="flex justify-center gap-2 mt-8">
+        {/* النقاط السفلية */}
+        <div className="flex justify-center gap-2 mt-4">
           {TEAM_MEMBERS.map((_, idx) => (
             <button 
               key={idx}
