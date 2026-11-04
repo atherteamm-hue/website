@@ -280,11 +280,33 @@ innovation: {
     } 
   },
   
-  workshop: { 
+workshop: { 
     coords: { x: 26.61, y: 3, w: 6.62, h: 6.41 }, 
     content: {
       titleEn: "Engineering Workshop", titleAr: "مشاغل هندسية", credits: 1,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { label: "Workshop Carpentry and Decor", url: "/workshop_lab/books/Book_Workshop-Carpentry-and-Decor.pdf" },
+        { label: "Workshop Electrical", url: "/workshop_lab/books/Book_Workshop-Electrical.pdf" },
+        { label: "Workshop Lathe and Fitting", url: "/workshop_lab/books/Book_Workshop-Lathe-and-Fitting.pdf" },
+        { label: "Workshop Welding", url: "/workshop_lab/books/Book_Workshop-Welding.pdf" }
+      ], 
+      summaries: [
+        { label: "Carpentry Summary", url: "/workshop_lab/summarize/Summary_Carpentry.pdf" },
+        { label: "Electrical Theory Summary", url: "/workshop_lab/summarize/Summary_Electrical-Theory.pdf" },
+        { label: "Lathe Theory Summary", url: "/workshop_lab/summarize/Summary_Lathe-Theory.pdf" },
+        { label: "Welding Theory Summary", url: "/workshop_lab/summarize/Summary_Welding-Theory.pdf" }
+      ], 
+      videos: [], 
+      mid: [], 
+      final: [
+        { label: "Past Papers 1", url: "/workshop_lab/past papers/Past-Papers_Workshop-1.pdf" },
+        { label: "Past Papers 2", url: "/workshop_lab/past papers/Past-Papers_Workshop-2.pdf" },
+        { label: "Past Papers 3", url: "/workshop_lab/past papers/Past-Papers_Workshop-3.pdf" },
+        { label: "Past Papers 4", url: "/workshop_lab/past papers/Past-Papers_Workshop-4.pdf" },
+        { label: "Past Papers 5", url: "/workshop_lab/past papers/Past-Papers_Workshop-5.pdf" },
+        { label: "Past Papers 6", url: "/workshop_lab/past papers/Past-Papers_Workshop-6.pdf" },
+        { label: "Past Papers 7", url: "/workshop_lab/past papers/Past-Papers_Workshop-7.pdf" }
+      ]
     } 
   },
   
@@ -1469,7 +1491,7 @@ control_lab: {
       ], 
       videos: [], 
       mid: [
-        { label:"2024-2025", url: "/Control Lab/past-papers/mid/mid-2024-2025-solved.pdf" },
+        { label: "2024-2025", url: "/Control Lab/past-papers/mid/mid-2024-2025-solved.pdf" },
         { label: "Mid Exam", url: "/Control Lab/past-papers/mid/mid-izd9-1.pdf" },
         { label: "Mid Exam", url: "/Control Lab/past-papers/mid/mid-izd9-2.pdf" },
         { label: "Mid Exam", url: "/Control Lab/past-papers/mid/mid-izd9-3.pdf" },
@@ -1549,11 +1571,30 @@ control_lab: {
     } 
   },
   
-  electronics_1_lab: { 
+electronics_1_lab: { 
     coords: { x: 90.82, y: 44.62, w: 6.73, h: 6.6 }, 
     content: {
       titleEn: "Electronics 1 Lab", titleAr: "مختبر إلكترونيات", credits: 1,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { label: "Electronics Lab Manual (2021)", url: "/Electronics Lab/books/electronics-lab-manual-2021.pdf" }
+      ], 
+      summaries: [
+        { label: "Experiment Solutions", url: "/Electronics Lab/summarize/experiment-solutions.pdf" },
+        { label: "Lab Explanation", url: "/Electronics Lab/summarize/lab-explanation.pdf" },
+        { label: "Lab Slides Dr Majed Al Duwari", url: "/Electronics Lab/summarize/lab-slides-dr-majed-al-duwari.pdf" },
+        { label: "Lab Summary New", url: "/Electronics Lab/summarize/lab-summary-new.pdf" },
+        { label: "Summary Lin Abu Shuweimah", url: "/Electronics Lab/summarize/summary-lin-abu-shuweimah.pdf" }
+      ], 
+      videos: [], 
+      mid: [
+        { label: "Mid 2019-2020", url: "/Electronics Lab/past-papers/mid/mid-2019-2020.pdf" },
+        { label: "Mid 2020-2021", url: "/Electronics Lab/past-papers/mid/mid-2020-2021.pdf" },
+        { label: "Mid paper", url: "/Electronics Lab/past-papers/mid/mid-paper.pdf" }
+      ], 
+      final: [
+        { label: "Final 2020–2021", url: "/Electronics Lab/past-papers/final/final-2020-2021.pdf" },
+        { label: "Final Lab Electronics", url: "/Electronics Lab/past-papers/final/final-lab-electronics.pdf" }
+      ]
     } 
   },
   
@@ -1847,11 +1888,68 @@ plc_lab: {
     } 
   },
   
-  assembly_lab: { 
+assembly_lab: { 
     coords: { x: 16.2, y: 36.43, w: 6.85, h: 6.37 }, 
     content: {
       titleEn: "Assembly Lab", titleAr: "مختبر أنظمة المعالجات الدقيقة", credits: 1,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [],
+      summaries: [
+        { label: "Summary Assembly Lab", url: "/aseembly_lab/summarize/Summary_Assembly-Lab.pdf" },
+        { label: "Summary Interrupts", url: "/aseembly_lab/summarize/Summary_Interrupts.pdf" },
+        { label: "Summary String Instructions", url: "/aseembly_lab/summarize/Summary_String-Instructions.pdf" },
+        {
+          label: "Pre-Lab Templates",
+          type: 'folder',
+          items: [
+            { label: "PreLab Lab 02", url: "/aseembly_lab/books/PreLab_Template_Lab-02.docx" },
+            { label: "PreLab Lab 03", url: "/aseembly_lab/books/PreLab_Template_Lab-03.docx" },
+            { label: "PreLab Lab 04", url: "/aseembly_lab/books/PreLab_Template_Lab-04.docx" },
+            { label: "PreLab Lab 05", url: "/aseembly_lab/books/PreLab_Template_Lab-05.docx" },
+            { label: "PreLab Lab 06", url: "/aseembly_lab/books/PreLab_Template_Lab-06.docx" },
+            { label: "PreLab Lab 07", url: "/aseembly_lab/books/PreLab_Template_Lab-07.docx" },
+            { label: "PreLab Lab 08 Part 1", url: "/aseembly_lab/books/PreLab_Template_Lab-08_Part-1.docx" },
+            { label: "PreLab Lab 08 Part 2", url: "/aseembly_lab/books/PreLab_Template_Lab-08_Part-2.docx" },
+            { label: "PreLab Lab 09 Part 1", url: "/aseembly_lab/books/PreLab_Template_Lab-09_Part-1.docx" },
+            { label: "PreLab Lab 09 Part 2", url: "/aseembly_lab/books/PreLab_Template_Lab-09_Part-2.docx" },
+            { label: "PreLab Lab 10", url: "/aseembly_lab/books/PreLab_Template_Lab-10.docx" },
+            { label: "PreLab Lab 10 Copy", url: "/aseembly_lab/books/PreLab_Template_Lab-10_copy2.docx" },
+            { label: "Guide Emulator Setup", url: "/aseembly_lab/books/Guide_Emulator-Setup.pdf" }
+          ]
+        },
+        {
+          label: "Solved Pre-Labs",
+          type: 'folder',
+          items: [
+            { label: "Solved PreLab Lab 02", url: "/aseembly_lab/summarize/Solved-PreLab_Lab-02.pdf" },
+            { label: "Solved PreLab Lab 03", url: "/aseembly_lab/summarize/Solved-PreLab_Lab-03.pdf" },
+            { label: "Solved PreLab Lab 04", url: "/aseembly_lab/summarize/Solved-PreLab_Lab-04.pdf" },
+            { label: "Solved PreLab Lab 05", url: "/aseembly_lab/summarize/Solved-PreLab_Lab-05.pdf" },
+            { label: "Solved PreLab Lab 06", url: "/aseembly_lab/summarize/Solved-PreLab_Lab-06.pdf" },
+            { label: "Solved PreLab Lab 07", url: "/aseembly_lab/summarize/Solved-PreLab_Lab-07.pdf" },
+            { label: "Solved PreLab Lab 08", url: "/aseembly_lab/summarize/Solved-PreLab_Lab-08.pdf" },
+            { label: "Solved PreLab Lab 08 Alt", url: "/aseembly_lab/summarize/Solved-PreLab_Lab-08_Alt.pdf" },
+            { label: "Solved PreLab Lab 09", url: "/aseembly_lab/summarize/Solved-PreLab_Lab-09.pdf" },
+            { label: "Solved PreLab Lab 09 Alt", url: "/aseembly_lab/summarize/Solved-PreLab_Lab-09_Alt.pdf" },
+            { label: "Solved PreLab Lab 10", url: "/aseembly_lab/summarize/Solved-PreLab_Lab-10.pdf" },
+            { label: "Solved PreLab Extra", url: "/aseembly_lab/summarize/Solved-PreLab_Extra.pdf" }
+          ]
+        }
+      ], 
+      videos: [
+        { label: "Omar Eid", url: "https://youtube.com/playlist?list=PLF1ZTFPI256E&si=At61KLwEFrMCNOmk" }
+      ], 
+      mid: [
+        { label: "Mid 2023", url: "/aseembly_lab/past papers/mid/Midterm_2023.pdf" },
+        { label: "Mid Exam", url: "/aseembly_lab/past papers/mid/Midterm_Scanned.pdf" }
+      ], 
+      final: [
+        { label: "Final 2023", url: "/aseembly_lab/past papers/final/Final_2023.pdf" },
+        { label: "Final 2024", url: "/aseembly_lab/past papers/final/Final_2024.pdf" },
+        { label: "Final 2022", url: "/aseembly_lab/past papers/final/Final_2022.pdf" },
+        { label: "Final 2022 ", url: "/aseembly_lab/past papers/final/Final_2022_copy2.pdf" },
+        { label: "Final Exam", url: "/aseembly_lab/past papers/final/Final_Microprocessor-Systems-Lab_2023-2024.pdf" },
+        { label: "Final Exam", url: "/aseembly_lab/past papers/final/Final_Scanned.pdf" }
+      ]
     } 
   },
   
