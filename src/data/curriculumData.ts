@@ -36,8 +36,8 @@ export const curriculumData: Record<string, Course> = {
       titleAr: "لغة إنجليزية 1", 
       credits: 3,
       books: [
-        { label: "English 101 Textbook", url: "/english101/books/textbook-english-101.pdf", coverUrl: "/BooksCover/textbook-english-101.png" },
-        { label: "Textbook Solutions", url: "/english101/books/textbook-solutions.pdf", coverUrl: "/BooksCover/textbook-english-101.png", isSolution: true }
+        { label: "English 101 Textbook", url: "/english101/books/textbook-english-101.pdf", coverUrl: "/BooksCover/textbook-english-101.webp" },
+        { label: "Textbook Solutions", url: "/english101/books/textbook-solutions.pdf", coverUrl: "/BooksCover/textbook-english-101.webp", isSolution: true }
       ], 
       summaries: [
         { label: "Grammar Summary", url: "/english101/summarize/grammar-summary.pdf" },
@@ -68,8 +68,8 @@ export const curriculumData: Record<string, Course> = {
       titleAr: "لغة إنجليزية 2", 
       credits: 3,
       books: [
-        { label: "English 102 Textbook", url: "/english102/books/textbook-english-102.pdf", coverUrl: "/BooksCover/textbook-english-102.png" },
-        { label: "Textbook Solutions", url: "/english102/books/textbook-solutions.pdf", coverUrl: "/BooksCover/textbook-english-102.png", isSolution: true }
+        { label: "English 102 Textbook", url: "/english102/books/textbook-english-102.pdf", coverUrl: "/BooksCover/textbook-english-102.webp" },
+        { label: "Textbook Solutions", url: "/english102/books/textbook-solutions.pdf", coverUrl: "/BooksCover/textbook-english-102.webp", isSolution: true }
       ], 
       summaries: [
         { label: "Grammar Summary", url: "/english102/summarize/grammar-summary.pdf" },
@@ -102,12 +102,12 @@ export const curriculumData: Record<string, Course> = {
         { 
           label: "Technical Writing Part 1", 
           url: "/Technical Writing/books/technical-writing-part-1.pdf",
-          coverUrl: "/BooksCover/technical-writing-part-1.png"
+          coverUrl: "/BooksCover/technical-writing-part-1.webp"
         },
         { 
           label: "Professional Ethics Part 2", 
           url: "/Technical Writing/books/professional-ethics-part-2.pdf",
-          coverUrl: "/BooksCover/professional-ethics-part-2.png"
+          coverUrl: "/BooksCover/professional-ethics-part-2.webp"
         }
       ],
       
@@ -169,7 +169,7 @@ nat_edu: {
         { 
           label: "كتاب التربية الوطنية", 
           url: "/Books/مدخل الى الثقافة الوطنية والمدنية_compressed.pdf", 
-          coverUrl: "/BooksCover/national-cover.png", 
+          coverUrl: "/BooksCover/national-cover.webp", 
           isArabic: true 
         }
       ], 
@@ -196,13 +196,13 @@ nat_edu: {
         { 
           label: "Applied Arabic Textbook", 
           url: "/arabic101/books/textbook-applied-arabic.pdf", 
-          coverUrl: "/BooksCover/textbook-applied-arabic.png",
+          coverUrl: "/BooksCover/textbook-applied-arabic.webp",
           isArabic: true
         },
         { 
           label: "Textbook Solutions (Units 1-3)", 
           url: "/arabic101/books/textbook-solutions-units-1-2-3.pdf", 
-          coverUrl: "/BooksCover/textbook-applied-arabic.png",
+          coverUrl: "/BooksCover/textbook-applied-arabic.webp",
           isArabic: true,
           isSolution: true
         }
@@ -241,7 +241,7 @@ innovation: {
         { 
           label: "Innovation Textbook", 
           url: "/Innovation-Organized/Books/Innovation-Textbook.pdf", 
-          coverUrl: "/BooksCover/Innovation-Textbook.png",
+          coverUrl: "/BooksCover/Innovation-Textbook.webp",
           isArabic: true // بفرض إنه الكتاب بالعربي بما إنها مادة متطلبات
         }
       ], 
@@ -288,22 +288,22 @@ workshop: {
         { 
           label: "Workshop Carpentry and Decor", 
           url: "/workshop_lab/books/Book_Workshop-Carpentry-and-Decor.pdf",
-          coverUrl: "/BooksCover/Book_Workshop-Carpentry-and-Decor.png"
+          coverUrl: "/BooksCover/Book_Workshop-Carpentry-and-Decor.webp"
         },
         { 
           label: "Workshop Electrical", 
           url: "/workshop_lab/books/Book_Workshop-Electrical.pdf",
-          coverUrl: "/BooksCover/Book_Workshop-Electrical.png"
+          coverUrl: "/BooksCover/Book_Workshop-Electrical.webp"
         },
         { 
           label: "Workshop Lathe and Fitting", 
           url: "/workshop_lab/books/Book_Workshop-Lathe-and-Fitting.pdf",
-          coverUrl: "/BooksCover/Book_Workshop-Lathe-and-Fitting.png"
+          coverUrl: "/BooksCover/Book_Workshop-Lathe-and-Fitting.webp"
         },
         { 
           label: "Workshop Welding", 
           url: "/workshop_lab/books/Book_Workshop-Welding.pdf",
-          coverUrl: "/BooksCover/Book_Workshop-Welding.png"
+          coverUrl: "/BooksCover/Book_Workshop-Welding.webp"
         }
       ], 
       summaries: [
@@ -336,12 +336,12 @@ workshop: {
         { 
           label: "Calculus 10th Edition", 
           url: "/calc1/books/textbook-calculus-101-10th-edition.pdf", 
-          coverUrl: "/BooksCover/textbook-calculus-101-10th-edition.png" 
+          coverUrl: "/BooksCover/textbook-calculus-101-10th-edition.webp" 
         },
         { 
           label: "Solutions Manual", 
           url: "/calc1/books/solutions-manual-calculus-101-10th-edition.pdf", 
-          coverUrl: "/BooksCover/textbook-calculus-101-10th-edition.png", 
+          coverUrl: "/BooksCover/textbook-calculus-101-10th-edition.webp", 
           isSolution: true 
         }
       ], 
@@ -379,12 +379,12 @@ workshop: {
         { 
           label: "Calculus Textbook", 
           url: "/calc2/Books/Calculus2-Textbook.pdf", 
-          coverUrl: "/BooksCover/Calculus2-Textbook.png" 
+          coverUrl: "/BooksCover/Calculus2-Textbook.webp" 
         },
         { 
           label: "Solutions Manual", 
           url: "/calc2/Books/Calculus2-Textbook-Solutions.pdf", 
-          coverUrl: "/BooksCover/Calculus2-Textbook.png", 
+          coverUrl: "/BooksCover/Calculus2-Textbook.webp", 
           isSolution: true 
         }
       ], 
@@ -444,12 +444,12 @@ workshop: {
         { 
           label: "Numerical Methods Textbook", 
           url: "/Numerical Methods/books/textbook-numerical-methods.pdf", 
-          coverUrl: "/BooksCover/textbook-numerical-methods.png" 
+          coverUrl: "/BooksCover/textbook-numerical-methods.webp" 
         },
         { 
           label: "Solutions Manual", 
           url: "/Numerical Methods/books/solutions-manual-numerical-methods.pdf", 
-          coverUrl: "/BooksCover/textbook-numerical-methods.png", 
+          coverUrl: "/BooksCover/textbook-numerical-methods.webp", 
           isSolution: true 
         }
       ], 
@@ -505,12 +505,12 @@ probability: {
         {
           label: "Probability and Statistics Book",
           url: "/Probability/books/كتاب احصاء و احتمالات.pdf",
-          coverUrl: "/BooksCover/Screenshot 2026-10-30 224436.png",
+          coverUrl: "/BooksCover/Screenshot 2026-10-30 224436.webp",
         },
         {
           label: "Book Solutions",
           url: "/Probability/books/حلول كتاب احصاء و احتمالات.pdf",
-          coverUrl: "/BooksCover/Screenshot 2026-10-30 224436.png",
+          coverUrl: "/BooksCover/Screenshot 2026-10-30 224436.webp",
           isSolution: true
         }
       ],
@@ -560,11 +560,11 @@ physics_1: {
       books: [
         { label: "Physics for Scientists and Engineers 9ed", 
          url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
-         coverUrl: "/BooksCover/physics-cover.png" 
+         coverUrl: "/BooksCover/physics-cover.webp" 
         },
         { label: "Physics Solutions Manual",
          url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf",
-         coverUrl: "/BooksCover/PhysicsSolution-cover.png" ,
+         coverUrl: "/BooksCover/PhysicsSolution-cover.webp" ,
          isSolution: true
         }
       ],
@@ -617,12 +617,12 @@ physics_2: {
         { 
           label: "Physics for Scientists and Engineers 9ed",
           url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
-          coverUrl: "/BooksCover/physics-cover.png" 
+          coverUrl: "/BooksCover/physics-cover.webp" 
         },
         { 
           label: "Physics Solutions Manual", 
           url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf", 
-          coverUrl: "/BooksCover/PhysicsSolution-cover.png",
+          coverUrl: "/BooksCover/PhysicsSolution-cover.webp",
           isSolution: true
         }
       ],
@@ -692,19 +692,19 @@ physics_lab: {
         { 
           label: "Solved Lab Manual All Experiments", 
           url: "/Physics-Lab/Books/Solved-Lab-Manual-All-Experiments.pdf", 
-          coverUrl: "/BooksCover/Physics-lab.png",
+          coverUrl: "/BooksCover/Physics-lab.webp",
           isSolution: true
         },
         { 
           label: "Solved Lab Reports Final", 
           url: "/Physics-Lab/Books/Solved-Lab-Reports-Final.pdf", 
-          coverUrl: "/BooksCover/Physics-lab.png",
+          coverUrl: "/BooksCover/Physics-lab.webp",
           isSolution: true
         },
         { 
           label: "Solved Lab Reports Mid", 
           url: "/Physics-Lab/Books/Solved-Lab-Reports-Mid.pdf", 
-          coverUrl: "/BooksCover/Physics-lab.png",
+          coverUrl: "/BooksCover/Physics-lab.webp",
           isSolution: true
         }
       ], 
@@ -754,12 +754,12 @@ gen_chemistry: {
         { 
           label: "Chemistry Textbook", 
           url: "/Chemistry/Books/Chemistry1-Textbook.pdf", 
-          coverUrl: "/BooksCover/Chemistry1-Textbook.png" 
+          coverUrl: "/BooksCover/Chemistry1-Textbook.webp" 
         },
         { 
           label: "Solutions Manual", 
           url: "/Chemistry/Books/Chemistry1-Textbook-Solutions.pdf", 
-          coverUrl: "/BooksCover/Chemistry1-Textbook.png", 
+          coverUrl: "/BooksCover/Chemistry1-Textbook.webp", 
           isSolution: true 
         }
       ], 
@@ -812,18 +812,18 @@ chem_lab: {
         { 
           label: "Chemistry Lab Manual", 
           url: "/Chemistry-Lab/Books/Chemistry-Lab-Manual.pdf", 
-          coverUrl: "/BooksCover/Chemistry-Lab-Manual.png" 
+          coverUrl: "/BooksCover/Chemistry-Lab-Manual.webp" 
         },
         { 
           label: "Solutions - Dr. Reem", 
           url: "/Chemistry-Lab/Books/Solutions-Manual-Dr-Reem.pdf", 
-          coverUrl: "/BooksCover/Chemistry-Lab-Manual.png", 
+          coverUrl: "/BooksCover/Chemistry-Lab-Manual.webp", 
           isSolution: true 
         },
         { 
           label: "Solutions - Dr. Heba", 
           url: "/Chemistry-Lab/Books/Solutions-Manual-Dr-Heba.pdf", 
-          coverUrl: "/BooksCover/Chemistry-Lab-Manual.png", 
+          coverUrl: "/BooksCover/Chemistry-Lab-Manual.webp", 
           isSolution: true 
         }
       ], 
@@ -872,12 +872,12 @@ cpp: {
         { 
           label: "C++ Course Book", 
           url: "/CPP/books/cpp-course-book.pdf", 
-          coverUrl: "/BooksCover/cpp-course-book.png" 
+          coverUrl: "/BooksCover/cpp-course-book.webp" 
         },
         { 
           label: "C++ How to Program (7th Ed)", 
           url: "/CPP/books/cpp-how-to-program-7th-edition.pdf", 
-          coverUrl: "/BooksCover/cpp-how-to-program-7th-edition.png" 
+          coverUrl: "/BooksCover/cpp-how-to-program-7th-edition.webp" 
         }
       ], 
       videos: [
@@ -909,12 +909,12 @@ cpp: {
         { 
           label: "Digital Design 5th Edition", 
           url: "/digital logic design/books/dl_book_01.pdf", 
-          coverUrl: "/BooksCover/dl_book_01.png" 
+          coverUrl: "/BooksCover/dl_book_01.webp" 
         },
         { 
           label: "Solutions Manual (5th Ed)", 
           url: "/digital logic design/books/dl_book_02.pdf", 
-          coverUrl: "/BooksCover/dl_book_01.png", 
+          coverUrl: "/BooksCover/dl_book_01.webp", 
           isSolution: true 
         }
       ], 
@@ -962,22 +962,22 @@ linear_algebra: {
         { 
           label: "Linear Algebra (Anton 12th Edition)", 
           url: "/linear/Books/Linear-Algebra-Anton-12th-Edition.pdf", 
-          coverUrl: "/BooksCover/Linear-Algebra-Anton-12th-Edition.png" 
+          coverUrl: "/BooksCover/Linear-Algebra-Anton-12th-Edition.webp" 
         },
         { 
           label: "Linear Algebra (Kolman 8th Edition - Spanish)", 
           url: "/linear/Books/Linear-Algebra-Kolman-8th-Edition-Spanish.pdf", 
-          coverUrl: "/BooksCover/Linear-Algebra-Kolman-8th-Edition-Spanish.png" 
+          coverUrl: "/BooksCover/Linear-Algebra-Kolman-8th-Edition-Spanish.webp" 
         },
         { 
           label: "Manga Guide to Linear Algebra", 
           url: "/linear/Books/Linear-Algebra-Manga-Guide.pdf", 
-          coverUrl: "/BooksCover/Linear-Algebra-Manga-Guide.png" 
+          coverUrl: "/BooksCover/Linear-Algebra-Manga-Guide.webp" 
         },
         { 
           label: "Linear Algebra (Strang 4th Edition)", 
           url: "/linear/Books/Linear-Algebra-Strang-4th-Edition.pdf", 
-          coverUrl: "/BooksCover/Linear-Algebra-Strang-4th-Edition.png" 
+          coverUrl: "/BooksCover/Linear-Algebra-Strang-4th-Edition.webp" 
         }
       ],
       
@@ -1018,12 +1018,12 @@ machine_components: {
         { 
           label: "Machines and Mechanisms 4th Edition", 
           url: "/machine components/books/Book_Machines-and-Mechanisms_4th-Edition.pdf", 
-          coverUrl: "/BooksCover/Book_Machines-and-Mechanisms_4th-Edition.png" 
+          coverUrl: "/BooksCover/Book_Machines-and-Mechanisms_4th-Edition.webp" 
         },
         { 
           label: "Solutions Manual Machines and Mechanisms 4th Edition", 
           url: "/machine components/books/Book_Solutions-Manual_Machines-and-Mechanisms_4th-Edition.pdf", 
-          coverUrl: "/BooksCover/Book_Machines-and-Mechanisms_4th-Edition.png",
+          coverUrl: "/BooksCover/Book_Machines-and-Mechanisms_4th-Edition.webp",
           isSolution: true
         }
       ], 
@@ -1059,52 +1059,52 @@ machine_components: {
         { 
           label: "Analysis of Electrical Electronic Circuits", 
           url: "/Circuit_1/books/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.pdf",
-          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.png",
+          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.webp",
           isArabic: true
         },
         { 
           label: "Solutions Manual (Arabic)", 
           url: "/Circuit_1/books/Book_Solutions_Analysis_of_Electrical_Electronic_Circuits_Arabic.pdf",
-          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.png",
+          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.webp",
           isArabic: true,
           isSolution: true 
         },
         { 
           label: "Fundamentals of Circuits 7th Ed", 
           url: "/Circuit_1/books/Book_Fundamentals_of_Circuits_7th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.png"
+          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.webp"
         },
         { 
           label: "Solutions Manual (7th Ed)", 
           url: "/Circuit_1/books/Book_Solutions_Fundamentals_of_Circuits_7th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.png",
+          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.webp",
           isSolution: true 
         },
         { 
           label: "Engineering Circuit Analysis 9th Ed", 
           url: "/Circuit_1/books/Book_Engineering_Circuit_Analysis_9th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.png"
+          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.webp"
         },
         { 
           label: "Solutions Manual (9th Ed)", 
           url: "/Circuit_1/books/Book_Solutions_Engineering_Circuit_Analysis_9th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.png",
+          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.webp",
           isSolution: true 
         },
         { 
           label: "Electric Circuits 11th Edition", 
           url: "/Circuit_1/books/Book_Electric_Circuits_11th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Electric_Circuits_11th_Edition.png"
+          coverUrl: "/BooksCover/Book_Electric_Circuits_11th_Edition.webp"
         },
         { 
           label: "Electronics Fundamentals 8th Ed", 
           url: "/Circuit_1/books/Book_Electronics_Fundamentals_Circuits_Devices_Applications_8th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Electronics_Fundamentals_Circuits_Devices_Applications_8th_Edition.png"
+          coverUrl: "/BooksCover/Book_Electronics_Fundamentals_Circuits_Devices_Applications_8th_Edition.webp"
         },
         { 
           label: "Introductory Circuit Analysis 13th Ed", 
           url: "/Circuit_1/books/Book_Introductory_Circuit_Analysis_13th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Introductory_Circuit_Analysis_13th_Edition.png"
+          coverUrl: "/BooksCover/Book_Introductory_Circuit_Analysis_13th_Edition.webp"
         }
       ], 
       
@@ -1170,52 +1170,52 @@ machine_components: {
         { 
           label: "Analysis of Electrical Electronic Circuits", 
           url: "/Circuit_1/books/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.pdf",
-          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.png",
+          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.webp",
           isArabic: true
         },
         { 
           label: "Solutions Manual (Arabic)", 
           url: "/Circuit_1/books/Book_Solutions_Analysis_of_Electrical_Electronic_Circuits_Arabic.pdf",
-          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.png",
+          coverUrl: "/BooksCover/Book_Analysis_of_Electrical_Electronic_Circuits_Arabic.webp",
           isArabic: true,
           isSolution: true 
         },
         { 
           label: "Fundamentals of Circuits 7th Ed", 
           url: "/Circuit_1/books/Book_Fundamentals_of_Circuits_7th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.png"
+          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.webp"
         },
         { 
           label: "Solutions Manual (7th Ed)", 
           url: "/Circuit_1/books/Book_Solutions_Fundamentals_of_Circuits_7th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.png",
+          coverUrl: "/BooksCover/Book_Fundamentals_of_Circuits_7th_Edition.webp",
           isSolution: true 
         },
         { 
           label: "Engineering Circuit Analysis 9th Ed", 
           url: "/Circuit_1/books/Book_Engineering_Circuit_Analysis_9th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.png"
+          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.webp"
         },
         { 
           label: "Solutions Manual (9th Ed)", 
           url: "/Circuit_1/books/Book_Solutions_Engineering_Circuit_Analysis_9th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.png",
+          coverUrl: "/BooksCover/Book_Engineering_Circuit_Analysis_9th_Edition.webp",
           isSolution: true 
         },
         { 
           label: "Electric Circuits 11th Edition", 
           url: "/Circuit_1/books/Book_Electric_Circuits_11th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Electric_Circuits_11th_Edition.png"
+          coverUrl: "/BooksCover/Book_Electric_Circuits_11th_Edition.webp"
         },
         { 
           label: "Electronics Fundamentals 8th Ed", 
           url: "/Circuit_1/books/Book_Electronics_Fundamentals_Circuits_Devices_Applications_8th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Electronics_Fundamentals_Circuits_Devices_Applications_8th_Edition.png"
+          coverUrl: "/BooksCover/Book_Electronics_Fundamentals_Circuits_Devices_Applications_8th_Edition.webp"
         },
         { 
           label: "Introductory Circuit Analysis 13th Ed", 
           url: "/Circuit_1/books/Book_Introductory_Circuit_Analysis_13th_Edition.pdf",
-          coverUrl: "/BooksCover/Book_Introductory_Circuit_Analysis_13th_Edition.png"
+          coverUrl: "/BooksCover/Book_Introductory_Circuit_Analysis_13th_Edition.webp"
         }
       ], 
       
@@ -1285,12 +1285,12 @@ machine_components: {
         { 
           label: "Signals and Systems 2nd Ed (Schaum Outline)", 
           url: "/Signal/books/Signals and Systems 2nd Edition - Schaum Outline_compressed.pdf",
-          coverUrl: "/BooksCover/Signals and Systems 2nd Edition - Schaum Outline_compressed.png" 
+          coverUrl: "/BooksCover/Signals and Systems 2nd Edition - Schaum Outline_compressed.webp" 
         },
         { 
           label: "Signals and Systems 2nd Ed (Alan V. Oppenheim)", 
           url: "/Signal/books/Signals and Systems 2nd Edition - alan v_compressed.pdf", 
-          coverUrl: "/BooksCover/Signals and Systems 2nd Edition - alan v_compressed.png" 
+          coverUrl: "/BooksCover/Signals and Systems 2nd Edition - alan v_compressed.webp" 
         }
       ],
       
@@ -1345,18 +1345,18 @@ machine_components: {
         { 
           label: "Data Communication and Networking", 
           url: "/communication/Books/Book_Data_Communication_and_Networking.pdf",
-          coverUrl: "/BooksCover/Data-Communications-And-Networking.png" 
+          coverUrl: "/BooksCover/Data-Communications-And-Networking.webp" 
         },
         { 
           label: "Solutions Manual", 
           url: "/communication/Books/Book_Solutions_Data_Communication_and_Networking.pdf",
-          coverUrl: "/BooksCover/Data-Communications-And-Networking.png",
+          coverUrl: "/BooksCover/Data-Communications-And-Networking.webp",
           isSolution: true 
         },
         { 
           label: "Data and Computer Communications", 
           url: "/communication/Books/Book_Data_and_Computer_Communications.pdf",
-          coverUrl: "/BooksCover/Data-and-Computer-Communications-tenth-edition.png" 
+          coverUrl: "/BooksCover/Data-and-Computer-Communications-tenth-edition.webp" 
         }
       ], 
       
@@ -1450,12 +1450,12 @@ control: {
         { 
           label: "Modern Control Engineering (Ogata)", 
           url: "/control/books/Book_Modern-Control-Engineering_Ogata.pdf", 
-          coverUrl: "/BooksCover/Book_Modern-Control-Engineering_Ogata.png" 
+          coverUrl: "/BooksCover/Book_Modern-Control-Engineering_Ogata.webp" 
         },
         { 
           label: "Solutions Manual (Ogata)", 
           url: "/control/books/Book_Solutions-Manual_Modern-Control-Engineering_Ogata.pdf", 
-          coverUrl: "/BooksCover/Book_Modern-Control-Engineering_Ogata.png",
+          coverUrl: "/BooksCover/Book_Modern-Control-Engineering_Ogata.webp",
           isSolution: true
         }
       ], 
@@ -1498,7 +1498,7 @@ control_lab: {
         { 
           label: "Control System Lab Manual", 
           url: "/Control Lab/books/control-system-lab-manual.pdf", 
-          coverUrl: "/BooksCover/control-system-lab-manual.png" 
+          coverUrl: "/BooksCover/control-system-lab-manual.webp" 
         }
       ], 
       summaries: [
@@ -1541,12 +1541,12 @@ control_lab: {
         { 
           label: "Electronic Devices and Circuit Theory 11th Ed", 
           url: "/electronics1/books/electronics_devices_circuit_theory_11th_edition.pdf", 
-          coverUrl: "/BooksCover/electronics_devices_circuit_theory_11th_edition.png" 
+          coverUrl: "/BooksCover/electronics_devices_circuit_theory_11th_edition.webp" 
         },
         { 
           label: "Solutions Manual (11th Ed)", 
           url: "/electronics1/books/electronics_devices_circuit_theory_11th_edition_solutions.pdf", 
-          coverUrl: "/BooksCover/electronics_devices_circuit_theory_11th_edition.png", 
+          coverUrl: "/BooksCover/electronics_devices_circuit_theory_11th_edition.webp", 
           isSolution: true 
         }
       ], 
@@ -1595,7 +1595,7 @@ electronics_1_lab: {
         { 
           label: "Electronics Lab Manual (2021)", 
           url: "/Electronics Lab/books/electronics-lab-manual-2021.pdf",
-          coverUrl: "/BooksCover/electronics-lab-manual-2021.png"
+          coverUrl: "/BooksCover/electronics-lab-manual-2021.webp"
         }
       ], 
       summaries: [
@@ -1626,22 +1626,22 @@ power_electronics: {
         { 
           label: "Power Electronics Converters Applications and Design", 
           url: "/power/books/Book_Power-Electronics_Converters-Applications-and-Design.pdf", 
-          coverUrl: "/BooksCover/Book_Power-Electronics_Converters-Applications-and-Design.png" 
+          coverUrl: "/BooksCover/Book_Power-Electronics_Converters-Applications-and-Design.webp" 
         },
         { 
           label: "Power Electronics Daniel W Hart", 
           url: "/power/books/Book_Power-Electronics_Daniel-W-Hart.pdf", 
-          coverUrl: "/BooksCover/Book_Power-Electronics_Daniel-W-Hart.png" 
+          coverUrl: "/BooksCover/Book_Power-Electronics_Daniel-W-Hart.webp" 
         },
         { 
           label: "Power Electronics Handbook Muhammad H Rashid", 
           url: "/power/books/Book_Power-Electronics-Handbook_Muhammad-H-Rashid.pdf", 
-          coverUrl: "/BooksCover/Book_Power-Electronics-Handbook_Muhammad-H-Rashid.png" 
+          coverUrl: "/BooksCover/Book_Power-Electronics-Handbook_Muhammad-H-Rashid.webp" 
         },
         { 
           label: "Power Semiconductor Circuits Dewan Straughen", 
           url: "/power/books/Book_Power-Semiconductor-Circuits_Dewan-Straughen.pdf", 
-          coverUrl: "/BooksCover/Book_Power-Semiconductor-Circuits_Dewan-Straughen.png" 
+          coverUrl: "/BooksCover/Book_Power-Semiconductor-Circuits_Dewan-Straughen.webp" 
         }
       ], 
       summaries: [
@@ -1703,23 +1703,23 @@ power_electronics: {
         { 
           label: "Electric Machinery Fundamentals 4th Edition", 
           url: "/electric-machines-1/books/01_electric-machinery-fundamentals-4th-edition.pdf", 
-          coverUrl: "/BooksCover/01_electric-machinery-fundamentals-4th-edition.png" 
+          coverUrl: "/BooksCover/01_electric-machinery-fundamentals-4th-edition.webp" 
         },
         { 
           label: "Solutions Manual (Fundamentals 4th Ed)", 
           url: "/electric-machines-1/books/04_solutions-of-electric-machinery-fundamentals-4th-edition.pdf", 
-          coverUrl: "/BooksCover/01_electric-machinery-fundamentals-4th-edition.png", 
+          coverUrl: "/BooksCover/01_electric-machinery-fundamentals-4th-edition.webp", 
           isSolution: true 
         },
         { 
           label: "Principles of Electric Machines and Power Electronics", 
           url: "/electric-machines-1/books/02_principles-of-electric-machines-and-power-electronics-3rd-edition.pdf", 
-          coverUrl: "/BooksCover/02_principles-of-electric-machines-and-power-electronics-3rd-edition.png" 
+          coverUrl: "/BooksCover/02_principles-of-electric-machines-and-power-electronics-3rd-edition.webp" 
         },
         { 
           label: "Electromagnetic and Electromechanical Machines", 
           url: "/electric-machines-1/books/03_electromagnetic-and-electromechanical-machines-3rd-edition.pdf", 
-          coverUrl: "/BooksCover/03_electromagnetic-and-electromechanical-machines-3rd-edition.png" 
+          coverUrl: "/BooksCover/03_electromagnetic-and-electromechanical-machines-3rd-edition.webp" 
         }
       ], 
       summaries: [
@@ -1771,17 +1771,17 @@ power_electronics: {
         { 
           label: "Ourdev PLC Book", 
           url: "/plc/books/plc_book_01_ourdev.pdf", 
-          coverUrl: "/BooksCover/plc_book_01_ourdev.png" 
+          coverUrl: "/BooksCover/plc_book_01_ourdev.webp" 
         },
         { 
           label: "Process Control Instrumentation Technology", 
           url: "/plc/books/plc_book_02_process_control_instrumentation_technology.pdf", 
-          coverUrl: "/BooksCover/plc_book_02_process_control_instrumentation_technology.png" 
+          coverUrl: "/BooksCover/plc_book_02_process_control_instrumentation_technology.webp" 
         },
         { 
           label: "Programmable Logic Controllers - Petruzella", 
           url: "/plc/books/plc_book_03_programmable_logic_controllers_petruzella.pdf", 
-          coverUrl: "/BooksCover/plc_book_03_programmable_logic_controllers_petruzella.png" 
+          coverUrl: "/BooksCover/plc_book_03_programmable_logic_controllers_petruzella.webp" 
         }
       ], 
       summaries: [
@@ -1817,7 +1817,7 @@ plc_lab: {
         { 
           label: "PLC Lab Manual", 
           url: "/PLC Lab/books/plc-lab-manual.pdf", 
-          coverUrl: "/BooksCover/plc-lab-manual.png" 
+          coverUrl: "/BooksCover/plc-lab-manual.webp" 
         }
       ], 
       summaries: [
@@ -1844,12 +1844,12 @@ plc_lab: {
         { 
           label: "Assembly Language for x86 Processors 7th Ed", 
           url: "/assembly/books/Assembly_Language_for_x86_Processors_7th_Edition.pdf", 
-          coverUrl: "/BooksCover/Assembly_Language_for_x86_Processors_7th_Edition.png" 
+          coverUrl: "/BooksCover/Assembly_Language_for_x86_Processors_7th_Edition.webp" 
         },
         { 
           label: "Assembly Language Step-by-Step (Linux) 3rd Ed", 
           url: "/assembly/books/Assembly_Language_Step_by_Step_Programming_with_Linux_3rd_Edition.pdf", 
-          coverUrl: "/BooksCover/Assembly_Language_Step_by_Step_Programming_with_Linux_3rd_Edition.png" 
+          coverUrl: "/BooksCover/Assembly_Language_Step_by_Step_Programming_with_Linux_3rd_Edition.webp" 
         }
       ], 
       
@@ -2003,7 +2003,7 @@ industrial_processes: {
         { 
           label: "Process Control Textbook", 
           url: "/process control/books/process-control-lecture-notes.pdf", 
-          coverUrl: "/BooksCover/process-control-lecture-notes.png" 
+          coverUrl: "/BooksCover/process-control-lecture-notes.webp" 
         }
       ], 
       summaries: [], 
@@ -2036,7 +2036,7 @@ industrial_processes_Lab: {
         { 
           label: "Process Control Lab Manual", 
           url: "/Process Control Lab/books/process-control-lab-manual.pdf", 
-          coverUrl: "/BooksCover/process-control-lab-manual.png" 
+          coverUrl: "/BooksCover/process-control-lab-manual.webp" 
         }
       ], 
       summaries: [
@@ -2110,17 +2110,17 @@ electric_drive: {
         { 
           label: "Hybrid Vehicles Freebook", 
           url: "/Electrical-Drives/books/Hybrid-Vehicles-Freebook.pdf",
-          coverUrl: "/BooksCover/Hybrid-Vehicles-Freebook.png"
+          coverUrl: "/BooksCover/Hybrid-Vehicles-Freebook.webp"
         },
         { 
           label: "Power Electronics Thyristor Controlled Motor Drives", 
           url: "/Electrical-Drives/books/Power-Electronics-Thyristor-Controlled-Motor-Drives.pdf",
-          coverUrl: "/BooksCover/Power-Electronics-Thyristor-Controlled-Motor-Drives.png"
+          coverUrl: "/BooksCover/Power-Electronics-Thyristor-Controlled-Motor-Drives.webp"
         },
         { 
           label: "Power Semiconductor Controlled Drives", 
           url: "/Electrical-Drives/books/Power-Semiconductor-Controlled-Drives.pdf",
-          coverUrl: "/BooksCover/Power-Semiconductor-Controlled-Drives.png"
+          coverUrl: "/BooksCover/Power-Semiconductor-Controlled-Drives.webp"
         }
       ], 
       summaries: [
@@ -2198,12 +2198,12 @@ renewable_energy: {
         { 
           label: "Advances in Renewable Energies", 
           url: "/11-Renewable energy/books/textbook-advances-renewable-energies.pdf", 
-          coverUrl: "/BooksCover/textbook-advances-renewable-energies.png" 
+          coverUrl: "/BooksCover/textbook-advances-renewable-energies.webp" 
         },
         { 
           label: "Renewable and Efficient Electric Power Systems", 
           url: "/11-Renewable energy/books/textbook-renewable-efficient-power-systems.pdf", 
-          coverUrl: "/BooksCover/textbook-renewable-efficient-power-systems.png" 
+          coverUrl: "/BooksCover/textbook-renewable-efficient-power-systems.webp" 
         }
       ], 
       summaries: [], 
@@ -2221,17 +2221,17 @@ mems: {
         { 
           label: "Foundations of MEMS", 
           url: "/MEMS/Foundations of MEMS.pdf", 
-          coverUrl: "/BooksCover/Foundations of MEMS.png" 
+          coverUrl: "/BooksCover/Foundations of MEMS.webp" 
         },
         { 
           label: "MEMS and Microsystems Design and Manufacture", 
           url: "/MEMS/MEMS and Microsystems Design and Manufacture.pdf", 
-          coverUrl: "/BooksCover/MEMS and Microsystems Design and Manufacture.png" 
+          coverUrl: "/BooksCover/MEMS and Microsystems Design and Manufacture.webp" 
         },
         { 
           label: "Microsystem Technology and Microrobotics", 
           url: "/MEMS/Microsystem Technology and Microrobotics.pdf", 
-          coverUrl: "/BooksCover/Microsystem Technology and Microrobotics.png" 
+          coverUrl: "/BooksCover/Microsystem Technology and Microrobotics.webp" 
         }
       ], 
       summaries: [], 
@@ -2292,17 +2292,17 @@ mems: {
         { 
           label: "Protection Relaying Principles and Applications", 
           url: "/protection/books/protection_relaying_principles_and_applications.pdf",
-          coverUrl: "/BooksCover/protection_relaying_principles_and_applications.png" 
+          coverUrl: "/BooksCover/protection_relaying_principles_and_applications.webp" 
         },
         { 
           label: "Electrical Installation Handbook (Protection & Control)", 
           url: "/protection/books/electrical_installation_handbook_protection_control_electrical_devices.pdf",
-          coverUrl: "/BooksCover/electrical_installation_handbook_protection_control_electrical_devices.png" 
+          coverUrl: "/BooksCover/electrical_installation_handbook_protection_control_electrical_devices.webp" 
         },
         { 
           label: "Handbook for Protection Engineers", 
           url: "/protection/books/handbook_for_protection_engineers.pdf",
-          coverUrl: "/BooksCover/handbook_for_protection_engineers.png" 
+          coverUrl: "/BooksCover/handbook_for_protection_engineers.webp" 
         }
       ], 
       
@@ -2429,7 +2429,7 @@ eng_economy: {
         { 
           label: "Engineering Economy Textbook", 
           url: "/Engineering Economy/books/textbook-engineering-economy.pdf", 
-          coverUrl: "/BooksCover/textbook-engineering-economy.png" 
+          coverUrl: "/BooksCover/textbook-engineering-economy.webp" 
         }
       ], 
       summaries: [
@@ -2466,7 +2466,7 @@ eng_economy: {
         { 
           label: "كتاب المادة", 
           url: "/Military Sciences/books/textbook-military-science.pdf", 
-          coverUrl: "/BooksCover/textbook-military-science.png",
+          coverUrl: "/BooksCover/textbook-military-science.webp",
           isArabic: true 
         }
       ], 

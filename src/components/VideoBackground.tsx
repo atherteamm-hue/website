@@ -23,6 +23,12 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
   // Set once the video has been primed (played briefly and paused on a
   // decoded frame).
   const primedRef = useRef<boolean>(false);
+  // The video is not fetched on first load. The poster is pixel-identical to
+  // the first frame, so we can paint it immediately and only start the video
+  // request once the browser is idle (or the visitor starts interacting).
+  const loadedRef = useRef<boolean>(false);
+  // Mirrors `posterOnly` so callbacks never read a stale state value.
+  const posterOnlyRef = useRef<boolean>(false);
   // Set when the video can't be used (unsupported codec, failed request,
   // reduced motion). The poster layer then becomes the visible background.
   const [posterOnly, setPosterOnly] = useState(false);
@@ -62,30 +68,60 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
     }
   }, []);
 
-  useEffect(() => {
+  // Start the (small) video download only when it will not compete with the
+  // critical path: on first interaction, or when the main thread goes idle.
+  // Until then the poster is shown, which looks exactly like the first frame.
+  const ensureLoaded = useCallback(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || loadedRef.current || posterOnlyRef.current) return;
 
-    // Safari/iOS often reject the first play() before the media is ready,
-    // so retry once the data is actually available.
-    primePlayback();
-    video.addEventListener('canplay', primePlayback, { once: true });
+    // Respect the OS "reduce motion" setting and data-saving modes: keep the
+    // still frame and never spend bytes on the video.
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const connection = (navigator as Navigator & {
+      connection?: { saveData?: boolean; effectiveType?: string };
+    }).connection;
+    const slowConnection =
+      connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g';
+    if (reduceMotion || connection?.saveData || slowConnection) {
+      posterOnlyRef.current = true;
+      setPosterOnly(true);
+      return;
+    }
+
+    loadedRef.current = true;
+    try {
+      video.preload = 'auto';
+      video.load();
+      primePlayback();
+      // Safari/iOS often reject the play() issued before the media is ready,
+      // so retry once there is actual data.
+      video.addEventListener('canplay', primePlayback, { once: true });
+    } catch {
+      // The poster remains visible; there is nothing else to recover from.
+    }
 
     // Safety net: if the media data never gets far enough for 'canplay' (a
     // very slow connection), stop the video anyway so it never plays on its
     // own in the background.
-    const stopTimer = window.setTimeout(() => {
+    window.setTimeout(() => {
       const current = videoRef.current;
       if (current && !current.paused) {
         primedRef.current = true;
         current.pause();
       }
     }, 2500);
+  }, [primePlayback]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
 
     // Respect the OS "reduce motion" setting: show the still frame instead.
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const applyMotionPreference = () => {
       if (motionQuery.matches) {
+        posterOnlyRef.current = true;
         video.pause();
         setPosterOnly(true);
       }
@@ -94,11 +130,28 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
     motionQuery.addEventListener('change', applyMotionPreference);
 
     return () => {
-      window.clearTimeout(stopTimer);
-      video.removeEventListener('canplay', primePlayback);
       motionQuery.removeEventListener('change', applyMotionPreference);
     };
-  }, [primePlayback]);
+  }, []);
+
+  useEffect(() => {
+    if (posterOnly || loadedRef.current) return;
+
+    let idleId: number | undefined;
+    let timeoutId: number | undefined;
+    const loadWhenIdle = () => ensureLoaded();
+
+    if (typeof window.requestIdleCallback === 'function') {
+      idleId = window.requestIdleCallback(loadWhenIdle, { timeout: 2500 });
+    } else {
+      timeoutId = window.setTimeout(loadWhenIdle, 1800);
+    }
+
+    return () => {
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+    };
+  }, [ensureLoaded, posterOnly]);
 
   // ── Seeking (scrubbing) ─────────────────────────────────────────────────
   const seekToTarget = useCallback(() => {
@@ -174,6 +227,9 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
 
   const updateTargetFromPointer = useCallback(
     (clientX: number) => {
+      // The first pointer movement is also the signal to start fetching the
+      // video, so scrubbing is ready by the time the visitor really commits.
+      ensureLoaded();
       const video = videoRef.current;
       if (!video) return;
       const dur = video.duration || durationRef.current || 4.0;
@@ -192,7 +248,7 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
 
       scheduleSeek();
     },
-    [scheduleSeek]
+    [ensureLoaded, scheduleSeek]
   );
 
   const handleMouseMove = useCallback(
@@ -313,7 +369,7 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
           }}
           muted
           playsInline
-          preload={dimmed ? 'metadata' : 'auto'}
+          preload="none"
           disablePictureInPicture
           disableRemotePlayback
           onLoadedMetadata={handleLoadedMetadata}

@@ -3,21 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ATHAR</title>
-    
+    <title>ATHAR — Advanced Technologies in Hardware, Automation, and Robotics</title>
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
 
-    <meta name="description" content="Full-screen hero landing page for creative agency Mainframe featuring mouse-scrubbed interactive video, A.R.I.A AI agent, and fluid typography." />
-    <meta property="og:title" content="Mainframe Creative Agency" />
-    <meta property="og:description" content="Full-screen hero landing page for creative agency Mainframe featuring mouse-scrubbed interactive video, A.R.I.A AI agent, and fluid typography." />
+    <meta name="description" content="ATHAR is a mechatronics engineering team building across industrial automation, robotics, and embedded systems. Explore our academic library, tools, and technical work." />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light" />
+    <meta property="og:title" content="ATHAR — Advanced Technologies in Hardware, Automation, and Robotics" />
+    <meta property="og:description" content="A mechatronics engineering team building across industrial automation, robotics, and embedded systems." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://atharteam.org/" />
+    <meta property="og:image" content="https://atharteam.org/mainframe-aria-poster.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    
+
     <!-- Fonts: self-hosted woff2 (see src/index.css). Preloaded so they
          download in parallel with the CSS instead of after a CDN round trip. -->
     <link rel="preload" href="/fonts/helvetica-now-display-w01-rg.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/helvetica-now-display-medium.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- The hero poster is the first paint on every page. Preloading it lets
+         the browser start it alongside the CSS instead of discovering it
+         only after React has mounted the background component. -->
+    <link rel="preload" href="/mainframe-aria-poster.jpg" as="image" fetchpriority="high" />
   </head>
   <body class="bg-white text-black antialiased selection:bg-black selection:text-white">
     <div id="root"></div>

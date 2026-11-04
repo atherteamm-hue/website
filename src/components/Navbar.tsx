@@ -36,11 +36,11 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           onKeyDown={(e) => {
             if (e.key === 'Enter') handleNavClick('home');
           }}
-          aria-label="Mainframe Home"
+          aria-label="ATHAR home"
         >
           <img
             src={logoImg}
-            alt="Mainframe Logo"
+            alt="ATHAR Logo"
             width={1024}
             height={1024}
             className="h-7 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
@@ -120,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
           onClick={() => handleNavClick('home')}
           className="flex items-center gap-3 text-left text-[32px] font-medium text-black hover:opacity-60 transition-opacity cursor-pointer bg-transparent border-0 p-0"
         >
-          <img src={logoImg} alt="Mainframe Logo" width={1024} height={1024} className="h-9 w-auto object-contain" />
+          <img src={logoImg} alt="ATHAR Logo" width={1024} height={1024} className="h-9 w-auto object-contain" />
           <span>Home</span>
         </button>
         {navLinks.map((item) => (
