@@ -589,11 +589,61 @@ physics_1: {
     } 
   },
   
-  physics_lab: { 
+physics_lab: { 
     coords: { x: 62.55, y: 14.01, w: 6.73, h: 6.21 }, 
     content: {
-      titleEn: "Physics Lab", titleAr: "مختبر فيزياء", credits: 1,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Physics Lab", titleAr: "مختبر فيزياء عامة", credits: 1,
+      books: [
+        { 
+          label: "Solved Lab Manual All Experiments", 
+          url: "/Physics-Lab/Books/Solved-Lab-Manual-All-Experiments.pdf", 
+          coverUrl: "/BooksCover/Physics-lab.png",
+          isSolution: true
+        },
+        { 
+          label: "Solved Lab Reports Final", 
+          url: "/Physics-Lab/Books/Solved-Lab-Reports-Final.pdf", 
+          coverUrl: "/BooksCover/Physics-lab.png",
+          isSolution: true
+        },
+        { 
+          label: "Solved Lab Reports Mid", 
+          url: "/Physics-Lab/Books/Solved-Lab-Reports-Mid.pdf", 
+          coverUrl: "/BooksCover/Physics-lab.png",
+          isSolution: true
+        }
+      ], 
+      summaries: [
+        { label: "Experiments Explained Dr Anwar Al Shishani", url: "/Physics-Lab/Summaries/Experiments-Explained-Dr-Anwar-Al-Shishani.pdf" },
+        { label: "Experiments Explained Moh Ali", url: "/Physics-Lab/Summaries/Experiments-Explained-Moh-Ali.pdf" },
+        { label: "Formulas Summary Short", url: "/Physics-Lab/Summaries/Formulas-Summary-Short.pdf" },
+        { label: "Formulas Summary", url: "/Physics-Lab/Summaries/Formulas-Summary.pdf" },
+        { label: "Summary Dr Anwar Al Shishani", url: "/Physics-Lab/Summaries/Summary-Dr-Anwar-Al-Shishani.pdf" },
+        { label: "Summary Hussam Zamel", url: "/Physics-Lab/Summaries/Summary-Hussam-Zamel.pdf" }
+      ], 
+      videos: [
+        { label: "ENG.Husam zamel", url: "https://youtube.com/playlist?list=PL1GsKyC4pE5V61WBjFGUbVRFSiaAHmkYL&si=IzvI6VmHnL9FEZ7u" }
+      ], 
+      mid: [
+        { label: "2026", url: "/Physics-Lab/Past-Papers/Mid/Mid-Paper-Scan-2026.pdf" },
+        { label: "2023", url: "/Physics-Lab/Past-Papers/Mid/Mid-2023-Term2.pdf" },
+        { label: "2024", url: "/Physics-Lab/Past-Papers/Mid/Mid-2024-Questions.pdf" },
+        { label: "2022 ", url: "/Physics-Lab/Past-Papers/Mid/Mid-2022-Term2.pdf" },
+        { label: "Mid exam", url: "/Physics-Lab/Past-Papers/Mid/Mid-Lab-1B.pdf" },
+        { label: "Mid exam", url: "/Physics-Lab/Past-Papers/Mid/Mid-Paper-New.pdf" },
+        { label: "Screens", url: "/Physics-Lab/Past-Papers/Mid/Mid-Screens-Part-1.pdf" },
+        { label: "Screens", url: "/Physics-Lab/Past-Papers/Mid/Mid-Screens-Part-2.pdf" },
+        { label: "Screens", url: "/Physics-Lab/Past-Papers/Mid/Mid-Screens.pdf" }
+      ], 
+      final: [
+        { label: "2022", url: "/Physics-Lab/Past-Papers/Final/Final-2022-Term2.pdf" },
+        { label: "Final Exam", url: "/Physics-Lab/Past-Papers/Final/Final-Exam-A.pdf" },
+        { label: "Final Exam", url: "/Physics-Lab/Past-Papers/Final/Final-New.pdf" },
+        { label: "Online", url: "/Physics-Lab/Past-Papers/Final/Final-Online.pdf" },
+        { label: "Final Questions", url: "/Physics-Lab/Past-Papers/Final/Final-Questions-Solved.pdf" },
+        { label: "Screens", url: "/Physics-Lab/Past-Papers/Final/Final-Screens-1.pdf" },
+        { label: "Screens", url: "/Physics-Lab/Past-Papers/Final/Final-Screens-2.pdf" }
+      ]
     } 
   },
   
@@ -1282,11 +1332,38 @@ linear_algebra: {
     } 
   },
   
-  control_lab: { 
+control_lab: { 
     coords: { x: 71.77, y: 48.03, w: 6.61, h: 6.37 }, 
     content: {
-      titleEn: "Control Lab", titleAr: "مختبر تحكم", credits: 1,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      titleEn: "Control Lab", titleAr: "مختبر أنظمة التحكم", credits: 1,
+      books: [
+        { 
+          label: "Control System Lab Manual", 
+          url: "/Control Lab/books/control-system-lab-manual.pdf", 
+          coverUrl: "/BooksCover/control-system-lab-manual.png" 
+        }
+      ], 
+      summaries: [
+        { label: "Hilmi Nazzal Booklet", url: "/Control Lab/summarize/hilmi-nazzal-booklet-3rd-edition.pdf" },
+        { label: "Lab Summary New", url: "/Control Lab/summarize/lab-summary-new.pdf" }
+      ], 
+      videos: [], 
+      mid: [
+        { label:2024-2025", url: "/Control Lab/past-papers/mid/mid-2024-2025-solved.pdf" },
+        { label: "Mid Exam", url: "/Control Lab/past-papers/mid/mid-izd9-1.pdf" },
+        { label: "Mid Exam", url: "/Control Lab/past-papers/mid/mid-izd9-2.pdf" },
+        { label: "Mid Exam", url: "/Control Lab/past-papers/mid/mid-izd9-3.pdf" },
+        { label: "Mid Exam", url: "/Control Lab/past-papers/mid/mid-paper-1.pdf" },
+        { label: "Mid Exam", url: "/Control Lab/past-papers/mid/mid-paper-2.pdf" },
+        { label: "Mid Past Years", url: "/Control Lab/past-papers/mid/mid-past-years.pdf" }
+      ], 
+      final: [
+        { label: "2024-2025", url: "/Control Lab/past-papers/final/final-2024-2025-solved.pdf" },
+        { label: "Final Exam", url: "/Control Lab/past-papers/final/final-paper-1.pdf" },
+        { label: "Final Exam", url: "/Control Lab/past-papers/final/final-paper-2.pdf" },
+        { label: "Final Exam", url: "/Control Lab/past-papers/final/final-paper-3.pdf" },
+        { label: "Final Exam", url: "/Control Lab/past-papers/final/final-paper-4.pdf" }
+      ]
     } 
   },
   
@@ -1484,14 +1561,29 @@ linear_algebra: {
     } 
   },
   
-  plc_lab: { 
+plc_lab: { 
     coords: { x: 74.51, y: 81.7, w: 5.24, h: 6.6 }, 
     content: {
       titleEn: "PLC Lab", titleAr: "مختبر PLC", credits: 1,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "PLC Lab Manual", 
+          url: "/PLC Lab/books/plc-lab-manual.pdf", 
+          coverUrl: "/BooksCover/plc-lab-manual.png" 
+        }
+      ], 
+      summaries: [
+        { label: "Lab Reports", url: "/PLC Lab/summarize/lab-reports.pdf" },
+        { label: "Lab Summary", url: "/PLC Lab/summarize/lab-summary.pdf" },
+        { label: "Summary Mohammad Mahmoud", url: "/PLC Lab/summarize/summary-mohammad-mahmoud.pdf" }
+      ], 
+      videos: [], 
+      mid: [], 
+      final: [
+        { label: "Final Exam", url: "/PLC Lab/past-papers/final/final-electronic-exam.pdf" }
+      ]
     } 
   },
-  
   assembly: { 
     coords: { x: 26.01, y: 37.34, w: 5.71, h: 5.01 }, 
     content: {
@@ -1726,11 +1818,31 @@ renewable_energy: {
     } 
   },
   
-  mems: { 
+mems: { 
     coords: { x: 35.6, y: 88.07, w: 5.25, h: 5.46 }, 
     content: {
       titleEn: "MEMS", titleAr: "أنظمة كهروميكانيكية صغرية", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Foundations of MEMS", 
+          url: "/MEMS/Foundations of MEMS.pdf", 
+          coverUrl: "/BooksCover/Foundations of MEMS.png" 
+        },
+        { 
+          label: "MEMS and Microsystems Design and Manufacture", 
+          url: "/MEMS/MEMS and Microsystems Design and Manufacture.pdf", 
+          coverUrl: "/BooksCover/MEMS and Microsystems Design and Manufacture.png" 
+        },
+        { 
+          label: "Microsystem Technology and Microrobotics", 
+          url: "/MEMS/Microsystem Technology and Microrobotics.pdf", 
+          coverUrl: "/BooksCover/Microsystem Technology and Microrobotics.png" 
+        }
+      ], 
+      summaries: [], 
+      videos: [], 
+      mid: [], 
+      final: []
     } 
   },
   
