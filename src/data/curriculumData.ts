@@ -1737,7 +1737,13 @@ power_electronics: {
     coords: { x: 90.71, y: 35.75, w: 6.73, h: 6.37 }, 
     content: {
       titleEn: "Electrical Machines Lab", titleAr: "مختبر آلات كهربائية", credits: 1,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [],
+      summaries: [],
+      videos: [
+  { label: "Athar Team", url: "https://drive.google.com/drive/folders/1MN6r3Hz0wZwmX9Bbycb5fn7R6JkVT9dv?usp=drive_link" }
+], 
+      mid: [],
+      final: []
     } 
   },
   
