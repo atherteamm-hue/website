@@ -1324,11 +1324,51 @@ linear_algebra: {
     } 
   },
   
-  control: { 
+control: { 
     coords: { x: 63.32, y: 48.49, w: 5.25, h: 5.23 }, 
     content: {
       titleEn: "Control", titleAr: "أنظمة تحكم", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Modern Control Engineering (Ogata)", 
+          url: "/control/books/Book_Modern-Control-Engineering_Ogata.pdf", 
+          coverUrl: "/BooksCover/Book_Modern-Control-Engineering_Ogata.png" 
+        },
+        { 
+          label: "Solutions Manual (Ogata)", 
+          url: "/control/books/Book_Solutions-Manual_Modern-Control-Engineering_Ogata.pdf", 
+          coverUrl: "/BooksCover/Book_Modern-Control-Engineering_Ogata.png",
+          isSolution: true
+        }
+      ], 
+      summaries: [
+        { label: "Slides Control Systems 2022 October", url: "/control/summarize/Slides_Control-Systems_2022-October.pdf" },
+        { label: "Summary Control Systems MAE", url: "/control/summarize/Summary_Control-Systems_MAE.pdf" }
+      ], 
+      videos: [
+        { label: "MAE", url: "https://youtube.com/playlist?list=PLRNaExsfJ1qs6LF5rdDHq9w0S3YueJQwS&si=hQ0kp3VZRL_AMyiy" }
+      ], 
+      quizzes: [
+        {
+          label: "Quizzes",
+          type: 'folder',
+          items: [
+            { label: "Quiz 1", url: "/control/past papers/quizzes/Quiz_1.pdf" },
+            { label: "Quiz 2", url: "/control/past papers/quizzes/Quiz_2.pdf" },
+            { label: "Quiz 3", url: "/control/past papers/quizzes/Quiz_3.pdf" }
+          ]
+        }
+      ],
+      mid: [
+        { label: "2025", url: "/control/past papers/mid/Midterm_2025.pdf" },
+        { label: "2016", url: "/control/past papers/mid/Midterm_2016.pdf" },
+        { label: "MAE", url: "/control/past papers/mid/Midterm_Control-Systems_MAE.pdf" },
+        { label: "SPARK team", url: "/control/past papers/mid/Past-Years-Solved_Control-Systems_SPARK-Team.pdf" }
+      ], 
+      final: [
+        { label: "MAE", url: "/control/past papers/final/Final_Control-Systems_MAE.pdf" },
+        { label: "SPARK team", url: "/control/past papers/final/Past-Years-Solved_Control-Systems_SPARK-Team.pdf" }
+      ]
     } 
   },
   
@@ -1349,7 +1389,7 @@ control_lab: {
       ], 
       videos: [], 
       mid: [
-        { label:2024-2025", url: "/Control Lab/past-papers/mid/mid-2024-2025-solved.pdf" },
+        { label:"2024-2025", url: "/Control Lab/past-papers/mid/mid-2024-2025-solved.pdf" },
         { label: "Mid Exam", url: "/Control Lab/past-papers/mid/mid-izd9-1.pdf" },
         { label: "Mid Exam", url: "/Control Lab/past-papers/mid/mid-izd9-2.pdf" },
         { label: "Mid Exam", url: "/Control Lab/past-papers/mid/mid-izd9-3.pdf" },
@@ -1723,14 +1763,32 @@ industrial_processes: {
     } 
   },
   
-  industrial_processes_Lab: { 
+industrial_processes_Lab: { 
     coords: { x: 33.41, y: 37.33, w: 8.05, h: 6.55 }, 
     content: {
       titleEn: "Industrial Processes Lab", titleAr: "مختبر التجهيزات الصناعية والتحكم", credits: 1,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Process Control Lab Manual", 
+          url: "/Process Control Lab/books/process-control-lab-manual.pdf", 
+          coverUrl: "/BooksCover/process-control-lab-manual.png" 
+        }
+      ], 
+      summaries: [
+        { label: "Lab Summary", url: "/Process Control Lab/summarize/lab-summary.pdf" }
+      ], 
+      videos: [], 
+      mid: [
+        { label: "Mid Exam", url: "/Process Control Lab/past-papers/mid/mid-paper-page1.jpg" },
+        { label: "Mid Exam", url: "/Process Control Lab/past-papers/mid/mid-paper-page2.jpg" }
+      ], 
+      final: [
+        { label: "2026", url: "/Process Control Lab/past-papers/final/final-2026-page1-alt-photo.jpeg" },
+        { label: "2026", url: "/Process Control Lab/past-papers/final/final-2026-page1.jpeg" },
+        { label: "2026", url: "/Process Control Lab/past-papers/final/final-2026-page2.jpeg" }
+      ]
     } 
   },
-  
   eng_materials: { 
     coords: { x: 45.07, y: 54.76, w: 6.27, h: 6.82 }, 
     content: {
