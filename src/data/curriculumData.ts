@@ -1576,7 +1576,11 @@ electronics_1_lab: {
     content: {
       titleEn: "Electronics 1 Lab", titleAr: "مختبر إلكترونيات", credits: 1,
       books: [
-        { label: "Electronics Lab Manual (2021)", url: "/Electronics Lab/books/electronics-lab-manual-2021.pdf" }
+        { 
+          label: "Electronics Lab Manual (2021)", 
+          url: "/Electronics Lab/books/electronics-lab-manual-2021.pdf",
+          coverUrl: "/BooksCover/electronics-lab-manual-2021.png"
+        }
       ], 
       summaries: [
         { label: "Experiment Solutions", url: "/Electronics Lab/summarize/experiment-solutions.pdf" },
@@ -1587,13 +1591,13 @@ electronics_1_lab: {
       ], 
       videos: [], 
       mid: [
-        { label: "Mid 2019-2020", url: "/Electronics Lab/past-papers/mid/mid-2019-2020.pdf" },
-        { label: "Mid 2020-2021", url: "/Electronics Lab/past-papers/mid/mid-2020-2021.pdf" },
-        { label: "Mid paper", url: "/Electronics Lab/past-papers/mid/mid-paper.pdf" }
+        { label: "2019-2020", url: "/Electronics Lab/past-papers/mid/mid-2019-2020.pdf" },
+        { label: "2020-2021", url: "/Electronics Lab/past-papers/mid/mid-2020-2021.pdf" },
+        { label: "Mid Exam", url: "/Electronics Lab/past-papers/mid/mid-paper.pdf" }
       ], 
       final: [
-        { label: "Final 2020–2021", url: "/Electronics Lab/past-papers/final/final-2020-2021.pdf" },
-        { label: "Final Lab Electronics", url: "/Electronics Lab/past-papers/final/final-lab-electronics.pdf" }
+        { label: "2020–2021", url: "/Electronics Lab/past-papers/final/final-2020-2021.pdf" },
+        { label: "Final Exam", url: "/Electronics Lab/past-papers/final/final-lab-electronics.pdf" }
       ]
     } 
   },
@@ -2076,11 +2080,83 @@ industrial_processes_Lab: {
     } 
   },
   
-  electric_drive: { 
+electric_drive: { 
     coords: { x: 63.32, y: 89.34, w: 5.25, h: 5 }, 
     content: {
       titleEn: "Electric Drive", titleAr: "قيادة كهربائية", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Hybrid Vehicles Freebook", 
+          url: "/Electrical-Drives/books/Hybrid-Vehicles-Freebook.pdf",
+          coverUrl: "/BooksCover/Hybrid-Vehicles-Freebook.png"
+        },
+        { 
+          label: "Power Electronics Thyristor Controlled Motor Drives", 
+          url: "/Electrical-Drives/books/Power-Electronics-Thyristor-Controlled-Motor-Drives.pdf",
+          coverUrl: "/BooksCover/Power-Electronics-Thyristor-Controlled-Motor-Drives.png"
+        },
+        { 
+          label: "Power Semiconductor Controlled Drives", 
+          url: "/Electrical-Drives/books/Power-Semiconductor-Controlled-Drives.pdf",
+          coverUrl: "/BooksCover/Power-Semiconductor-Controlled-Drives.png"
+        }
+      ], 
+      summaries: [
+        { label: "Electric Drives Booklet SPARK Team", url: "/Electrical-Drives/Summaries/Electric-Drives-Booklet-SPARK-Team.pdf" },
+        { label: "Electric Drives Booklet", url: "/Electrical-Drives/Summaries/Electric-Drives-Booklet.pdf" },
+        { label: "Fundamentals of Electric Drives SPARK Team Duplicate", url: "/Electrical-Drives/Summaries/Fundamentals-of-Electric-Drives-SPARK-Team-Duplicate.pdf" },
+        { label: "Fundamentals of Electric Drives SPARK Team", url: "/Electrical-Drives/Summaries/Fundamentals-of-Electric-Drives-SPARK-Team.pdf" },
+        {
+          label: "Course Slides",
+          type: 'folder',
+          items: [
+            { label: "Unit 01 Concepts and Classification", url: "/Electrical-Drives/Summaries/Slides-Unit-01-Concepts-and-Classification.pdf" },
+            { label: "Unit 01A Loads Classification", url: "/Electrical-Drives/Summaries/Slides-Unit-01A-Loads-Classification.pdf" },
+            { label: "Unit 02 Multiquadrant Operation", url: "/Electrical-Drives/Summaries/Slides-Unit-02-Multiquadrant-Operation.pdf" },
+            { label: "Unit 02 Problems Multiquadrant Operation", url: "/Electrical-Drives/Summaries/Slides-Unit-02-Problems-Multiquadrant-Operation.pdf" },
+            { label: "Unit 02A Dynamics of Electric Drive", url: "/Electrical-Drives/Summaries/Slides-Unit-02A-Dynamics-of-Electric-Drive.pdf" },
+            { label: "Unit 03 Stability of Drive System", url: "/Electrical-Drives/Summaries/Slides-Unit-03-Stability-of-Drive-System.pdf" },
+            { label: "Unit 04 Transient Conditions", url: "/Electrical-Drives/Summaries/Slides-Unit-04-Transient-Conditions.pdf" },
+            { label: "Unit 05 Automatic Starting", url: "/Electrical-Drives/Summaries/Slides-Unit-05-Automatic-Starting.pdf" },
+            { label: "Unit 06 Heating and Cooling", url: "/Electrical-Drives/Summaries/Slides-Unit-06-Heating-and-Cooling.pdf" },
+            { label: "Unit 07 Determination of Power Ratings", url: "/Electrical-Drives/Summaries/Slides-Unit-07-Determination-of-Power-Ratings.pdf" },
+            { label: "Unit 09 Rectifier Fed DC Motor Speed Control", url: "/Electrical-Drives/Summaries/Slides-Unit-09-Rectifier-Fed-DC-Motor-Speed-Control.pdf" },
+            { label: "Unit 10 Static Characteristics of AC Motors", url: "/Electrical-Drives/Summaries/Slides-Unit-10-Static-Characteristics-of-AC-Motors.pdf" },
+            { label: "Unit 10A Inverters", url: "/Electrical-Drives/Summaries/Slides-Unit-10A-Inverters.pdf" },
+            { label: "Unit 11 Scalar Control of AC Motors", url: "/Electrical-Drives/Summaries/Slides-Unit-11-Scalar-Control-of-AC-Motors.pdf" },
+            { label: "Unit 11A Slip Ring AC Motor Speed Control", url: "/Electrical-Drives/Summaries/Slides-Unit-11A-Slip-Ring-AC-Motor-Speed-Control.pdf" },
+            { label: "Unit 12 Variable Frequency Drive Control", url: "/Electrical-Drives/Summaries/Slides-Unit-12-Variable-Frequency-Drive-Control.pdf" },
+            { label: "Unit 12A Vector Control of Induction Motors", url: "/Electrical-Drives/Summaries/Slides-Unit-12A-Vector-Control-of-Induction-Motors.pdf" }
+          ]
+        }
+      ], 
+      videos: [], 
+      quizzes: [
+        {
+          label: "Quizzes",
+          type: 'folder',
+          items: [
+            { label: "Quiz 1 Screens", url: "/Electrical-Drives/Past-Papers/Quizzes/Quiz-1-Screens.pdf" },
+            { label: "Quiz 1", url: "/Electrical-Drives/Past-Papers/Quizzes/Quiz-Question-1.png" },
+            { label: "Quiz 2", url: "/Electrical-Drives/Past-Papers/Quizzes/Quiz-Question-2.png" },
+            { label: "Quiz Screens", url: "/Electrical-Drives/Past-Papers/Quizzes/Quiz-Compiled-Screens-and-Solutions.pdf" },
+            { label: "Quiz Bank", url: "/Electrical-Drives/Past-Papers/Quizzes/Quiz-Question-Bank.pdf" }
+          ]
+        }
+      ],
+      mid: [
+        { label: "2022", url: "/Electrical-Drives/Past-Papers/Mid/Mid-2022-Solved.pdf" },
+        { label: "2023", url: "/Electrical-Drives/Past-Papers/Mid/Mid-2023-Semester2.pdf" },
+        { label: "2024", url: "/Electrical-Drives/Past-Papers/Mid/Mid-2024-Semester1.pdf" },
+        { label: "2025", url: "/Electrical-Drives/Past-Papers/Mid/Mid-2025.pdf" },
+        { label: "Mid Compiled Questions", url: "/Electrical-Drives/Past-Papers/Mid/Mid-Compiled-Questions-New.pdf" },
+        { label: "Mid Compiled Questions", url: "/Electrical-Drives/Past-Papers/Mid/Mid-Compiled-Questions.pdf" }
+      ], 
+      final: [
+        { label: "Final Exam ", url: "/Electrical-Drives/Past-Papers/Final/Final-Exam-A.pdf" },
+        { label: "Final Questions", url: "/Electrical-Drives/Past-Papers/Final/Final-Questions.pdf" },
+        { label: "Final Questions", url: "/Electrical-Drives/Past-Papers/Final/Final-Solutions.pdf" }
+      ]
     } 
   },
   
