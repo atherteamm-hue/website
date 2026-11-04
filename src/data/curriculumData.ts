@@ -589,44 +589,44 @@ physics_2: {
         }
       ],
       summaries: [
-        { label: "Formulas Summary", url: "/physics2/Physics2-Formulas-Summary.pdf" },
-        { label: "Full Summary Dr. Sokainah", url: "/physics2/Physics2-Full-Summary-Dr-Sokainah.pdf" },
-        { label: "Summary Dr. Ahmed Awad", url: "/physics2/Physics2-Summary-Dr-Ahmed-Awad.pdf" },
-        { label: "Summary Student Aws", url: "/physics2/Physics2-Summary-Student-Aws.pdf" },
+        { label: "Formulas Summary", url: "/physics2/summaries/Physics2-Formulas-Summary.pdf" },
+        { label: "Full Summary Dr. Sokainah", url: "/physics2/summaries/Physics2-Full-Summary-Dr-Sokainah.pdf" },
+        { label: "Summary Dr. Ahmed Awad", url: "/physics2/summaries/Physics2-Summary-Dr-Ahmed-Awad.pdf" },
+        { label: "Summary Student Aws", url: "/physics2/summaries/Physics2-Summary-Student-Aws.pdf" },
         {
           label: "Dr. Wasan Slides",
           type: 'folder',
           items: [
-            { label: "Chapter 23", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch23.pdf" },
-            { label: "Chapter 23 Problems", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch23-Problems.pdf" },
-            { label: "Chapter 24", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch24.pdf" },
-            { label: "Chapter 24 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch24-Problems-Solved.pdf" },
-            { label: "Chapter 25", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch25.pdf" },
-            { label: "Chapter 25 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch25-Problems-Solved.pdf" },
-            { label: "Chapter 26", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch26.pdf" },
-            { label: "Chapter 26 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch26-Problems-Solved.pdf" },
-            { label: "Chapter 27", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch27.pdf" },
-            { label: "Chapter 27 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch27-Problems-Solved.pdf" },
-            { label: "Chapter 28", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch28.pdf" },
-            { label: "Chapter 28 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch28-Problems-Solved.pdf" }
+            { label: "Chapter 23", url: "/physics2/summaries/Physics2-Slides-Dr-Wasan-Ch23.pdf" },
+            { label: "Chapter 23 Problems", url: "/physics2/summaries/Physics2-Slides-Dr-Wasan-Ch23-Problems.pdf" },
+            { label: "Chapter 24", url: "/physics2/summaries/Physics2-summaries-Slides-Dr-Wasan-Ch24.pdf" },
+            { label: "Chapter 24 Problems Solved", url: "/physics2/summaries/Physics2-Slides-Dr-Wasan-Ch24-Problems-Solved.pdf" },
+            { label: "Chapter 25", url: "/physics2/summaries/Physics2-Slides-Dr-Wasan-Ch25.pdf" },
+            { label: "Chapter 25 Problems Solved", url: "/physics2/summaries/Physics2-Slides-Dr-Wasan-Ch25-Problems-Solved.pdf" },
+            { label: "Chapter 26", url: "/physics2/summaries/Physics2-Slides-Dr-Wasan-Ch26.pdf" },
+            { label: "Chapter 26 Problems Solved", url: "/physics2/summaries/Physics2-Slides-Dr-Wasan-Ch26-Problems-Solved.pdf" },
+            { label: "Chapter 27", url: "/physics2/summaries/Physics2-Slides-Dr-Wasan-Ch27.pdf" },
+            { label: "Chapter 27 Problems Solved", url: "/physics2/summaries/Physics2-Slides-Dr-Wasan-Ch27-Problems-Solved.pdf" },
+            { label: "Chapter 28", url: "/physics2/summaries/Physics2-Slides-Dr-Wasan-Ch28.pdf" },
+            { label: "Chapter 28 Problems Solved", url: "/physics2/summaries/Physics2-Slides-Dr-Wasan-Ch28-Problems-Solved.pdf" }
           ]
         },
         {
           label: "Dr. Ziad Slides",
           type: 'folder',
           items: [
-            { label: "Chapter 23", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch23.pdf" },
-            { label: "Chapter 23 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch23-Problems-Solved.pdf" },
-            { label: "Chapter 24", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch24.pdf" },
-            { label: "Chapter 24 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch24-Problems-Solved.pdf" },
-            { label: "Chapter 25", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch25.pdf" },
-            { label: "Chapter 25 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch25-Problems-Solved.pdf" },
-            { label: "Chapter 26", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch26.pdf" },
-            { label: "Chapter 26 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch26-Problems-Solved.pdf" },
-            { label: "Chapter 27", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch27.pdf" },
-            { label: "Chapter 27 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch27-Problems-Solved.pdf" },
-            { label: "Chapter 28", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch28.pdf" },
-            { label: "Chapter 28 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch28-Problems-Solved.pdf" }
+            { label: "Chapter 23", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch23.pdf" },
+            { label: "Chapter 23 Problems Solved", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch23-Problems-Solved.pdf" },
+            { label: "Chapter 24", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch24.pdf" },
+            { label: "Chapter 24 Problems Solved", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch24-Problems-Solved.pdf" },
+            { label: "Chapter 25", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch25.pdf" },
+            { label: "Chapter 25 Problems Solved", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch25-Problems-Solved.pdf" },
+            { label: "Chapter 26", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch26.pdf" },
+            { label: "Chapter 26 Problems Solved", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch26-Problems-Solved.pdf" },
+            { label: "Chapter 27", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch27.pdf" },
+            { label: "Chapter 27 Problems Solved", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch27-Problems-Solved.pdf" },
+            { label: "Chapter 28", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch28.pdf" },
+            { label: "Chapter 28 Problems Solved", url: "/physics2/summaries/Physics2-Slides-Dr-Ziad-Ch28-Problems-Solved.pdf" }
           ]
         }
       ], 
