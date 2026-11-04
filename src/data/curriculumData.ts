@@ -571,21 +571,78 @@ physics_1: {
     } 
   },
   
-  physics_2: { 
+physics_2: { 
     coords: { x: 73.39, y: 14.62, w: 5.53, h: 5.4 }, 
     content: {
       titleEn: "Physics 2", titleAr: "فيزياء 2", credits: 3,
       books: [
-        { label: "Physics for Scientists and Engineers 9ed",
-         url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
-         coverUrl: "/BooksCover/physics-cover.png" },
-        { label: "Physics Solutions Manual", 
-         url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf", 
-         coverUrl: "/BooksCover/PhysicsSolution-cover.png",
-         isSolution: true
+        { 
+          label: "Physics for Scientists and Engineers 9ed",
+          url: "https://ia601005.us.archive.org/34/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed.pdf",
+          coverUrl: "/BooksCover/physics-cover.png" 
+        },
+        { 
+          label: "Physics Solutions Manual", 
+          url: "https://dn790006.ca.archive.org/0/items/SerwayJewettPhysicsForScientistsAndEngineersWithModernPhysics9ed/Serway%20&%20Jewett%20-%20Physics%20for%20Scientists%20and%20Engineers%20with%20Modern%20Physics%209ed%20[solutions].pdf", 
+          coverUrl: "/BooksCover/PhysicsSolution-cover.png",
+          isSolution: true
         }
       ],
-      summaries: [], videos: [], mid: [], final: []
+      summaries: [
+        { label: "Formulas Summary", url: "/physics2/Physics2-Formulas-Summary.pdf" },
+        { label: "Full Summary Dr. Sokainah", url: "/physics2/Physics2-Full-Summary-Dr-Sokainah.pdf" },
+        { label: "Summary Dr. Ahmed Awad", url: "/physics2/Physics2-Summary-Dr-Ahmed-Awad.pdf" },
+        { label: "Summary Student Aws", url: "/physics2/Physics2-Summary-Student-Aws.pdf" },
+        {
+          label: "Dr. Wasan Slides",
+          type: 'folder',
+          items: [
+            { label: "Chapter 23", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch23.pdf" },
+            { label: "Chapter 23 Problems", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch23-Problems.pdf" },
+            { label: "Chapter 24", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch24.pdf" },
+            { label: "Chapter 24 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch24-Problems-Solved.pdf" },
+            { label: "Chapter 25", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch25.pdf" },
+            { label: "Chapter 25 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch25-Problems-Solved.pdf" },
+            { label: "Chapter 26", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch26.pdf" },
+            { label: "Chapter 26 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch26-Problems-Solved.pdf" },
+            { label: "Chapter 27", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch27.pdf" },
+            { label: "Chapter 27 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch27-Problems-Solved.pdf" },
+            { label: "Chapter 28", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch28.pdf" },
+            { label: "Chapter 28 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Wasan-Ch28-Problems-Solved.pdf" }
+          ]
+        },
+        {
+          label: "Dr. Ziad Slides",
+          type: 'folder',
+          items: [
+            { label: "Chapter 23", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch23.pdf" },
+            { label: "Chapter 23 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch23-Problems-Solved.pdf" },
+            { label: "Chapter 24", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch24.pdf" },
+            { label: "Chapter 24 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch24-Problems-Solved.pdf" },
+            { label: "Chapter 25", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch25.pdf" },
+            { label: "Chapter 25 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch25-Problems-Solved.pdf" },
+            { label: "Chapter 26", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch26.pdf" },
+            { label: "Chapter 26 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch26-Problems-Solved.pdf" },
+            { label: "Chapter 27", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch27.pdf" },
+            { label: "Chapter 27 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch27-Problems-Solved.pdf" },
+            { label: "Chapter 28", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch28.pdf" },
+            { label: "Chapter 28 Problems Solved", url: "/physics2/Physics2-Slides-Dr-Ziad-Ch28-Problems-Solved.pdf" }
+          ]
+        }
+      ], 
+      videos: [
+        { label: "Anas Majdi", url: "https://youtu.be/YqYRMOEUtLM?si=G0X5LFkmA3sW5QCj" },
+        { label: "Ahmed Awad", url: "https://youtube.com/playlist?list=PLGfzCRt_uWkeed0GtFGOvXvtkhihL2b2z&si=HRcHAXB3u8EdMUT3" }
+      ], 
+      mid: [
+        { label: "Mid 2025 Semester 2", url: "/physics2/Past-Papers/Mid/Mid-2025-Semester2.pdf" },
+        { label: "Mid 2026 Semester 2", url: "/physics2/Past-Papers/Mid/Mid-2026-Semester2.pdf" },
+        { label: "Mid Compiled Paper Years", url: "/physics2/Past-Papers/Mid/Mid-Compiled-Paper-Years.pdf" }
+      ], 
+      final: [
+        { label: "Final 2024 Semester 2", url: "/physics2/Past-Papers/Final/Final-2024-Semester2.pdf" },
+        { label: "Final 2026", url: "/physics2/Past-Papers/Final/Final-2026.pdf" }
+      ]
     } 
   },
   
@@ -1560,11 +1617,11 @@ power_electronics: {
       ],
       mid: [
         { label: "2017", url: "/power/past papers/mid/Midterm_2017.pdf" },
-        { label: "Mid Exams", url: "/power/past papers/mid/Past-Years-Questions_Power-Electronics.pdf" },
-        { label: "SPARK Team", url: "/power/past papers/mid/Past-Years-Solved_Power-Electronics_SPARK-Team.pdf" }
+        { label: "Mid Exams", url: "/power/past papers/Past-Years-Questions_Power-Electronics.pdf" },
+        { label: "SPARK Team", url: "/power/past papers/Past-Years-Solved_Power-Electronics_SPARK-Team.pdf" }
       ], 
       final: [
-        { label: "SPARK Team", url: "/power/past papers/final/Past-Years-Solved_Power-Electronics_SPARK-Team.pdf" }
+        { label: "SPARK Team", url: "/power/past papers/Past-Years-Solved_Power-Electronics_SPARK-Team.pdf" }
       ]
     } 
   },
