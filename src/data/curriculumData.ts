@@ -915,11 +915,34 @@ linear_algebra: {
     } 
   },
   
-  machine_components: { 
+machine_components: { 
     coords: { x: 54.99, y: 14.59, w: 5.48, h: 5.23 }, 
     content: {
       titleEn: "Machine Components", titleAr: "مكونات الالة ", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Machines and Mechanisms 4th Edition", 
+          url: "/machine components/books/Book_Machines-and-Mechanisms_4th-Edition.pdf", 
+          coverUrl: "/BooksCover/Book_Machines-and-Mechanisms_4th-Edition.png" 
+        },
+        { 
+          label: "Solutions Manual Machines and Mechanisms 4th Edition", 
+          url: "/machine components/books/Book_Solutions-Manual_Machines-and-Mechanisms_4th-Edition.pdf", 
+          coverUrl: "/BooksCover/Book_Machines-and-Mechanisms_4th-Edition.png",
+          isSolution: true
+        }
+      ], 
+      summaries: [
+        { label: "Summary Machine Components", url: "/machine components/summarize/Summary_Machine-Components_First.pdf" }
+      ], 
+      videos: [], 
+      mid: [
+        { label: "2022", url: "/machine components/past papers/mid/Midterm_2022_Spring_Page-1.jpg" },
+        { label: "2022", url: "/machine components/past papers/mid/Midterm_2022_Spring_Page-2.jpg" },
+        { label: "2022", url: "/machine components/past papers/mid/Midterm_2022_Spring_Page-3.jpg" },
+        { label: "2022", url: "/machine components/past papers/mid/Midterm_2022_Spring_Page-4.jpg" }
+      ], 
+      final: []
     } 
   },
   
@@ -1477,11 +1500,72 @@ control_lab: {
     } 
   },
   
-  power_electronics: { 
+power_electronics: { 
     coords: { x: 80.44, y: 57.36, w: 5.7, h: 5.23 }, 
     content: {
       titleEn: "Power Electronics", titleAr: "إلكترونيات القدرة", credits: 3,
-      books: [], summaries: [], videos: [], mid: [], final: []
+      books: [
+        { 
+          label: "Power Electronics Converters Applications and Design", 
+          url: "/power/books/Book_Power-Electronics_Converters-Applications-and-Design.pdf", 
+          coverUrl: "/BooksCover/Book_Power-Electronics_Converters-Applications-and-Design.png" 
+        },
+        { 
+          label: "Power Electronics Daniel W Hart", 
+          url: "/power/books/Book_Power-Electronics_Daniel-W-Hart.pdf", 
+          coverUrl: "/BooksCover/Book_Power-Electronics_Daniel-W-Hart.png" 
+        },
+        { 
+          label: "Power Electronics Handbook Muhammad H Rashid", 
+          url: "/power/books/Book_Power-Electronics-Handbook_Muhammad-H-Rashid.pdf", 
+          coverUrl: "/BooksCover/Book_Power-Electronics-Handbook_Muhammad-H-Rashid.png" 
+        },
+        { 
+          label: "Power Semiconductor Circuits Dewan Straughen", 
+          url: "/power/books/Book_Power-Semiconductor-Circuits_Dewan-Straughen.pdf", 
+          coverUrl: "/BooksCover/Book_Power-Semiconductor-Circuits_Dewan-Straughen.png" 
+        }
+      ], 
+      summaries: [
+        {
+          label: "Course Slides",
+          type: 'folder',
+          items: [
+            { label: "Chapter 01", url: "/power/summarize/Slides_Chapter-01.pdf" },
+            { label: "Chapter 02 Power Calculations", url: "/power/summarize/Slides_Chapter-02_Power-Calculations.pdf" },
+            { label: "Chapter 03 Half Wave Rectifiers", url: "/power/summarize/Slides_Chapter-03_Half-Wave-Rectifiers.pdf" },
+            { label: "Chapter 04 Full Wave Rectifiers", url: "/power/summarize/Slides_Chapter-04_Full-Wave-Rectifiers.pdf" },
+            { label: "Chapter 04 3 Three Phase Controlled Rectifiers", url: "/power/summarize/Slides_Chapter-04-3_Three-Phase-Controlled-Rectifiers.pdf" },
+            { label: "Chapter 04 3 Three Phase Uncontrolled Rectifiers", url: "/power/summarize/Slides_Chapter-04-3_Three-Phase-Uncontrolled-Rectifiers.pdf" },
+            { label: "Chapter 04 4 Three Phase Full Wave Controlled Rectifiers", url: "/power/summarize/Slides_Chapter-04-4_Three-Phase-Full-Wave-Controlled-Rectifiers.pdf" },
+            { label: "Chapter 05 AC Voltage Controllers", url: "/power/summarize/Slides_Chapter-05_AC-Voltage-Controllers.pdf" },
+            { label: "Chapter 06 DC DC Converters", url: "/power/summarize/Slides_Chapter-06_DC-DC-Converters.pdf" },
+            { label: "DC DC Converters 1", url: "/power/summarize/Slides_DC-DC-Converters-1.pdf" },
+            { label: "Inverters 1", url: "/power/summarize/Slides_Inverters-1.pdf" }
+          ]
+        },
+        { label: "Summary SPARK Scanned Notes", url: "/power/summarize/Summary_SPARK_Scanned-Notes.pdf" }
+      ], 
+      videos: [
+        { label: "Spectrum", url: "https://youtu.com/B9ivSKnTYpY?si=CcFMQJLX87tqQ1zl" }
+      ], 
+      quizzes: [
+        {
+          label: "Quizzes",
+          type: 'folder',
+          items: [
+            { label: "Quizzes MCQ", url: "/power/past papers/quizzes/Quizzes_Power-Electronics-MCQ.pdf" }
+          ]
+        }
+      ],
+      mid: [
+        { label: "2017", url: "/power/past papers/mid/Midterm_2017.pdf" },
+        { label: "Mid Exams", url: "/power/past papers/mid/Past-Years-Questions_Power-Electronics.pdf" },
+        { label: "SPARK Team", url: "/power/past papers/mid/Past-Years-Solved_Power-Electronics_SPARK-Team.pdf" }
+      ], 
+      final: [
+        { label: "SPARK Team", url: "/power/past papers/final/Past-Years-Solved_Power-Electronics_SPARK-Team.pdf" }
+      ]
     } 
   },
   
