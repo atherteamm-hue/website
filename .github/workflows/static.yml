@@ -46,3 +46,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          # The Pages artifact is large (multi-GB PDF library), so publishing
+          # takes well over the 10-minute default on a cold CDN.
+          timeout: 1800000
