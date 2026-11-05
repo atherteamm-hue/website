@@ -32,9 +32,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
     return () => clearTimeout(timer);
   }, []);
 
-  const copyEmail = async () => {
+  const copyPhone = async () => {
     try {
-      await navigator.clipboard.writeText('hello@atharteam.org');
+      await navigator.clipboard.writeText('+962795977852');
       setCopied(true);
       setTimeout(() => setCopied(false), 2200);
     } catch (err) {
@@ -79,8 +79,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </button>
 
           {/* Email Copy Button */}
-          <button onClick={copyEmail} className="inline-flex items-center bg-transparent text-black border border-black rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] transition-colors hover:bg-black hover:text-white cursor-pointer gap-2 sm:gap-3 group">
-            <span>Reach us: <span className="underline underline-offset-1">hello@atharteam.org</span></span>
+          <button onClick={copyPhone} className="inline-flex items-center bg-transparent text-black border border-black rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] transition-colors hover:bg-black hover:text-white cursor-pointer gap-2 sm:gap-3 group">
+            <span>Reach us: <span className="underline underline-offset-1">+962795977852</span></span>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0 group-hover:scale-110 transition-transform">
               <rect x="3.5" y="3.5" width="7" height="7" rx="1" stroke="currentColor" strokeWidth="1.2" />
               <path d="M8.5 2.5V2C8.5 1.44772 8.05228 1 7.5 1H2C1.44772 1 1 1.44772 1 2V7.5C1 8.05228 1.44772 8.5 2 8.5H2.5" stroke="currentColor" strokeWidth="1.2" />
@@ -89,7 +89,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
 
         <div className={`mt-2 ml-2 transition-opacity duration-200 text-xs font-mono text-neutral-600 ${copied ? 'opacity-100' : 'opacity-0'}`}>
-          ✓ Copied hello@atharteam.org to clipboard
+          ✓ Copied +962795977852 to clipboard
         </div>
       </div>
 
