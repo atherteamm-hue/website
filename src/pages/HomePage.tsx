@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Linkedin, Instagram, Facebook, Youtube, Github, Globe } from 'lucide-react';
+import { Linkedin, Instagram, Facebook, Youtube } from 'lucide-react';
 import { useTypewriter } from '../useTypewriter.ts';
 import { PageId } from '../types.ts';
 
@@ -110,9 +110,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 { name: 'LinkedIn', url: 'https://www.linkedin.com/company/team-athar/', Icon: Linkedin },
                 { name: 'Instagram', url: 'https://www.instagram.com/team_athar_?stkn=MXRhbWx2ZmttNjVtZw%3D%3D', Icon: Instagram },
                 { name: 'Facebook', url: 'https://www.facebook.com/share/19k5AGXANy/?mibextid=wwXIfr', Icon: Facebook },
-                { name: 'YouTube', url: 'https://youtube.com/@atharteam-9?si=yniI07m_GxcRiuVp', Icon: Youtube },
-                { name: 'GitHub', url: 'https://github.com/atherteamm-hue', Icon: Github },
-                { name: 'Website', url: 'https://atharteam.org', Icon: Globe }
+                { name: 'YouTube', url: 'https://youtube.com/@atharteam-9?si=yniI07m_GxcRiuVp', Icon: Youtube }
               ].map(({ name, url, Icon }) => (
                 <a key={name} href={url} target="_blank" rel="noopener noreferrer" className="p-4 border border-neutral-100 rounded-xl hover:bg-neutral-50 transition-colors flex justify-between items-center group">
                   <span className="flex items-center gap-3 font-medium">
