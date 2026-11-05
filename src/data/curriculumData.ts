@@ -1646,7 +1646,7 @@ power_electronics: {
          { 
           label: "Power electronics arabic", 
           url: "public/power/books/power electronics arabic.pdf", 
-          coverUrl: "public/BooksCover/power electronics arabic.webp" 
+          coverUrl: "public/BooksCover/power electronics arabic.webp",
           isArabic: true
         }
       ], 
