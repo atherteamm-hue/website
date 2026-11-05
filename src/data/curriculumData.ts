@@ -1,5 +1,7 @@
 // src/data/curriculumData.ts
 
+import { PDF_RELEASE_ASSETS, PDF_RELEASE_BASE } from './pdfReleaseMap.ts';
+
 export interface CourseContent {
   titleEn: string;
   titleAr: string;
@@ -2498,3 +2500,24 @@ eng_economy: {
     } 
   }
 };
+
+// The library PDFs are published as GitHub release assets rather than
+// bundled with the site. Swap the site-relative paths for their public URLs
+// once, at module load, so every consumer keeps using `url` unchanged.
+const rewritePdfUrls = (value: unknown): void => {
+  if (Array.isArray(value)) {
+    value.forEach(rewritePdfUrls);
+    return;
+  }
+  if (!value || typeof value !== 'object') return;
+
+  const record = value as Record<string, unknown>;
+  if (typeof record.url === 'string') {
+    const asset = PDF_RELEASE_ASSETS[record.url];
+    if (asset) record.url = `${PDF_RELEASE_BASE}/${asset}`;
+  }
+
+  Object.values(record).forEach(rewritePdfUrls);
+};
+
+rewritePdfUrls(curriculumData);
