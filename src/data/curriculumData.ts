@@ -42,8 +42,7 @@ export const curriculumData: Record<string, Course> = {
       summaries: [
         { label: "Grammar Summary", url: "/english101/summarize/grammar-summary.pdf" },
         { label: "Study Guide Videos", url: "/english101/summarize/study-guide-videos.docx" },
-        { label: "English 101 Summary", url: "/english101/summarize/summary-english-101.pdf" },
-        { label: "Vocabulary Meanings", url: "/english101/summarize/vocabulary-meanings.pdf" }
+        { label: "English 101 Summary", url: "/english101/summarize/summary-english-101.pdf" }
       ], 
       videos: [
         { label: "Dr. Raghda AlSharabati", url: "https://youtube.com/playlist?list=PL2ZbvaoJe0oSXhkaBMp6EuTygRGgAxU5g&si=P7lQBt9BCTraFk97" },
