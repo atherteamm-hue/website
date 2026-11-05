@@ -1,4 +1,3 @@
-// src/components/MatrixSimulatorModal.tsx
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import {
@@ -7,6 +6,8 @@ import {
   AlertTriangle, Layers, Download, History as HistoryIcon,
   ArrowLeft
 } from 'lucide-react';
+import html2pdf from 'html2pdf.js';
+
 import {
   Frac, MathStep, getVarName, stepsToLatexDocument,
   solveGaussJordanSteps, solveGaussianSteps, solveCramerSteps, solveInverseMethodSteps, getLeastSquaresSteps,
@@ -476,11 +477,8 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
     URL.revokeObjectURL(url);
   };
 
-  // Export Academic PDF Worksheet via Print Window (Fixed to iterate all columns and include Extra Matrices)
+  // Export Academic PDF Worksheet (Direct Download)
   const handleExportPDF = () => {
-    const printWin = window.open('', '_blank', 'width=950,height=800');
-    if (!printWin) return;
-
     const escapeHtml = (unsafe: string) => 
       (unsafe ?? '').replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 
@@ -566,31 +564,34 @@ export function MatrixSimulatorModal({ onClose }: { onClose: () => void }) {
       return html;
     }).join('');
 
-    printWin.document.write(`
-      <html>
-        <head>
-          <title>Athar Matrix Studio — Solution Report</title>
-          <style>
-            body { font-family: system-ui, -apple-system, sans-serif; color: #0f172a; padding: 32px; }
-            .header { display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #0f172a; padding-bottom:16px; margin-bottom:24px; }
-          </style>
-        </head>
-        <body>
-          <div class="header">
-            <div>
-              <h1 style="margin:0; font-size:24px; text-transform:uppercase;">Athar Matrix Studio</h1>
-              <p style="margin:4px 0 0; color:#64748b; font-size:12px; font-weight:700;">ACADEMIC LINEAR ALGEBRA REPORT • OPERATION: ${operation.toUpperCase()}</p>
-            </div>
-            <div style="text-align:right; font-size:12px; color:#64748b;">
-              Date: ${new Date().toLocaleDateString()}
-            </div>
+    // تجميع الكود النهائي في عنصر DOM وهمي
+    const container = document.createElement('div');
+    container.innerHTML = `
+      <div style="font-family: system-ui, -apple-system, sans-serif; color: #0f172a; padding: 32px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #0f172a; padding-bottom:16px; margin-bottom:24px;">
+          <div>
+            <h1 style="margin:0; font-size:24px; text-transform:uppercase;">Athar Matrix Studio</h1>
+            <p style="margin:4px 0 0; color:#64748b; font-size:12px; font-weight:700;">ACADEMIC LINEAR ALGEBRA REPORT • OPERATION: ${operation.toUpperCase()}</p>
           </div>
-          ${stepsHtml}
-          <script>window.onload = () => { window.print(); };</script>
-        </body>
-      </html>
-    `);
-    printWin.document.close();
+          <div style="text-align:right; font-size:12px; color:#64748b;">
+            Date: ${new Date().toLocaleDateString()}
+          </div>
+        </div>
+        ${stepsHtml}
+      </div>
+    `;
+
+    // إعدادات تصدير الـ PDF
+    const opt = {
+      margin:       10,
+      filename:     `Athar_Matrix_Solution_${operation}.pdf`,
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, useCORS: true }, 
+      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    // توليد وتحميل الملف
+    html2pdf().set(opt).from(container).save();
   };
 
   const finalResult = useMemo(() => [...steps].reverse().find(s => s.resultText)?.resultText ?? '', [steps]);
