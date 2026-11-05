@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MessageCircle } from 'lucide-react'; 
+import { Mail, MessageCircle, Linkedin, Github, Instagram, Youtube, Globe } from 'lucide-react'; 
 
 import awsImg from '../../members photos/Aws gharaibeh.webp';
 import noorImg from '../../members photos/noor ibrrahim.jpeg';
@@ -22,6 +22,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/aws-gharaibeh-ba1755332?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
     github: "",
     instagram: "",
+    youtube: "",
     website: "",
     image: awsImg
   },
@@ -34,6 +35,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/noor-abu-snaina-782075421?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
     github: "",
     instagram: "",
+    youtube: "",
     website: "",
     image: noorImg
   },
@@ -46,6 +48,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/ahmad-radwan-a581b1328/", 
     github: "https://github.com/Ahmad06-Radwan",
     instagram: "",
+    youtube: "",
     website: "",
     image: ahmadImg 
   },
@@ -58,6 +61,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/ansam-tayeh-bb60903b0?utm_source=share_via&utm_content=profile&utm_medium=member_ios", 
     github: "",
     instagram: "",
+    youtube: "",
     website: "",
     image: ansamImg 
   },
@@ -70,6 +74,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/anas-majdi-80863a384/", 
     github: "https://github.com/AnasMajdi",
     instagram: "",
+    youtube: "",
     website: "",
     image: anasImg 
   },
@@ -82,6 +87,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/mohammad-abuelyan-368ab8384/", 
     github: "",
     instagram: "https://www.instagram.com/mae.academy/",
+    youtube: "",
     website: "https://maeacademy.org/about",
     image: mohammadImg 
   },
@@ -94,6 +100,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/abdalrhman-abdorabbeh-b3b170368/", 
     github: "https://github.com/abdoman-A4",
     instagram: "",
+    youtube: "",
     website: "",
     image: abdalrhmanImg 
   },
@@ -106,6 +113,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/abdullah-bsaiso-a56023321/", 
     github: "https://github.com/Abooubaker",
     instagram: "",
+    youtube: "https://www.youtube.com/@AboBaker-e",
     website: "",
     image: abdullahImg 
   },
@@ -118,6 +126,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/eng-adnan-abu-samaha25/", 
     github: "", 
     instagram: "", 
+    youtube: "",
     website: "",
     image: adnanImg 
   },
@@ -130,6 +139,7 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/bahaa-alsaeed-abb301369/", 
     github: "https://github.com/bahaa0alsaeed", 
     instagram: "", 
+    youtube: "",
     website: "",
     image: bahaaImg 
   }
@@ -235,6 +245,7 @@ export const AboutUsPage: React.FC = () => {
                             rel="noreferrer" 
                             className="inline-flex items-center gap-2 text-xs font-mono font-bold text-black border border-neutral-300 hover:border-black rounded-full px-5 py-2.5 transition-colors uppercase tracking-widest"
                           >
+                            <Linkedin size={14} strokeWidth={2} />
                             LinkedIn ↗
                           </a>
                         )}
@@ -245,6 +256,7 @@ export const AboutUsPage: React.FC = () => {
                             rel="noreferrer" 
                             className="inline-flex items-center gap-2 text-xs font-mono font-bold text-black border border-neutral-300 hover:border-black rounded-full px-5 py-2.5 transition-colors uppercase tracking-widest"
                           >
+                            <Github size={14} strokeWidth={2} />
                             GitHub ↗
                           </a>
                         )}
@@ -255,7 +267,19 @@ export const AboutUsPage: React.FC = () => {
                             rel="noreferrer" 
                             className="inline-flex items-center gap-2 text-xs font-mono font-bold text-black border border-neutral-300 hover:border-black rounded-full px-5 py-2.5 transition-colors uppercase tracking-widest"
                           >
+                            <Instagram size={14} strokeWidth={2} />
                             Instagram ↗
+                          </a>
+                        )}
+                        {member.youtube && (
+                          <a 
+                            href={member.youtube} 
+                            target="_blank" 
+                            rel="noreferrer" 
+                            className="inline-flex items-center gap-2 text-xs font-mono font-bold text-black border border-neutral-300 hover:border-black rounded-full px-5 py-2.5 transition-colors uppercase tracking-widest"
+                          >
+                            <Youtube size={14} strokeWidth={2} />
+                            YouTube ↗
                           </a>
                         )}
                         {member.website && (
@@ -265,6 +289,7 @@ export const AboutUsPage: React.FC = () => {
                             rel="noreferrer" 
                             className="inline-flex items-center gap-2 text-xs font-mono font-bold text-black border border-neutral-300 hover:border-black rounded-full px-5 py-2.5 transition-colors uppercase tracking-widest bg-neutral-50"
                           >
+                            <Globe size={14} strokeWidth={2} />
                             Website ↗
                           </a>
                         )}
