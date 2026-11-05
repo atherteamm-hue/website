@@ -25,6 +25,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
 
   return (
     <>
+      {/* White scrim under the fixed navbar: solid enough at the top to
+          separate the bar from the page, fading out at the bottom so content
+          disappears smoothly as it scrolls underneath. */}
+      {currentPage !== 'home' && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-x-0 top-0 z-[8] h-24 sm:h-28 bg-gradient-to-b from-white/90 via-white/55 to-transparent"
+        />
+      )}
+
       {/* NAVBAR (fixed, z-index: 10) */}
       <header className="fixed top-0 left-0 right-0 z-10 flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5 bg-transparent">
         {/* Logo (left) */}

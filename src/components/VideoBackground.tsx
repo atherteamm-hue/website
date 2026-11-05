@@ -354,7 +354,6 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
           backgroundImage: `url(${posterSrc})`,
           backgroundSize: 'cover',
           backgroundPosition: '70% center',
-          opacity: dimmed ? 0.25 : 1,
         }}
         aria-hidden="true"
       />
@@ -363,10 +362,7 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({ dimmed = false
         <video
           ref={videoRef}
           className="fixed inset-0 z-0 object-cover w-full h-full pointer-events-none transition-opacity duration-700"
-          style={{
-            objectPosition: '70% center',
-            opacity: dimmed ? 0.25 : 1,
-          }}
+          style={{ objectPosition: '70% center' }}
           muted
           playsInline
           preload="none"
