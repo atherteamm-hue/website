@@ -1642,6 +1642,12 @@ power_electronics: {
           label: "Power Semiconductor Circuits Dewan Straughen", 
           url: "/power/books/Book_Power-Semiconductor-Circuits_Dewan-Straughen.pdf", 
           coverUrl: "/BooksCover/Book_Power-Semiconductor-Circuits_Dewan-Straughen.webp" 
+        },
+         { 
+          label: "Power electronics arabic", 
+          url: "public/power/books/power electronics arabic.pdf", 
+          coverUrl: "public/BooksCover/power electronics arabic.webp" 
+          isArabic: true
         }
       ], 
       summaries: [
