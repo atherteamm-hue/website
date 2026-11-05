@@ -1261,7 +1261,7 @@ machine_components: {
       books: [], // فارغ، سيختفي القسم
       
       summaries: [
-        { label: "Lab Manual", url: "/Lab_Circuit/Lab_Manual.pdf" }
+    
       ], 
       
       videos: [], // فارغ، سيختفي القسم
