@@ -1763,7 +1763,7 @@ power_electronics: {
       books: [],
       summaries: [],
       videos: [
-  { label: "Athar Team", url: "https://drive.google.com/drive/folders/1MN6r3Hz0wZwmX9Bbycb5fn7R6JkVT9dv?usp=drive_link" }
+  { label: "Athar Team", url: "https://youtube.com/playlist?list=PLdER5pPOUrhE&si=0lDT28Dwz87BfKHj" }
 ], 
       mid: [],
       final: []
