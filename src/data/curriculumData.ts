@@ -1865,7 +1865,7 @@ plc_lab: {
         { label: "CNE", url: "https://youtube.com/playlist?list=PLJwCQtAhsso-kEA-V2NTfm5vXr3tq2fez&si=VF9CgTZrO533lkeE" },
         { label: "Spark Team", url: "https://youtube.com/playlist?list=PL4Itv3LsZJuzvacR1ReJxHbayiyr7VqhD&si=P3F78zGw4uG9uIbY" },
         { label: "Zero One Team", url: "https://youtube.com/playlist?list=PLL4N3hz14nvEI2-RTSjySl_BOKfKLsO5r&si=5ORTvnqTl2h1d7kB" },
-        { label: "Omar Aid", url: "https://youtube.com/playlist?list=PLF1ZTFPI256E&si=sHipQlddfz34p5Og" }
+        { label: "Omar Eid", url: "https://youtube.com/playlist?list=PLF1ZTFPI256E&si=sHipQlddfz34p5Og" }
       ],
 
       // 3. Summaries & Notes
