@@ -1669,7 +1669,9 @@ power_electronics: {
             { label: "Inverters 1", url: "/power/summarize/Slides_Inverters-1.pdf" }
           ]
         },
-        { label: "Summary SPARK Scanned Notes", url: "/power/summarize/Summary_SPARK_Scanned-Notes.pdf" }
+        { label: "Summary SPARK Scanned Notes", url: "/power/summarize/Summary_SPARK_Scanned-Notes.pdf" },
+        { label: "joengineer Website", url: "https://joengineer656.github.io/university-courses/power-electronics/" }
+        
       ], 
       videos: [
         { label: "Spectrum", url: "https://youtu.com/B9ivSKnTYpY?si=CcFMQJLX87tqQ1zl" }
