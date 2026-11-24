@@ -1674,7 +1674,7 @@ power_electronics: {
         
       ], 
       videos: [
-        { label: "Spectrum", url: "https://youtu.com/B9ivSKnTYpY?si=CcFMQJLX87tqQ1zl" }
+        { label: "Spectrum", url: "https://www.youtube.com/playlist?list=PLRNaExsfJ1qtLOy1R4l4n-r1Qnz8JMdNg" }
       ], 
       quizzes: [
         {
