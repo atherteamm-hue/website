@@ -670,7 +670,7 @@ physics_2: {
         }
       ], 
       videos: [
-        { label: "Anas Majdi", url: "https://youtu.be/YqYRMOEUtLM?si=G0X5LFkmA3sW5QCj" },
+        { label: "Anas Majdi", url: "https://youtube.com/playlist?list=PLDrXseE-DVt4&si=eBaVZqqAHA_6rIEp" },
         { label: "Ahmed Awad", url: "https://youtube.com/playlist?list=PLGfzCRt_uWkeed0GtFGOvXvtkhihL2b2z&si=HRcHAXB3u8EdMUT3" }
       ], 
       mid: [
